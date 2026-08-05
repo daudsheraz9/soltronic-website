@@ -77,7 +77,38 @@ const config: Config = {
       "body-md": "var(--font-body-md)",
       "headline-lg": "var(--font-headline-lg)"
 },
-      fontSize: {},
+      fontSize: {
+        "label-md": ["var(--text-label-md)", {
+          lineHeight: "var(--text-label-md--line-height)",
+          letterSpacing: "var(--text-label-md--letter-spacing)",
+          fontWeight: "var(--text-label-md--font-weight)"
+        }],
+        "body-lg": ["var(--text-body-lg)", {
+          lineHeight: "var(--text-body-lg--line-height)",
+          fontWeight: "var(--text-body-lg--font-weight)"
+        }],
+        "headline-lg-mobile": ["var(--text-headline-lg-mobile)", {
+          lineHeight: "var(--text-headline-lg-mobile--line-height)",
+          fontWeight: "var(--text-headline-lg-mobile--font-weight)"
+        }],
+        "headline-md": ["var(--text-headline-md)", {
+          lineHeight: "var(--text-headline-md--line-height)",
+          fontWeight: "var(--text-headline-md--font-weight)"
+        }],
+        "display": ["var(--text-display)", {
+          lineHeight: "var(--text-display--line-height)",
+          letterSpacing: "var(--text-display--letter-spacing)",
+          fontWeight: "var(--text-display--font-weight)"
+        }],
+        "body-md": ["var(--text-body-md)", {
+          lineHeight: "var(--text-body-md--line-height)",
+          fontWeight: "var(--text-body-md--font-weight)"
+        }],
+        "headline-lg": ["var(--text-headline-lg)", {
+          lineHeight: "var(--text-headline-lg--line-height)",
+          fontWeight: "var(--text-headline-lg--font-weight)"
+        }]
+      },
       borderRadius: {
       "DEFAULT": "var(--radius-DEFAULT)",
       "lg": "var(--radius-lg)",
