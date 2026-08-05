@@ -16,16 +16,10 @@ export default function Navbar() {
 
   return (
     <header className="bg-surface shadow-sm sticky top-0 z-50 flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto w-full backdrop-blur-sm">
-      <div className="flex items-center gap-3">
-        {/* Logo Icon */}
-        <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-primary relative overflow-hidden">
-          <span className="material-symbols-outlined text-secondary text-2xl absolute" style={{ fontVariationSettings: "'FILL' 1" }}>bolt</span>
-        </div>
-        {/* Logo Text */}
-        <div className="flex flex-col leading-none">
-          <span className="text-xl font-bold tracking-tight text-primary uppercase">Soltronic</span>
-          <span className="text-sm font-semibold tracking-widest text-secondary uppercase">Energy</span>
-        </div>
+      <div className="flex items-center">
+        <Link href="/">
+          <img src="/logo.png" alt="Soltronic Energy Logo" className="h-12 w-auto" />
+        </Link>
       </div>
 
       <nav className="hidden md:flex gap-8 items-center">

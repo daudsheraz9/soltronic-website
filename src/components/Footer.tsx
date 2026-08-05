@@ -5,9 +5,10 @@ export default function Footer() {
     <footer className="bg-on-tertiary-fixed dark:bg-surface-container-lowest full-width mt-auto">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-stack-lg px-gutter py-section-padding max-w-container-max mx-auto">
         <div className="space-y-stack-md">
-          <div className="flex items-center gap-2 text-headline-md font-headline-md font-bold text-background">
-            <span className="material-symbols-outlined text-3xl" data-weight="fill">solar_power</span>
-            <span className="">Soltronic Energy</span>
+          <div className="flex items-center">
+            <Link href="/">
+              <img src="/logo.png" alt="Soltronic Energy Logo" className="h-16 w-auto mb-2" />
+            </Link>
           </div>
           <p className="text-body-md font-body-md text-surface-variant dark:text-on-surface-variant">Delivering innovative and sustainable solar solutions for a greener tomorrow.</p>
           <div className="flex gap-4">
