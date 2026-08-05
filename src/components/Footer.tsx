@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="space-y-stack-md">
           <div className="flex items-center">
             <Link href="/">
-              <img src="/logo.png" alt="Soltronic Energy Logo" className="h-16 w-auto mb-2" />
+              <img src="/logo.png" alt="Soltronic Energy Logo" className="h-20 md:h-24 w-auto mb-4 object-contain" />
             </Link>
           </div>
           <p className="text-body-md font-body-md text-surface-variant dark:text-on-surface-variant">Delivering innovative and sustainable solar solutions for a greener tomorrow.</p>

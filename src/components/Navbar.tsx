@@ -18,7 +18,7 @@ export default function Navbar() {
     <header className="bg-surface shadow-sm sticky top-0 z-50 flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto w-full backdrop-blur-sm">
       <div className="flex items-center">
         <Link href="/">
-          <img src="/logo.png" alt="Soltronic Energy Logo" className="h-12 w-auto" />
+          <img src="/logo.png" alt="Soltronic Energy Logo" className="h-14 md:h-16 w-auto object-contain py-1" />
         </Link>
       </div>
 
