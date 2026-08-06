@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 
 export default function GreenSketchHeader() {
   const sliderImages = [
@@ -95,68 +96,68 @@ export default function GreenSketchHeader() {
       <section className="w-full">
         <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4 pb-4">
           {/* Promotions */}
-          <div className="bg-surface border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-sm cursor-pointer transition-all hover:scale-105 hover:bg-primary/10 hover:shadow-md duration-300 group">
+          <Link href="#" className="bg-surface border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-sm cursor-pointer transition-all hover:scale-105 hover:bg-primary/10 hover:shadow-md duration-300 group">
             <span className="material-symbols-outlined text-5xl text-on-surface-variant group-hover:text-primary transition-colors duration-300" style={{ fontVariationSettings: '"wght" 200' }}>
               local_offer
             </span>
             <span className="text-xs font-semibold text-on-surface text-center">Promotions</span>
-          </div>
+          </Link>
 
           {/* Panels */}
-          <div className="bg-surface border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-sm cursor-pointer transition-all hover:scale-105 hover:bg-primary/10 hover:shadow-md duration-300 group">
+          <Link href="/products" className="bg-surface border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-sm cursor-pointer transition-all hover:scale-105 hover:bg-primary/10 hover:shadow-md duration-300 group">
             <span className="material-symbols-outlined text-5xl text-on-surface-variant group-hover:text-primary transition-colors duration-300" style={{ fontVariationSettings: '"wght" 200' }}>
               solar_power
             </span>
             <span className="text-xs font-semibold text-on-surface text-center">Panels</span>
-          </div>
+          </Link>
 
           {/* Inverters */}
-          <div className="bg-surface border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-sm cursor-pointer transition-all hover:scale-105 hover:bg-primary/10 hover:shadow-md duration-300 group">
+          <Link href="#" className="bg-surface border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-sm cursor-pointer transition-all hover:scale-105 hover:bg-primary/10 hover:shadow-md duration-300 group">
             <span className="material-symbols-outlined text-5xl text-on-surface-variant group-hover:text-primary transition-colors duration-300" style={{ fontVariationSettings: '"wght" 200' }}>
               settings_input_component
             </span>
             <span className="text-xs font-semibold text-on-surface text-center">Inverters</span>
-          </div>
+          </Link>
 
           {/* Storage */}
-          <div className="bg-surface border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-sm cursor-pointer transition-all hover:scale-105 hover:bg-primary/10 hover:shadow-md duration-300 group">
+          <Link href="#" className="bg-surface border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-sm cursor-pointer transition-all hover:scale-105 hover:bg-primary/10 hover:shadow-md duration-300 group">
             <span className="material-symbols-outlined text-5xl text-on-surface-variant group-hover:text-primary transition-colors duration-300" style={{ fontVariationSettings: '"wght" 200' }}>
               battery_charging_full
             </span>
             <span className="text-xs font-semibold text-on-surface text-center">Storage</span>
-          </div>
+          </Link>
 
           {/* Mountings */}
-          <div className="bg-surface border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-sm cursor-pointer transition-all hover:scale-105 hover:bg-primary/10 hover:shadow-md duration-300 group">
+          <Link href="#" className="bg-surface border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-sm cursor-pointer transition-all hover:scale-105 hover:bg-primary/10 hover:shadow-md duration-300 group">
             <span className="material-symbols-outlined text-5xl text-on-surface-variant group-hover:text-primary transition-colors duration-300" style={{ fontVariationSettings: '"wght" 200' }}>
               hardware
             </span>
             <span className="text-xs font-semibold text-on-surface text-center">Mountings</span>
-          </div>
+          </Link>
 
           {/* EV Chargers */}
-          <div className="bg-surface border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-sm cursor-pointer transition-all hover:scale-105 hover:bg-primary/10 hover:shadow-md duration-300 group">
+          <Link href="#" className="bg-surface border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-sm cursor-pointer transition-all hover:scale-105 hover:bg-primary/10 hover:shadow-md duration-300 group">
             <span className="material-symbols-outlined text-5xl text-on-surface-variant group-hover:text-primary transition-colors duration-300" style={{ fontVariationSettings: '"wght" 200' }}>
               ev_station
             </span>
             <span className="text-xs font-semibold text-on-surface text-center">EV Chargers</span>
-          </div>
+          </Link>
 
           {/* Heat Pump */}
-          <div className="bg-surface border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-sm cursor-pointer transition-all hover:scale-105 hover:bg-primary/10 hover:shadow-md duration-300 group">
+          <Link href="#" className="bg-surface border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-sm cursor-pointer transition-all hover:scale-105 hover:bg-primary/10 hover:shadow-md duration-300 group">
             <span className="material-symbols-outlined text-5xl text-on-surface-variant group-hover:text-primary transition-colors duration-300" style={{ fontVariationSettings: '"wght" 200' }}>
               hvac
             </span>
             <span className="text-xs font-semibold text-on-surface text-center">Heat Pump</span>
-          </div>
+          </Link>
 
           {/* Electricals */}
-          <div className="bg-surface border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-sm cursor-pointer transition-all hover:scale-105 hover:bg-primary/10 hover:shadow-md duration-300 group">
+          <Link href="#" className="bg-surface border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-sm cursor-pointer transition-all hover:scale-105 hover:bg-primary/10 hover:shadow-md duration-300 group">
             <span className="material-symbols-outlined text-5xl text-on-surface-variant group-hover:text-primary transition-colors duration-300" style={{ fontVariationSettings: '"wght" 200' }}>
               electrical_services
             </span>
             <span className="text-xs font-semibold text-on-surface text-center">Electricals</span>
-          </div>
+          </Link>
         </div>
       </section>
 
