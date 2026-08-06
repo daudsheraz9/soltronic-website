@@ -4,6 +4,9 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Soltronic Energy - Powering a Sustainable Future",
   description: "Innovative Solar Solutions for Homes, Businesses and Industries. Building a Greener, Better Tomorrow.",
+  icons: {
+    icon: '/icon-favicon.png',
+  },
 };
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
