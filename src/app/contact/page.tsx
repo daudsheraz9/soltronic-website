@@ -6,7 +6,7 @@ export default function ContactUs() {
       {/* TopNavBar */}
 
 
-      <main className="pt-20">
+      <main className="pt-40 md:pt-48">
         {/* Hero Section */}
         <section className="relative w-full h-[500px] flex items-center">
           <div className="absolute inset-0 z-0">

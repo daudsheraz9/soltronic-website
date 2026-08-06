@@ -7,7 +7,7 @@ export default function Products() {
 
 
       {/* Hero Section */}
-      <header className="relative bg-white pt-16 pb-24 overflow-hidden">
+      <header className="relative bg-white pt-40 md:pt-48 pb-24 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col lg:flex-row items-center">
             <div className="w-full lg:w-1/2 pr-0 lg:pr-12 mb-12 lg:mb-0">

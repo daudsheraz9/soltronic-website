@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function EPCPage() {
   return (
-    <main className="bg-white pb-10 pt-8">
+    <main className="bg-white pb-10 pt-32 md:pt-40">
       {/* BEGIN: Breadcrumbs */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 mb-4">
         <nav className="text-sm text-gray-500 flex items-center gap-2">

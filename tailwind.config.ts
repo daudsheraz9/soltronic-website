@@ -75,7 +75,8 @@ const config: Config = {
       "headline-md": "var(--font-headline-md)",
       "display": "var(--font-display)",
       "body-md": "var(--font-body-md)",
-      "headline-lg": "var(--font-headline-lg)"
+      "headline-lg": "var(--font-headline-lg)",
+      "archivo-black": ["'Archivo Black'", "sans-serif"]
 },
       fontSize: {
         "label-md": ["var(--text-label-md)", {

@@ -6,17 +6,17 @@ export default function Home() {
 
 
       {/* Hero Section */}
-      <section className="relative h-[80vh] min-h-[600px] flex items-center justify-center px-gutter pt-section-padding pb-section-padding">
+      <section className="relative min-h-[100vh] lg:min-h-[800px] flex items-center justify-center px-gutter pt-section-padding pb-section-padding">
         <div className="absolute inset-0 z-0">
           <img className="w-full h-full object-cover" data-alt="A sweeping, majestic aerial view of a massive commercial solar farm at sunrise. Endless rows of gleaming blue photovoltaic panels stretch toward the horizon across rolling green hills. The morning light casts a warm, golden glow, reflecting off the panels. In the background, modern wind turbines turn slowly against a clear, bright sky. The scene conveys clean energy, technological progress, and a sustainable, eco-friendly future. The lighting is crisp and optimistic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGbmXWj3im1UlQ4zGNS730j6DfId-OQpMyhQOdVENrx6u9Vgnr7H0C5SqbAv3a4vktthd4ZPRTA7GuLiWiL5l0VNxysfRVeO0KcBYpfkGAvtqvkZy_GMqnPbhHss7HOPv3zulHPjILGgfEslKsh9dtgF-oNa45iSAUTY379CyO4xmzvY4VlFiOCET17gIBEQzyz4w8cbVLqZXgkdExfo_1QMX1u2PC9w19B9Xnz-11VoCVauCheYvO" alt="A wide, professional landscape photograph of a large-scale modern solar farm with rows of high-tech solar panels under a clear blue sky." />
           <div className="absolute inset-0 bg-gradient-to-r from-on-primary-fixed/80 to-transparent"></div>
         </div>
-        <div className="relative z-10 w-full max-w-container-max mx-auto text-left text-on-primary">
+        <div className="relative z-10 w-full max-w-container-max mx-auto text-left text-on-primary pt-32 md:pt-48 pb-32 md:pb-48">
           <div className="max-w-2xl space-y-stack-md">
-            <h1 className="text-display font-display text-on-primary leading-tight">Powering a<br/><span className="text-primary-fixed">Sustainable</span><br/>Future</h1>
-            <p className="text-body-lg font-body-lg text-on-primary/90 max-w-xl">Innovative Solar Solutions for Homes, Businesses and Industries. Building a Greener, Better Tomorrow.</p>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-archivo-black uppercase text-on-primary leading-tight tracking-tighter drop-shadow-lg">Powering a<br/><span className="text-inverse-primary drop-shadow-md">Sustainable</span><br/>Future</h1>
+            <p className="text-body-lg md:text-xl font-medium text-on-primary/95 max-w-xl drop-shadow-md mt-4">Innovative Solar Solutions for Homes, Businesses and Industries. Building a Greener, Better Tomorrow.</p>
             <div className="flex flex-col sm:flex-row gap-stack-sm pt-stack-md">
-              <a className="inline-flex items-center justify-center bg-secondary text-on-secondary px-8 py-3 rounded font-label-md text-label-md hover:bg-secondary/90 transition-all hover:-translate-y-0.5 shadow-sm" href="#">
+              <a className="inline-flex items-center justify-center bg-black text-white px-8 py-3 rounded font-label-md text-label-md hover:bg-neutral-800 transition-all hover:-translate-y-0.5 shadow-sm" href="#">
                   Get Free Quote <span className="material-symbols-outlined ml-2 text-sm">arrow_forward</span>
               </a>
               <a className="inline-flex items-center justify-center border-2 border-on-primary text-on-primary bg-transparent px-8 py-3 rounded font-label-md text-label-md hover:bg-on-primary/10 transition-all" href="#">
@@ -344,7 +344,7 @@ export default function Home() {
                 <p className="text-[10px] text-on-surface-variant uppercase font-bold">Estimated Savings</p>
                 <p className="text-headline-md font-bold text-primary">$ 1,20,000/year</p>
               </div>
-              <button className="bg-secondary-container text-on-secondary px-6 py-3 rounded font-bold flex items-center gap-2 hover:bg-secondary/90 transition-all">
+              <button className="bg-black text-white px-6 py-3 rounded font-bold flex items-center gap-2 hover:bg-neutral-800 transition-all">
                   Calculate Savings <span className="material-symbols-outlined text-sm">arrow_forward</span>
               </button>
             </div>
@@ -360,7 +360,7 @@ export default function Home() {
               <h2 className="text-headline-lg md:text-display font-bold text-on-surface leading-tight">Ready to Switch to Clean Energy?</h2>
               <p className="text-body-lg text-on-surface-variant">Get a customized solar solution tailored to your energy journey.</p>
               <div className="flex flex-wrap gap-4">
-                <button className="bg-secondary-container text-on-secondary px-8 py-3 rounded font-bold flex items-center gap-2 hover:bg-secondary/90 transition-all">
+                <button className="bg-black text-white px-8 py-3 rounded font-bold flex items-center gap-2 hover:bg-neutral-800 transition-all">
                     Get Free Quote <span className="material-symbols-outlined text-sm">arrow_forward</span>
                 </button>
                 <button className="border-2 border-outline-variant text-on-surface px-8 py-3 rounded font-bold flex items-center gap-2 hover:bg-surface-container-high transition-all">

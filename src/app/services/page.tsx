@@ -5,7 +5,7 @@ export default function Services() {
     <>
       <main>
         {/* BEGIN: Hero Section */}
-        <section className="relative bg-gray-900 text-white py-24 lg:py-32" data-purpose="hero-section">
+        <section className="relative bg-gray-900 text-white pt-40 pb-24 md:pt-48 lg:pb-32" data-purpose="hero-section">
           <div className="absolute inset-0 overflow-hidden">
             <img alt="Solar Farm" className="w-full h-full object-cover opacity-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5jPJF5tW3diMMhiQxLI5fbl7-W3AmTggJrrtj2uKIu4VB-pR1MrQIqOvNi4YK9SpXTsu_OVD8mVUqq-xsHKdAT_yV4WUyD7dj3TkgYa6YEWI1x8TTfYHfI8-mrWA1JOsJsyF1eASyZuNukjC1XiXYPUidr39bSnyxPQdVfmfsO1dxloSi23EUtY2d7cTXeguucvZHV97gEglaydQae3gbo4hGB6NlaUTMQt0DPlHKOXe0hpbKVpNL" />
           </div>

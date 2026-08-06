@@ -14,12 +14,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Archivo+Black&display=swap"
           rel="stylesheet"
         />
         <link
@@ -31,7 +31,7 @@ export default function RootLayout({
           rel="stylesheet" 
         />
       </head>
-      <body className="bg-background text-on-background font-body-md antialiased overflow-x-hidden flex flex-col min-h-screen">
+      <body className="bg-background text-on-background font-body-md antialiased overflow-x-hidden flex flex-col min-h-screen" suppressHydrationWarning>
         <Navbar />
         {children}
         <Footer />

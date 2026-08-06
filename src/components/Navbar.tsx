@@ -17,24 +17,24 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="bg-surface shadow-sm sticky top-0 z-50 flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto w-full backdrop-blur-sm">
+    <header className="absolute top-0 left-0 right-0 z-50 flex justify-between items-center px-gutter py-6 max-w-container-max mx-auto w-full">
       <div className="flex items-center">
         <Link href="/">
-          <img src="/logo.png" alt="Soltronic Energy Logo" className="h-14 md:h-16 w-auto object-contain py-1" />
+          <img src="/logo.png" alt="Soltronic Energy Logo" className="h-20 md:h-24 w-auto object-contain py-1" />
         </Link>
       </div>
 
-      <nav className="hidden md:flex gap-8 items-center">
+      <nav className="hidden md:flex items-center bg-white/20 backdrop-blur-md border border-white/30 rounded-full p-1.5 shadow-sm">
         {navLinks.map((link) => {
           const isActive = pathname === link.href;
           return (
             <Link 
               key={link.name}
               href={link.href}
-              className={`pb-1 text-label-md font-label-md transition-colors ${
+              className={`px-6 py-2 text-label-md font-label-md transition-colors rounded-full ${
                 isActive 
-                  ? 'text-secondary border-b-2 border-secondary font-bold' 
-                  : 'text-on-surface-variant hover:text-secondary'
+                  ? 'bg-white text-black font-bold shadow-sm' 
+                  : 'text-black/80 hover:text-black hover:bg-white/10'
               }`}
             >
               {link.name}
@@ -46,7 +46,7 @@ export default function Navbar() {
       <div className="hidden md:block">
         <Link 
           href="#" 
-          className="inline-flex items-center justify-center bg-secondary text-on-secondary px-6 py-2.5 rounded-md font-label-md text-label-md hover:bg-secondary/90 transition-all hover:-translate-y-0.5 shadow-sm"
+          className="inline-flex items-center justify-center bg-black text-white px-8 py-3 rounded-full font-label-md text-label-md hover:bg-neutral-800 transition-all hover:-translate-y-0.5 shadow-sm"
         >
           Get Free Quote <span className="material-symbols-outlined ml-2 text-sm">arrow_forward</span>
         </Link>
@@ -82,7 +82,7 @@ export default function Navbar() {
           <Link 
             href="#" 
             onClick={() => setIsMobileMenuOpen(false)}
-            className="mt-4 inline-flex items-center justify-center bg-secondary text-on-secondary px-8 py-3 rounded-md font-label-lg text-label-lg hover:bg-secondary/90 transition-all shadow-sm w-11/12 max-w-xs"
+            className="mt-4 inline-flex items-center justify-center bg-black text-white px-8 py-3 rounded-full font-label-lg text-label-lg hover:bg-neutral-800 transition-all shadow-sm w-11/12 max-w-xs"
           >
             Get Free Quote <span className="material-symbols-outlined ml-2 text-sm">arrow_forward</span>
           </Link>
