@@ -98,7 +98,7 @@ export default function Products() {
                 {/* Product Card 1 */}
                 <div className="bg-white flex flex-col group relative border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
                   <div className="h-64 flex justify-center items-center p-4 mb-2">
-                    <img alt="Trina Solar Panel" className="max-h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqumhx99bLuLjSVp12v7CQWOuq4Agsl7cO7X8W4BqzU2cswL4T8T5cJSrm6dUbmYHMX65rjz1EtKhmbpnVMHRRIn6Y1dfma3CpE6r0gFPUzl2veZRu7qWSjuLPDHvwh_ElQbwfiw4JpaXT6MKMKeMzYSR1--KC7HBPyA9iCCpRNZnkjiY7DTNOtfcx9ZzH3o6Achxp9Tnbqr22tsYVDyvbqTO2w7P7hxbY6OYkTkHqjFo9GXCCDM96Lg" />
+                    <img alt="Trina Solar Panel" className="max-h-full object-contain" src="/images/product-trina.jpg" />
                   </div>
                   <div className="flex-1 flex flex-col p-4 pt-0">
                     <h3 className="text-sm text-gray-800 leading-tight mb-1 line-clamp-3">Trina Solar 505W N-type i-TOPCon Ultra Monocrystalline 156 Cells Dual Glass Blackframe 30mm...</h3>
@@ -111,7 +111,7 @@ export default function Products() {
                 {/* Product Card 2 */}
                 <div className="bg-white flex flex-col group relative border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
                   <div className="h-64 flex justify-center items-center p-4 mb-2">
-                    <img alt="Canadian Solar Panel" className="max-h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbAlFK8cLWCsCW48wAmkshmWT6NvOzsdKleEHNjf--rP0LB6bLfbc1OX8-A_u4IV9ICT2idcW41tNfnQDtjbqCh4R4mEvJWx5mJ6p3pGduDv0Z5cEhJtlQko1CGYJkDEG4kFGZnWlR7d3_cqafy-JBrzSitWpYH8EuZBPrUZhdU1kwhXZBnA6h1RV86XtsMJLqxCXQE5xi6cBW4hde-pposBfdQhxqk9czoa4KOmfmS3wMIOrLzplLDg" />
+                    <img alt="Canadian Solar Panel" className="max-h-full object-contain" src="/images/product-canadian.jpg" />
                   </div>
                   <div className="flex-1 flex flex-col p-4 pt-0">
                     <h3 className="text-sm text-gray-800 leading-tight mb-1 line-clamp-3">Canadian Solar CS6.2-54TM 510W N-Type TOPCon Monofacial 108half-cell (Black Frame) 30m...</h3>
@@ -124,7 +124,7 @@ export default function Products() {
                 {/* Product Card 3 */}
                 <div className="bg-white flex flex-col group relative border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
                   <div className="h-64 flex justify-center items-center p-4 mb-2">
-                    <img alt="Risen Solar Panel" className="max-h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqUGu_h2Ji7nwDakhuKDKHhXp63OyLPwn10g4WjID204M2EkRpsXf9bgNcRSOs9hCcEu2VUTzQ_AgUP_jQ_tuIOwRZgVAFNhW6XBkBqbQLrA_iqIkQL1ECul6nyrHkKtWAfeCYlyRYrtMcJ8yBakkoPpgpuFIaBYCwDB2jJDB42ci8-Axir91aTsFVbd0_klAcawc0I3WiRhT2nlPKMmZc2EF85Nr5_PBEPfFQ1a5MN_1vB6wNdBhkjg" />
+                    <img alt="Risen Solar Panel" className="max-h-full object-contain" src="/images/product-risen.jpg" />
                   </div>
                   <div className="flex-1 flex flex-col p-4 pt-0">
                     <h3 className="text-sm text-gray-800 leading-tight mb-1 line-clamp-3">Risen RSM132-11 630W N-type TOPCon Bifacial 132half-cells sliver 30mm MC4 EVO2...</h3>
@@ -137,7 +137,7 @@ export default function Products() {
                 {/* Product Card 4 */}
                 <div className="bg-white flex flex-col group relative border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
                   <div className="h-64 flex justify-center items-center p-4 mb-2">
-                    <img alt="Suntech Solar Panel" className="max-h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuv48Y2mnTzl_BIoTrd2I3siHmricdzynlsNcdPZD7UMUlK5H_RBr-CVbynoX4tgCMcAHopqr5Ta-vYXHLZ5P-3CdK456Y6sPN1JV1liTjRu_hm4EGGkg2-TtrzYmfQAtmHreZmkH3dq_EAUUTe7_rP_JqeIqJ2YMUxj4MKIMcXHdKuUA3gF4hfacaA2LAF0quiwI6uACBwh8kmjB_8sH_xKUVoO5uUrwSHamklXQhSGKhzKEpy2A5_A" />
+                    <img alt="Suntech Solar Panel" className="max-h-full object-contain" src="/images/product-suntech.jpg" />
                   </div>
                   <div className="flex-1 flex flex-col p-4 pt-0">
                     <h3 className="text-sm text-gray-800 leading-tight mb-1 line-clamp-3">Suntech Ultra VPro 440W TOPCon N-type Bifacial Double Glass 96Half-Cell Black 30mm MC4-...</h3>
@@ -150,7 +150,7 @@ export default function Products() {
                 {/* Product Card 5 */}
                 <div className="bg-white flex flex-col group relative border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
                   <div className="h-64 flex justify-center items-center p-4 mb-2">
-                    <img alt="Canadian Solar Panel" className="max-h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4axaTSZ8wgWgh9rCnq81T5SD7uxTlRAx_uNKw-OY1nYuNq-0iB3h_5wsEvPKJ3z-CtPY9oGeHT5nS-Wj3swZ8M1iAG4vRsqkTyrR5YpOozQ5qd54FRA5ddPam3OZ6QbBqWh8rRfwN_QMoG6vaXfM3STcZb04x7NYPzzRAL8YaQ_q3JIOxE4M6oFSfdmBJSV3QnDxTa6U_RsosDmhokVUpNp13rWO5dU-s-cFF5ldFcw2R8yd58reDww" />
+                    <img alt="Canadian Solar Panel" className="max-h-full object-contain" src="/images/product-canadian-2.jpg" />
                   </div>
                   <div className="flex-1 flex flex-col p-4 pt-0">
                     <h3 className="text-sm text-gray-800 leading-tight mb-1 line-clamp-3">Canadian CS6.2-66TB 620W TOPCon 132 half-cell Sliver 30mm MC4 EVO2 (CS6.2-66TB-...</h3>
@@ -163,7 +163,7 @@ export default function Products() {
                 {/* Product Card 6 */}
                 <div className="bg-white flex flex-col group relative border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
                   <div className="h-64 flex justify-center items-center p-4 mb-2">
-                    <img alt="TW Solar Panel" className="max-h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBg4T-ddVuGheZrmkdbCUjJWU2TQrAGD30k3_9DiUtSyXIbm3glmSyR6Q2MbMJxyJkGx41dY2KudZnsARrPBtysJp-7YjMDRcRZfHnV1OlSTkGVToOr_CNZs8EdZcwaBp1IP762wSiC9yq25W61BYs-x7FmTUbMBcc27PRDq7swyiYoRQqw9KJ5sMb91JX4IgYamRjeNwI0SgYKoI84lMMwZK2ftitWj5obmjkx79Q5FyliYqMGb5xI3A" />
+                    <img alt="TW Solar Panel" className="max-h-full object-contain" src="/images/product-tw.jpg" />
                   </div>
                   <div className="flex-1 flex flex-col p-4 pt-0">
                     <h3 className="text-sm text-gray-800 leading-tight mb-1 line-clamp-3">TW Solar 465W N-Type Mono 96 Halfcells Bifacial Black Frame 30mm MC4 EVO2 1200mm Cabl...</h3>
@@ -176,7 +176,7 @@ export default function Products() {
                 {/* Product Card 7 */}
                 <div className="bg-white flex flex-col group relative border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
                   <div className="h-64 flex justify-center items-center p-4 mb-2">
-                    <img alt="Trina Solar Panel" className="max-h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTvwFa6wI5Bmss5w9BTowTbkLPL-tXyDyRudUpmpIDJtAhktSO5iKpxg2sFHrQx_JUBCQjz4zBl-IDSi8Tq4iWlFfSpKdDQ31ZmQc8pS29xcZcRIaiL6Kt4sXROPZkq3GwYOWM6FYnXIZzqFJmuxxLy85MeF6y5ohZhHHWgC5cVSyKnOByiISgs7MfFHuyUmL0gG5-FxylpINKPkS8i_PH2c1AN5_kvLui6naDdXqSdVmszoeeKdhX3A" />
+                    <img alt="Trina Solar Panel" className="max-h-full object-contain" src="/images/product-trina-2.jpg" />
                   </div>
                   <div className="flex-1 flex flex-col p-4 pt-0">
                     <h3 className="text-sm text-gray-800 leading-tight mb-1 line-clamp-3">Trina Solar 475W N-type i-TOPCon Ultra Monocrystalline 96 HalfCells Dual Glass Blackframe 30mm...</h3>
@@ -189,7 +189,7 @@ export default function Products() {
                 {/* Product Card 8 */}
                 <div className="bg-white flex flex-col group relative border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
                   <div className="h-64 flex justify-center items-center p-4 mb-2">
-                    <img alt="Risen Solar Panel" className="max-h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArBzAlcNZXFXIb3O4v2AbbFbk4u7ZqotiqnZzkgBLYiKy7dUceIDcgdSoqyG23N17Ny5MjZ0JWg7obciY0MhW7mls4A3vL4M9PgpV9GY0Ud4y15d5t0UUi3SfWz5KcsgNWl6E1-ZPDeqAfK40Wguyi0Fi3oXBIYB3ZUN8pWh9t_UXl0M9mdCUham9Ix5yvSxc0FBXtfi7R973PTLxG9gvDdOAVHE3ZqR2NYWOiYahjcE7fUBH0mMNU8Q" />
+                    <img alt="Risen Solar Panel" className="max-h-full object-contain" src="/images/product-risen-2.jpg" />
                   </div>
                   <div className="flex-1 flex flex-col p-4 pt-0">
                     <h3 className="text-sm text-gray-800 leading-tight mb-1 line-clamp-3">Risen RSM144-9 595W N-type TOPCon Bifacial 144half-cells sliver 30mm MC4 EVO2 [RSM14...</h3>
@@ -247,7 +247,7 @@ export default function Products() {
             {/* Card 1 */}
             <div className="bg-white border border-gray-200 rounded-[1.5rem] overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col group relative">
               <div className="flex justify-center bg-[#f0f4f8] h-56 items-center p-4">
-                <img alt="Soltronic Mono 550W" className="max-h-full object-contain group-hover:scale-105 transition-transform duration-300 mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_qZ7pDPwB7wV-LQeYeSF3GkkR72JPBas-Yjj9LJwcb4B4ABhP9ja4G57if4k3QKNBpTLKhf3VZLbcvH-z_yAu1D6LMbuwULHA2dBJKLEj3u0Z8peKyA1KIAUDDYn-oJLZOa31XprQ-9e4M-3kjN0Nshxaq9Zi5AYU3XwuhBYciFD1QuUSfGxuTIzu_-uTI2e_4D2liY_vZNfBx1qtTojv2_5JLl4C7na_AnvkyKo4V8SNNgkaxnTi" />
+                <img alt="Soltronic Mono 550W" className="max-h-full object-contain group-hover:scale-105 transition-transform duration-300 mix-blend-multiply" src="/images/soltronic-mono-550w.jpg" />
               </div>
               <div className="p-6">
                 <div className="text-primary font-bold text-[10px] tracking-wider uppercase mb-2">SOLAR PANELS</div>
@@ -278,7 +278,7 @@ export default function Products() {
             {/* Card 2 */}
             <div className="bg-white border border-gray-200 rounded-[1.5rem] overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col group relative">
               <div className="flex justify-center bg-[#f0f4f8] h-56 items-center p-4">
-                <img alt="Soltronic HES 6kW" className="max-h-full object-contain group-hover:scale-105 transition-transform duration-300 mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNfTE5ZRCUsrSAgcfqoYpBgjuPpwd19ItR9EnnnCfJxJSJ56ACoOoNqTLs6eby5uk73EgkkM-n7kYnNPfftGjOtrSuj2yQsXePCM3bBUAZt7r-vBVJPQsXVUDhbf4058qRwPpYOhqqeGHBmeVOYWpK8-QhVtXJj3bRd_vH5nrcXSTER9fKnoYuDay256ICxd0m_Xp-tojSrcxSwwvm438VlB78i610XjfR3NHIEf9V3mgWYD-g58Up" />
+                <img alt="Soltronic HES 6kW" className="max-h-full object-contain group-hover:scale-105 transition-transform duration-300 mix-blend-multiply" src="/images/soltronic-hes-6kw.jpg" />
               </div>
               <div className="p-6">
                 <div className="text-primary font-bold text-[10px] tracking-wider uppercase mb-2">HYBRID INVERTERS</div>
@@ -309,7 +309,7 @@ export default function Products() {
             {/* Card 3 */}
             <div className="bg-white border border-gray-200 rounded-[1.5rem] overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col group relative">
               <div className="flex justify-center bg-[#f0f4f8] h-56 items-center p-4">
-                <img alt="Soltronic Power 10kWh" className="max-h-full object-contain group-hover:scale-105 transition-transform duration-300 mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwaggCrbcuHBkOzTepLQM0tXScCIVZ3ZlOxg7N779PGd1ARxmVBZC-c7YWWooQaPUjnL7Mlnc4pF75Wa0hRRoh5_kkj9NZSJaJCXGmYkAcgl089Hm56syt5F5EPzB2j-EjaSh8fhbtX4q3SQvipsSZZRL3s-1JXvKOKVVIolRe5ZM42QZSeFKVAnfdTPjeAnjr47o28sjygME4OP-Yyc8Z9JkpjyTXwaL3uwsYgAtT2Hz-mvjZg9GG" />
+                <img alt="Soltronic Power 10kWh" className="max-h-full object-contain group-hover:scale-105 transition-transform duration-300 mix-blend-multiply" src="/images/soltronic-power-10kwh.jpg" />
               </div>
               <div className="p-6">
                 <div className="text-primary font-bold text-[10px] tracking-wider uppercase mb-2">LITHIUM BATTERIES</div>
@@ -340,7 +340,7 @@ export default function Products() {
             {/* Card 4 */}
             <div className="bg-white border border-gray-200 rounded-[1.5rem] overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col group relative">
               <div className="flex justify-center bg-[#f0f4f8] h-56 items-center p-4">
-                <img alt="Soltronic EV Pro 7kW" className="max-h-full object-contain group-hover:scale-105 transition-transform duration-300 mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8YwhkJRiWJlfYAX0-Vvit1ZJLGaMc6Xs1Ib7bWbG3MHThdlSToUq7krrH0K_L0vtO5LMD-mw0jErKrVEOt_sZx9YnfJJHArUwnSDiaEDd0-X60dGYIH-qns1x7-zH4G6ZLnYKPS8JjJe8VGhyuY147NyQKTPY_lmD6-wc5VYCNSO5lfeGQ0Lm4HN5IWpkpaKWfJxwVJ4HkGEMLErJ6990YTpujwL9-xpIQJAUG0ci420jMlMutMsK" />
+                <img alt="Soltronic EV Pro 7kW" className="max-h-full object-contain group-hover:scale-105 transition-transform duration-300 mix-blend-multiply" src="/images/soltronic-ev-pro-7kw.jpg" />
               </div>
               <div className="p-6">
                 <div className="text-primary font-bold text-[10px] tracking-wider uppercase mb-2">EV CHARGERS</div>
@@ -500,7 +500,7 @@ export default function Products() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gray-50 rounded-2xl p-8 border border-gray-200 flex flex-col md:flex-row items-center gap-8 shadow-sm">
             <div className="w-full md:w-1/3 flex justify-center">
-              <img alt="Product Brochure" className="h-48 object-contain transform -rotate-6 shadow-md border border-gray-100 bg-white p-1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKGnpOF6-8fn6-xMMNRvsSONIZJkk0Dw2tjtIDV2SL9o22wvKR4XwyVhy7dJ_i_TGcDmTbX-9OcMdIEo7GiZcUVYlPqOQ-Zx0k8qvI14ostvzWFCtsk5_0-y_TFVXe5RRaEnkcWek_m3dmqkFZ8DuKb-fkg__FRASMgC9oL-mWoa0ivD2vZJaF0q15Jr2PRiZo3pujJyD89_PMx3Uav4_7DXYHbBiyYw5siGrBM3QbRMYOdwTJXHMt" />
+              <img alt="Product Brochure" className="h-48 object-contain transform -rotate-6 shadow-md border border-gray-100 bg-white p-1" src="/images/product-brochure.jpg" />
             </div>
             <div className="w-full md:w-2/3">
               <h3 className="text-2xl font-bold text-dark mb-2">All Our Products. One Brochure.</h3>

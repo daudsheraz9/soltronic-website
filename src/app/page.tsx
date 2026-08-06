@@ -77,19 +77,116 @@ export default function Home() {
 
 
 
-          <div className="py-12 border-y border-outline-variant/20">
-            <div className="flex flex-col md:flex-row items-center justify-start gap-12 md:gap-20 lg:gap-32">
-              <div className="shrink-0">
+          <div className="py-12 border-y border-outline-variant/20 overflow-hidden relative">
+            <style>{`
+              @keyframes scroll-brands {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-50%); }
+              }
+              .animate-marquee {
+                animation: scroll-brands 20s linear infinite;
+              }
+              .animate-marquee:hover {
+                animation-play-state: paused;
+              }
+            `}</style>
+            
+            <div className="flex flex-col md:flex-row items-center justify-start gap-12 md:gap-20 lg:gap-32 w-full">
+              <div className="shrink-0 z-10 bg-surface-bright pr-8 relative">
                 <span className="text-label-md font-bold text-on-surface-variant uppercase tracking-widest">Trusted By</span>
-                <h3 className="text-headline-md font-bold text-on-surface">Global Brands</h3>
+                <h3 className="text-headline-md font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-green-500">Global Brands</h3>
               </div>
-              <div className="flex flex-wrap justify-center items-center gap-12 opacity-70 grayscale hover:grayscale-0 transition-all">
-                <img src="/solislogo.png" alt="Solis" className="h-12 md:h-16 w-auto object-contain mix-blend-multiply" />
-                <img src="/risen.png" alt="Risen" className="h-12 md:h-16 w-auto object-contain mix-blend-multiply" />
-                <img src="/huawei.png" alt="Huawei" className="h-12 md:h-16 w-auto object-contain mix-blend-multiply" />
-                <img src="/pylontech-logo.webp" alt="Pylontech" className="h-12 md:h-16 w-auto object-contain mix-blend-multiply" />
-                <img src="/volnex.png" alt="Volnex" className="h-12 md:h-16 w-auto object-contain mix-blend-multiply" />
-                <img src="/naradalogo.png" alt="Narada" className="h-12 md:h-16 w-auto object-contain mix-blend-multiply" />
+              
+              <div className="overflow-hidden w-full relative">
+                <div className="flex gap-4 w-max animate-marquee">
+                  {/* --- First Set of Logos --- */}
+                  {/* Inverex */}
+                  <div className="bg-[#f8fafc] rounded-2xl p-2 min-w-[160px] flex-shrink-0">
+                    <div className="bg-white rounded-xl h-16 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-4">
+                      <span className="text-red-600 font-black italic tracking-tighter text-xl">INVEREX</span>
+                    </div>
+                  </div>
+                  {/* Pylontech */}
+                  <div className="bg-[#f8fafc] rounded-2xl p-2 min-w-[220px] flex-shrink-0">
+                    <div className="bg-white rounded-xl h-16 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-2 py-1 overflow-visible">
+                      <img src="/images/pylontech-logo.png" alt="Pylontech" className="h-full w-auto object-contain max-h-[60px] transform scale-[2.5] origin-center" style={{ mixBlendMode: 'multiply', filter: 'contrast(1.2)' }} />
+                    </div>
+                  </div>
+                  {/* Solis */}
+                  <div className="bg-[#f8fafc] rounded-2xl p-2 min-w-[160px] flex-shrink-0">
+                    <div className="bg-white rounded-xl h-16 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-2 py-1">
+                      <img src="/images/solis-logo.png" alt="Solis" className="h-full w-auto object-contain max-h-[55px] transform scale-150" />
+                    </div>
+                  </div>
+                  {/* Jinko Solar */}
+                  <div className="bg-[#f8fafc] rounded-2xl p-2 min-w-[160px] flex-shrink-0">
+                    <div className="bg-white rounded-xl h-16 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-4 py-2">
+                      <img src="/images/jinko-logo.png" alt="Jinko Solar" className="h-full w-auto object-contain max-h-[35px]" style={{ mixBlendMode: 'multiply', filter: 'contrast(1.5) brightness(1.1)' }} />
+                    </div>
+                  </div>
+                  {/* Narada */}
+                  <div className="bg-[#f8fafc] rounded-2xl p-2 min-w-[160px] flex-shrink-0">
+                    <div className="bg-white rounded-xl h-16 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-6 py-3">
+                      <img src="/images/narada-logo.png" alt="Narada" className="h-full w-auto object-contain max-h-[22px]" />
+                    </div>
+                  </div>
+                  {/* Huawei */}
+                  <div className="bg-[#f8fafc] rounded-2xl p-2 min-w-[160px] flex-shrink-0">
+                    <div className="bg-white rounded-xl h-16 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-4 py-2">
+                      <img src="/images/huawei-logo.png" alt="Huawei" className="h-full w-auto object-contain max-h-[35px]" style={{ mixBlendMode: 'multiply', filter: 'contrast(1.5) brightness(1.1)' }} />
+                    </div>
+                  </div>
+                  {/* Dyness */}
+                  <div className="bg-[#f8fafc] rounded-2xl p-2 min-w-[160px] flex-shrink-0">
+                    <div className="bg-white rounded-xl h-16 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-4">
+                      <span className="text-green-500 font-light tracking-widest text-lg">DY<span className="text-blue-500 font-bold">NESS</span></span>
+                    </div>
+                  </div>
+                  
+                  {/* --- Second Set of Logos for Seamless Looping --- */}
+                  {/* Inverex */}
+                  <div className="bg-[#f8fafc] rounded-2xl p-2 min-w-[160px] flex-shrink-0">
+                    <div className="bg-white rounded-xl h-16 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-4">
+                      <span className="text-red-600 font-black italic tracking-tighter text-xl">INVEREX</span>
+                    </div>
+                  </div>
+                  {/* Pylontech */}
+                  <div className="bg-[#f8fafc] rounded-2xl p-2 min-w-[220px] flex-shrink-0">
+                    <div className="bg-white rounded-xl h-16 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-2 py-1 overflow-visible">
+                      <img src="/images/pylontech-logo.png" alt="Pylontech" className="h-full w-auto object-contain max-h-[60px] transform scale-[2.5] origin-center" style={{ mixBlendMode: 'multiply', filter: 'contrast(1.2)' }} />
+                    </div>
+                  </div>
+                  {/* Solis */}
+                  <div className="bg-[#f8fafc] rounded-2xl p-2 min-w-[160px] flex-shrink-0">
+                    <div className="bg-white rounded-xl h-16 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-2 py-1">
+                      <img src="/images/solis-logo.png" alt="Solis" className="h-full w-auto object-contain max-h-[55px] transform scale-150" />
+                    </div>
+                  </div>
+                  {/* Jinko Solar */}
+                  <div className="bg-[#f8fafc] rounded-2xl p-2 min-w-[160px] flex-shrink-0">
+                    <div className="bg-white rounded-xl h-16 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-4 py-2">
+                      <img src="/images/jinko-logo.png" alt="Jinko Solar" className="h-full w-auto object-contain max-h-[35px]" style={{ mixBlendMode: 'multiply', filter: 'contrast(1.5) brightness(1.1)' }} />
+                    </div>
+                  </div>
+                  {/* Narada */}
+                  <div className="bg-[#f8fafc] rounded-2xl p-2 min-w-[160px] flex-shrink-0">
+                    <div className="bg-white rounded-xl h-16 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-6 py-3">
+                      <img src="/images/narada-logo.png" alt="Narada" className="h-full w-auto object-contain max-h-[22px]" />
+                    </div>
+                  </div>
+                  {/* Huawei */}
+                  <div className="bg-[#f8fafc] rounded-2xl p-2 min-w-[160px] flex-shrink-0">
+                    <div className="bg-white rounded-xl h-16 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-4 py-2">
+                      <img src="/images/huawei-logo.png" alt="Huawei" className="h-full w-auto object-contain max-h-[35px]" style={{ mixBlendMode: 'multiply', filter: 'contrast(1.5) brightness(1.1)' }} />
+                    </div>
+                  </div>
+                  {/* Dyness */}
+                  <div className="bg-[#f8fafc] rounded-2xl p-2 min-w-[160px] flex-shrink-0">
+                    <div className="bg-white rounded-xl h-16 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-4">
+                      <span className="text-green-500 font-light tracking-widest text-lg">DY<span className="text-blue-500 font-bold">NESS</span></span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

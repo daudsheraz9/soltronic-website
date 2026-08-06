@@ -1,23 +1,30 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 
-export default function GreenSketchHeader() {
-  const sliderImages = [
-    "https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1466611653911-95081537e5b7?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1583345209745-0d2dbd7d91e8?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1521618755572-156ae0cdd74d?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1559302504-64aae6ca6b6f?q=80&w=1600&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1662998399589-9856a908eb88?q=80&w=1600&auto=format&fit=crop"
-  ];
+const sliderImages = [
+  "/product-main-image-1.png",
+  "/product-main-image-2.png",
+  "/product-main-image-3.png",
+  "/product-main-image-4.png",
+  "/product-main-image-5.png",
+  "/product-main-image-6.png",
+  "/product-main-image-7.png",
+  "/banner-main.png",
+  "/banner-main-2.png",
+  "/banner-main-3.png"
+];
 
+export default function GreenSketchHeader() {
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % sliderImages.length);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % sliderImages.length);
@@ -32,53 +39,24 @@ export default function GreenSketchHeader() {
   };
 
   return (
-    <div className="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-gutter pt-32 md:pt-40 flex flex-col lg:flex-row gap-gutter">
+    <div className="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-gutter pt-4 flex flex-col lg:flex-row gap-gutter">
       {/* Left Canvas (Hero & Categories) */}
       <div className="flex-1 flex flex-col gap-gutter overflow-hidden">
         {/* Hero Slider Section */}
-        <section className="relative w-full h-[500px] rounded-xl overflow-hidden shadow-sm group">
+        <section className="relative w-full rounded-xl overflow-hidden shadow-sm group">
           {/* Slider Container */}
-          <div className="w-full h-full relative" id="heroSlider">
+          <div className="w-full relative" id="heroSlider">
             {sliderImages.map((src, index) => (
-              <div key={index} className={`hero-slide w-full h-full relative ${currentSlide === index ? 'block' : 'hidden'}`}>
+              <div key={index} className={`hero-slide w-full relative ${currentSlide === index ? 'block' : 'hidden'}`}>
                 <img
-                  className="w-full h-full object-cover"
+                  className="w-full h-auto"
                   alt={`Solar project ${index + 1}`}
                   src={src}
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-on-tertiary-fixed/90 via-on-tertiary-fixed/60 to-transparent"></div>
               </div>
             ))}
           </div>
-          {/* Hero Content Overlay */}
-          <div className="absolute inset-0 flex flex-col justify-center px-12 md:px-24 w-full md:w-3/4 z-10">
-            <h1 className="font-display text-4xl md:text-5xl text-white mb-4 font-black drop-shadow-lg shadow-black">
-              QUOTE AND DESIGN <br />
-              SOLAR PROJECTS <br />
-              <span className="text-green-500 drop-shadow-lg">IN MINUTES</span>
-            </h1>
-            <div className="flex items-center gap-4 mt-6">
-              <button className="bg-secondary hover:bg-orange-600 text-white text-sm font-bold px-6 py-3 rounded-full flex items-center gap-2 transition-colors shadow-md">
-                CREATE YOUR FREE ACCOUNT
-                <span className="material-symbols-outlined text-lg bg-white text-secondary rounded-full w-6 h-6 flex items-center justify-center">
-                  arrow_forward
-                </span>
-              </button>
-            </div>
-          </div>
-          {/* Slider Controls */}
-          <button
-            className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-on-tertiary/20 hover:bg-on-tertiary/40 backdrop-blur-sm rounded-full flex items-center justify-center text-on-tertiary opacity-0 group-hover:opacity-100 transition-opacity z-20"
-            onClick={prevSlide}
-          >
-            <span className="material-symbols-outlined">chevron_left</span>
-          </button>
-          <button
-            className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-on-tertiary/20 hover:bg-on-tertiary/40 backdrop-blur-sm rounded-full flex items-center justify-center text-on-tertiary opacity-0 group-hover:opacity-100 transition-opacity z-20"
-            onClick={nextSlide}
-          >
-            <span className="material-symbols-outlined">chevron_right</span>
-          </button>
+
           {/* Pagination Dots */}
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-1.5 z-20 flex-wrap justify-center w-full px-4" id="sliderDots">
             {sliderImages.map((_, index) => (
@@ -164,20 +142,20 @@ export default function GreenSketchHeader() {
         <section className="w-full mt-gutter">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Tier 1 Solar Panels Ad */}
-            <div className="relative h-64 rounded-xl overflow-hidden shadow-sm group cursor-pointer border border-outline-variant">
+            <div className="relative rounded-xl overflow-hidden shadow-sm group cursor-pointer border border-outline-variant">
               <img
-                src="https://lh3.googleusercontent.com/aida/AP1WRLvFelbdJt0FCUyxwavwT_H9o9LdwnTNTL6CNxuRaTgjlQYbf-LeyB2DH-rEVi4i5xfM2LR22M8USMUtaXPLsRTG0LW2ALqILV0jc7q33DW6zUuzyZ58O53qSOtcNt5N_f39UhL0xg72Vznu69zZ-60Bw5mJuBoMbpjrANZyxkbVwqrkeTdJLxp8sDWlERROT2qcRcWSAyUMRG2RW31U1LiYihgczcKFneUQ0G0PpJm1MS7E3V-GxJji1CrK"
+                src="/below-ad.jpeg"
                 alt="Tier 1 Solar Panels"
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-on-tertiary-fixed/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
             {/* Premium Inverters Ad */}
-            <div className="relative h-64 rounded-xl overflow-hidden shadow-sm group cursor-pointer border border-outline-variant">
+            <div className="relative rounded-xl overflow-hidden shadow-sm group cursor-pointer border border-outline-variant">
               <img
-                src="https://lh3.googleusercontent.com/aida/AP1WRLsngSU64o5XK-R5LRkL3Jq6B2U693fzzvfuXa2na-MMr7Awn2PM9oMxAk90kcyZaBZ1NSaxszY6-locZLNF9sqOsadhuIAWZ8j26OGk5bIwnwJr8jaJSFmZi02V1FiPSwOz4z-WrSWkNdKQOHcPst8vuRbfSwvWW0VC6Md8Fg8r_bfZUolzk676ErErYzEbLQKwcW10xRRELNwRNc6gqnRtZRMQ-dbTfznaMvOsnpYWQV8gq7L3iY9J1sNK"
+                src="/right-side-ad1.jpeg"
                 alt="Premium Inverters"
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-on-tertiary-fixed/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
@@ -187,72 +165,33 @@ export default function GreenSketchHeader() {
 
       {/* Right SideNavBar / Widgets Cluster */}
       <div className="w-full lg:w-80 flex flex-col gap-gutter shrink-0 hidden lg:flex">
-        {/* GreenDeal Widget */}
-        <div className="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm flex flex-col">
-          <div className="p-4 text-center border-b border-outline-variant/30">
-            <h3 className="text-xl font-bold text-primary">GreenDeal</h3>
-            <p className="text-sm font-bold text-secondary">STC-Battery</p>
-            <p className="text-xs text-on-surface-variant mt-1">Fast Approval. Faster Payment.</p>
-          </div>
-          <div className="bg-primary px-4 py-3 flex justify-between items-center text-on-primary">
-            <div>
-              <p className="text-xs font-bold">Standard Payment</p>
-              <p className="text-[10px] opacity-80">CER Approval</p>
-            </div>
-            <span className="text-xl font-bold">$39.37*</span>
-          </div>
-          <div className="bg-primary-container px-4 py-3 flex justify-between items-center text-on-primary-container">
-            <div>
-              <p className="text-xs font-bold">Next Day Payment</p>
-              <p className="text-[10px] opacity-80">*Excluding CER creation fee</p>
-            </div>
-            <span className="text-xl font-bold">$38.37*</span>
-          </div>
-          <div className="p-3 bg-surface-container-lowest flex justify-center">
-            <button className="bg-secondary-container text-on-secondary-container text-xs font-semibold px-4 py-1.5 rounded-full flex items-center gap-1 hover:bg-secondary hover:text-white transition-colors">
-              Learn More <span className="material-symbols-outlined text-sm">arrow_circle_right</span>
-            </button>
-          </div>
+        {/* GreenDeal Widget Placeholder */}
+        <div className="w-full rounded-xl overflow-hidden border border-outline-variant relative group cursor-pointer">
+          <img
+            className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
+            alt="GreenDeal STC-Battery"
+            src="/right-side-ad2.png"
+          />
         </div>
         
         {/* Ad Banner 1 */}
-        <div className="w-full h-48 rounded-xl overflow-hidden border border-outline-variant relative group cursor-pointer">
+        <div className="w-full rounded-xl overflow-hidden border border-outline-variant relative group cursor-pointer">
           <img
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
             alt="Tier 1 solar panel cells"
-            src="https://lh3.googleusercontent.com/aida/AP1WRLvFelbdJt0FCUyxwavwT_H9o9LdwnTNTL6CNxuRaTgjlQYbf-LeyB2DH-rEVi4i5xfM2LR22M8USMUtaXPLsRTG0LW2ALqILV0jc7q33DW6zUuzyZ58O53qSOtcNt5N_f39UhL0xg72Vznu69zZ-60Bw5mJuBoMbpjrANZyxkbVwqrkeTdJLxp8sDWlERROT2qcRcWSAyUMRG2RW31U1LiYihgczcKFneUQ0G0PpJm1MS7E3V-GxJji1CrK"
+            src="/banner-side-1.png"
           />
           <div className="absolute inset-0 bg-on-tertiary-fixed/40 group-hover:bg-on-tertiary-fixed/30 transition-colors"></div>
-          <div className="absolute inset-0 p-4 flex flex-col justify-center items-center text-center">
-            
-          </div>
         </div>
 
         {/* Ad Banner 2 */}
-        <div className="w-full h-48 rounded-xl overflow-hidden border border-outline-variant relative group cursor-pointer bg-surface-container">
+        <div className="w-full rounded-xl overflow-hidden border border-outline-variant relative group cursor-pointer bg-surface-container">
           <img
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
             alt="Premium solar inverter"
-            src="https://lh3.googleusercontent.com/aida/AP1WRLsngSU64o5XK-R5LRkL3Jq6B2U693fzzvfuXa2na-MMr7Awn2PM9oMxAk90kcyZaBZ1NSaxszY6-locZLNF9sqOsadhuIAWZ8j26OGk5bIwnwJr8jaJSFmZi02V1FiPSwOz4z-WrSWkNdKQOHcPst8vuRbfSwvWW0VC6Md8Fg8r_bfZUolzk676ErErYzEbLQKwcW10xRRELNwRNc6gqnRtZRMQ-dbTfznaMvOsnpYWQV8gq7L3iY9J1sNK"
+            src="/banner-side-2.png"
           />
           <div className="absolute inset-0 bg-gradient-to-l from-on-tertiary-fixed/80 via-transparent to-transparent"></div>
-          <div className="absolute inset-0 p-4 flex flex-col justify-center items-center text-center">
-            
-          </div>
-        </div>
-
-        {/* Payment Widget */}
-        <div className="w-full h-32 rounded-xl overflow-hidden border border-outline-variant relative group cursor-pointer">
-          <img
-            className="w-full h-full object-cover"
-            alt="Contactless payment"
-            src="https://lh3.googleusercontent.com/aida/AP1WRLv9rFxPm1Mo2as3LPzeLAyP95cjSyX-aHE-xzzGmzp3VK9QRVPmP051S3ArAgUrTSPQPwk2BQnsc5c2lNt2lvxdIr8CEfEdG1HZLf-jtKcyyp6RC2ikvDPAKoxACP-XUs8KBaVNPSNQgbp4qrEIdA18bwMltBQ6mN_vDDt0ibw8WJp_DeJOE6Drgk-iJCYg4YO5Ygx5AgKcu726rcBv-1DJdBwoXBz1CopluVxmS4sMB02dy2cz66fdbQA"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-secondary/90 to-primary-container/80 mix-blend-multiply"></div>
-          <div className="absolute inset-0 p-4 flex flex-col justify-center">
-            <h3 className="text-xl font-bold text-on-tertiary mb-1">Pay My Invoice</h3>
-            <p className="text-xs text-tertiary-fixed">Easy Online Payment</p>
-          </div>
         </div>
       </div>
     </div>
