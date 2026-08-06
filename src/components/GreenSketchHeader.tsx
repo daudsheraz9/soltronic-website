@@ -16,7 +16,13 @@ const sliderImages = [
   "/banner-main-3.png"
 ];
 
-export default function GreenSketchHeader() {
+export default function GreenSketchHeader({ 
+  hideCategories = false,
+  hideBottomAds = false
+}: { 
+  hideCategories?: boolean;
+  hideBottomAds?: boolean;
+} = {}) {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -71,10 +77,11 @@ export default function GreenSketchHeader() {
 
         {/* Category Grid */}
       {/* Category Grid */}
-      <section className="w-full">
+      {!hideCategories && (
+        <section className="w-full">
         <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4 pb-4">
           {/* Promotions */}
-          <Link href="#" className="bg-surface border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-sm cursor-pointer transition-all hover:scale-105 hover:bg-primary/10 hover:shadow-md duration-300 group">
+          <Link href="/promotions" className="bg-surface border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-sm cursor-pointer transition-all hover:scale-105 hover:bg-primary/10 hover:shadow-md duration-300 group">
             <span className="material-symbols-outlined text-5xl text-on-surface-variant group-hover:text-primary transition-colors duration-300" style={{ fontVariationSettings: '"wght" 200' }}>
               local_offer
             </span>
@@ -137,30 +144,33 @@ export default function GreenSketchHeader() {
             <span className="text-xs font-semibold text-on-surface text-center">Electricals</span>
           </Link>
         </div>
-      </section>
+        </section>
+      )}
 
+      {!hideBottomAds && (
         <section className="w-full mt-gutter">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Tier 1 Solar Panels Ad */}
-            <div className="relative rounded-xl overflow-hidden shadow-sm group cursor-pointer border border-outline-variant">
+            <div className="relative rounded-xl overflow-hidden shadow-sm group cursor-pointer border border-outline-variant aspect-[16/9] md:aspect-[21/9]">
               <img
                 src="/below-ad.jpeg"
                 alt="Tier 1 Solar Panels"
-                className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-on-tertiary-fixed/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
             {/* Premium Inverters Ad */}
-            <div className="relative rounded-xl overflow-hidden shadow-sm group cursor-pointer border border-outline-variant">
+            <div className="relative rounded-xl overflow-hidden shadow-sm group cursor-pointer border border-outline-variant aspect-[16/9] md:aspect-[21/9]">
               <img
                 src="/right-side-ad1.jpeg"
                 alt="Premium Inverters"
-                className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-on-tertiary-fixed/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
           </div>
         </section>
+      )}
       </div>
 
       {/* Right SideNavBar / Widgets Cluster */}

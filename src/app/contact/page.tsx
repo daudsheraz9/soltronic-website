@@ -6,7 +6,7 @@ export default function ContactUs() {
       {/* TopNavBar */}
 
 
-      <main className="pt-40 md:pt-48">
+      <main className="pt-0">
         {/* Hero Section */}
         <section className="relative w-full h-[500px] flex items-center">
           <div className="absolute inset-0 z-0">
@@ -38,7 +38,7 @@ export default function ContactUs() {
               </div>
               <div className="flex-grow">
                 <h3 className="font-headline-md text-[18px] text-on-surface mb-1">Call Us</h3>
-                <p className="font-body-md text-sm text-on-surface-variant">+92 42 111 234 567</p>
+                <p className="font-body-md text-sm text-on-surface-variant">+92 327 7770090</p>
                 <p className="font-body-md text-xs text-outline mt-1">Mon - Sat: 9:00 AM - 6:00 PM</p>
               </div>
               <span className="material-symbols-outlined text-secondary-container" data-icon="arrow_forward">arrow_forward</span>
@@ -65,7 +65,7 @@ export default function ContactUs() {
               <div className="flex-grow">
                 <h3 className="font-headline-md text-[18px] text-on-surface mb-1">Our Office</h3>
                 <p className="font-body-md text-sm text-on-surface-variant">Soltronic Energy HQ</p>
-                <p className="font-body-md text-xs text-outline mt-1">Lahore, Punjab, Pakistan</p>
+                <p className="font-body-md text-xs text-outline mt-1">91K J Block Johar Town Lahore</p>
               </div>
               <span className="material-symbols-outlined text-secondary-container" data-icon="arrow_forward">arrow_forward</span>
             </div>
@@ -78,7 +78,14 @@ export default function ContactUs() {
             {/* Map Area */}
             <div className="space-y-6">
               <div className="rounded-xl overflow-hidden shadow-sm border border-outline-variant/30 h-[400px] relative">
-                <img alt="Map view of Lahore" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJbj5DmwEr9hMJ40CH1kN3CrSmhgFyJu0hITr1cOT6R1t4RR8R_rhe--HdZfcNBTzPY3RdUZM7_cpfITgPYCHWJU2n11W4opOqnaqXxLurzxB7X0fD-xEUJXXeJNT5u6lW7ytqet-cMDJqFj7C8_1sQSaIpSdEtxA7K3k9NFhkZMgx0ys5pnFXvfEdD3eaWOMET3zTDKlI7WDPFZzZmOS_CK9tlrombOiVCe9_trvU3LsMuuPXtMBN" />
+                <iframe
+                  title="Soltronic Energy Location"
+                  src="https://maps.google.com/maps?q=91K%20J%20Block%20Johar%20Town%20Lahore&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  className="w-full h-full border-0"
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
               </div>
               {/* Assistance Box */}
               <div className="bg-surface-container-low rounded-xl p-6 flex items-center gap-6 border border-outline-variant/50">
@@ -88,10 +95,10 @@ export default function ContactUs() {
                 <div>
                   <h4 className="font-headline-md text-[20px] text-on-surface mb-2">Need Immediate Assistance?</h4>
                   <p className="font-body-md text-sm text-on-surface-variant mb-4">Chat with our experts on WhatsApp for quick support and answers.</p>
-                  <button className="flex items-center gap-2 text-primary font-label-md text-label-md border border-primary px-4 py-2 rounded-full hover:bg-primary/5 transition-colors">
+                  <a href="https://wa.me/923277770090" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-primary font-label-md text-label-md border border-primary px-4 py-2 rounded-full hover:bg-primary/5 transition-colors inline-flex w-fit">
                     <span className="material-symbols-outlined" data-icon="chat">chat</span>
                     Chat on WhatsApp
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>

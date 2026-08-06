@@ -4,9 +4,9 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 export default function CalculatorPage() {
-  const [bill, setBill] = useState(150);
+  const [bill, setBill] = useState(50000);
   const [roofOrientation, setRoofOrientation] = useState('south');
-  const [stateLocation, setStateLocation] = useState('ca');
+  const [stateLocation, setStateLocation] = useState('punjab');
   const [panelType, setPanelType] = useState('standard');
 
   const [savings, setSavings] = useState(0);
@@ -22,17 +22,18 @@ export default function CalculatorPage() {
     const isPremium = panelType === 'premium';
     if(isPremium) efficiency *= 1.25;
 
-    const annualSavings = (bill * 12) * efficiency * 0.8; 
+    const annualSavings = (bill * 12) * efficiency * 0.9; 
     const twentyYear = annualSavings * 20;
     
-    const baseCost = isPremium ? 20000 : 15000;
+    const kwRequired = Math.max(3, bill / 7200); // Rough estimate of kW required
+    const baseCost = kwRequired * (isPremium ? 200000 : 150000); // Pakistan system prices per kW
     const paybackPeriod = baseCost / annualSavings;
     
-    const co2Offset = bill * efficiency * 0.9;
+    const co2Offset = (bill / 60) * 12 * efficiency * 0.001 * 0.85; // rough tons per year based on units
 
     setSavings(Math.round(twentyYear));
     setPayback(paybackPeriod);
-    setCo2(Math.round(co2Offset));
+    setCo2(Math.round(co2Offset * 20)); // CO2 offset over 20 years
   }, [bill, roofOrientation, stateLocation, panelType]);
 
   return (
@@ -104,18 +105,18 @@ export default function CalculatorPage() {
                 <div>
                   <div className="flex justify-between items-end mb-4">
                     <label className="text-xs font-bold text-gray-500 uppercase tracking-wider block">Average Monthly Bill</label>
-                    <div className="text-2xl text-[#1A4D2E] font-bold">Rs {bill}</div>
+                    <div className="text-2xl text-[#1A4D2E] font-bold">Rs {bill.toLocaleString()}</div>
                   </div>
                   <input 
                     className="w-full" 
                     type="range" 
-                    min="50" max="800" step="10" 
+                    min="5000" max="200000" step="5000" 
                     value={bill} 
                     onChange={(e) => setBill(parseInt(e.target.value))}
                   />
                   <div className="flex justify-between text-xs text-gray-500 mt-2">
-                    <span>Rs 50</span>
-                    <span>Rs 800+</span>
+                    <span>Rs 5,000</span>
+                    <span>Rs 200,000+</span>
                   </div>
                 </div>
 
@@ -142,18 +143,18 @@ export default function CalculatorPage() {
 
                   {/* Location */}
                   <div>
-                    <label className="text-xs font-bold text-gray-500 uppercase tracking-wider block mb-2">State Location</label>
+                    <label className="text-xs font-bold text-gray-500 uppercase tracking-wider block mb-2">Province / City</label>
                     <div className="relative">
                       <select 
                         value={stateLocation}
                         onChange={(e) => setStateLocation(e.target.value)}
                         className="w-full appearance-none bg-gray-50 border border-gray-200 text-slate-900 py-3 px-4 rounded focus:outline-none focus:border-[#1A4D2E] focus:ring-1 focus:ring-[#1A4D2E] transition-colors cursor-pointer"
                       >
-                        <option value="ca">California</option>
-                        <option value="tx">Texas</option>
-                        <option value="fl">Florida</option>
-                        <option value="ny">New York</option>
-                        <option value="other">Other</option>
+                        <option value="punjab">Punjab / Lahore</option>
+                        <option value="sindh">Sindh / Karachi</option>
+                        <option value="kpk">Khyber Pakhtunkhwa</option>
+                        <option value="balochistan">Balochistan</option>
+                        <option value="islamabad">Islamabad</option>
                       </select>
                       <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
                         <span className="material-symbols-outlined">location_on</span>
@@ -269,7 +270,7 @@ export default function CalculatorPage() {
               <span className="material-symbols-outlined text-orange-500 transition-transform group-open:rotate-180">expand_more</span>
             </summary>
             <div className="px-6 pb-6 text-gray-600">
-              We pull data from the National Renewable Energy Laboratory (NREL) and local utility rate databases to ensure our savings projections reflect current market conditions in your specific state.
+              We pull data from NEPRA and local electric supply companies (e.g., LESCO, K-Electric, IESCO) to ensure our savings projections reflect current unit rates and market conditions in Pakistan.
             </div>
           </details>
           
@@ -295,11 +296,11 @@ export default function CalculatorPage() {
           
           <details className="group border border-gray-200 rounded-lg bg-white overflow-hidden">
             <summary className="flex justify-between items-center p-6 cursor-pointer list-none hover:bg-gray-50 transition-colors">
-              <span className="text-lg font-bold text-slate-900">Does the estimate include federal tax credits?</span>
+              <span className="text-lg font-bold text-slate-900">Does the estimate include Net Metering?</span>
               <span className="material-symbols-outlined text-orange-500 transition-transform group-open:rotate-180">expand_more</span>
             </summary>
             <div className="px-6 pb-6 text-gray-600">
-              Yes, our 20-year savings estimate factors in the current 30% Federal Investment Tax Credit (ITC) and typical state-level incentives available in your selected location.
+              Yes, our 20-year savings estimate factors in standard Net Metering policies in Pakistan, assuming you can export excess daytime solar production back to the grid for credits.
             </div>
           </details>
         </div>

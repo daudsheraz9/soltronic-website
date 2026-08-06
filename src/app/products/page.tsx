@@ -8,7 +8,7 @@ export default function Products() {
 
 
       {/* Hero Section */}
-      <GreenSketchHeader />
+      <GreenSketchHeader hideCategories={true} />
 
       <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
         <div className="flex flex-col md:flex-row gap-8">
@@ -46,25 +46,48 @@ export default function Products() {
               <div className="flex flex-col gap-4">
                 <div className="relative">
                   <select className="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-2xl py-4 pl-5 pr-12 appearance-none focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors font-medium cursor-pointer">
-                    <option>All Offerings</option>
+                    <option value="">All Offerings</option>
+                    <option value="residential">Residential Solutions</option>
+                    <option value="commercial">Commercial Solutions</option>
+                    <option value="industrial">Industrial Solutions</option>
+                    <option value="agricultural">Agricultural Solutions</option>
                   </select>
                   <span className="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" style={{ fontVariationSettings: "'wght' 300" }}>expand_more</span>
                 </div>
                 <div className="relative">
                   <select className="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-2xl py-4 pl-5 pr-12 appearance-none focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors font-medium cursor-pointer">
-                    <option>All Categories</option>
+                    <option value="">All Categories</option>
+                    <option value="panels">Solar Panels</option>
+                    <option value="inverters">Inverters</option>
+                    <option value="batteries">Lithium Batteries</option>
+                    <option value="ev-chargers">EV Chargers</option>
+                    <option value="accessories">Accessories & Mountings</option>
                   </select>
                   <span className="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" style={{ fontVariationSettings: "'wght' 300" }}>expand_more</span>
                 </div>
                 <div className="relative">
                   <select className="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-2xl py-4 pl-5 pr-12 appearance-none focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors font-medium cursor-pointer">
-                    <option>All Brands</option>
+                    <option value="">All Brands</option>
+                    <option value="inverex">Inverex</option>
+                    <option value="pylontech">Pylontech</option>
+                    <option value="solis">Solis</option>
+                    <option value="jinko">Jinko Solar</option>
+                    <option value="narada">Narada</option>
+                    <option value="huawei">Huawei</option>
+                    <option value="dyness">Dyness</option>
+                    <option value="trina">Trina Solar</option>
+                    <option value="canadian-solar">Canadian Solar</option>
+                    <option value="tw-solar">TW Solar</option>
                   </select>
                   <span className="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" style={{ fontVariationSettings: "'wght' 300" }}>expand_more</span>
                 </div>
                 <div className="relative">
                   <select className="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-2xl py-4 pl-5 pr-12 appearance-none focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors font-medium cursor-pointer">
-                    <option>Featured</option>
+                    <option value="">Sort by: Featured</option>
+                    <option value="new">New Arrivals</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="best-sellers">Best Sellers</option>
                   </select>
                   <span className="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" style={{ fontVariationSettings: "'wght' 300" }}>expand_more</span>
                 </div>

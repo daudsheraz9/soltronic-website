@@ -81,19 +81,21 @@ export default function TeamAccordion() {
 
             {/* Bio Container (only visible when active) */}
             <div 
-              className={`flex-1 p-6 md:p-8 flex flex-col justify-center transition-all duration-500
-                ${isActive ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8 absolute pointer-events-none hidden md:flex'}`}
+              className={`transition-all duration-500 overflow-hidden flex flex-col justify-center relative shrink-0
+                ${isActive ? 'opacity-100 flex-1 md:w-[60%] h-auto md:h-full' : 'opacity-0 md:w-0 h-0 md:h-full pointer-events-none hidden md:block'}`}
             >
-              <div className="mb-4">
-                <h3 className="text-2xl font-bold text-on-surface font-headline-md">{member.name}</h3>
-                <p className="text-[#B8860B] font-semibold">{member.title}</p>
+              <div className={`p-6 md:p-8 flex flex-col justify-center md:absolute md:inset-y-0 md:left-0 md:w-[280px] lg:w-[350px] transition-transform duration-500 ${isActive ? 'translate-x-0' : 'translate-x-8'}`}>
+                <div className="mb-4">
+                  <h3 className="text-2xl font-bold text-on-surface font-headline-md whitespace-nowrap">{member.name}</h3>
+                  <p className="text-[#B8860B] font-semibold whitespace-nowrap">{member.title}</p>
+                </div>
+                
+                <div className="w-12 h-1 bg-[#00d084] mb-6 rounded-full shrink-0"></div>
+                
+                <p className="text-on-surface-variant leading-relaxed text-sm md:text-base">
+                  {member.bio}
+                </p>
               </div>
-              
-              <div className="w-12 h-1 bg-[#00d084] mb-6 rounded-full"></div>
-              
-              <p className="text-on-surface-variant leading-relaxed text-sm md:text-base">
-                {member.bio}
-              </p>
             </div>
           </div>
         );
