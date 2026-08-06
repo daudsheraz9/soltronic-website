@@ -48,74 +48,74 @@ export default function ServicesSlider() {
         `}} />
         
         {/* Card 1 */}
-        <div className="snap-center shrink-0 w-[300px] relative rounded-lg shadow-xl bg-gradient-to-b from-neutral-800 to-neutral-950 text-white overflow-visible transition-transform hover:scale-105 duration-300">
+        <div className="snap-center shrink-0 w-[300px] relative rounded-lg shadow-xl bg-gradient-to-br from-blue-500 to-indigo-600 text-white overflow-visible transition-transform hover:scale-105 duration-300">
           <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg border-[6px] border-surface-bright">
             <img src="/icons/icon_solar_epc.png" alt="Solar EPC" className="w-12 h-12 object-contain" />
           </div>
           <div className="pt-16 pb-8 px-6 text-center flex flex-col h-full">
             <h4 className="text-xl font-bold mb-3 font-headline-md">Solar EPC</h4>
-            <p className="text-sm text-neutral-300 mb-8 flex-grow">Comprehensive Engineering, Procurement, and Construction services for solar projects of all scales.</p>
-            <Link href="/services" className="inline-block bg-[#B8860B] text-white font-bold py-2.5 px-6 rounded-full hover:bg-[#966b07] transition-colors text-sm tracking-wide">LEARN MORE</Link>
+            <p className="text-sm text-white/90 mb-8 flex-grow">Comprehensive Engineering, Procurement, and Construction services for solar projects of all scales.</p>
+            <Link href="/services" className="inline-block bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/30 text-white font-bold py-2.5 px-6 rounded-full transition-colors text-sm tracking-wide">LEARN MORE</Link>
           </div>
         </div>
 
         {/* Card 2 */}
-        <div className="snap-center shrink-0 w-[300px] relative rounded-lg shadow-xl bg-gradient-to-b from-neutral-800 to-neutral-950 text-white overflow-visible transition-transform hover:scale-105 duration-300">
+        <div className="snap-center shrink-0 w-[300px] relative rounded-lg shadow-xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white overflow-visible transition-transform hover:scale-105 duration-300">
           <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg border-[6px] border-surface-bright">
             <img src="/icons/icon_solar_install.png" alt="Solar Installations" className="w-12 h-12 object-contain" />
           </div>
           <div className="pt-16 pb-8 px-6 text-center flex flex-col h-full">
             <h4 className="text-xl font-bold mb-3 font-headline-md">Solar Installations</h4>
-            <p className="text-sm text-neutral-300 mb-8 flex-grow">Professional installation of solar panels for residential, commercial, and industrial properties.</p>
-            <Link href="/services" className="inline-block bg-[#B8860B] text-white font-bold py-2.5 px-6 rounded-full hover:bg-[#966b07] transition-colors text-sm tracking-wide">LEARN MORE</Link>
+            <p className="text-sm text-white/90 mb-8 flex-grow">Professional installation of solar panels for residential, commercial, and industrial properties.</p>
+            <Link href="/services" className="inline-block bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/30 text-white font-bold py-2.5 px-6 rounded-full transition-colors text-sm tracking-wide">LEARN MORE</Link>
           </div>
         </div>
 
         {/* Card 3 */}
-        <div className="snap-center shrink-0 w-[300px] relative rounded-lg shadow-xl bg-gradient-to-b from-neutral-800 to-neutral-950 text-white overflow-visible transition-transform hover:scale-105 duration-300">
+        <div className="snap-center shrink-0 w-[300px] relative rounded-lg shadow-xl bg-gradient-to-br from-orange-400 to-red-500 text-white overflow-visible transition-transform hover:scale-105 duration-300">
           <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg border-[6px] border-surface-bright">
             <img src="/icons/icon_net_metering.png" alt="Net Metering" className="w-12 h-12 object-contain" />
           </div>
           <div className="pt-16 pb-8 px-6 text-center flex flex-col h-full">
             <h4 className="text-xl font-bold mb-3 font-headline-md">Net Metering</h4>
-            <p className="text-sm text-neutral-300 mb-8 flex-grow">Seamless grid integration, allowing you to earn credits for excess energy produced.</p>
-            <Link href="/services" className="inline-block bg-[#B8860B] text-white font-bold py-2.5 px-6 rounded-full hover:bg-[#966b07] transition-colors text-sm tracking-wide">LEARN MORE</Link>
+            <p className="text-sm text-white/90 mb-8 flex-grow">Seamless grid integration, allowing you to earn credits for excess energy produced.</p>
+            <Link href="/services" className="inline-block bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/30 text-white font-bold py-2.5 px-6 rounded-full transition-colors text-sm tracking-wide">LEARN MORE</Link>
           </div>
         </div>
 
         {/* Card 4 */}
-        <div className="snap-center shrink-0 w-[300px] relative rounded-lg shadow-xl bg-gradient-to-b from-neutral-800 to-neutral-950 text-white overflow-visible transition-transform hover:scale-105 duration-300">
+        <div className="snap-center shrink-0 w-[300px] relative rounded-lg shadow-xl bg-gradient-to-br from-purple-500 to-fuchsia-600 text-white overflow-visible transition-transform hover:scale-105 duration-300">
           <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg border-[6px] border-surface-bright">
             <img src="/icons/icon_battery.png" alt="Battery Storage" className="w-12 h-12 object-contain" />
           </div>
           <div className="pt-16 pb-8 px-6 text-center flex flex-col h-full">
             <h4 className="text-xl font-bold mb-3 font-headline-md">Battery Storage</h4>
-            <p className="text-sm text-neutral-300 mb-8 flex-grow">Advanced energy storage solutions to keep your power running even during outages.</p>
-            <Link href="/services" className="inline-block bg-[#B8860B] text-white font-bold py-2.5 px-6 rounded-full hover:bg-[#966b07] transition-colors text-sm tracking-wide">LEARN MORE</Link>
+            <p className="text-sm text-white/90 mb-8 flex-grow">Advanced energy storage solutions to keep your power running even during outages.</p>
+            <Link href="/services" className="inline-block bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/30 text-white font-bold py-2.5 px-6 rounded-full transition-colors text-sm tracking-wide">LEARN MORE</Link>
           </div>
         </div>
 
         {/* Card 5 */}
-        <div className="snap-center shrink-0 w-[300px] relative rounded-lg shadow-xl bg-gradient-to-b from-neutral-800 to-neutral-950 text-white overflow-visible transition-transform hover:scale-105 duration-300">
+        <div className="snap-center shrink-0 w-[300px] relative rounded-lg shadow-xl bg-gradient-to-br from-cyan-500 to-blue-600 text-white overflow-visible transition-transform hover:scale-105 duration-300">
           <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg border-[6px] border-surface-bright">
             <img src="/icons/icon_maintenance.png" alt="Maintenance" className="w-12 h-12 object-contain" />
           </div>
           <div className="pt-16 pb-8 px-6 text-center flex flex-col h-full">
             <h4 className="text-xl font-bold mb-3 font-headline-md">Maintenance</h4>
-            <p className="text-sm text-neutral-300 mb-8 flex-grow">Ongoing support, monitoring, and maintenance to ensure peak system performance.</p>
-            <Link href="/services" className="inline-block bg-[#B8860B] text-white font-bold py-2.5 px-6 rounded-full hover:bg-[#966b07] transition-colors text-sm tracking-wide">LEARN MORE</Link>
+            <p className="text-sm text-white/90 mb-8 flex-grow">Ongoing support, monitoring, and maintenance to ensure peak system performance.</p>
+            <Link href="/services" className="inline-block bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/30 text-white font-bold py-2.5 px-6 rounded-full transition-colors text-sm tracking-wide">LEARN MORE</Link>
           </div>
         </div>
 
         {/* Card 6 */}
-        <div className="snap-center shrink-0 w-[300px] relative rounded-lg shadow-xl bg-gradient-to-b from-neutral-800 to-neutral-950 text-white overflow-visible transition-transform hover:scale-105 duration-300">
+        <div className="snap-center shrink-0 w-[300px] relative rounded-lg shadow-xl bg-gradient-to-br from-rose-400 to-pink-600 text-white overflow-visible transition-transform hover:scale-105 duration-300">
           <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg border-[6px] border-surface-bright">
             <img src="/icons/icon_ev_charging.png" alt="EV Charging" className="w-12 h-12 object-contain" />
           </div>
           <div className="pt-16 pb-8 px-6 text-center flex flex-col h-full">
             <h4 className="text-xl font-bold mb-3 font-headline-md">EV Charging</h4>
-            <p className="text-sm text-neutral-300 mb-8 flex-grow">Fast and reliable electric vehicle charging stations powered by clean solar energy.</p>
-            <Link href="/services" className="inline-block bg-[#B8860B] text-white font-bold py-2.5 px-6 rounded-full hover:bg-[#966b07] transition-colors text-sm tracking-wide">LEARN MORE</Link>
+            <p className="text-sm text-white/90 mb-8 flex-grow">Fast and reliable electric vehicle charging stations powered by clean solar energy.</p>
+            <Link href="/services" className="inline-block bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/30 text-white font-bold py-2.5 px-6 rounded-full transition-colors text-sm tracking-wide">LEARN MORE</Link>
           </div>
         </div>
       </div>

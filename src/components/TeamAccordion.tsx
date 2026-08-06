@@ -4,6 +4,12 @@ import { useState } from 'react';
 
 const teamMembers = [
   {
+    name: "Mr. Faheem Maalik",
+    title: "CEO",
+    bio: "Faheem leads Soltronic Energy Distribution with a vision for a sustainable future, driving innovation in renewable energy.",
+    image: "/CEO-3.png"
+  },
+  {
     name: "Khursheed Abbas",
     title: "Chief Marketing Officer",
     bio: "Khursheed leads our marketing strategy, ensuring Soltronic Energy's innovative solutions reach those who need them most.",
