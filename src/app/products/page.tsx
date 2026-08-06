@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import GreenSketchHeader from '@/components/GreenSketchHeader';
 
 export default function Products() {
   return (
@@ -7,53 +8,7 @@ export default function Products() {
 
 
       {/* Hero Section */}
-      <header className="relative bg-white pt-40 md:pt-48 pb-24 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="flex flex-col lg:flex-row items-center">
-            <div className="w-full lg:w-1/2 pr-0 lg:pr-12 mb-12 lg:mb-0">
-              <h1 className="text-4xl md:text-5xl font-bold text-dark leading-tight mb-4">
-                Premium Solar<br/>Products for a<br/><span className="text-primary">Smarter Tomorrow</span>
-              </h1>
-              <p className="text-gray-600 mb-8 max-w-lg">
-                High-performance, reliable and future-ready solar products for homes, businesses and industries.
-              </p>
-              <div className="flex flex-wrap gap-4 mb-12">
-                <button className="bg-secondary hover:bg-orange-600 text-white px-6 py-3 rounded-md font-medium transition-colors shadow-sm flex items-center gap-2">
-                  Explore Products <i className="fa-solid fa-arrow-right text-sm"></i>
-                </button>
-                <button className="bg-white border border-gray-300 hover:border-primary text-gray-700 hover:text-primary px-6 py-3 rounded-md font-medium transition-colors flex items-center gap-2 shadow-sm">
-                  Download Catalogue <i className="fa-solid fa-download text-sm"></i>
-                </button>
-              </div>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div className="flex flex-col items-start">
-                  <div className="text-primary text-xl mb-2"><i className="fa-solid fa-bolt-lightning"></i></div>
-                  <h4 className="font-bold text-dark text-xs mb-1">High Efficiency</h4>
-                  <p className="text-[10px] text-gray-500">Maximum Performance</p>
-                </div>
-                <div className="flex flex-col items-start">
-                  <div className="text-primary text-xl mb-2"><i className="fa-solid fa-shield-check"></i></div>
-                  <h4 className="font-bold text-dark text-xs mb-1">Trusted Quality</h4>
-                  <p className="text-[10px] text-gray-500">Global Standards</p>
-                </div>
-                <div className="flex flex-col items-start">
-                  <div className="text-primary text-xl mb-2"><i className="fa-regular fa-clock"></i></div>
-                  <h4 className="font-bold text-dark text-xs mb-1">Long Lasting</h4>
-                  <p className="text-[10px] text-gray-500">Built to Endure</p>
-                </div>
-                <div className="flex flex-col items-start">
-                  <div className="text-primary text-xl mb-2"><i className="fa-solid fa-microchip"></i></div>
-                  <h4 className="font-bold text-dark text-xs mb-1">Smart &amp; Reliable</h4>
-                  <p className="text-[10px] text-gray-500">Advanced Technology</p>
-                </div>
-              </div>
-            </div>
-            <div className="w-full lg:w-1/2 relative">
-              <img alt="Premium Solar Products Showcase" className="w-full h-auto rounded-2xl shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQwmC0yCT4-0_qDaiS8Cqgm7mlZmJqK9J5wNbrkIbZNRuQvowgwlZbJJBxEH1oEpypyS0HB7SE7QPJ5_3TQ3kM7T3VZHubA6d3uCAMkKFIPks1CKVpzNr_rDcL1hfpaYWBgHzddJ4O0mvxykaWkyHgp-PgYmTax2vSSfFvHhT29woXsEWwKsaQrdYgJV9RpKKdiYFPtbKxizeJ8DsbKtWYJuiCCZOvD7PlNdObbCR94DUGtkORAEyH" />
-            </div>
-          </div>
-        </div>
-      </header>
+      <GreenSketchHeader />
 
       {/* Product Categories */}
       <section className="py-16 bg-gray-50">
