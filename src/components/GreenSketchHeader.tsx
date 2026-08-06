@@ -32,7 +32,7 @@ export default function GreenSketchHeader() {
   };
 
   return (
-    <div className="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-gutter pt-32 md:pt-40 flex flex-col lg:flex-row gap-gutter">
+    <div className="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-gutter pt-8 md:pt-12 flex flex-col lg:flex-row gap-gutter">
       {/* Left Canvas (Hero & Categories) */}
       <div className="flex-1 flex flex-col gap-gutter overflow-hidden">
         {/* Hero Slider Section */}
