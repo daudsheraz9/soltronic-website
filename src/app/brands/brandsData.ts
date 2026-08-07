@@ -704,5 +704,4 @@ export const allBrands = [
     "logo": "https://api.gnrix.com/images/user-images/3561/thumbnails/thumb_1785942848245_d6ea89c96817e521.png"
   }
 ];
-export { allBrands };
 // trigger reload
