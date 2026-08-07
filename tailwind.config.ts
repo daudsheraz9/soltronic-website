@@ -69,6 +69,7 @@ const config: Config = {
       "margin-mobile": "var(--spacing-margin-mobile)"
 },
       fontFamily: {
+      "sans": ["Roboto", "sans-serif"],
       "label-md": "var(--font-label-md)",
       "body-lg": "var(--font-body-lg)",
       "headline-lg-mobile": "var(--font-headline-lg-mobile)",

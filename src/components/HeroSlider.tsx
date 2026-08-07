@@ -55,16 +55,16 @@ export default function HeroSlider() {
         ))}
       </div>
 
-      {/* Dots Indicator */}
-      <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10">
+      {/* Dash Indicators matching OSW */}
+      <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-1.5 z-10 px-4">
         {slides.map((_, idx) => (
           <button
             key={idx}
             onClick={() => setCurrentSlide(idx)}
-            className={`w-2.5 h-2.5 rounded-full transition-all ${
+            className={`h-1.5 rounded-sm transition-all duration-300 ${
               currentSlide === idx 
-                ? 'bg-white scale-125' 
-                : 'bg-white/50 hover:bg-white/80'
+                ? 'bg-white w-9 opacity-100' 
+                : 'bg-white/40 hover:bg-white/70 w-5 opacity-60'
             }`}
             aria-label={`Go to slide ${idx + 1}`}
           />

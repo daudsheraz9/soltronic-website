@@ -3,7 +3,7 @@ import Link from 'next/link';
 export default function Footer() {
   return (
     <footer className="bg-on-tertiary-fixed dark:bg-surface-container-lowest full-width mt-auto">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-stack-lg px-gutter py-section-padding max-w-container-max mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-stack-lg px-gutter py-8 max-w-container-max mx-auto">
         <div className="space-y-stack-md">
           <div className="flex items-center">
             <Link href="/">
@@ -52,8 +52,8 @@ export default function Footer() {
       </div>
       
       <div className="border-t border-surface-variant/20">
-        <div className="px-gutter py-6 max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center text-body-md font-body-md text-surface-variant">
-          <p className="">© 2024 Soltronic Energy. All Rights Reserved.</p>
+        <div className="px-gutter py-4 max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center text-body-md font-body-md text-surface-variant">
+          <p className="">© 2026 Soltronic Energy. All Rights Reserved.</p>
           <p className="mt-2 md:mt-0 flex items-center gap-1">Made with <span className="material-symbols-outlined text-sm text-secondary">favorite</span> for a Sustainable Future</p>
         </div>
       </div>

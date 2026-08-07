@@ -11,78 +11,84 @@ export default function Navbar() {
   const bottomNavLinks = [
     { name: 'Home', href: '/' },
     { name: 'Products', href: '/products' },
+    { name: 'EPC Solutions', href: '/services' },
     { name: 'Promotions', href: '/promotions' },
     { name: 'Brands', href: '/brands' },
     { name: 'Calculator', href: '/calculator' },
     { name: 'News', href: '/news' },
-    { name: 'Events', href: '/events' },
+    { name: 'Downloads', href: '/downloads' },
+    { name: 'Gallery', href: '/gallery' },
     { name: 'About Us', href: '/about' },
     { name: 'Contact Us', href: '/contact' },
   ];
 
   return (
-    <header className="w-full sticky top-0 left-0 z-50 bg-[#107022]/70 backdrop-blur-md text-white">
-      {/* Top Row: Logo, Search, Utility Links */}
-      <div className="border-b border-white/10 py-2 px-gutter flex flex-wrap lg:flex-nowrap justify-between items-center gap-4">
-        
-        {/* Left: Logo & Region */}
-        <div className="flex items-center gap-6">
-          <Link href="/">
-            <img src="/logo.png" alt="Soltronic Energy Logo" className="h-16 md:h-20 w-auto object-contain scale-110 origin-left" />
-          </Link>
+    <header className="w-full sticky top-0 left-0 z-50 bg-[#107022] text-white font-sans shadow-md">
+      {/* Top Row: Logo, Search Bar, Utility Actions (OSW safe-content-wrapper) */}
+      <div className="max-w-[80rem] mx-auto px-4 p-2 flex items-center justify-between">
 
+        {/* Left: Logo */}
+        <div className="flex items-center flex-shrink-0">
+          <Link href="/" className="block">
+            <img src="/logo.png" alt="Soltronic Energy Logo" className="h-10 md:h-16 lg:h-14 w-auto object-contain" />
+          </Link>
         </div>
 
-        {/* Center: Search Bar */}
-        <div className="order-last lg:order-none w-full lg:w-[500px] xl:w-[600px] lg:px-4 mx-auto">
-          <div className="relative flex items-center w-full bg-white rounded-full shadow-sm text-black">
-            <input 
-              type="text" 
-              placeholder="Search for products (Brand / Name / Description)" 
-              className="w-full py-2 px-5 outline-none rounded-l-full bg-transparent text-sm"
+        {/* Center: OSW Search Bar */}
+        <div className="flex-1 ml-2 md:ml-4 mr-0 md:mr-3 max-w-2xl lg:max-w-3xl">
+          <div className="relative flex items-center w-full bg-white rounded-md overflow-hidden text-gray-800 h-10 shadow-inner">
+            <input
+              type="text"
+              placeholder="Search for products (Brand / Name / Description)"
+              className="w-full h-full pl-4 pr-10 outline-none bg-transparent text-[14px] placeholder:text-gray-400 font-normal"
             />
-            <button className="p-2 px-4 hover:bg-neutral-100 rounded-r-full transition-colors">
-              <span className="material-symbols-outlined text-black">search</span>
+            <button className="absolute right-0 top-0 h-full px-3.5 flex items-center justify-center text-gray-500 hover:text-gray-800 transition-colors">
+              <span className="material-symbols-outlined text-xl">search</span>
             </button>
           </div>
         </div>
 
         {/* Right: Sign In & Favourite */}
-        <div className="flex items-center gap-6 text-sm">
-          <Link href="/signin" className="hidden lg:flex flex-col items-center gap-1 hover:text-white/80 transition-colors">
-            <span className="material-symbols-outlined">person</span>
-            <span>Sign In</span>
+        <div className="flex items-center gap-6 text-[12px] font-medium flex-shrink-0">
+          <Link href="/signin" className="hidden lg:flex flex-col items-center gap-0.5 hover:text-white/80 transition-colors group">
+            <span className="material-symbols-outlined text-2xl group-hover:scale-105 transition-transform">person</span>
+            <span className="tracking-tight">Sign In</span>
           </Link>
-          <Link href="/favourite" className="hidden lg:flex flex-col items-center gap-1 hover:text-white/80 transition-colors">
-            <span className="material-symbols-outlined">favorite</span>
-            <span>Favourite</span>
+          <Link href="/favourite" className="hidden lg:flex flex-col items-center gap-0.5 hover:text-white/80 transition-colors group">
+            <span className="material-symbols-outlined text-2xl group-hover:scale-105 transition-transform">favorite_border</span>
+            <span className="tracking-tight">Favourite</span>
           </Link>
-          
-          {/* Mobile Menu Toggle */}
-          <button 
-            className="lg:hidden p-2 text-white hover:bg-white/10 rounded"
+
+          {/* Get Quote Button */}
+          <Link href="/quote" className="hidden lg:flex items-center justify-center bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-md font-semibold text-[14px] transition-colors shadow-sm whitespace-nowrap">
+            Get Quote
+          </Link>
+
+          {/* Mobile Menu Toggle Button */}
+          <button
+            className="lg:hidden p-2 text-white hover:bg-white/10 rounded-md transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle menu"
           >
-            <span className="material-symbols-outlined">{isMobileMenuOpen ? 'close' : 'menu'}</span>
+            <span className="material-symbols-outlined text-2xl">{isMobileMenuOpen ? 'close' : 'menu'}</span>
           </button>
         </div>
       </div>
 
-      {/* Bottom Row: Navigation Links */}
-      <div className={`lg:block ${isMobileMenuOpen ? 'block absolute w-full top-full left-0 z-50 shadow-lg bg-[#107022]/95 backdrop-blur-xl border-b border-white/10' : 'hidden'}`}>
-        <div className="max-w-container-max mx-auto px-gutter overflow-x-auto w-full">
-          <nav className="flex flex-col lg:flex-row items-start lg:items-center py-2 lg:py-0 w-full">
+      {/* Bottom Navigation Bar */}
+      <div className={`lg:block ${isMobileMenuOpen ? 'block bg-[#0e5c1c]' : 'hidden'}`}>
+        <div className="max-w-[80rem] mx-auto px-4">
+          <nav className="flex flex-col lg:flex-row items-start lg:items-center justify-start gap-4 lg:gap-12 w-full overflow-x-auto no-scrollbar py-1">
             {bottomNavLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
-                <Link 
+                <Link
                   key={link.name}
                   href={link.href}
-                  className={`flex-1 px-4 py-2 lg:py-2.5 text-sm font-bold transition-all duration-300 w-full text-left lg:text-center whitespace-nowrap ${
-                    isActive 
-                      ? 'text-transparent bg-clip-text bg-gradient-to-r from-[#f57c00] to-yellow-400 border-l-4 lg:border-l-0 lg:border-b-2 border-[#f57c00] bg-white/5 lg:bg-transparent' 
-                      : 'text-white/90 hover:text-white hover:bg-white/10 lg:hover:bg-transparent lg:hover:text-transparent lg:hover:bg-clip-text lg:hover:bg-gradient-to-r lg:hover:from-[#f57c00] lg:hover:to-yellow-400'
-                  }`}
+                  className={`relative py-2 text-[16px] font-normal whitespace-nowrap transition-colors border-b-[3px] ${isActive
+                    ? 'text-orange-400 font-semibold border-orange-400'
+                    : 'text-white/95 hover:text-orange-400 border-transparent hover:border-orange-400/70'
+                    }`}
                 >
                   {link.name}
                 </Link>
