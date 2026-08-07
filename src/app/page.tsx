@@ -10,18 +10,18 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="w-full pt-4 pb-8 px-4 md:px-8 max-w-[1600px] mx-auto">
-        <div className="flex flex-col lg:flex-row gap-4">
+        <div className="flex flex-col lg:flex-row gap-8">
           {/* Main Banner */}
-          <div className="w-full lg:w-[70%] xl:w-[75%] h-[250px] md:h-[400px] lg:h-auto">
+          <div className="w-full lg:w-[68%] xl:w-[72%] aspect-[2/1] lg:aspect-[2.15/1] relative flex-shrink-0">
             <HeroSlider />
           </div>
           {/* Side Banners */}
-          <div className="w-full lg:w-[30%] xl:w-[25%] flex flex-col gap-4">
-            <Link href="#" className="block w-full">
-              <img src="/banner-side-1.png" alt="Side Banner 1" className="w-full h-auto object-cover rounded-md shadow-sm" />
+          <div className="w-full lg:w-[32%] xl:w-[28%] flex flex-col gap-8">
+            <Link href="#" className="flex-1 relative rounded-md shadow-sm overflow-hidden block group">
+              <img src="/banner-side-1.png" alt="Side Banner 1" className="absolute inset-0 w-full h-full object-fill sm:object-cover transition-transform duration-500 group-hover:scale-105" />
             </Link>
-            <Link href="#" className="block w-full h-full">
-              <img src="/banner-side-2.png" alt="Side Banner 2" className="w-full h-full object-cover rounded-md shadow-sm" />
+            <Link href="#" className="flex-1 relative rounded-md shadow-sm overflow-hidden block group">
+              <img src="/banner-side-2.png" alt="Side Banner 2" className="absolute inset-0 w-full h-full object-fill sm:object-cover transition-transform duration-500 group-hover:scale-105" />
             </Link>
           </div>
         </div>
