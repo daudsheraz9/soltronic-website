@@ -6,61 +6,61 @@ const teamMembers = [
   {
     name: "Mr. Faheem Maalik",
     title: "CEO",
-    bio: "Faheem leads Soltronic Energy Distribution with a vision for a sustainable future, driving innovation in renewable energy.",
+    bio: "Mr.Faheem leads Soltronic Energy Distribution with a vision for a sustainable future, driving innovation in renewable energy.",
     image: "/CEO-3.png"
   },
   {
     name: "Nasir Rashid",
     title: "General Manager",
-    bio: "Nasir oversees the strategic direction and daily operations, ensuring exceptional service delivery and operational excellence.",
+    bio: "Mr.Nasir oversees the strategic direction and daily operations, ensuring exceptional service delivery and operational excellence.",
     image: "/NasirRashid.png"
   },
   {
     name: "Khursheed Abbas",
     title: "Chief Marketing Officer",
-    bio: "Khursheed leads our marketing strategy, ensuring Soltronic Energy's innovative solutions reach those who need them most.",
+    bio: "Mr.Khursheed leads our marketing strategy, ensuring Soltronic Energy's innovative solutions reach those who need them most.",
     image: "/khursheedabbas.png"
   },
   {
     name: "Waseem Bhatti",
     title: "Chief Operating Officer",
-    bio: "Waseem oversees daily operations and strategic execution, ensuring seamless delivery of our sustainable energy projects.",
+    bio: "Mr.Waseem oversees daily operations and strategic execution, ensuring seamless delivery of our sustainable energy projects.",
     image: "/waseembhatti.png"
   },
   {
     name: "Abbas Shoukat",
     title: "Head of Finance",
-    bio: "Abbas manages our financial health and strategy, enabling us to offer competitive pricing and flexible financing.",
+    bio: "Mr.Abbas manages our financial health and strategy, enabling us to offer competitive pricing and flexible financing.",
     image: "/abbasshoukat.png"
   },
   {
     name: "Zaeem Maalik",
     title: "Sales Manager",
-    bio: "Zaeem drives our sales initiatives, building strong relationships with clients to deliver tailored solar solutions.",
+    bio: "Mr.Zaeem drives our sales initiatives, building strong relationships with clients to deliver tailored solar solutions.",
     image: "/zaeemmaalik.png"
   },
   {
     name: "Qamar Maqsood",
     title: "Finance Manager",
-    bio: "Qamar drives our financial strategy and planning, ensuring sustainable growth and optimal resource allocation.",
+    bio: "Mr.Qamar drives our financial strategy and planning, ensuring sustainable growth and optimal resource allocation.",
     image: "/QamarMaqsood.png"
   },
   {
     name: "Muhammad Yaqub",
     title: "HR & Admin",
-    bio: "Muhammad oversees human resources and administrative operations, ensuring a supportive and efficient workplace for our team.",
+    bio: "Mr.Yaqub oversees human resources and administrative operations, ensuring a supportive and efficient workplace for our team.",
     image: "/MuhmmadYaqub.png"
   },
   {
     name: "Raza Naeem",
     title: "EPC Manager",
-    bio: "Raza manages Engineering, Procurement, and Construction, guaranteeing the highest quality in every installation.",
+    bio: "Mr.Raza manages Engineering, Procurement, and Construction, guaranteeing the highest quality in every installation.",
     image: "/razanaeem.png"
   },
   {
     name: "Asad-ur-Rehman",
     title: "Ecommerce Manager",
-    bio: "Asad spearheads our digital storefront, making the transition to solar energy accessible through a seamless online experience.",
+    bio: "Mr.Asad spearheads our digital storefront, making the transition to solar energy accessible through a seamless online experience.",
     image: "/asadurrehman.png"
   }
 ];
