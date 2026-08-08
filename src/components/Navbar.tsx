@@ -31,7 +31,7 @@ export default function Navbar() {
         {/* Left: Logo */}
         <div className="flex items-center flex-shrink-0">
           <Link href="/" className="block relative w-32 h-10 md:h-16 lg:h-14">
-            <Image src="/logo.png" alt="Soltronic Energy Logo" fill className="object-contain" priority />
+            <Image src="/logo.png" alt="Soltronic Energy Logo" fill sizes="128px" className="object-contain" priority />
           </Link>
         </div>
 
