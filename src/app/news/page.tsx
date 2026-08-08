@@ -70,8 +70,16 @@ export default function NewsPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-slate-900 pt-32 pb-32 relative overflow-hidden" ref={container}>
+    <main className="min-h-screen bg-slate-900 pt-8 pb-32 relative overflow-hidden" ref={container}>
       
+      {/* BEGIN: Breadcrumbs */}
+      <nav className="max-w-7xl mx-auto px-6 text-sm text-gray-500 flex items-center gap-2 mb-12 relative z-10">
+        <a className="hover:text-emerald-400 transition-colors" href="/">Home</a>
+        <span className="text-gray-700">/</span>
+        <span className="text-white font-medium">News</span>
+      </nav>
+      {/* END: Breadcrumbs */}
+
       {/* Deep Space Parallax Backgrounds */}
       <div className="parallax-bg absolute top-0 left-0 w-full h-[150%] z-0 opacity-20 pointer-events-none"
            style={{ 

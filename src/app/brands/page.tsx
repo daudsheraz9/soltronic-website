@@ -22,6 +22,13 @@ export default function BrandsPage() {
 
   return (
     <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 bg-white text-slate-800 overflow-x-hidden">
+      {/* BEGIN: Breadcrumbs */}
+      <nav className="text-sm text-gray-500 flex items-center gap-2 mb-8">
+        <a className="hover:text-primary transition-colors" href="/">Home</a>
+        <i className="fa-solid fa-chevron-right text-[10px]"></i>
+        <span className="text-gray-800 font-medium">Brands</span>
+      </nav>
+      {/* END: Breadcrumbs */}
       <style>{`
         @keyframes scroll-brands {
           0% { transform: translateX(0); }

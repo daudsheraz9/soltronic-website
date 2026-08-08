@@ -4,7 +4,18 @@ import ServicesSlider from '@/components/ServicesSlider';
 import TeamAccordion from '@/components/TeamAccordion';
 import SavingsCalculator from '@/components/SavingsCalculator';
 import HeroSlider from '@/components/HeroSlider';
-export default function Home() {
+import { createClient } from '@/utils/supabase/server';
+import { cookies } from 'next/headers';
+import { Product } from '@/data/products';
+
+export default async function Home() {
+  const cookieStore = await cookies();
+  const supabase = createClient(cookieStore);
+
+  const { data: featuredProductsData } = await supabase
+    .from('products')
+    .select('*')
+    .limit(4);
   return (
     <>
 
@@ -49,6 +60,64 @@ export default function Home() {
             ))}
           </div>
         </div>
+
+        {/* Featured Products */}
+        <section className="py-16 bg-white rounded-3xl mt-12 mb-8 shadow-sm border border-gray-100 overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-end mb-10">
+              <h2 className="text-2xl md:text-3xl font-bold text-dark">Featured Products</h2>
+              <Link className="text-primary font-medium text-sm flex items-center hover:underline" href="/products">View All Products <i className="fa-solid fa-arrow-right ml-2 text-xs"></i></Link>
+            </div>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+              {(featuredProductsData || []).map((product, index) => (
+                <div key={index} className="bg-white flex flex-col group relative border border-gray-100 shadow-sm rounded-2xl overflow-hidden transition-all duration-300 hover:border-orange-200 hover:shadow-[0_0_25px_rgba(254,215,170,0.5)]">
+                  
+                  {/* Image Section */}
+                  <div className="h-40 sm:h-56 bg-[#f4f7fb] flex justify-center items-center p-4 sm:p-6 overflow-hidden">
+                    <div className="bg-white w-full h-full rounded-xl flex justify-center items-center p-2 shadow-[0_4px_12px_rgba(0,0,0,0.05)]">
+                      <img alt={product.title} className="max-h-full object-contain transition-transform duration-500 group-hover:scale-110 mix-blend-multiply" src={product.image} />
+                    </div>
+                  </div>
+                  
+                  {/* Content Section */}
+                  <div className="flex-1 flex flex-col p-4">
+                    <span className="text-[10px] font-bold text-red-500 tracking-wider uppercase mb-1">{product.category}</span>
+                    
+                    <h3 className="text-[15px] font-bold text-[#0f172a] leading-snug mb-0.5 line-clamp-2">
+                      {product.title}
+                    </h3>
+                    
+                    <p className="text-xs text-gray-400 mb-2 font-medium">{product.vendor}</p>
+                    
+                    <p className="text-xs text-gray-500 line-clamp-2 mb-3 leading-relaxed">
+                      {product.description}
+                    </p>
+            
+                    <div className="grid grid-cols-3 gap-2 mb-4 mt-auto">
+                      {[
+                        { label: "Power", value: product.power },
+                        { label: "Efficiency", value: product.efficiency },
+                        { label: "Warranty", value: product.warranty }
+                      ].map((feature, i) => (
+                        <div key={i} className="bg-[#f8fafc] border border-gray-100 rounded-lg p-2 text-center flex flex-col justify-center">
+                          <span className="text-[13px] font-bold text-[#0f172a] leading-tight">{feature.value}</span>
+                          <span className="text-[9px] text-gray-400 uppercase font-semibold mt-1">{feature.label}</span>
+                        </div>
+                      ))}
+                    </div>
+                    
+                    <div>
+                      <button className="w-full bg-[#ef4444] hover:bg-[#dc2626] text-white py-3 px-4 rounded-xl text-[14px] transition-all duration-300 text-center font-bold shadow-[0_4px_14px_rgba(239,68,68,0.4)] hover:shadow-[0_6px_20px_rgba(239,68,68,0.6)] flex items-center justify-center gap-2">
+                        Get Quote <span className="text-lg leading-none">&rarr;</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
           <div className="pt-4 pb-2 overflow-hidden relative">
             <style>{`
               @keyframes scroll-brands {
