@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const sliderImages = [
   "/product-main-image-1.png",
@@ -54,10 +55,13 @@ export default function GreenSketchHeader({
           <div className="w-full relative" id="heroSlider">
             {sliderImages.map((src, index) => (
               <div key={index} className={`hero-slide w-full relative ${currentSlide === index ? 'block' : 'hidden'}`}>
-                <img
-                  className="w-full h-auto"
-                  alt={`Solar project ${index + 1}`}
+                <Image
                   src={src}
+                  alt={`Solar project ${index + 1}`}
+                  width={1200}
+                  height={800}
+                  className="w-full h-auto object-cover"
+                  priority={index === 0}
                 />
               </div>
             ))}
@@ -152,19 +156,21 @@ export default function GreenSketchHeader({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Tier 1 Solar Panels Ad */}
             <div className="relative rounded-xl overflow-hidden shadow-sm group cursor-pointer border border-outline-variant aspect-[16/9] md:aspect-[21/9]">
-              <img
+              <Image
                 src="/below-ad.jpeg"
                 alt="Tier 1 Solar Panels"
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-on-tertiary-fixed/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
             {/* Premium Inverters Ad */}
             <div className="relative rounded-xl overflow-hidden shadow-sm group cursor-pointer border border-outline-variant aspect-[16/9] md:aspect-[21/9]">
-              <img
+              <Image
                 src="/right-side-ad1.jpeg"
                 alt="Premium Inverters"
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-on-tertiary-fixed/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
@@ -177,29 +183,35 @@ export default function GreenSketchHeader({
       <div className="w-full lg:w-80 flex flex-col gap-gutter shrink-0 hidden lg:flex">
         {/* GreenDeal Widget Placeholder */}
         <div className="w-full rounded-xl overflow-hidden border border-outline-variant relative group cursor-pointer">
-          <img
-            className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
-            alt="GreenDeal STC-Battery"
+          <Image
             src="/right-side-ad2.png"
+            alt="GreenDeal STC-Battery"
+            width={400}
+            height={300}
+            className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
           />
         </div>
         
         {/* Ad Banner 1 */}
         <div className="w-full rounded-xl overflow-hidden border border-outline-variant relative group cursor-pointer">
-          <img
-            className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
-            alt="Tier 1 solar panel cells"
+          <Image
             src="/banner-side-1.png"
+            alt="Tier 1 solar panel cells"
+            width={400}
+            height={300}
+            className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-on-tertiary-fixed/40 group-hover:bg-on-tertiary-fixed/30 transition-colors"></div>
         </div>
 
         {/* Ad Banner 2 */}
         <div className="w-full rounded-xl overflow-hidden border border-outline-variant relative group cursor-pointer bg-surface-container">
-          <img
-            className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
-            alt="Premium solar inverter"
+          <Image
             src="/banner-side-2.png"
+            alt="Premium solar inverter"
+            width={400}
+            height={300}
+            className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-l from-on-tertiary-fixed/80 via-transparent to-transparent"></div>
         </div>

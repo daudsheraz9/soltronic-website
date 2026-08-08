@@ -1,6 +1,7 @@
 "use client";
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
@@ -29,8 +30,8 @@ export default function Navbar() {
 
         {/* Left: Logo */}
         <div className="flex items-center flex-shrink-0">
-          <Link href="/" className="block">
-            <img src="/logo.png" alt="Soltronic Energy Logo" className="h-10 md:h-16 lg:h-14 w-auto object-contain" />
+          <Link href="/" className="block relative w-32 h-10 md:h-16 lg:h-14">
+            <Image src="/logo.png" alt="Soltronic Energy Logo" fill className="object-contain" priority />
           </Link>
         </div>
 
@@ -85,6 +86,7 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
                   className={`relative py-2 text-[16px] font-normal whitespace-nowrap transition-colors border-b-[3px] ${isActive
                     ? 'text-orange-400 font-semibold border-orange-400'
                     : 'text-white/95 hover:text-orange-400 border-transparent hover:border-orange-400/70'

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import ServicesSlider from '@/components/ServicesSlider';
 import TeamAccordion from '@/components/TeamAccordion';
 import SavingsCalculator from '@/components/SavingsCalculator';
@@ -18,10 +19,10 @@ export default function Home() {
           {/* Side Banners */}
           <div className="w-full lg:w-[20%] xl:w-[242px] xl:h-[330px] flex flex-col justify-between gap-3 flex-shrink-0">
             <Link href="#" className="w-full h-full xl:h-[158px] relative rounded-md shadow-sm overflow-hidden block group bg-white border border-gray-100">
-              <img src="/banner-side-1.png" alt="Side Banner 1" className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />
+              <Image src="/banner-side-1.png" alt="Side Banner 1" fill className="object-contain transition-transform duration-500 group-hover:scale-105" priority />
             </Link>
             <Link href="#" className="w-full h-full xl:h-[158px] relative rounded-md shadow-sm overflow-hidden block group bg-white border border-gray-100">
-              <img src="/banner-side-2.png" alt="Side Banner 2" className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />
+              <Image src="/banner-side-2.png" alt="Side Banner 2" fill className="object-contain transition-transform duration-500 group-hover:scale-105" priority />
             </Link>
           </div>
         </div>
@@ -40,8 +41,8 @@ export default function Home() {
               { name: 'Electricals', icon: '/icons/electrincals.png' },
             ].map((category) => (
               <Link key={category.name} href={`/products?category=${category.name.toLowerCase()}`} className="flex flex-col items-center gap-3 group min-w-[80px]">
-                <div className="h-[80px] w-[80px] flex items-center justify-center">
-                  <img src={category.icon} alt={category.name} className="max-h-full max-w-full object-contain mix-blend-multiply grayscale transition-all duration-300 group-hover:grayscale-0" />
+                <div className="h-[80px] w-[80px] flex items-center justify-center relative">
+                  <Image src={category.icon} alt={category.name} fill className="object-contain mix-blend-multiply grayscale transition-all duration-300 group-hover:grayscale-0" />
                 </div>
                 <span className="text-[13px] md:text-[14px] text-gray-700 font-medium group-hover:text-[#107022] transition-colors text-center mt-1">{category.name}</span>
               </Link>
@@ -206,12 +207,12 @@ export default function Home() {
             </div>
             <SavingsCalculator />
             <div className="hidden lg:block w-32 shrink-0">
-              <img alt="Professional 3D Solar Savings Calculator" className="w-full h-auto rounded-xl shadow-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASuSEZCzZymyyvLfwLQhOYXd6ygxOBl5ndOPLFm-ebqyKrQJkp94KKIH1kfpngXLt2x2PzPeieo0hIZUrFxkF-CLpcvleZKnJd0bopfmvrYdmdyQzYZSZCwJbS0Ph0NWTGbhDQQfc6T2qwsZ3d_warZ9dmWt12YFd_I_GCDgkOx-hDm3QqjWclmB5I4n7a2rWvAdkuhQSxkY1Jb-V9i9hKZBss4_lT8lK7zHKI1UKvhN-fXk5oNWlg" />
+              <Image width={128} height={128} alt="Professional 3D Solar Savings Calculator" className="w-full h-auto rounded-xl shadow-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASuSEZCzZymyyvLfwLQhOYXd6ygxOBl5ndOPLFm-ebqyKrQJkp94KKIH1kfpngXLt2x2PzPeieo0hIZUrFxkF-CLpcvleZKnJd0bopfmvrYdmdyQzYZSZCwJbS0Ph0NWTGbhDQQfc6T2qwsZ3d_warZ9dmWt12YFd_I_GCDgkOx-hDm3QqjWclmB5I4n7a2rWvAdkuhQSxkY1Jb-V9i9hKZBss4_lT8lK7zHKI1UKvhN-fXk5oNWlg" unoptimized />
             </div>
           </div>
           <div className="bg-surface-container-low rounded-xl p-3 sm:p-4 border border-outline-variant/20 flex flex-row items-center gap-4 sm:gap-6 shadow-sm transition-transform duration-500 hover:-translate-y-1">
             <div className="hidden sm:block sm:w-1/4 lg:w-1/4">
-              <img alt="Modern professional illustration of a contemporary home with solar panels and electric vehicles" className="w-full h-auto rounded-lg" src="/clean_energy_home.png" />
+              <Image width={400} height={300} alt="Modern professional illustration of a contemporary home with solar panels and electric vehicles" className="w-full h-auto rounded-lg" src="/clean_energy_home.png" />
             </div>
             <div className="flex-grow space-y-2 sm:space-y-3">
               <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-on-surface leading-tight">Ready to Switch to Clean Energy?</h2>

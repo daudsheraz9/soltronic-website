@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const slides = [
   {
@@ -42,13 +43,15 @@ export default function HeroSlider() {
         className="flex h-full transition-transform duration-500 ease-out"
         style={{ transform: `translateX(-${currentSlide * 100}%)` }}
       >
-        {slides.map((slide) => (
+        {slides.map((slide, idx) => (
           <div key={slide.id} className="w-full h-full flex-shrink-0">
-            <Link href={slide.link} className="block w-full h-full">
-              <img 
+            <Link href={slide.link} className="block w-full h-full relative">
+              <Image 
                 src={slide.image} 
                 alt={slide.alt} 
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
+                priority={idx === 0}
               />
             </Link>
           </div>

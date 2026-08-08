@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -6,8 +7,8 @@ export default function Footer() {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-stack-lg px-gutter py-8 max-w-container-max mx-auto">
         <div className="space-y-stack-md">
           <div className="flex items-center">
-            <Link href="/">
-              <img src="/logo.png" alt="Soltronic Energy Logo" className="h-20 md:h-24 w-auto mb-4 object-contain" />
+            <Link href="/" className="relative w-40 h-20 md:h-24 mb-4 block">
+              <Image src="/logo.png" alt="Soltronic Energy Logo" fill className="object-contain" />
             </Link>
           </div>
           <p className="text-body-md font-body-md text-surface-variant dark:text-on-surface-variant">Delivering innovative and sustainable solar solutions for a greener tomorrow.</p>
