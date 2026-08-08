@@ -17,7 +17,7 @@ export default function Home() {
             <HeroSlider />
           </div>
           {/* Side Banners */}
-          <div className="w-full lg:w-[20%] xl:w-[242px] xl:h-[330px] flex flex-col justify-between gap-3 flex-shrink-0">
+          <div className="hidden lg:flex w-full lg:w-[20%] xl:w-[242px] xl:h-[330px] flex-col justify-between gap-3 flex-shrink-0">
             <Link href="#" className="w-full h-full xl:h-[158px] relative rounded-md shadow-sm overflow-hidden block group bg-white border border-gray-100">
               <Image src="/banner-side-1.png" alt="Side Banner 1" fill className="object-contain transition-transform duration-500 group-hover:scale-105" priority />
             </Link>
