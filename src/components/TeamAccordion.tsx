@@ -10,6 +10,12 @@ const teamMembers = [
     image: "/CEO-3.png"
   },
   {
+    name: "Nasir Rashid",
+    title: "General Manager",
+    bio: "Nasir oversees the strategic direction and daily operations, ensuring exceptional service delivery and operational excellence.",
+    image: "/NasirRashid.png"
+  },
+  {
     name: "Khursheed Abbas",
     title: "Chief Marketing Officer",
     bio: "Khursheed leads our marketing strategy, ensuring Soltronic Energy's innovative solutions reach those who need them most.",
@@ -32,6 +38,12 @@ const teamMembers = [
     title: "Sales Manager",
     bio: "Zaeem drives our sales initiatives, building strong relationships with clients to deliver tailored solar solutions.",
     image: "/zaeemmaalik.png"
+  },
+  {
+    name: "Qamar Maqsood",
+    title: "Finance Manager",
+    bio: "Qamar drives our financial strategy and planning, ensuring sustainable growth and optimal resource allocation.",
+    image: "/QamarMaqsood.png"
   },
   {
     name: "Muhammad Yaqub",

@@ -28,7 +28,7 @@ export default function Home() {
         </div>
 
         {/* Category Icons */}
-        <div className="mt-2 overflow-x-auto pb-2 max-w-[80rem] mx-auto">
+        <div className="mt-10 overflow-x-auto pb-2 max-w-[80rem] mx-auto">
           <div className="flex justify-center items-end min-w-max lg:min-w-0 gap-8 lg:gap-16 px-4">
             {[
               { name: 'Promotions', icon: '/icons/promotions.png' },
