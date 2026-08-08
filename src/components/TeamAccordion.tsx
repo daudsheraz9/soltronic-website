@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 const teamMembers = [
   {
@@ -34,6 +34,12 @@ const teamMembers = [
     image: "/zaeemmaalik.png"
   },
   {
+    name: "Muhammad Yaqub",
+    title: "HR & Admin",
+    bio: "Muhammad oversees human resources and administrative operations, ensuring a supportive and efficient workplace for our team.",
+    image: "/MuhmmadYaqub.png"
+  },
+  {
     name: "Raza Naeem",
     title: "EPC Manager",
     bio: "Raza manages Engineering, Procurement, and Construction, guaranteeing the highest quality in every installation.",
@@ -49,13 +55,37 @@ const teamMembers = [
 
 export default function TeamAccordion() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: -300, behavior: 'smooth' });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: 300, behavior: 'smooth' });
+    }
+  };
 
   return (
-    <div 
-      className="w-full flex flex-row overflow-x-auto snap-x snap-mandatory gap-4 h-[320px] md:h-[340px] pb-4 md:pb-0"
-      style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-    >
-      <style dangerouslySetInnerHTML={{__html: `\n        div::-webkit-scrollbar { display: none; }\n      `}} />
+    <div className="relative group w-full">
+      {/* Left Arrow */}
+      <button 
+        onClick={scrollLeft}
+        className="absolute left-2 md:-left-4 top-1/2 -translate-y-1/2 z-30 bg-white dark:bg-surface-container-highest p-2 rounded-full shadow-lg border border-outline-variant/20 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity hover:bg-surface-container-high"
+        aria-label="Scroll left"
+      >
+        <span className="material-symbols-outlined text-on-surface">chevron_left</span>
+      </button>
+
+      <div 
+        ref={scrollContainerRef}
+        className="w-full flex flex-row overflow-x-auto snap-x snap-mandatory gap-4 h-[320px] md:h-[340px] pb-4 md:pb-0"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+      >
+        <style dangerouslySetInnerHTML={{__html: `\n        div::-webkit-scrollbar { display: none; }\n      `}} />
       {teamMembers.map((member, index) => {
         const isActive = activeIndex === index;
         
@@ -104,6 +134,16 @@ export default function TeamAccordion() {
           </div>
         );
       })}
+      </div>
+
+      {/* Right Arrow */}
+      <button 
+        onClick={scrollRight}
+        className="absolute right-2 md:-right-4 top-1/2 -translate-y-1/2 z-30 bg-white dark:bg-surface-container-highest p-2 rounded-full shadow-lg border border-outline-variant/20 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity hover:bg-surface-container-high"
+        aria-label="Scroll right"
+      >
+        <span className="material-symbols-outlined text-on-surface">chevron_right</span>
+      </button>
     </div>
   );
 }
