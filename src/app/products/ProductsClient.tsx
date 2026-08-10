@@ -150,7 +150,7 @@ export default function ProductsClient({ initialProducts }: { initialProducts: P
 
               
               {/* BEGIN: Product Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+              <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                 {currentProducts.map((product, index) => (
 
                   <div key={index} className="bg-white flex flex-col group relative border border-gray-100 shadow-sm rounded-2xl overflow-hidden transition-all duration-300 hover:border-orange-200 hover:shadow-[0_0_25px_rgba(254,215,170,0.5)]">
@@ -176,18 +176,18 @@ export default function ProductsClient({ initialProducts }: { initialProducts: P
                         {product.description}
                       </p>
               
-                      <div className="grid grid-cols-3 gap-2 mb-4 mt-auto">
-                        <div className="bg-[#f8fafc] border border-gray-100 rounded-lg p-2 text-center flex flex-col justify-center">
-                          <span className="text-[13px] font-bold text-[#0f172a] leading-tight">{product.power}</span>
-                          <span className="text-[9px] text-gray-400 uppercase font-semibold mt-1">{product.labels ? product.labels[0] : 'Power'}</span>
+                      <div className="flex flex-wrap gap-2 mb-4 mt-auto">
+                        <div className="flex-1 min-w-[30%] bg-[#f8fafc] border border-gray-100 rounded-lg p-1.5 sm:p-2 text-center flex flex-col justify-center">
+                          <span className="text-[11px] sm:text-[13px] font-bold text-[#0f172a] leading-tight">{product.power}</span>
+                          <span className="text-[8px] sm:text-[9px] text-gray-400 uppercase font-semibold mt-1">{product.labels ? product.labels[0] : 'Power'}</span>
                         </div>
-                        <div className="bg-[#f8fafc] border border-gray-100 rounded-lg p-2 text-center flex flex-col justify-center">
-                          <span className="text-[13px] font-bold text-[#0f172a] leading-tight">{product.efficiency}</span>
-                          <span className="text-[9px] text-gray-400 uppercase font-semibold mt-1">{product.labels ? product.labels[1] : 'Efficiency'}</span>
+                        <div className="flex-1 min-w-[30%] bg-[#f8fafc] border border-gray-100 rounded-lg p-1.5 sm:p-2 text-center flex flex-col justify-center">
+                          <span className="text-[11px] sm:text-[13px] font-bold text-[#0f172a] leading-tight">{product.efficiency}</span>
+                          <span className="text-[8px] sm:text-[9px] text-gray-400 uppercase font-semibold mt-1">{product.labels ? product.labels[1] : 'Efficiency'}</span>
                         </div>
-                        <div className="bg-[#f8fafc] border border-gray-100 rounded-lg p-2 text-center flex flex-col justify-center">
-                          <span className="text-[13px] font-bold text-[#0f172a] leading-tight">{product.warranty}</span>
-                          <span className="text-[9px] text-gray-400 uppercase font-semibold mt-1">{product.labels ? product.labels[2] : 'Warranty'}</span>
+                        <div className="flex-1 min-w-[30%] bg-[#f8fafc] border border-gray-100 rounded-lg p-1.5 sm:p-2 text-center flex flex-col justify-center">
+                          <span className="text-[11px] sm:text-[13px] font-bold text-[#0f172a] leading-tight">{product.warranty}</span>
+                          <span className="text-[8px] sm:text-[9px] text-gray-400 uppercase font-semibold mt-1">{product.labels ? product.labels[2] : 'Warranty'}</span>
                         </div>
                       </div>
                       
