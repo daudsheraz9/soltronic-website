@@ -17,38 +17,38 @@ export default async function Home() {
     .select('*')
     .limit(4);
   return (
-    <>
+    <main className="w-full overflow-x-hidden">
       {/* Product Banner with Slider and Side Ads */}
       <ProductBanner />
 
       {/* Category Icons Row */}
-      <div className="mt-8 sm:mt-10 mb-6 overflow-x-auto sm:overflow-visible pb-4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 no-scrollbar">
-        <div className="flex sm:grid sm:grid-cols-8 justify-between items-start w-full min-w-max sm:min-w-0 gap-6 sm:gap-6 md:gap-8 lg:gap-[5rem] xl:gap-[5rem]">
+      <div className="mt-8 sm:mt-10 mb-6 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-x-auto scrollbar-hide">
+        <div className="flex sm:grid sm:grid-cols-8 justify-between items-start w-max sm:w-full gap-4 sm:gap-4 md:gap-6 lg:gap-8 xl:gap-12 pb-2">
           {[
             { name: 'Promotions', icon: '/icons/promotions.png', href: '/promotions' },
             { name: 'Inverters', icon: '/icons/inverters.png', href: '/products?category=inverters' },
             { name: 'Batteries', icon: '/icons/storage.png', href: '/products?category=batteries' },
             { name: 'Panels', icon: '/icons/panels.png', href: '/products?category=panels' },
             { name: 'EV Chargers', icon: '/icons/ev-chargers.png', href: '/products?category=ev-chargers' },
-            { name: 'Pressure Washers', icon: '/icons/pressure-washer.png', href: '/products?category=pressure-washers', scale: 'scale-[1.50]' },
+            { name: 'Pressure Washers', icon: '/icons/pressure-washer.png', href: '/products?category=pressure-washers', scale: 'scale-[1.40]' },
             { name: 'Mountings', icon: '/icons/mountings.png', href: '/products?category=mountings' },
             { name: 'Electricals', icon: '/icons/electrincals.png', href: '/products?category=electricals' },
           ].map((category) => (
             <Link
               key={category.name}
               href={category.href}
-              className="flex flex-col items-center gap-2 group min-w-[85px] sm:min-w-0 w-full"
+              className="flex flex-col items-center gap-2 group min-w-[75px] sm:min-w-0 w-full"
             >
-              <div className="h-16 w-16 sm:h-20 sm:w-20 flex items-center justify-center relative transition-transform duration-300 group-hover:scale-105">
+              <div className="h-14 w-14 sm:h-16 sm:w-16 md:h-20 md:w-20 flex items-center justify-center relative transition-transform duration-300 group-hover:scale-105 overflow-hidden">
                 <Image
                   src={category.icon}
                   alt={category.name}
                   fill
-                  sizes="(max-width: 640px) 64px, 80px"
+                  sizes="(max-width: 640px) 56px, 80px"
                   className={`object-contain ${category.scale || ''}`}
                 />
               </div>
-              <span className="text-[13px] md:text-[14px] text-gray-800 font-semibold group-hover:text-[#107022] transition-colors text-center mt-1 whitespace-nowrap">
+              <span className="text-[12px] sm:text-[13px] md:text-[14px] text-gray-800 font-semibold group-hover:text-[#107022] transition-colors text-center mt-1 whitespace-nowrap">
                 {category.name}
               </span>
             </Link>
@@ -253,6 +253,6 @@ export default async function Home() {
           </div>
         </div>
       </section>
-    </>
+    </main>
   );
 }

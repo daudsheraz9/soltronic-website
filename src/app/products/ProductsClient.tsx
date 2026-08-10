@@ -82,23 +82,23 @@ export default function ProductsClient({ initialProducts }: { initialProducts: P
 
 
       {/* Category Icons */}
-      <div className="mt-8 overflow-x-auto pb-4 max-w-[80rem] mx-auto scrollbar-hide">
-        <div className="flex md:justify-center justify-start items-end min-w-max lg:min-w-0 gap-8 lg:gap-14 px-4">
+      <div className="mt-8 w-full max-w-[80rem] mx-auto overflow-x-auto scrollbar-hide px-4">
+        <div className="flex md:justify-center justify-start items-end w-max md:w-full gap-4 md:gap-8 lg:gap-12 pb-2">
           {[
             { name: 'Promotions', icon: '/icons/promotions.png', href: '/promotions' },
             { name: 'Inverters', icon: '/icons/inverters.png', href: '/products?category=inverters' },
             { name: 'Batteries', icon: '/icons/storage.png', href: '/products?category=batteries' },
             { name: 'Panels', icon: '/icons/panels.png', href: '/products?category=panels' },
             { name: 'EV Chargers', icon: '/icons/ev-chargers.png', href: '/products?category=ev-chargers' },
-            { name: 'Pressure Washers', icon: '/icons/pressure-washer.png', href: '/products?category=pressure-washers', scale: 'scale-[1.95]' },
+            { name: 'Pressure Washers', icon: '/icons/pressure-washer.png', href: '/products?category=pressure-washers', scale: 'scale-[1.40]' },
             { name: 'Mountings', icon: '/icons/mountings.png', href: '/products?category=mountings' },
             { name: 'Electricals', icon: '/icons/electrincals.png', href: '/products?category=electricals' },
           ].map((category) => (
-            <Link key={category.name} href={category.href} className="flex flex-col items-center gap-3 group min-w-[90px]">
-              <div className="h-[60px] md:h-[70px] w-[60px] md:w-[70px] flex items-center justify-center relative">
+            <Link key={category.name} href={category.href} className="flex flex-col items-center gap-2 group min-w-[75px] md:min-w-[85px]">
+              <div className="h-[54px] md:h-[70px] w-[54px] md:w-[70px] flex items-center justify-center relative overflow-hidden">
                 <img src={category.icon} alt={category.name} className={`max-h-full max-w-full object-contain mix-blend-multiply transition-all duration-300 group-hover:grayscale ${category.scale || ''}`} />
               </div>
-              <span className="text-[13px] md:text-[14px] text-gray-700 font-medium group-hover:text-[#107022] transition-colors text-center mt-1 whitespace-nowrap">{category.name}</span>
+              <span className="text-[12px] md:text-[14px] text-gray-700 font-medium group-hover:text-[#107022] transition-colors text-center mt-1 whitespace-nowrap">{category.name}</span>
             </Link>
           ))}
         </div>
