@@ -92,56 +92,56 @@ export default function GreenSketchHeader({
             <span className="text-xs font-semibold text-on-surface text-center">Promotions</span>
           </Link>
 
-          {/* Panels */}
-          <Link href="/products" className="bg-surface border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-sm cursor-pointer transition-all hover:scale-105 hover:bg-primary/10 hover:shadow-md duration-300 group">
-            <span className="material-symbols-outlined text-5xl text-on-surface-variant group-hover:text-primary transition-colors duration-300" style={{ fontVariationSettings: '"wght" 200' }}>
-              solar_power
-            </span>
-            <span className="text-xs font-semibold text-on-surface text-center">Panels</span>
-          </Link>
-
           {/* Inverters */}
-          <Link href="#" className="bg-surface border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-sm cursor-pointer transition-all hover:scale-105 hover:bg-primary/10 hover:shadow-md duration-300 group">
+          <Link href="/products?category=inverters" className="bg-surface border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-sm cursor-pointer transition-all hover:scale-105 hover:bg-primary/10 hover:shadow-md duration-300 group">
             <span className="material-symbols-outlined text-5xl text-on-surface-variant group-hover:text-primary transition-colors duration-300" style={{ fontVariationSettings: '"wght" 200' }}>
               settings_input_component
             </span>
             <span className="text-xs font-semibold text-on-surface text-center">Inverters</span>
           </Link>
 
-          {/* Storage */}
-          <Link href="#" className="bg-surface border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-sm cursor-pointer transition-all hover:scale-105 hover:bg-primary/10 hover:shadow-md duration-300 group">
+          {/* Batteries */}
+          <Link href="/products?category=batteries" className="bg-surface border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-sm cursor-pointer transition-all hover:scale-105 hover:bg-primary/10 hover:shadow-md duration-300 group">
             <span className="material-symbols-outlined text-5xl text-on-surface-variant group-hover:text-primary transition-colors duration-300" style={{ fontVariationSettings: '"wght" 200' }}>
               battery_charging_full
             </span>
-            <span className="text-xs font-semibold text-on-surface text-center">Storage</span>
+            <span className="text-xs font-semibold text-on-surface text-center">Batteries</span>
           </Link>
 
-          {/* Mountings */}
-          <Link href="#" className="bg-surface border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-sm cursor-pointer transition-all hover:scale-105 hover:bg-primary/10 hover:shadow-md duration-300 group">
+          {/* Panels */}
+          <Link href="/products?category=panels" className="bg-surface border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-sm cursor-pointer transition-all hover:scale-105 hover:bg-primary/10 hover:shadow-md duration-300 group">
             <span className="material-symbols-outlined text-5xl text-on-surface-variant group-hover:text-primary transition-colors duration-300" style={{ fontVariationSettings: '"wght" 200' }}>
-              hardware
+              solar_power
             </span>
-            <span className="text-xs font-semibold text-on-surface text-center">Mountings</span>
+            <span className="text-xs font-semibold text-on-surface text-center">Panels</span>
           </Link>
 
           {/* EV Chargers */}
-          <Link href="#" className="bg-surface border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-sm cursor-pointer transition-all hover:scale-105 hover:bg-primary/10 hover:shadow-md duration-300 group">
+          <Link href="/products?category=ev-chargers" className="bg-surface border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-sm cursor-pointer transition-all hover:scale-105 hover:bg-primary/10 hover:shadow-md duration-300 group">
             <span className="material-symbols-outlined text-5xl text-on-surface-variant group-hover:text-primary transition-colors duration-300" style={{ fontVariationSettings: '"wght" 200' }}>
               ev_station
             </span>
             <span className="text-xs font-semibold text-on-surface text-center">EV Chargers</span>
           </Link>
 
-          {/* Heat Pump */}
-          <Link href="#" className="bg-surface border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-sm cursor-pointer transition-all hover:scale-105 hover:bg-primary/10 hover:shadow-md duration-300 group">
+          {/* Pressure Washers */}
+          <Link href="/products?category=pressure-washers" className="bg-surface border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-sm cursor-pointer transition-all hover:scale-105 hover:bg-primary/10 hover:shadow-md duration-300 group">
             <span className="material-symbols-outlined text-5xl text-on-surface-variant group-hover:text-primary transition-colors duration-300" style={{ fontVariationSettings: '"wght" 200' }}>
-              hvac
+              cleaning_services
             </span>
-            <span className="text-xs font-semibold text-on-surface text-center">Heat Pump</span>
+            <span className="text-xs font-semibold text-on-surface text-center">Pressure Washers</span>
+          </Link>
+
+          {/* Mountings */}
+          <Link href="/products?category=mountings" className="bg-surface border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-sm cursor-pointer transition-all hover:scale-105 hover:bg-primary/10 hover:shadow-md duration-300 group">
+            <span className="material-symbols-outlined text-5xl text-on-surface-variant group-hover:text-primary transition-colors duration-300" style={{ fontVariationSettings: '"wght" 200' }}>
+              hardware
+            </span>
+            <span className="text-xs font-semibold text-on-surface text-center">Mountings</span>
           </Link>
 
           {/* Electricals */}
-          <Link href="#" className="bg-surface border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-sm cursor-pointer transition-all hover:scale-105 hover:bg-primary/10 hover:shadow-md duration-300 group">
+          <Link href="/products?category=electricals" className="bg-surface border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-sm cursor-pointer transition-all hover:scale-105 hover:bg-primary/10 hover:shadow-md duration-300 group">
             <span className="material-symbols-outlined text-5xl text-on-surface-variant group-hover:text-primary transition-colors duration-300" style={{ fontVariationSettings: '"wght" 200' }}>
               electrical_services
             </span>

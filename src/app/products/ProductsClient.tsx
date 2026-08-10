@@ -83,21 +83,22 @@ export default function ProductsClient({ initialProducts }: { initialProducts: P
 
       {/* Category Icons */}
       <div className="mt-8 overflow-x-auto pb-4 max-w-[80rem] mx-auto scrollbar-hide">
-        <div className="flex md:justify-center justify-start items-end min-w-max lg:min-w-0 gap-8 lg:gap-16 px-4">
+        <div className="flex md:justify-center justify-start items-end min-w-max lg:min-w-0 gap-8 lg:gap-14 px-4">
           {[
-            { name: 'Panels', icon: '/icons/panels.png' },
-            { name: 'Inverters', icon: '/icons/inverters.png' },
-            { name: 'Storage', icon: '/icons/storage.png' },
-            { name: 'Mountings', icon: '/icons/mountings.png' },
-            { name: 'EV Chargers', icon: '/icons/ev-chargers.png' },
-            { name: 'Heat Pump', icon: '/icons/heat-pump.png' },
-            { name: 'Electricals', icon: '/icons/electrincals.png' },
+            { name: 'Promotions', icon: '/icons/promotions.png', href: '/promotions' },
+            { name: 'Inverters', icon: '/icons/inverters.png', href: '/products?category=inverters' },
+            { name: 'Batteries', icon: '/icons/storage.png', href: '/products?category=batteries' },
+            { name: 'Panels', icon: '/icons/panels.png', href: '/products?category=panels' },
+            { name: 'EV Chargers', icon: '/icons/ev-chargers.png', href: '/products?category=ev-chargers' },
+            { name: 'Pressure Washers', icon: '/icons/pressure-washer.png', href: '/products?category=pressure-washers', scale: 'scale-[1.95]' },
+            { name: 'Mountings', icon: '/icons/mountings.png', href: '/products?category=mountings' },
+            { name: 'Electricals', icon: '/icons/electrincals.png', href: '/products?category=electricals' },
           ].map((category) => (
-            <Link key={category.name} href={`/products?category=${category.name.toLowerCase()}`} className="flex flex-col items-center gap-3 group min-w-[80px]">
+            <Link key={category.name} href={category.href} className="flex flex-col items-center gap-3 group min-w-[90px]">
               <div className="h-[60px] md:h-[70px] w-[60px] md:w-[70px] flex items-center justify-center relative">
-                <img src={category.icon} alt={category.name} className="max-h-full max-w-full object-contain mix-blend-multiply transition-all duration-300 group-hover:grayscale" />
+                <img src={category.icon} alt={category.name} className={`max-h-full max-w-full object-contain mix-blend-multiply transition-all duration-300 group-hover:grayscale ${category.scale || ''}`} />
               </div>
-              <span className="text-[13px] md:text-[14px] text-gray-700 font-medium group-hover:text-[#107022] transition-colors text-center mt-1">{category.name}</span>
+              <span className="text-[13px] md:text-[14px] text-gray-700 font-medium group-hover:text-[#107022] transition-colors text-center mt-1 whitespace-nowrap">{category.name}</span>
             </Link>
           ))}
         </div>
@@ -147,11 +148,13 @@ export default function ProductsClient({ initialProducts }: { initialProducts: P
                 <div className="relative flex-1">
                   <select value={category} onChange={(e) => setCategory(e.target.value)} className="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-2xl py-2.5 pl-5 pr-10 appearance-none focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary font-medium cursor-pointer">
                     <option value="">Categories</option>
-                    <option value="panels">Panels</option>
                     <option value="inverters">Inverters</option>
                     <option value="batteries">Batteries</option>
+                    <option value="panels">Panels</option>
                     <option value="ev-chargers">EV Chargers</option>
-                    <option value="accessories">Accessories</option>
+                    <option value="pressure-washers">Pressure Washers</option>
+                    <option value="mountings">Mountings</option>
+                    <option value="electricals">Electricals</option>
                   </select>
                   <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" style={{ fontVariationSettings: "'wght' 300" }}>expand_more</span>
                 </div>
