@@ -11,19 +11,7 @@ export default function Services() {
           </div>
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
             <div className="max-w-2xl">
-              <nav aria-label="Breadcrumb" className="flex text-sm mb-4 text-gray-300">
-                <ol className="inline-flex items-center space-x-1 md:space-x-3">
-                  <li className="inline-flex items-center">
-                    <Link className="hover:text-white" href="/">Home</Link>
-                  </li>
-                  <li>
-                    <div className="flex items-center">
-                      <span className="mx-2">/</span>
-                      <span className="text-[#2e7d32]">Services</span>
-                    </div>
-                  </li>
-                </ol>
-              </nav>
+
               <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-white">Our Services</h1>
               <p className="text-lg text-gray-200 mb-10 max-w-xl">End-to-end solar energy solutions for homes, businesses, industries and agriculture.</p>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-sm font-medium">

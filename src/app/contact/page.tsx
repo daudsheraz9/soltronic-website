@@ -7,15 +7,7 @@ export default function ContactUs() {
 
 
       <main className="pt-0">
-        {/* BEGIN: Breadcrumbs */}
-        <div className="max-w-container-max mx-auto px-gutter py-4 relative z-20">
-          <nav className="text-sm text-gray-500 flex items-center gap-2">
-            <Link className="hover:text-primary transition-colors" href="/">Home</Link>
-            <i className="fa-solid fa-chevron-right text-[10px]"></i>
-            <span className="text-gray-800 font-medium">Contact Us</span>
-          </nav>
-        </div>
-        {/* END: Breadcrumbs */}
+
         {/* Hero Section */}
         <section className="relative w-full h-[500px] flex items-center">
           <div className="absolute inset-0 z-0">

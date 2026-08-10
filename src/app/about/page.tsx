@@ -3,15 +3,7 @@ import Link from 'next/link';
 export default function Team() {
   return (
     <main>
-      {/* BEGIN: Breadcrumbs */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 relative z-20">
-        <nav className="text-sm text-gray-500 flex items-center gap-2">
-          <Link className="hover:text-primary transition-colors" href="/">Home</Link>
-          <i className="fa-solid fa-chevron-right text-[10px]"></i>
-          <span className="text-gray-800 font-medium">About Us</span>
-        </nav>
-      </div>
-      {/* END: Breadcrumbs */}
+
       {/* BEGIN: Hero Section */}
       <section className="relative bg-surface pt-40 pb-20 md:pt-48 lg:pb-32 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

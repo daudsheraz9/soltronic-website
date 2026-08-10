@@ -3,17 +3,7 @@ import Link from 'next/link';
 export default function EPCPage() {
   return (
     <main className="bg-white pb-10 pt-32 md:pt-40">
-      {/* BEGIN: Breadcrumbs */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 mb-4">
-        <nav className="text-sm text-gray-500 flex items-center gap-2">
-          <Link className="hover:text-primary" href="/">Home</Link>
-          <i className="fa-solid fa-chevron-right text-[10px]"></i>
-          <Link className="hover:text-primary" href="/services">EPC Projects</Link>
-          <i className="fa-solid fa-chevron-right text-[10px]"></i>
-          <span className="text-gray-800 font-medium">Commercial Logistics Center</span>
-        </nav>
-      </div>
-      {/* END: Breadcrumbs */}
+
 
       {/* BEGIN: Hero Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">

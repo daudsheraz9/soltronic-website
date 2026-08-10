@@ -22,8 +22,8 @@ export default async function Home() {
       <ProductBanner />
 
       {/* Category Icons Row */}
-      <div className="mt-8 sm:mt-10 mb-6 overflow-x-auto pb-4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 no-scrollbar">
-        <div className="flex justify-between items-center min-w-max lg:min-w-0 gap-4 sm:gap-8 lg:gap-12 px-2">
+      <div className="mt-8 sm:mt-10 mb-6 overflow-x-auto sm:overflow-visible pb-4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 no-scrollbar">
+        <div className="flex sm:grid sm:grid-cols-8 justify-between items-start w-full min-w-max sm:min-w-0 gap-6 sm:gap-6 md:gap-8 lg:gap-[5rem] xl:gap-[5rem]">
           {[
             { name: 'Promotions', icon: '/icons/promotions.png' },
             { name: 'Panels', icon: '/icons/panels.png' },
@@ -34,17 +34,18 @@ export default async function Home() {
             { name: 'Heat Pump', icon: '/icons/heat-pump.png' },
             { name: 'Electricals', icon: '/icons/electrincals.png' },
           ].map((category) => (
-            <Link 
-              key={category.name} 
-              href={`/products?category=${category.name.toLowerCase()}`} 
-              className="flex flex-col items-center gap-2 group min-w-[70px] sm:min-w-[85px]"
+            <Link
+              key={category.name}
+              href={`/products?category=${category.name.toLowerCase()}`}
+              className="flex flex-col items-center gap-2 group min-w-[70px] sm:min-w-0 w-full"
             >
               <div className="h-16 w-16 sm:h-20 sm:w-20 flex items-center justify-center relative transition-transform duration-300 group-hover:scale-105">
-                <Image 
-                  src={category.icon} 
-                  alt={category.name} 
-                  fill 
-                  className="object-contain" 
+                <Image
+                  src={category.icon}
+                  alt={category.name}
+                  fill
+                  sizes="(max-width: 640px) 64px, 80px"
+                  className="object-contain"
                 />
               </div>
               <span className="text-[13px] md:text-[14px] text-gray-800 font-semibold group-hover:text-[#107022] transition-colors text-center mt-1">
@@ -56,65 +57,65 @@ export default async function Home() {
       </div>
 
 
-        {/* Featured Products */}
-        <section className="py-16 bg-white rounded-3xl mt-12 mb-8 shadow-sm border border-gray-100 overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-end mb-10">
-              <h2 className="text-2xl md:text-3xl font-bold text-dark">Featured Products</h2>
-              <Link className="text-primary font-medium text-sm flex items-center hover:underline" href="/products">View All Products <i className="fa-solid fa-arrow-right ml-2 text-xs"></i></Link>
-            </div>
-            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-              {(featuredProductsData || []).map((product, index) => (
-                <div key={index} className="bg-white flex flex-col group relative border border-gray-100 shadow-sm rounded-2xl overflow-hidden transition-all duration-300 hover:border-orange-200 hover:shadow-[0_0_25px_rgba(254,215,170,0.5)]">
-                  
-                  {/* Image Section */}
-                  <div className="h-40 sm:h-56 bg-[#f4f7fb] flex justify-center items-center p-4 sm:p-6 overflow-hidden">
-                    <div className="bg-white w-full h-full rounded-xl flex justify-center items-center p-2 shadow-[0_4px_12px_rgba(0,0,0,0.05)]">
-                      <img alt={product.title} className="max-h-full object-contain transition-transform duration-500 group-hover:scale-110 mix-blend-multiply" src={product.image} />
-                    </div>
-                  </div>
-                  
-                  {/* Content Section */}
-                  <div className="flex-1 flex flex-col p-4">
-                    <span className="text-[10px] font-bold text-red-500 tracking-wider uppercase mb-1">{product.category}</span>
-                    
-                    <h3 className="text-[15px] font-bold text-[#0f172a] leading-snug mb-0.5 line-clamp-2">
-                      {product.title}
-                    </h3>
-                    
-                    <p className="text-xs text-gray-400 mb-2 font-medium">{product.vendor}</p>
-                    
-                    <p className="text-xs text-gray-500 line-clamp-2 mb-3 leading-relaxed">
-                      {product.description}
-                    </p>
-            
-                    <div className="flex flex-wrap gap-2 mb-4 mt-auto">
-                      {[
-                        { label: "Power", value: product.power },
-                        { label: "Efficiency", value: product.efficiency },
-                        { label: "Warranty", value: product.warranty }
-                      ].map((feature, i) => (
-                        <div key={i} className="flex-1 min-w-[30%] bg-[#f8fafc] border border-gray-100 rounded-lg p-1.5 sm:p-2 text-center flex flex-col justify-center">
-                          <span className="text-[11px] sm:text-[13px] font-bold text-[#0f172a] leading-tight">{feature.value}</span>
-                          <span className="text-[8px] sm:text-[9px] text-gray-400 uppercase font-semibold mt-1">{feature.label}</span>
-                        </div>
-                      ))}
-                    </div>
-                    
-                    <div>
-                      <button className="w-full bg-[#ef4444] hover:bg-[#dc2626] text-white py-3 px-4 rounded-xl text-[14px] transition-all duration-300 text-center font-bold shadow-[0_4px_14px_rgba(239,68,68,0.4)] hover:shadow-[0_6px_20px_rgba(239,68,68,0.6)] flex items-center justify-center gap-2">
-                        Get Quote <span className="text-lg leading-none">&rarr;</span>
-                      </button>
-                    </div>
+      {/* Featured Products */}
+      <section className="pt-8 pb-16 bg-white rounded-3xl mt-4 sm:mt-6 mb-8 shadow-sm border border-gray-100 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-end mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-dark">Featured Products</h2>
+            <Link className="text-primary font-medium text-sm flex items-center hover:underline" href="/products">View All Products <i className="fa-solid fa-arrow-right ml-2 text-xs"></i></Link>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            {(featuredProductsData || []).map((product, index) => (
+              <div key={index} className="bg-white flex flex-col group relative border border-gray-100 shadow-sm rounded-2xl overflow-hidden transition-all duration-300 hover:border-orange-200 hover:shadow-[0_0_25px_rgba(254,215,170,0.5)]">
+
+                {/* Image Section */}
+                <div className="h-40 sm:h-56 bg-[#f4f7fb] flex justify-center items-center p-4 sm:p-6 overflow-hidden">
+                  <div className="bg-white w-full h-full rounded-xl flex justify-center items-center p-2 shadow-[0_4px_12px_rgba(0,0,0,0.05)]">
+                    <img alt={product.title} className="max-h-full object-contain transition-transform duration-500 group-hover:scale-110 mix-blend-multiply" src={product.image} />
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
-          <div className="pt-4 pb-2 overflow-hidden relative">
-            <style>{`
+                {/* Content Section */}
+                <div className="flex-1 flex flex-col p-4">
+                  <span className="text-[10px] font-bold text-red-500 tracking-wider uppercase mb-1">{product.category}</span>
+
+                  <h3 className="text-[15px] font-bold text-[#0f172a] leading-snug mb-0.5 line-clamp-2">
+                    {product.title}
+                  </h3>
+
+                  <p className="text-xs text-gray-400 mb-2 font-medium">{product.vendor}</p>
+
+                  <p className="text-xs text-gray-500 line-clamp-2 mb-3 leading-relaxed">
+                    {product.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2 mb-4 mt-auto">
+                    {[
+                      { label: "Power", value: product.power },
+                      { label: "Efficiency", value: product.efficiency },
+                      { label: "Warranty", value: product.warranty }
+                    ].map((feature, i) => (
+                      <div key={i} className="flex-1 min-w-[30%] bg-[#f8fafc] border border-gray-100 rounded-lg p-1.5 sm:p-2 text-center flex flex-col justify-center">
+                        <span className="text-[11px] sm:text-[13px] font-bold text-[#0f172a] leading-tight">{feature.value}</span>
+                        <span className="text-[8px] sm:text-[9px] text-gray-400 uppercase font-semibold mt-1">{feature.label}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div>
+                    <button className="w-full bg-[#ef4444] hover:bg-[#dc2626] text-white py-3 px-4 rounded-xl text-[14px] transition-all duration-300 text-center font-bold shadow-[0_4px_14px_rgba(239,68,68,0.4)] hover:shadow-[0_6px_20px_rgba(239,68,68,0.6)] flex items-center justify-center gap-2">
+                      Get Quote <span className="text-lg leading-none">&rarr;</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="pt-4 pb-2 overflow-hidden relative">
+        <style>{`
               @keyframes scroll-brands {
                 0% { transform: translateX(0); }
                 100% { transform: translateX(-25%); }
@@ -126,65 +127,65 @@ export default async function Home() {
                 animation-play-state: paused;
               }
             `}</style>
-            
-            <div className="flex flex-col items-center justify-center gap-4 w-full">
-              <div className="text-center z-10 relative">
-                <span className="text-label-md font-bold text-on-surface-variant uppercase tracking-widest block">Trusted By</span>
-                <h3 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-green-500 mt-1">Global Brands</h3>
-              </div>
-              
-              <div className="overflow-hidden w-full relative mt-2">
-                <div className="flex gap-2 pr-2 w-max animate-marquee">
-                  {[...Array(4)].map((_, i) => (
-                    <div key={i} className="contents">
-                      {/* Inverex */}
-                      <div className="bg-[#f8fafc] rounded-2xl p-1 min-w-[100px] flex-shrink-0">
-                        <div className="bg-white rounded-xl h-12 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-2">
-                          <span className="text-red-600 font-black italic tracking-tighter text-sm">INVEREX</span>
-                        </div>
-                      </div>
-                      {/* Pylontech */}
-                      <div className="bg-[#f8fafc] rounded-2xl p-1 min-w-[130px] flex-shrink-0">
-                        <div className="bg-white rounded-xl h-12 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-2 py-1 overflow-visible">
-                          <img src="/images/pylontech-logo.png" alt="Pylontech" className="h-full w-auto object-contain max-h-[40px] transform scale-[2] origin-center" style={{ mixBlendMode: 'multiply', filter: 'contrast(1.2)' }} />
-                        </div>
-                      </div>
-                      {/* Solis */}
-                      <div className="bg-[#f8fafc] rounded-2xl p-1 min-w-[100px] flex-shrink-0">
-                        <div className="bg-white rounded-xl h-12 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-2 py-1">
-                          <img src="/images/solis-logo.png" alt="Solis" className="h-full w-auto object-contain max-h-[30px] transform scale-[1.2]" />
-                        </div>
-                      </div>
-                      {/* Jinko Solar */}
-                      <div className="bg-[#f8fafc] rounded-2xl p-1 min-w-[100px] flex-shrink-0">
-                        <div className="bg-white rounded-xl h-12 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-2 py-1">
-                          <img src="/images/jinko-logo.png" alt="Jinko Solar" className="h-full w-auto object-contain max-h-[22px]" style={{ mixBlendMode: 'multiply', filter: 'contrast(1.5) brightness(1.1)' }} />
-                        </div>
-                      </div>
-                      {/* Narada */}
-                      <div className="bg-[#f8fafc] rounded-2xl p-1 min-w-[100px] flex-shrink-0">
-                        <div className="bg-white rounded-xl h-12 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-4 py-2">
-                          <img src="/images/narada-logo.png" alt="Narada" className="h-full w-auto object-contain max-h-[14px]" />
-                        </div>
-                      </div>
-                      {/* Huawei */}
-                      <div className="bg-[#f8fafc] rounded-2xl p-1 min-w-[100px] flex-shrink-0">
-                        <div className="bg-white rounded-xl h-12 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-2 py-1">
-                          <img src="/images/huawei-logo.png" alt="Huawei" className="h-full w-auto object-contain max-h-[22px]" style={{ mixBlendMode: 'multiply', filter: 'contrast(1.5) brightness(1.1)' }} />
-                        </div>
-                      </div>
-                      {/* Dyness */}
-                      <div className="bg-[#f8fafc] rounded-2xl p-1 min-w-[100px] flex-shrink-0">
-                        <div className="bg-white rounded-xl h-12 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-2">
-                          <span className="text-green-500 font-light tracking-widest text-xs">DY<span className="text-blue-500 font-bold">NESS</span></span>
-                        </div>
-                      </div>
+
+        <div className="flex flex-col items-center justify-center gap-4 w-full">
+          <div className="text-center z-10 relative">
+            <span className="text-label-md font-bold text-on-surface-variant uppercase tracking-widest block">Trusted By</span>
+            <h3 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-green-500 mt-1">Global Brands</h3>
+          </div>
+
+          <div className="overflow-hidden w-full relative mt-2">
+            <div className="flex gap-2 pr-2 w-max animate-marquee">
+              {[...Array(4)].map((_, i) => (
+                <div key={i} className="contents">
+                  {/* Inverex */}
+                  <div className="bg-[#f8fafc] rounded-2xl p-1 min-w-[100px] flex-shrink-0">
+                    <div className="bg-white rounded-xl h-12 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-2">
+                      <span className="text-red-600 font-black italic tracking-tighter text-sm">INVEREX</span>
                     </div>
-                  ))}
+                  </div>
+                  {/* Pylontech */}
+                  <div className="bg-[#f8fafc] rounded-2xl p-1 min-w-[130px] flex-shrink-0">
+                    <div className="bg-white rounded-xl h-12 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-2 py-1 overflow-visible">
+                      <img src="/images/pylontech-logo.png" alt="Pylontech" className="h-full w-auto object-contain max-h-[40px] transform scale-[2] origin-center" style={{ mixBlendMode: 'multiply', filter: 'contrast(1.2)' }} />
+                    </div>
+                  </div>
+                  {/* Solis */}
+                  <div className="bg-[#f8fafc] rounded-2xl p-1 min-w-[100px] flex-shrink-0">
+                    <div className="bg-white rounded-xl h-12 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-2 py-1">
+                      <img src="/images/solis-logo.png" alt="Solis" className="h-full w-auto object-contain max-h-[30px] transform scale-[1.2]" />
+                    </div>
+                  </div>
+                  {/* Jinko Solar */}
+                  <div className="bg-[#f8fafc] rounded-2xl p-1 min-w-[100px] flex-shrink-0">
+                    <div className="bg-white rounded-xl h-12 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-2 py-1">
+                      <img src="/images/jinko-logo.png" alt="Jinko Solar" className="h-full w-auto object-contain max-h-[22px]" style={{ mixBlendMode: 'multiply', filter: 'contrast(1.5) brightness(1.1)' }} />
+                    </div>
+                  </div>
+                  {/* Narada */}
+                  <div className="bg-[#f8fafc] rounded-2xl p-1 min-w-[100px] flex-shrink-0">
+                    <div className="bg-white rounded-xl h-12 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-4 py-2">
+                      <img src="/images/narada-logo.png" alt="Narada" className="h-full w-auto object-contain max-h-[14px]" />
+                    </div>
+                  </div>
+                  {/* Huawei */}
+                  <div className="bg-[#f8fafc] rounded-2xl p-1 min-w-[100px] flex-shrink-0">
+                    <div className="bg-white rounded-xl h-12 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-2 py-1">
+                      <img src="/images/huawei-logo.png" alt="Huawei" className="h-full w-auto object-contain max-h-[22px]" style={{ mixBlendMode: 'multiply', filter: 'contrast(1.5) brightness(1.1)' }} />
+                    </div>
+                  </div>
+                  {/* Dyness */}
+                  <div className="bg-[#f8fafc] rounded-2xl p-1 min-w-[100px] flex-shrink-0">
+                    <div className="bg-white rounded-xl h-12 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-2">
+                      <span className="text-green-500 font-light tracking-widest text-xs">DY<span className="text-blue-500 font-bold">NESS</span></span>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              ))}
+            </div>
           </div>
         </div>
+      </div>
 
 
 
@@ -223,7 +224,7 @@ export default async function Home() {
       <section className="py-2 px-4 md:px-gutter bg-surface-bright">
         <div className="max-w-container-max mx-auto space-y-3 md:space-y-4">
           <div className="bg-surface-container-low rounded-xl p-3 sm:p-4 border border-outline-variant/20 flex flex-col lg:flex-row items-center gap-3 sm:gap-4 shadow-sm transition-transform duration-500 hover:-translate-y-1">
-            <div className="w-full lg:w-1/4 space-y-1 text-center lg:text-left">
+            <div className="w-full lg:w-1/4 space-y-1 text-center">
               <span className="text-[9px] sm:text-[10px] font-bold text-primary uppercase tracking-widest">Calculate Your Savings</span>
               <h2 className="text-xl sm:text-2xl font-bold text-on-surface leading-tight">See How Much You Can Save</h2>
               <p className="text-xs sm:text-sm text-on-surface-variant hidden sm:block">Use our calculator to estimate your savings with solar solutions.</p>
@@ -237,10 +238,10 @@ export default async function Home() {
             <div className="hidden sm:block sm:w-1/4 lg:w-1/4">
               <Image width={400} height={300} alt="Modern professional illustration of a contemporary home with solar panels and electric vehicles" className="w-full h-auto rounded-lg" src="/clean_energy_home.png" />
             </div>
-            <div className="flex-grow space-y-2 sm:space-y-3">
+            <div className="flex-grow space-y-2 sm:space-y-3 text-center">
               <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-on-surface leading-tight">Ready to Switch to Clean Energy?</h2>
               <p className="text-sm sm:text-body-lg text-on-surface-variant">Get a customized solar solution tailored to your energy journey.</p>
-              <div className="flex flex-row flex-wrap gap-2 sm:gap-4">
+              <div className="flex flex-row flex-wrap justify-center gap-2 sm:gap-4">
                 <Link href="/epc" className="bg-black text-white px-3 sm:px-6 py-2 sm:py-2.5 rounded text-xs sm:text-base font-bold flex items-center gap-1 sm:gap-2 hover:bg-neutral-800 transition-all w-fit shadow-lg">
                   Get Free Quote <span className="material-symbols-outlined text-[14px] sm:text-sm">arrow_forward</span>
                 </Link>

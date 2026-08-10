@@ -78,7 +78,7 @@ export default function ProductBanner() {
         </div>
 
         {/* Right Side: Static Side Ads Stack (Hidden on mobile) */}
-        <div className="hidden sm:flex w-full lg:w-[32%] flex-row lg:flex-col gap-3 sm:gap-4 flex-shrink-0">
+        <div className="hidden sm:flex w-full lg:w-[30.5%] flex-row lg:flex-col gap-3 sm:gap-4 flex-shrink-0 pr-2 lg:pr-3">
           <Link href="/products" className="flex-1 rounded-xl sm:rounded-2xl overflow-hidden relative shadow-sm border border-gray-100 bg-white group block min-h-[140px] lg:min-h-0">
             <img 
               src="/right-side-ad1.jpeg" 

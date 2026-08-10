@@ -3,12 +3,7 @@ import Link from 'next/link';
 export default function PVPage() {
   return (
     <main className="bg-gray-50 pb-20 pt-8">
-      {/* Breadcrumbs */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-sm text-gray-500 mb-4">
-        <Link className="hover:text-primary" href="/">Home</Link> <i className="fa-solid fa-chevron-right text-[10px] mx-2"></i>
-        <Link className="hover:text-primary" href="/products">PV Modules</Link> <i className="fa-solid fa-chevron-right text-[10px] mx-2"></i>
-        <span className="text-gray-800 font-medium">Titan Series Bifacial</span>
-      </div>
+
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Product Hero Section */}

@@ -37,27 +37,6 @@ export default function ProductDetailClient({ initialProduct }: { initialProduct
     <div className="bg-[#f8fafc] min-h-screen pt-8 pb-16">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Breadcrumb */}
-        <nav className="flex text-sm text-gray-500 mb-8" aria-label="Breadcrumb">
-          <ol className="inline-flex items-center space-x-1 md:space-x-3">
-            <li className="inline-flex items-center">
-              <Link href="/" className="hover:text-primary transition-colors">Home</Link>
-            </li>
-            <li>
-              <div className="flex items-center">
-                <i className="fa-solid fa-chevron-right text-[10px] mx-2"></i>
-                <Link href="/products" className="hover:text-primary transition-colors">Products</Link>
-              </div>
-            </li>
-            <li aria-current="page">
-              <div className="flex items-center">
-                <i className="fa-solid fa-chevron-right text-[10px] mx-2"></i>
-                <span className="text-gray-900 font-medium">{product.title}</span>
-              </div>
-            </li>
-          </ol>
-        </nav>
-
         {/* 2-Column Main Section */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
           

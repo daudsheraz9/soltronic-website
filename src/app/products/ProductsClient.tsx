@@ -34,14 +34,7 @@ export default function ProductsClient({ initialProducts }: { initialProducts: P
   return (
     <div className="bg-gray-50 text-slate-700">
 
-      {/* Breadcrumbs */}
-      <div className="max-w-[80rem] mx-auto px-4 pt-4 pb-2">
-        <div className="flex items-center text-sm text-gray-500">
-          <Link href="/" className="hover:text-[#107022] transition-colors">Home</Link>
-          <span className="mx-2 material-symbols-outlined text-[18px]">chevron_right</span>
-          <span className="text-gray-900 font-medium">Products</span>
-        </div>
-      </div>
+
 
       {/* Category Icons */}
       <div className="mt-8 overflow-x-auto pb-4 max-w-[80rem] mx-auto scrollbar-hide">
@@ -141,7 +134,7 @@ export default function ProductsClient({ initialProducts }: { initialProducts: P
               </div>
               
               {/* Apply Button */}
-              <button className="w-full bg-primary text-white text-[13px] font-bold uppercase tracking-[0.2em] py-2.5 rounded-[1.5rem] shadow-sm">
+              <button className="w-full bg-primary hover:bg-primary/90 text-white text-[13px] font-bold uppercase tracking-[0.2em] py-2.5 rounded-[1.5rem] shadow-sm transition-colors">
                 Apply
               </button>
             </div>

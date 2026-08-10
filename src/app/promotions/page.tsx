@@ -40,7 +40,7 @@ export default function PromotionsPage() {
         
         {/* Main Hero Promotion */}
         <div className="mb-12">
-          <h2 className="text-xl md:text-2xl font-bold text-[#1A4D2E] italic mb-4">Special Battery Sale</h2>
+          <h2 className="text-sm md:text-base font-bold text-[#1A4D2E] mb-4">Special Battery Sale</h2>
           
           <div className="w-full rounded-2xl overflow-hidden relative shadow-md bg-gradient-to-r from-blue-50 via-teal-50 to-blue-100 flex flex-col md:flex-row min-h-[300px] md:min-h-[400px]">
             {/* Left Content */}

@@ -4,14 +4,16 @@ import Image from 'next/image';
 export default function Footer() {
   return (
     <footer className="bg-on-tertiary-fixed dark:bg-surface-container-lowest full-width mt-auto border-t border-gray-100">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 px-4 sm:px-6 lg:px-8 py-10 max-w-7xl mx-auto">
-        <div className="space-y-stack-md">
-          <div className="flex items-center">
-            <Link href="/" className="relative w-40 h-20 md:h-24 mb-4 block">
-              <Image src="/logo.png" alt="Soltronic Energy Logo" fill className="object-contain" />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 px-4 sm:px-6 lg:px-8 py-10 max-w-7xl mx-auto">
+        <div className="sm:col-span-2 lg:col-span-5 space-y-4 lg:pr-16">
+          <div className="flex items-center -ml-4">
+            <Link href="/" className="relative w-64 h-16 md:h-20 block">
+              <Image src="/logo.png" alt="Soltronic Energy Logo" fill className="object-contain object-left" />
             </Link>
           </div>
-          <p className="text-body-md font-body-md text-surface-variant dark:text-on-surface-variant">Delivering innovative and sustainable solar solutions for a greener tomorrow.</p>
+          <p className="text-body-md font-body-md text-surface-variant dark:text-on-surface-variant leading-relaxed text-justify">
+            Delivering innovative and sustainable solar solutions for a greener tomorrow. We specialize in high-efficiency solar EPC, cutting-edge net metering, and reliable battery storage systems. Power your home or business with clean, renewable energy and take control of your future.
+          </p>
           <div className="flex gap-4">
             <Link className="text-surface-variant hover:text-secondary-fixed transition-colors" href="/contact"><span className="material-symbols-outlined">qr_code_2</span></Link>
             <Link className="text-surface-variant hover:text-secondary-fixed transition-colors" href="/contact"><span className="material-symbols-outlined">share</span></Link>
@@ -19,8 +21,8 @@ export default function Footer() {
           </div>
         </div>
         
-        <div>
-          <h4 className="text-label-md font-label-md text-background mb-4 font-bold uppercase tracking-wider">Quick Links</h4>
+        <div className="lg:col-span-2 lg:col-start-7 lg:pt-16">
+          <h4 className="text-label-md font-label-md text-on-surface mb-4 font-bold uppercase tracking-wider">Quick Links</h4>
           <ul className="space-y-2 text-body-md font-body-md">
             <li className=""><Link className="text-surface-variant dark:text-on-surface-variant hover:text-secondary-fixed transition-colors hover:translate-x-1 inline-block transition-transform" href="/">Home</Link></li>
             <li className=""><Link className="text-surface-variant dark:text-on-surface-variant hover:text-secondary-fixed transition-colors hover:translate-x-1 inline-block transition-transform" href="/about">About Us</Link></li>
@@ -30,8 +32,8 @@ export default function Footer() {
           </ul>
         </div>
         
-        <div>
-          <h4 className="text-label-md font-label-md text-background mb-4 font-bold uppercase tracking-wider">Services</h4>
+        <div className="lg:col-span-2 lg:pt-16">
+          <h4 className="text-label-md font-label-md text-on-surface mb-4 font-bold uppercase tracking-wider">Services</h4>
           <ul className="space-y-2 text-body-md font-body-md">
             <li className=""><Link className="text-surface-variant dark:text-on-surface-variant hover:text-secondary-fixed transition-colors hover:translate-x-1 inline-block transition-transform" href="/epc">Solar EPC</Link></li>
             <li className=""><Link className="text-surface-variant dark:text-on-surface-variant hover:text-secondary-fixed transition-colors hover:translate-x-1 inline-block transition-transform" href="/services">Solar Installations</Link></li>
@@ -41,8 +43,8 @@ export default function Footer() {
           </ul>
         </div>
         
-        <div>
-          <h4 className="text-label-md font-label-md text-background mb-4 font-bold uppercase tracking-wider">Company</h4>
+        <div className="lg:col-span-2 lg:pt-16">
+          <h4 className="text-label-md font-label-md text-on-surface mb-4 font-bold uppercase tracking-wider">Company</h4>
           <ul className="space-y-2 text-body-md font-body-md">
             <li className=""><Link className="text-surface-variant dark:text-on-surface-variant hover:text-secondary-fixed transition-colors hover:translate-x-1 inline-block transition-transform" href="/about">Careers</Link></li>
             <li className=""><Link className="text-surface-variant dark:text-on-surface-variant hover:text-secondary-fixed transition-colors hover:translate-x-1 inline-block transition-transform" href="/about">Blog</Link></li>

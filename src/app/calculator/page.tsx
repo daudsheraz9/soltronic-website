@@ -38,15 +38,7 @@ export default function CalculatorPage() {
 
   return (
     <main className="pt-8 pb-20 bg-white text-slate-800">
-      {/* BEGIN: Breadcrumbs */}
-      <div className="max-w-4xl mx-auto px-6 mb-8">
-        <nav className="text-sm text-gray-500 flex items-center gap-2">
-          <Link className="hover:text-primary transition-colors" href="/">Home</Link>
-          <i className="fa-solid fa-chevron-right text-[10px]"></i>
-          <span className="text-gray-800 font-medium">Calculator</span>
-        </nav>
-      </div>
-      {/* END: Breadcrumbs */}
+
       <style dangerouslySetInnerHTML={{__html: `
         input[type=range] {
             -webkit-appearance: none;

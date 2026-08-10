@@ -22,13 +22,7 @@ export default function BrandsPage() {
 
   return (
     <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 bg-white text-slate-800 overflow-x-hidden">
-      {/* BEGIN: Breadcrumbs */}
-      <nav className="text-sm text-gray-500 flex items-center gap-2 mb-8">
-        <a className="hover:text-primary transition-colors" href="/">Home</a>
-        <i className="fa-solid fa-chevron-right text-[10px]"></i>
-        <span className="text-gray-800 font-medium">Brands</span>
-      </nav>
-      {/* END: Breadcrumbs */}
+
       <style>{`
         @keyframes scroll-brands {
           0% { transform: translateX(0); }
@@ -42,17 +36,12 @@ export default function BrandsPage() {
         }
       `}</style>
       
-      <div className="flex flex-col gap-4 mb-16 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#1A4D2E] to-green-500 w-fit mx-auto tracking-tight">
-          Brands
-        </h1>
-        <p className="text-gray-600 max-w-2xl mx-auto">Explore our extensive range of premium products from trusted global manufacturers.</p>
-      </div>
+
 
       <div className="flex flex-col gap-12">
         {categorizedBrands.map((category, cIdx) => (
           <section key={cIdx} className="w-full">
-            <h3 className="text-xl md:text-2xl font-bold text-slate-800 mb-6 pl-4 border-l-4 border-primary">
+            <h3 className="text-xl md:text-2xl font-bold text-slate-800 mb-6 text-center border-b border-gray-200 pb-3">
               {category.name}
             </h3>
             
