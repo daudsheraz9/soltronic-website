@@ -3,7 +3,7 @@ import Image from 'next/image';
 import ServicesSlider from '@/components/ServicesSlider';
 import TeamAccordion from '@/components/TeamAccordion';
 import SavingsCalculator from '@/components/SavingsCalculator';
-import HeroSlider from '@/components/HeroSlider';
+import ProductBanner from '@/components/ProductBanner';
 import { createClient } from '@/utils/supabase/server';
 import { cookies } from 'next/headers';
 import { Product } from '@/data/products';
@@ -18,48 +18,43 @@ export default async function Home() {
     .limit(4);
   return (
     <>
+      {/* Product Banner with Slider and Side Ads */}
+      <ProductBanner />
 
-
-      {/* Hero Section */}
-      <section className="w-full pt-3 pb-2 px-4 max-w-[80rem] mx-auto">
-        <div className="flex flex-col lg:flex-row gap-4 justify-between items-start">
-          {/* Main Banner */}
-          <div className="w-full lg:w-[78%] xl:w-[946px] aspect-[946/425] xl:h-[330px] relative flex-shrink-0">
-            <HeroSlider />
-          </div>
-          {/* Side Banners */}
-          <div className="hidden lg:flex w-full lg:w-[20%] xl:w-[242px] xl:h-[330px] flex-col justify-between gap-3 flex-shrink-0">
-            <Link href="#" className="w-full h-full xl:h-[158px] relative rounded-md shadow-sm overflow-hidden block group bg-white border border-gray-100">
-              <Image src="/banner-side-1.png" alt="Side Banner 1" fill className="object-contain transition-transform duration-500 group-hover:scale-105" priority />
+      {/* Category Icons Row */}
+      <div className="mt-8 sm:mt-10 mb-6 overflow-x-auto pb-4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 no-scrollbar">
+        <div className="flex justify-between items-center min-w-max lg:min-w-0 gap-4 sm:gap-8 lg:gap-12 px-2">
+          {[
+            { name: 'Promotions', icon: '/icons/promotions.png' },
+            { name: 'Panels', icon: '/icons/panels.png' },
+            { name: 'Inverters', icon: '/icons/inverters.png' },
+            { name: 'Storage', icon: '/icons/storage.png' },
+            { name: 'Mountings', icon: '/icons/mountings.png' },
+            { name: 'EV Chargers', icon: '/icons/ev-chargers.png' },
+            { name: 'Heat Pump', icon: '/icons/heat-pump.png' },
+            { name: 'Electricals', icon: '/icons/electrincals.png' },
+          ].map((category) => (
+            <Link 
+              key={category.name} 
+              href={`/products?category=${category.name.toLowerCase()}`} 
+              className="flex flex-col items-center gap-2 group min-w-[70px] sm:min-w-[85px]"
+            >
+              <div className="h-16 w-16 sm:h-20 sm:w-20 flex items-center justify-center relative transition-transform duration-300 group-hover:scale-105">
+                <Image 
+                  src={category.icon} 
+                  alt={category.name} 
+                  fill 
+                  className="object-contain" 
+                />
+              </div>
+              <span className="text-[13px] md:text-[14px] text-gray-800 font-semibold group-hover:text-[#107022] transition-colors text-center mt-1">
+                {category.name}
+              </span>
             </Link>
-            <Link href="#" className="w-full h-full xl:h-[158px] relative rounded-md shadow-sm overflow-hidden block group bg-white border border-gray-100">
-              <Image src="/banner-side-2.png" alt="Side Banner 2" fill className="object-contain transition-transform duration-500 group-hover:scale-105" priority />
-            </Link>
-          </div>
+          ))}
         </div>
+      </div>
 
-        {/* Category Icons */}
-        <div className="mt-10 overflow-x-auto pb-2 max-w-[80rem] mx-auto">
-          <div className="flex justify-center items-end min-w-max lg:min-w-0 gap-8 lg:gap-16 px-4">
-            {[
-              { name: 'Promotions', icon: '/icons/promotions.png' },
-              { name: 'Panels', icon: '/icons/panels.png' },
-              { name: 'Inverters', icon: '/icons/inverters.png' },
-              { name: 'Storage', icon: '/icons/storage.png' },
-              { name: 'Mountings', icon: '/icons/mountings.png' },
-              { name: 'EV Chargers', icon: '/icons/ev-chargers.png' },
-              { name: 'Heat Pump', icon: '/icons/heat-pump.png' },
-              { name: 'Electricals', icon: '/icons/electrincals.png' },
-            ].map((category) => (
-              <Link key={category.name} href={`/products?category=${category.name.toLowerCase()}`} className="flex flex-col items-center gap-3 group min-w-[80px]">
-                <div className="h-[80px] w-[80px] flex items-center justify-center relative">
-                  <Image src={category.icon} alt={category.name} fill className="object-contain mix-blend-multiply grayscale-0 transition-all duration-300 group-hover:grayscale" />
-                </div>
-                <span className="text-[13px] md:text-[14px] text-gray-700 font-medium group-hover:text-[#107022] transition-colors text-center mt-1">{category.name}</span>
-              </Link>
-            ))}
-          </div>
-        </div>
 
         {/* Featured Products */}
         <section className="py-16 bg-white rounded-3xl mt-12 mb-8 shadow-sm border border-gray-100 overflow-hidden">
@@ -68,7 +63,7 @@ export default async function Home() {
               <h2 className="text-2xl md:text-3xl font-bold text-dark">Featured Products</h2>
               <Link className="text-primary font-medium text-sm flex items-center hover:underline" href="/products">View All Products <i className="fa-solid fa-arrow-right ml-2 text-xs"></i></Link>
             </div>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               {(featuredProductsData || []).map((product, index) => (
                 <div key={index} className="bg-white flex flex-col group relative border border-gray-100 shadow-sm rounded-2xl overflow-hidden transition-all duration-300 hover:border-orange-200 hover:shadow-[0_0_25px_rgba(254,215,170,0.5)]">
                   
@@ -188,9 +183,9 @@ export default async function Home() {
                   ))}
                 </div>
               </div>
-            </div>
           </div>
-      </section>
+        </div>
+
 
 
 

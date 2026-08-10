@@ -3,8 +3,8 @@ import Image from 'next/image';
 
 export default function Footer() {
   return (
-    <footer className="bg-on-tertiary-fixed dark:bg-surface-container-lowest full-width mt-auto">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-stack-lg px-gutter py-8 max-w-container-max mx-auto">
+    <footer className="bg-on-tertiary-fixed dark:bg-surface-container-lowest full-width mt-auto border-t border-gray-100">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 px-4 sm:px-6 lg:px-8 py-10 max-w-7xl mx-auto">
         <div className="space-y-stack-md">
           <div className="flex items-center">
             <Link href="/" className="relative w-40 h-20 md:h-24 mb-4 block">

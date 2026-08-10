@@ -150,8 +150,9 @@ export default function ProductsClient({ initialProducts }: { initialProducts: P
 
               
               {/* BEGIN: Product Grid */}
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 xl:gap-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                 {currentProducts.map((product, index) => (
+
                   <div key={index} className="bg-white flex flex-col group relative border border-gray-100 shadow-sm rounded-2xl overflow-hidden transition-all duration-300 hover:border-orange-200 hover:shadow-[0_0_25px_rgba(254,215,170,0.5)]">
                     
                     {/* Image Section */}
