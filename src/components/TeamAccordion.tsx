@@ -7,7 +7,7 @@ const teamMembers = [
     name: "Mr. Faheem Maalik",
     title: "CEO",
     bio: "Mr.Faheem leads Soltronic Energy Distribution with a vision for a sustainable future, driving innovation in renewable energy.",
-    image: "/CEO-3.png"
+    image: "/ceo.png"
   },
   {
     name: "Nasir Rashid",

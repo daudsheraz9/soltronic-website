@@ -153,7 +153,7 @@ export default function Services() {
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">How We <span className="text-[#2e7d32]">Work</span></h2>
             </div>
             <div className="flex flex-col md:flex-row justify-between items-start relative">
-              <div className="hidden md:block absolute top-12 left-0 w-full h-0.5 bg-green-200 -z-10"></div>
+              <div className="hidden md:block absolute top-8 left-0 w-full h-0.5 bg-green-200 -z-10"></div>
               {/* Step 1 */}
               <div className="flex flex-col items-center text-center w-full md:w-1/6 mb-8 md:mb-0 relative">
                 <div className="bg-white w-16 h-16 rounded-full flex items-center justify-center border-2 border-[#2e7d32] mb-4 z-10 shadow-sm">
@@ -162,6 +162,9 @@ export default function Services() {
                 <span className="text-[#2e7d32] font-bold text-xl mb-1">01</span>
                 <h4 className="font-bold text-gray-900 mb-2">Consultation</h4>
                 <p className="text-xs text-gray-600">We understand your needs and analyze feasibility.</p>
+                <div className="hidden md:flex absolute top-8 right-0 translate-x-1/2 -translate-y-1/2 z-0 text-[#2e7d32] bg-[#e8f5e9] w-8 h-8 items-center justify-center rounded-full">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
+                </div>
               </div>
               {/* Step 2 */}
               <div className="flex flex-col items-center text-center w-full md:w-1/6 mb-8 md:mb-0 relative">
@@ -171,6 +174,9 @@ export default function Services() {
                 <span className="text-[#2e7d32] font-bold text-xl mb-1">02</span>
                 <h4 className="font-bold text-gray-900 mb-2">System Design</h4>
                 <p className="text-xs text-gray-600">Our experts design the best solar solution for your requirement.</p>
+                <div className="hidden md:flex absolute top-8 right-0 translate-x-1/2 -translate-y-1/2 z-0 text-[#2e7d32] bg-[#e8f5e9] w-8 h-8 items-center justify-center rounded-full">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
+                </div>
               </div>
               {/* Step 3 */}
               <div className="flex flex-col items-center text-center w-full md:w-1/6 mb-8 md:mb-0 relative">
@@ -180,6 +186,9 @@ export default function Services() {
                 <span className="text-[#2e7d32] font-bold text-xl mb-1">03</span>
                 <h4 className="font-bold text-gray-900 mb-2">Proposal</h4>
                 <p className="text-xs text-gray-600">We provide a transparent proposal with complete breakdown.</p>
+                <div className="hidden md:flex absolute top-8 right-0 translate-x-1/2 -translate-y-1/2 z-0 text-[#2e7d32] bg-[#e8f5e9] w-8 h-8 items-center justify-center rounded-full">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
+                </div>
               </div>
               {/* Step 4 */}
               <div className="flex flex-col items-center text-center w-full md:w-1/6 mb-8 md:mb-0 relative">
@@ -189,6 +198,9 @@ export default function Services() {
                 <span className="text-[#2e7d32] font-bold text-xl mb-1">04</span>
                 <h4 className="font-bold text-gray-900 mb-2">Installation</h4>
                 <p className="text-xs text-gray-600">Professional installation with high-quality equipment.</p>
+                <div className="hidden md:flex absolute top-8 right-0 translate-x-1/2 -translate-y-1/2 z-0 text-[#2e7d32] bg-[#e8f5e9] w-8 h-8 items-center justify-center rounded-full">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
+                </div>
               </div>
               {/* Step 5 */}
               <div className="flex flex-col items-center text-center w-full md:w-1/6 mb-8 md:mb-0 relative">
@@ -198,6 +210,9 @@ export default function Services() {
                 <span className="text-[#2e7d32] font-bold text-xl mb-1">05</span>
                 <h4 className="font-bold text-gray-900 mb-2">Commissioning</h4>
                 <p className="text-xs text-gray-600">System testing and grid connection for optimal performance.</p>
+                <div className="hidden md:flex absolute top-8 right-0 translate-x-1/2 -translate-y-1/2 z-0 text-[#2e7d32] bg-[#e8f5e9] w-8 h-8 items-center justify-center rounded-full">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
+                </div>
               </div>
               {/* Step 6 */}
               <div className="flex flex-col items-center text-center w-full md:w-1/6 mb-0 relative">
@@ -281,11 +296,11 @@ export default function Services() {
                 </div>
               </div>
               <div className="flex gap-4">
-                <a className="bg-white text-[#2e7d32] px-6 py-3 rounded-md font-medium hover:bg-gray-50 transition flex items-center gap-2" href="#">
+                <a className="bg-white text-[#2e7d32] px-6 py-3 rounded-md font-medium hover:bg-gray-50 transition flex items-center gap-2" href="https://wa.me/923277770090" target="_blank" rel="noopener noreferrer">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg>
                   Talk to Expert
                 </a>
-                <a className="bg-[#f57c00] text-white px-6 py-3 rounded-md font-medium hover:bg-orange-600 transition flex items-center gap-2" href="#">
+                <a className="bg-[#f57c00] text-white px-6 py-3 rounded-md font-medium hover:bg-orange-600 transition flex items-center gap-2" href="/contact">
                   Get Free Quote <span aria-hidden="true">&rarr;</span>
                 </a>
               </div>

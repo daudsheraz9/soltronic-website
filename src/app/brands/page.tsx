@@ -1,15 +1,15 @@
 "use client";
 
 import React from 'react';
-import { allBrands } from './brandsData';
+import { allBrands, getBrandWebsite } from './brandsData';
 
 const categories = [
-  'Inverter',
-  'Battery',
-  'Storage',
-  'Panel',
-  'EV',
-  'Electrical'
+  'Inverters',
+  'Batteries',
+  'Panels',
+  'EV Chargers',
+  'Mountings',
+  'Electricals'
 ];
 
 export default function BrandsPage() {
@@ -21,7 +21,7 @@ export default function BrandsPage() {
   });
 
   return (
-    <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 bg-white text-slate-800 overflow-x-hidden">
+    <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-12 bg-white text-slate-800 overflow-x-hidden">
 
       <style>{`
         @keyframes scroll-brands {
@@ -41,7 +41,7 @@ export default function BrandsPage() {
       <div className="flex flex-col gap-12">
         {categorizedBrands.map((category, cIdx) => (
           <section key={cIdx} className="w-full">
-            <h3 className="text-xl md:text-2xl font-bold text-slate-800 mb-6 text-center border-b border-gray-200 pb-3">
+            <h3 className="text-base font-semibold text-slate-800 mb-6 text-left border-b border-gray-200 pb-3">
               {category.name}
             </h3>
             
@@ -51,7 +51,7 @@ export default function BrandsPage() {
 
               <div className="flex gap-2 w-max animate-marquee">
                 {[...category.brands, ...category.brands].map((brand, idx) => (
-                  <div key={idx} className="bg-[#f8fafc] rounded-2xl p-1 min-w-[140px] flex-shrink-0 cursor-pointer">
+                  <a href={getBrandWebsite(brand.name)} target="_blank" rel="noopener noreferrer" key={idx} className="bg-[#f8fafc] rounded-2xl p-1 min-w-[140px] flex-shrink-0 cursor-pointer block hover:opacity-90 transition-opacity">
                     <div className="bg-white rounded-xl h-16 md:h-20 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-3 py-2 overflow-hidden hover:border-gray-200 transition-colors">
                       {brand.logo ? (
                         /* eslint-disable-next-line @next/next/no-img-element */
@@ -65,7 +65,7 @@ export default function BrandsPage() {
                         <span className="text-gray-400 text-xs font-semibold text-center">{brand.name}</span>
                       )}
                     </div>
-                  </div>
+                  </a>
                 ))}
               </div>
             </div>

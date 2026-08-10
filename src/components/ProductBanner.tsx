@@ -81,7 +81,7 @@ export default function ProductBanner() {
         <div className="hidden sm:flex w-full lg:w-[30.5%] flex-row lg:flex-col gap-3 sm:gap-4 flex-shrink-0 pr-2 lg:pr-3">
           <Link href="/products" className="flex-1 rounded-xl sm:rounded-2xl overflow-hidden relative shadow-sm border border-gray-100 bg-white group block min-h-[140px] lg:min-h-0">
             <img 
-              src="/right-side-ad1.jpeg" 
+              src="/right-side-ad1.png" 
               alt="Solis Inverter Offer" 
               className="absolute inset-0 w-full h-full object-fill sm:object-cover transition-transform duration-500 group-hover:scale-105" 
             />

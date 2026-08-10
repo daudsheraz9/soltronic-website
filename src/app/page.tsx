@@ -139,47 +139,47 @@ export default async function Home() {
               {[...Array(4)].map((_, i) => (
                 <div key={i} className="contents">
                   {/* Inverex */}
-                  <div className="bg-[#f8fafc] rounded-2xl p-1 min-w-[100px] flex-shrink-0">
+                  <a href="https://www.inverex.pk/" target="_blank" rel="noopener noreferrer" className="bg-[#f8fafc] rounded-2xl p-1 min-w-[100px] flex-shrink-0 block hover:opacity-80 transition-opacity">
                     <div className="bg-white rounded-xl h-12 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-2">
                       <span className="text-red-600 font-black italic tracking-tighter text-sm">INVEREX</span>
                     </div>
-                  </div>
+                  </a>
                   {/* Pylontech */}
-                  <div className="bg-[#f8fafc] rounded-2xl p-1 min-w-[130px] flex-shrink-0">
+                  <a href="https://www.pylontech.com.cn/" target="_blank" rel="noopener noreferrer" className="bg-[#f8fafc] rounded-2xl p-1 min-w-[130px] flex-shrink-0 block hover:opacity-80 transition-opacity">
                     <div className="bg-white rounded-xl h-12 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-2 py-1 overflow-visible">
                       <img src="/images/pylontech-logo.png" alt="Pylontech" className="h-full w-auto object-contain max-h-[40px] transform scale-[2] origin-center" style={{ mixBlendMode: 'multiply', filter: 'contrast(1.2)' }} />
                     </div>
-                  </div>
+                  </a>
                   {/* Solis */}
-                  <div className="bg-[#f8fafc] rounded-2xl p-1 min-w-[100px] flex-shrink-0">
+                  <a href="https://www.solisinverters.com/" target="_blank" rel="noopener noreferrer" className="bg-[#f8fafc] rounded-2xl p-1 min-w-[100px] flex-shrink-0 block hover:opacity-80 transition-opacity">
                     <div className="bg-white rounded-xl h-12 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-2 py-1">
                       <img src="/images/solis-logo.png" alt="Solis" className="h-full w-auto object-contain max-h-[30px] transform scale-[1.2]" />
                     </div>
-                  </div>
+                  </a>
                   {/* Jinko Solar */}
-                  <div className="bg-[#f8fafc] rounded-2xl p-1 min-w-[100px] flex-shrink-0">
+                  <a href="https://www.jinkosolar.com/" target="_blank" rel="noopener noreferrer" className="bg-[#f8fafc] rounded-2xl p-1 min-w-[100px] flex-shrink-0 block hover:opacity-80 transition-opacity">
                     <div className="bg-white rounded-xl h-12 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-2 py-1">
                       <img src="/images/jinko-logo.png" alt="Jinko Solar" className="h-full w-auto object-contain max-h-[22px]" style={{ mixBlendMode: 'multiply', filter: 'contrast(1.5) brightness(1.1)' }} />
                     </div>
-                  </div>
+                  </a>
                   {/* Narada */}
-                  <div className="bg-[#f8fafc] rounded-2xl p-1 min-w-[100px] flex-shrink-0">
+                  <a href="https://www.naradapower.com/" target="_blank" rel="noopener noreferrer" className="bg-[#f8fafc] rounded-2xl p-1 min-w-[100px] flex-shrink-0 block hover:opacity-80 transition-opacity">
                     <div className="bg-white rounded-xl h-12 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-4 py-2">
                       <img src="/images/narada-logo.png" alt="Narada" className="h-full w-auto object-contain max-h-[14px]" />
                     </div>
-                  </div>
+                  </a>
                   {/* Huawei */}
-                  <div className="bg-[#f8fafc] rounded-2xl p-1 min-w-[100px] flex-shrink-0">
+                  <a href="https://solar.huawei.com/" target="_blank" rel="noopener noreferrer" className="bg-[#f8fafc] rounded-2xl p-1 min-w-[100px] flex-shrink-0 block hover:opacity-80 transition-opacity">
                     <div className="bg-white rounded-xl h-12 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-2 py-1">
                       <img src="/images/huawei-logo.png" alt="Huawei" className="h-full w-auto object-contain max-h-[22px]" style={{ mixBlendMode: 'multiply', filter: 'contrast(1.5) brightness(1.1)' }} />
                     </div>
-                  </div>
+                  </a>
                   {/* Dyness */}
-                  <div className="bg-[#f8fafc] rounded-2xl p-1 min-w-[100px] flex-shrink-0">
+                  <a href="https://www.dyness.com/" target="_blank" rel="noopener noreferrer" className="bg-[#f8fafc] rounded-2xl p-1 min-w-[100px] flex-shrink-0 block hover:opacity-80 transition-opacity">
                     <div className="bg-white rounded-xl h-12 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-2">
                       <span className="text-green-500 font-light tracking-widest text-xs">DY<span className="text-blue-500 font-bold">NESS</span></span>
                     </div>
-                  </div>
+                  </a>
                 </div>
               ))}
             </div>
@@ -223,15 +223,27 @@ export default async function Home() {
       {/* Savings Section */}
       <section className="py-2 px-4 md:px-gutter bg-surface-bright">
         <div className="max-w-container-max mx-auto space-y-3 md:space-y-4">
-          <div className="bg-surface-container-low rounded-xl p-3 sm:p-4 border border-outline-variant/20 flex flex-col lg:flex-row items-center gap-3 sm:gap-4 shadow-sm transition-transform duration-500 hover:-translate-y-1">
-            <div className="w-full lg:w-1/4 space-y-1 text-center">
-              <span className="text-[9px] sm:text-[10px] font-bold text-primary uppercase tracking-widest">Calculate Your Savings</span>
-              <h2 className="text-xl sm:text-2xl font-bold text-on-surface leading-tight">See How Much You Can Save</h2>
-              <p className="text-xs sm:text-sm text-on-surface-variant hidden sm:block">Use our calculator to estimate your savings with solar solutions.</p>
+          <div className="bg-surface-container-low rounded-2xl p-4 sm:p-5 border border-outline-variant/20 flex flex-col lg:flex-row items-center gap-4 sm:gap-6 shadow-sm transition-transform duration-500 hover:-translate-y-1">
+            {/* Left: Calculator Image (Set to exactly 160px) */}
+            <div className="w-32 sm:w-36 lg:w-[150px] shrink-0 flex justify-center items-center">
+              <Image 
+                width={150} 
+                height={150} 
+                alt="Professional 3D Solar Savings Calculator" 
+                className="w-full h-auto max-h-[150px] rounded-xl shadow-sm object-contain hover:scale-105 transition-transform duration-300" 
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuASuSEZCzZymyyvLfwLQhOYXd6ygxOBl5ndOPLFm-ebqyKrQJkp94KKIH1kfpngXLt2x2PzPeieo0hIZUrFxkF-CLpcvleZKnJd0bopfmvrYdmdyQzYZSZCwJbS0Ph0NWTGbhDQQfc6T2qwsZ3d_warZ9dmWt12YFd_I_GCDgkOx-hDm3QqjWclmB5I4n7a2rWvAdkuhQSxkY1Jb-V9i9hKZBss4_lT8lK7zHKI1UKvhN-fXk5oNWlg" 
+                unoptimized 
+              />
             </div>
+
+            {/* Middle: Interactive Calculator Controls */}
             <SavingsCalculator />
-            <div className="hidden lg:block w-32 shrink-0">
-              <Image width={128} height={128} alt="Professional 3D Solar Savings Calculator" className="w-full h-auto rounded-xl shadow-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASuSEZCzZymyyvLfwLQhOYXd6ygxOBl5ndOPLFm-ebqyKrQJkp94KKIH1kfpngXLt2x2PzPeieo0hIZUrFxkF-CLpcvleZKnJd0bopfmvrYdmdyQzYZSZCwJbS0Ph0NWTGbhDQQfc6T2qwsZ3d_warZ9dmWt12YFd_I_GCDgkOx-hDm3QqjWclmB5I4n7a2rWvAdkuhQSxkY1Jb-V9i9hKZBss4_lT8lK7zHKI1UKvhN-fXk5oNWlg" unoptimized />
+
+            {/* Right: Text Information (Swapped Position) */}
+            <div className="w-full lg:w-1/4 space-y-1.5 text-center lg:text-left">
+              <span className="text-[10px] sm:text-[11px] font-bold text-primary uppercase tracking-widest">Calculate Your Savings</span>
+              <h2 className="text-xl sm:text-2xl font-bold text-on-surface leading-snug">See How Much You Can Save</h2>
+              <p className="text-xs sm:text-sm text-on-surface-variant">Use our calculator to estimate your savings with solar solutions.</p>
             </div>
           </div>
           <div className="bg-surface-container-low rounded-xl p-3 sm:p-4 border border-outline-variant/20 flex flex-row items-center gap-4 sm:gap-6 shadow-sm transition-transform duration-500 hover:-translate-y-1">

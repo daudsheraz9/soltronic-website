@@ -31,7 +31,7 @@ export default function Team() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Leader 1 */}
             <div className="bg-surface rounded-2xl p-6 shadow-card text-left transition-transform hover:-translate-y-1">
-              <img alt="Faheem Maalik" className="w-full h-64 object-cover rounded-xl mb-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBF4Ee6XZ31Uevxbz_eqfmTwAXfU5_Mo21tykrwXdL6mTsUbQmlMMXJEx05iXFOIeoqNeO2kg1pX93DeGM89k5vlYNmeJoYsjWB7Ixlw10uCDpHcyYV3GE64ZMoNto-6EcJ6NyU03ZW0gCitby8GVX4dY8biHjRtgXr_slW-BVC6pPKJfATRwYHadIBWDcjI1SZ21svnExUhN9Psc5haDx5eISdSqz4vrJZdVl8-XgZCjMXYRaIx05" />
+              <img alt="Faheem Maalik" className="w-full h-64 object-cover object-top rounded-xl mb-6" src="/CEO-3%20(1).png" />
               <h3 className="text-xl font-bold text-gray-900">Faheem Maalik</h3>
               <p className="text-brand font-medium text-sm mb-4">CEO &amp; Founder</p>
               <p className="text-gray-600 text-sm mb-6">Leading the vision for a cleaner, brighter tomorrow.</p>
@@ -39,16 +39,16 @@ export default function Team() {
             </div>
             {/* Leader 2 */}
             <div className="bg-surface rounded-2xl p-6 shadow-card text-left transition-transform hover:-translate-y-1">
-              <img alt="Ahsan Ali" className="w-full h-64 object-cover rounded-xl mb-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjdrZNWFCkbACfy7Dq8Y51Q8kl63Q0L6gVWgX5L1S1k8vsBAk51OytjkKUJwphhumZncKFyCsfb6h704vVfT2BTMHbs1ev-sElAMFhFUBO4VJFmlfnLGi64Z2FzgAlUXCoUEMnGKr0g0qCMnsn7hP27J_kbbnH8Z1DqTwFw7c7c-p_fCFiRxerlH5z_fpzKnXnbOKUgigPqqsNwQNPBLeBSjoADa1x9n5dYd0qodLll7KJqQDJPH7n" />
-              <h3 className="text-xl font-bold text-gray-900">Ahsan Ali</h3>
-              <p className="text-brand font-medium text-sm mb-4">CTO</p>
-              <p className="text-gray-600 text-sm mb-6">Driving innovation through technology and expertise.</p>
+              <img alt="Khursheed Abbas" className="w-full h-64 object-cover object-top rounded-xl mb-6" src="/cmo.jpg" />
+              <h3 className="text-xl font-bold text-gray-900">Khursheed Abbas</h3>
+              <p className="text-brand font-medium text-sm mb-4">CMO</p>
+              <p className="text-gray-600 text-sm mb-6">Driving innovation through marketing and expertise.</p>
               <a className="text-gray-400 hover:text-blue-600 transition-colors" href="#"><i className="fa-brands fa-linkedin text-xl"></i></a>
             </div>
             {/* Leader 3 */}
             <div className="bg-surface rounded-2xl p-6 shadow-card text-left transition-transform hover:-translate-y-1">
-              <img alt="Sara Khan" className="w-full h-64 object-cover rounded-xl mb-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCBadR_Dg7Omlwyle36BwYG68dMgfIOQAKddp76JB6okcXUnWIxrIKDHJdYxKpJCpsP43AO0qYyOEjxLq8Eqec5R3RaHWqMlb3aXoBSQO1m2bvyoqcPXywVlz0gh79POlB033ZgpAlwKKKNZon1xZsZHkuUzvYfxMcvtluNwk85smdgtE7SY1uErgF8mMIrV8w2i7YIOvsRYZx7e14PS70z5wauZzy28C45-mW4a0vhqiE48jwpIb8" />
-              <h3 className="text-xl font-bold text-gray-900">Sara Khan</h3>
+              <img alt="Muhammad Waseem Bhatti" className="w-full h-64 object-cover object-top rounded-xl mb-6" src="/coo.png" />
+              <h3 className="text-xl font-bold text-gray-900">Muhammad Waseem Bhatti</h3>
               <p className="text-brand font-medium text-sm mb-4">COO</p>
               <p className="text-gray-600 text-sm mb-6">Ensuring excellence in every step we take.</p>
               <a className="text-gray-400 hover:text-blue-600 transition-colors" href="#"><i className="fa-brands fa-linkedin text-xl"></i></a>
@@ -158,21 +158,11 @@ export default function Team() {
         </div>
       </section>
       
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-12">Life at Soltronics</h2>
-          <div className="flex gap-6 overflow-x-auto pb-8 scrollbar-hide">
-            <img alt="Team collaboration" className="w-80 h-60 object-cover rounded-2xl flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC44mKqqkBEPPlnfHrDlsVIIl59TuGkbC7L4EJCPHClU6kSDjOZ1eXkIucpEoFGdx7B6OOXcYCTcGMZBJN_11D-J3BVve3UzG1zAVHC2L9iZ9fZyuhDItE9kGB4lC3tv5LK3A3A9S2bRteJ6iS15eY3LfZJGMMq71517mSgFIqleB8N-hBDzRfP9uOUyrYDQSU0nwKe3gAXlPKXJpup2spwynG_7q-QlQ2VKzfgh2NXcyoBD8Vj4Bqc" />
-            <img alt="Solar installation" className="w-80 h-60 object-cover rounded-2xl flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBF4Ee6XZ31Uevxbz_eqfmTwAXfU5_Mo21tykrwXdL6mTsUbQmlMMXJEx05iXFOIeoqNeO2kg1pX93DeGM89k5vlYNmeJoYsjWB7Ixlw10uCDpHcyYV3GE64ZMoNto-6EcJ6NyU03ZW0gCitby8GVX4dY8biHjRtgXr_slW-BVC6pPKJfATRwYHadIBWDcjI1SZ21svnExUhN9Psc5haDx5eISdSqz4vrJZdVl8-XgZCjMXYRaIx05" />
-            <img alt="Office life" className="w-80 h-60 object-cover rounded-2xl flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjdrZNWFCkbACfy7Dq8Y51Q8kl63Q0L6gVWgX5L1S1k8vsBAk51OytjkKUJwphhumZncKFyCsfb6h704vVfT2BTMHbs1ev-sElAMFhFUBO4VJFmlfnLGi64Z2FzgAlUXCoUEMnGKr0g0qCMnsn7hP27J_kbbnH8Z1DqTwFw7c7c-p_fCFiRxerlH5z_fpzKnXnbOKUgigPqqsNwQNPBLeBSjoADa1x9n5dYd0qodLll7KJqQDJPH7n" />
-            <img alt="Team event" className="w-80 h-60 object-cover rounded-2xl flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCBadR_Dg7Omlwyle36BwYG68dMgfIOQAKddp76JB6okcXUnWIxrIKDHJdYxKpJCpsP43AO0qYyOEjxLq8Eqec5R3RaHWqMlb3aXoBSQO1m2bvyoqcPXywVlz0gh79POlB033ZgpAlwKKKNZon1xZsZHkuUzvYfxMcvtluNwk85smdgtE7SY1uErgF8mMIrV8w2i7YIOvsRYZx7e14PS70z5wauZzy28C45-mW4a0vhqiE48jwpIb8" />
-          </div>
-        </div>
-      </section>
+
       {/* END: Achievements Section */}
       
       {/* BEGIN: CTA Section */}
-      <section className="py-12 bg-white">
+      <section className="pb-12 pt-4 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-[#2e7d32] rounded-2xl overflow-hidden p-8 md:p-12 lg:p-16 flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="md:w-1/2">
@@ -189,7 +179,7 @@ export default function Team() {
               </div>
             </div>
             <div className="md:w-1/2 flex justify-end">
-              <img alt="Solar engineers illustration" className="w-full max-w-lg object-contain" src="https://lh3.googleusercontent.com/aida/AP1WRLvpwe6OGY84EfOAjDp-IJ-nV0ml5VGE93CKLyU80drLKXwm6p6K8xErMlzcjZrqKQs_gMVaa6c6dwrmIvibwtt8kzOxAUd-O0iXfeML48Hw5n-TqNt8jbbNxV1a3Enx-t-2ct4TDqXcQiVhPOc4lSIZUSoq8Zn9dku7z82KnFD_b5PajlrBaWmUNZvmOkAZXH57X3V82VlFZIvHLvk-yAXtF5Um9oxFNhE0OC04vnJq-qWT8TxJJqZ8hxw" />
+              <img alt="Solar engineers illustration" className="w-full max-w-md object-contain rounded-2xl" src="/solar_team.png" />
             </div>
           </div>
         </div>

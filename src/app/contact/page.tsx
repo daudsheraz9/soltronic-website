@@ -1,6 +1,20 @@
+"use client";
+
 import Link from 'next/link';
+import { useState } from 'react';
+
+const faqs = [
+  { question: "What areas do you serve?", answer: "We provide services primarily in Lahore and surrounding regions, but we can accommodate larger projects nationwide." },
+  { question: "How can I get a free quote?", answer: "You can use the 'Get Free Quote' button, call our support number, or fill out the contact form below with your requirements." },
+  { question: "What is the typical project timeline?", answer: "For residential projects, installation usually takes 1-3 days. Commercial projects vary based on size and complexity, generally taking 2-4 weeks." },
+];
 
 export default function ContactUs() {
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  const toggleFaq = (index: number) => {
+    setOpenFaq(openFaq === index ? null : index);
+  };
   return (
     <>
       {/* TopNavBar */}
@@ -17,7 +31,7 @@ export default function ContactUs() {
           <div className="relative z-10 max-w-container-max mx-auto px-gutter w-full">
             <div className="max-w-xl">
               <span className="text-primary font-label-md text-label-md uppercase tracking-widest mb-4 block">GET IN TOUCH</span>
-              <h1 className="font-display text-display text-on-surface mb-6">We'd Love to<br/>Hear From You</h1>
+              <h1 className="font-display text-display text-on-surface mb-6">We'd Love to<br />Hear From You</h1>
               <p className="font-body-lg text-body-lg text-on-surface-variant mb-8">
                 Have a question, project in mind, or need expert advice? Our team is ready to assist you with the best solar solutions tailored to your needs.
               </p>
@@ -44,7 +58,7 @@ export default function ContactUs() {
               </div>
               <span className="material-symbols-outlined text-secondary-container" data-icon="arrow_forward">arrow_forward</span>
             </div>
-            
+
             {/* Card 2 */}
             <div className="bg-surface-container-lowest rounded-xl p-6 shadow-[0_4px_20px_rgba(0,0,0,0.05)] flex items-center gap-4 hover:-translate-y-1 transition-transform border border-outline-variant/30">
               <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white shrink-0">
@@ -52,12 +66,12 @@ export default function ContactUs() {
               </div>
               <div className="flex-grow">
                 <h3 className="font-headline-md text-[18px] text-on-surface mb-1">Email Us</h3>
-                <p className="font-body-md text-sm text-on-surface-variant">info@soltronic.com.pk</p>
+                <p className="font-body-md text-sm text-on-surface-variant">info@soltronicsenergy.com</p>
                 <p className="font-body-md text-xs text-outline mt-1">We reply within 24 hours</p>
               </div>
               <span className="material-symbols-outlined text-secondary-container" data-icon="arrow_forward">arrow_forward</span>
             </div>
-            
+
             {/* Card 3 */}
             <div className="bg-surface-container-lowest rounded-xl p-6 shadow-[0_4px_20px_rgba(0,0,0,0.05)] flex items-center gap-4 hover:-translate-y-1 transition-transform border border-outline-variant/30">
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
@@ -110,7 +124,7 @@ export default function ContactUs() {
                 Send Us a <span className="text-primary">Message</span>
               </h2>
               <p className="font-body-md text-on-surface-variant mb-8">Fill out the form below and our team will get back to you shortly.</p>
-              
+
               <form className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
@@ -163,7 +177,7 @@ export default function ContactUs() {
               </div>
               <span className="material-symbols-outlined text-primary/40" data-icon="calendar_today">calendar_today</span>
             </div>
-            
+
             <div className="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/30 shadow-sm flex justify-between items-center">
               <div>
                 <h4 className="font-label-md text-label-md text-on-surface mb-1">Saturday</h4>
@@ -171,7 +185,7 @@ export default function ContactUs() {
               </div>
               <span className="material-symbols-outlined text-primary/40" data-icon="calendar_today">calendar_today</span>
             </div>
-            
+
             <div className="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/30 shadow-sm flex justify-between items-center">
               <div>
                 <h4 className="font-label-md text-label-md text-on-surface mb-1">Sunday</h4>
@@ -179,7 +193,7 @@ export default function ContactUs() {
               </div>
               <span className="material-symbols-outlined text-primary/40" data-icon="calendar_today">calendar_today</span>
             </div>
-            
+
             <div className="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/30 shadow-sm flex justify-between items-center">
               <div>
                 <h4 className="font-label-md text-label-md text-on-surface mb-1">Public Holidays</h4>
@@ -196,46 +210,36 @@ export default function ContactUs() {
             <div>
               <h2 className="font-headline-lg text-headline-lg text-on-surface mb-2">Frequently Asked <span className="text-primary">Questions</span></h2>
               <p className="font-body-md text-on-surface-variant mb-8">Quick answers to common inquiries.</p>
-              
+
               <div className="space-y-4">
-                <div className="border border-outline-variant/30 rounded-lg p-4 flex justify-between items-center bg-surface-container-lowest">
-                  <span className="font-label-md text-on-surface">What areas do you serve?</span>
-                  <span className="material-symbols-outlined text-primary" data-icon="add">add</span>
-                </div>
-                <div className="border border-outline-variant/30 rounded-lg p-4 flex justify-between items-center bg-surface-container-lowest">
-                  <span className="font-label-md text-on-surface">How can I get a free quote?</span>
-                  <span className="material-symbols-outlined text-primary" data-icon="add">add</span>
-                </div>
-                <div className="border border-outline-variant/30 rounded-lg p-4 flex justify-between items-center bg-surface-container-lowest">
-                  <span className="font-label-md text-on-surface">What is the typical project timeline?</span>
-                  <span className="material-symbols-outlined text-primary" data-icon="add">add</span>
-                </div>
+                {faqs.map((faq, idx) => (
+                  <div key={idx} className="border border-outline-variant/30 rounded-lg bg-surface-container-lowest overflow-hidden">
+                    <button
+                      onClick={() => toggleFaq(idx)}
+                      className="w-full p-4 flex justify-between items-center text-left"
+                    >
+                      <span className="font-label-md text-on-surface">{faq.question}</span>
+                      <span className="material-symbols-outlined text-primary" data-icon={openFaq === idx ? "remove" : "add"}>
+                        {openFaq === idx ? "remove" : "add"}
+                      </span>
+                    </button>
+                    {openFaq === idx && (
+                      <div className="px-4 pb-4 font-body-md text-on-surface-variant">
+                        {faq.answer}
+                      </div>
+                    )}
+                  </div>
+                ))}
               </div>
             </div>
-            
-            <div className="relative">
-              <img alt="Solar FAQ Illustration" className="w-full h-auto object-contain rounded-xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBjP1dH1lN0K-ZnHTgPTHpXtvVGDby8LnyyJE_4yYuj0AXmt6SEq1MX0GHk7NI_RtLu4tecix9CMq5bKAEHYmJ7h3y8qUYWRRMKC-va3Hc9Fw_WF0mbA6NQraa8V4WuJDf8817MHDtQLuvV8f3Yno-fjbZN08NamIfmxCeyZu3fCXMP2XY8Vny15sQ0K2GCpNKR-hOWbSb0qyQKhn3fVMc-NKy7BkHOlTmE3IytmCltW014VIdTaVTYl-g4OvgQJKT-g" />
+
+            <div className="relative flex justify-center items-center">
+              <img alt="Solar FAQ Illustration" className="w-full max-w-sm h-auto object-contain rounded-xl" src="/clean_energy_home.png" />
             </div>
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="max-w-container-max mx-auto px-gutter mb-section-padding">
-          <div className="bg-surface-container-low rounded-xl p-8 md:p-12 border border-outline-variant/50 flex flex-col md:flex-row justify-between items-center gap-8">
-            <div className="max-w-2xl">
-              <h2 className="font-headline-lg text-headline-lg text-on-surface mb-4">Let's Build a <span className="text-primary">Sustainable Future</span> Together</h2>
-              <p className="font-body-md text-on-surface-variant">Partner with Soltronic Energy for reliable, efficient and future-ready solar solutions.</p>
-            </div>
-            <div className="flex flex-wrap gap-4 shrink-0">
-              <button className="bg-secondary-container text-white px-8 py-3 rounded-full font-label-md text-label-md flex items-center gap-2 hover:bg-secondary-container/90 transition-all shadow-sm">
-                Get Free Quote <span className="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
-              </button>
-              <button className="border border-outline-variant text-on-surface px-8 py-3 rounded-full font-label-md text-label-md flex items-center gap-2 hover:bg-surface-variant/20 transition-all">
-                Learn More <span className="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
-              </button>
-            </div>
-          </div>
-        </section>
+
       </main>
 
     </>

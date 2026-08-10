@@ -256,9 +256,9 @@ export default function ProductsClient({ initialProducts }: { initialProducts: P
               
               {/* Pagination */}
               {totalPages > 1 && (
-                <div className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 xl:gap-5">
-                  <div className="col-span-2 lg:col-span-1 lg:col-start-4">
-                    <nav className="flex w-full rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                <div className="mt-10 flex justify-center w-full">
+                  <div className="inline-block">
+                    <nav className="inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
                       <button 
                         onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
                         disabled={currentPage === 1}
@@ -330,91 +330,91 @@ export default function ProductsClient({ initialProducts }: { initialProducts: P
             
             {/* --- First Set of Logos --- */}
             {/* Inverex */}
-            <div className="bg-[#f8fafc] rounded-2xl p-2 min-w-[160px] flex-shrink-0">
+            <a href="https://www.inverex.pk/" target="_blank" rel="noopener noreferrer" className="bg-[#f8fafc] rounded-2xl p-2 min-w-[160px] flex-shrink-0 block hover:opacity-80 transition-opacity">
               <div className="bg-white rounded-xl h-16 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-4">
                 <span className="text-red-600 font-black italic tracking-tighter text-xl">INVEREX</span>
               </div>
-            </div>
+            </a>
             {/* Pylontech */}
-            <div className="bg-[#f8fafc] rounded-2xl p-2 min-w-[220px] flex-shrink-0">
+            <a href="https://www.pylontech.com.cn/" target="_blank" rel="noopener noreferrer" className="bg-[#f8fafc] rounded-2xl p-2 min-w-[220px] flex-shrink-0 block hover:opacity-80 transition-opacity">
               <div className="bg-white rounded-xl h-16 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-2 py-1 overflow-visible">
                 <img src="/images/pylontech-logo.png" alt="Pylontech" className="h-full w-auto object-contain max-h-[60px] transform scale-[2.5] origin-center" style={{ mixBlendMode: 'multiply', filter: 'contrast(1.2)' }} />
               </div>
-            </div>
+            </a>
             {/* Solis */}
-            <div className="bg-[#f8fafc] rounded-2xl p-2 min-w-[160px] flex-shrink-0">
+            <a href="https://www.solisinverters.com/" target="_blank" rel="noopener noreferrer" className="bg-[#f8fafc] rounded-2xl p-2 min-w-[160px] flex-shrink-0 block hover:opacity-80 transition-opacity">
               <div className="bg-white rounded-xl h-16 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-2 py-1">
                 <img src="/images/solis-logo.png" alt="Solis" className="h-full w-auto object-contain max-h-[55px] transform scale-150" />
               </div>
-            </div>
+            </a>
             {/* Jinko Solar */}
-            <div className="bg-[#f8fafc] rounded-2xl p-2 min-w-[160px] flex-shrink-0">
+            <a href="https://www.jinkosolar.com/" target="_blank" rel="noopener noreferrer" className="bg-[#f8fafc] rounded-2xl p-2 min-w-[160px] flex-shrink-0 block hover:opacity-80 transition-opacity">
               <div className="bg-white rounded-xl h-16 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-4 py-2">
                 <img src="/images/jinko-logo.png" alt="Jinko Solar" className="h-full w-auto object-contain max-h-[35px]" style={{ mixBlendMode: 'multiply', filter: 'contrast(1.5) brightness(1.1)' }} />
               </div>
-            </div>
+            </a>
             {/* Narada */}
-            <div className="bg-[#f8fafc] rounded-2xl p-2 min-w-[160px] flex-shrink-0">
+            <a href="https://www.naradapower.com/" target="_blank" rel="noopener noreferrer" className="bg-[#f8fafc] rounded-2xl p-2 min-w-[160px] flex-shrink-0 block hover:opacity-80 transition-opacity">
               <div className="bg-white rounded-xl h-16 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-6 py-3">
                 <img src="/images/narada-logo.png" alt="Narada" className="h-full w-auto object-contain max-h-[22px]" />
               </div>
-            </div>
+            </a>
             {/* Huawei */}
-            <div className="bg-[#f8fafc] rounded-2xl p-2 min-w-[160px] flex-shrink-0">
+            <a href="https://solar.huawei.com/" target="_blank" rel="noopener noreferrer" className="bg-[#f8fafc] rounded-2xl p-2 min-w-[160px] flex-shrink-0 block hover:opacity-80 transition-opacity">
               <div className="bg-white rounded-xl h-16 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-4 py-2">
                 <img src="/images/huawei-logo.png" alt="Huawei" className="h-full w-auto object-contain max-h-[35px]" style={{ mixBlendMode: 'multiply', filter: 'contrast(1.5) brightness(1.1)' }} />
               </div>
-            </div>
+            </a>
             {/* Dyness */}
-            <div className="bg-[#f8fafc] rounded-2xl p-2 min-w-[160px] flex-shrink-0">
+            <a href="https://www.dyness.com/" target="_blank" rel="noopener noreferrer" className="bg-[#f8fafc] rounded-2xl p-2 min-w-[160px] flex-shrink-0 block hover:opacity-80 transition-opacity">
               <div className="bg-white rounded-xl h-16 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-4">
                 <span className="text-green-500 font-light tracking-widest text-lg">DY<span className="text-blue-500 font-bold">NESS</span></span>
               </div>
-            </div>
+            </a>
             
             {/* --- Second Set of Logos for Seamless Looping --- */}
             {/* Inverex */}
-            <div className="bg-[#f8fafc] rounded-2xl p-2 min-w-[160px] flex-shrink-0">
+            <a href="https://www.inverex.pk/" target="_blank" rel="noopener noreferrer" className="bg-[#f8fafc] rounded-2xl p-2 min-w-[160px] flex-shrink-0 block hover:opacity-80 transition-opacity">
               <div className="bg-white rounded-xl h-16 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-4">
                 <span className="text-red-600 font-black italic tracking-tighter text-xl">INVEREX</span>
               </div>
-            </div>
+            </a>
             {/* Pylontech */}
-            <div className="bg-[#f8fafc] rounded-2xl p-2 min-w-[220px] flex-shrink-0">
+            <a href="https://www.pylontech.com.cn/" target="_blank" rel="noopener noreferrer" className="bg-[#f8fafc] rounded-2xl p-2 min-w-[220px] flex-shrink-0 block hover:opacity-80 transition-opacity">
               <div className="bg-white rounded-xl h-16 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-2 py-1 overflow-visible">
                 <img src="/images/pylontech-logo.png" alt="Pylontech" className="h-full w-auto object-contain max-h-[60px] transform scale-[2.5] origin-center" style={{ mixBlendMode: 'multiply', filter: 'contrast(1.2)' }} />
               </div>
-            </div>
+            </a>
             {/* Solis */}
-            <div className="bg-[#f8fafc] rounded-2xl p-2 min-w-[160px] flex-shrink-0">
+            <a href="https://www.solisinverters.com/" target="_blank" rel="noopener noreferrer" className="bg-[#f8fafc] rounded-2xl p-2 min-w-[160px] flex-shrink-0 block hover:opacity-80 transition-opacity">
               <div className="bg-white rounded-xl h-16 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-2 py-1">
                 <img src="/images/solis-logo.png" alt="Solis" className="h-full w-auto object-contain max-h-[55px] transform scale-150" />
               </div>
-            </div>
+            </a>
             {/* Jinko Solar */}
-            <div className="bg-[#f8fafc] rounded-2xl p-2 min-w-[160px] flex-shrink-0">
+            <a href="https://www.jinkosolar.com/" target="_blank" rel="noopener noreferrer" className="bg-[#f8fafc] rounded-2xl p-2 min-w-[160px] flex-shrink-0 block hover:opacity-80 transition-opacity">
               <div className="bg-white rounded-xl h-16 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-4 py-2">
                 <img src="/images/jinko-logo.png" alt="Jinko Solar" className="h-full w-auto object-contain max-h-[35px]" style={{ mixBlendMode: 'multiply', filter: 'contrast(1.5) brightness(1.1)' }} />
               </div>
-            </div>
+            </a>
             {/* Narada */}
-            <div className="bg-[#f8fafc] rounded-2xl p-2 min-w-[160px] flex-shrink-0">
+            <a href="https://www.naradapower.com/" target="_blank" rel="noopener noreferrer" className="bg-[#f8fafc] rounded-2xl p-2 min-w-[160px] flex-shrink-0 block hover:opacity-80 transition-opacity">
               <div className="bg-white rounded-xl h-16 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-6 py-3">
                 <img src="/images/narada-logo.png" alt="Narada" className="h-full w-auto object-contain max-h-[22px]" />
               </div>
-            </div>
+            </a>
             {/* Huawei */}
-            <div className="bg-[#f8fafc] rounded-2xl p-2 min-w-[160px] flex-shrink-0">
+            <a href="https://solar.huawei.com/" target="_blank" rel="noopener noreferrer" className="bg-[#f8fafc] rounded-2xl p-2 min-w-[160px] flex-shrink-0 block hover:opacity-80 transition-opacity">
               <div className="bg-white rounded-xl h-16 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-4 py-2">
                 <img src="/images/huawei-logo.png" alt="Huawei" className="h-full w-auto object-contain max-h-[35px]" style={{ mixBlendMode: 'multiply', filter: 'contrast(1.5) brightness(1.1)' }} />
               </div>
-            </div>
+            </a>
             {/* Dyness */}
-            <div className="bg-[#f8fafc] rounded-2xl p-2 min-w-[160px] flex-shrink-0">
+            <a href="https://www.dyness.com/" target="_blank" rel="noopener noreferrer" className="bg-[#f8fafc] rounded-2xl p-2 min-w-[160px] flex-shrink-0 block hover:opacity-80 transition-opacity">
               <div className="bg-white rounded-xl h-16 flex items-center justify-center border border-gray-50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] px-4">
                 <span className="text-green-500 font-light tracking-widest text-lg">DY<span className="text-blue-500 font-bold">NESS</span></span>
               </div>
-            </div>
+            </a>
             
           </div>
         </div>

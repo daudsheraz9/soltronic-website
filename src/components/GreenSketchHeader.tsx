@@ -167,7 +167,7 @@ export default function GreenSketchHeader({
             {/* Premium Inverters Ad */}
             <div className="relative rounded-xl overflow-hidden shadow-sm group cursor-pointer border border-outline-variant aspect-[16/9] md:aspect-[21/9]">
               <Image
-                src="/right-side-ad1.jpeg"
+                src="/right-side-ad1.png"
                 alt="Premium Inverters"
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -195,7 +195,7 @@ export default function GreenSketchHeader({
         {/* Ad Banner 1 */}
         <div className="w-full rounded-xl overflow-hidden border border-outline-variant relative group cursor-pointer">
           <Image
-            src="/banner-side-1.png"
+            src="/right-side-ad1.png"
             alt="Tier 1 solar panel cells"
             width={400}
             height={300}

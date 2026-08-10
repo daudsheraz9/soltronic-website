@@ -1,3 +1,53 @@
+const brandWebsiteMap: Record<string, string> = {
+  "solis": "https://www.solisinverters.com/",
+  "inverex": "https://www.inverex.pk/",
+  "pylontech": "https://www.pylontech.com.cn/",
+  "jinko solar": "https://www.jinkosolar.com/",
+  "jinko": "https://www.jinkosolar.com/",
+  "narada": "https://www.naradapower.com/",
+  "huawei": "https://solar.huawei.com/",
+  "dyness": "https://www.dyness.com/",
+  "deye": "https://www.deyeinverter.com/",
+  "canadian solar": "https://www.canadiansolar.com/",
+  "longi": "https://www.longi.com/",
+  "trina": "https://www.trinasolar.com/",
+  "growatt": "https://www.growatt.com/",
+  "goodwe": "https://www.goodwe.com/",
+  "sungrow": "https://www.sungrowpower.com/",
+  "byd": "https://www.byd.com/",
+  "catl": "https://www.catl.com/",
+  "ae solar": "https://ae-solar.com/",
+  "afore energy": "https://www.afore-power.com/",
+  "afore": "https://www.afore-power.com/",
+  "aiko": "https://www.aikosolar.com/",
+  "anern": "https://www.anern.com/",
+  "astronergy": "https://www.astronergy.com/",
+  "chint": "https://chintglobal.com/",
+  "crown micro": "https://www.crownmicro.com/",
+  "daewoo battery": "https://daewoobattery.com/",
+  "ecoworthy": "https://www.eco-worthy.com/",
+  "atlas battery": "https://atlasbatteries.com.pk/",
+  "atom power": "https://atompower.com/",
+  "auxsol": "https://www.auxsolcloud.com/",
+  "blue carbon": "https://www.bluecarbontech.com/",
+  "calb": "https://www.calb-tech.com/",
+  "felicity": "https://www.felicitysolar.com/",
+  "must": "https://www.mustenergy.com/",
+  "srne": "https://www.srnesolar.com/",
+  "sunsyne": "https://sunsynk.org/",
+  "sunsynk": "https://sunsynk.org/",
+  "victron": "https://www.victronenergy.com/",
+  "ziewnic": "https://ziewnic.com/"
+};
+
+export function getBrandWebsite(brandName: string): string {
+  const key = brandName.toLowerCase().trim();
+  if (brandWebsiteMap[key]) {
+    return brandWebsiteMap[key];
+  }
+  return `https://www.google.com/search?q=${encodeURIComponent(brandName + " official website")}`;
+}
+
 export const allBrands = [
   {
     "name": "1ON",
