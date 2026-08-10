@@ -1,139 +1,749 @@
 "use client";
 
-import React, { useRef } from 'react';
+import React, { useState, useRef, useMemo } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 
-gsap.registerPlugin(ScrollTrigger);
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
-export default function NewsPage() {
-  const container = useRef<HTMLDivElement>(null);
-  
-  useGSAP(() => {
-    // Parallax background elements
-    gsap.to(".parallax-bg", {
-      yPercent: 30,
-      ease: "none",
-      scrollTrigger: {
-        trigger: container.current,
-        start: "top top",
-        end: "bottom top",
-        scrub: true
-      }
-    });
+interface Article {
+  id: string;
+  slug: string;
+  title: string;
+  category: string;
+  date: string;
+  readTime: string;
+  author: {
+    name: string;
+    role: string;
+    avatar: string;
+  };
+  excerpt: string;
+  content: string[];
+  keyTakeaways: string[];
+  image: string;
+  featured?: boolean;
+  trending?: boolean;
+  tags: string[];
+}
 
-    // Staggered domino entrances for news cards
-    gsap.from(".news-card", {
-      scrollTrigger: {
-        trigger: ".news-grid",
-        start: "top 80%",
-      },
-      y: 100,
-      opacity: 0,
-      rotateX: 45,
-      duration: 1.2,
-      stagger: 0.15,
-      ease: "power3.out"
-    });
-  }, { scope: container });
+const ARTICLES: Article[] = [
+  {
+    id: "news-1",
+    slug: "nepra-net-metering-update-2026",
+    title: "NEPRA Finalizes Updated Net Metering Guidelines 2026: What Solar System Owners Need to Know",
+    category: "Industry Policy",
+    date: "August 8, 2026",
+    readTime: "5 min read",
+    author: {
+      name: "Engr. Tariq Mehmood",
+      role: "Chief Technical Advisor, Soltronic Energy",
+      avatar: "/CEO-3.png"
+    },
+    excerpt: "The National Electric Power Regulatory Authority (NEPRA) has released revised guidelines for grid-connected photovoltaic systems. Learn how the new framework preserves payback periods while improving grid stability.",
+    content: [
+      "In a major policy update aimed at fostering sustainable energy expansion while preserving grid balance, NEPRA has officially issued the 2026 Net Metering Regulatory Guidelines. The decision comes after extensive consultations with industry leaders, including Soltronic Energy.",
+      "Key provisions of the new framework guarantee that existing residential and commercial net-metered consumers maintain their existing buyback contracts for the full duration of their initial terms.",
+      "For new applicants, NEPRA has introduced dynamic peak/off-peak export billing along with streamlined 14-day fast-track net metering approvals for certified Tier-1 equipment installations.",
+      "Soltronic Energy's engineering team has already updated all our standard on-grid and hybrid inverter configurations to fully comply with NEPRA's mandatory anti-islanding and rapid shutdown standards."
+    ],
+    keyTakeaways: [
+      "Existing net-metering contracts are 100% grandfathered for their original term.",
+      "New applications benefit from a simplified 14-day fast-track approval workflow.",
+      "Dual-port hybrid smart inverters now receive priority grid connection certification.",
+      "Payback periods for 10kW - 50kW residential & commercial systems remain highly attractive at 2.5 to 3.2 years."
+    ],
+    image: "/gallery_residence_solar_1786337122242.png",
+    featured: true,
+    trending: true,
+    tags: ["NEPRA", "Net Metering", "Policy", "Solar Export", "Grid Compliance"]
+  },
+  {
+    id: "news-2",
+    slug: "soltronic-100mw-bess-punjab-milestone",
+    title: "Soltronic Energy Commissions Landmark 100MWh Commercial Battery Storage Facility in Punjab",
+    category: "Soltronic Milestones",
+    date: "August 2, 2026",
+    readTime: "4 min read",
+    author: {
+      name: "Syed Ali Raza",
+      role: "Head of Utility Infrastructure",
+      avatar: "/QamarMaqsood.png"
+    },
+    excerpt: "Soltronic has successfully energized one of Pakistan's largest containerized Battery Energy Storage Systems (BESS), ensuring uninterrupted 24/7 power for major industrial clusters.",
+    content: [
+      "Soltronic Energy is proud to announce the formal commissioning of our flagship 100MWh Utility-Scale Battery Energy Storage System (BESS) located in the industrial belt of Faisalabad, Punjab.",
+      "Designed using high-density Lithium Iron Phosphate (LFP) chemistry with advanced liquid cooling, the installation shields industrial manufacturing plants from power dips and grid load-shedding while capturing peak solar production.",
+      "This landmark project demonstrates how utility-grade storage eliminates reliance on expensive diesel generators, cutting industrial operational carbon footprints by over 45,000 metric tons annually."
+    ],
+    keyTakeaways: [
+      "100MWh capacity provides 4 hours of continuous peak load support to 12 major industrial units.",
+      "Equipped with Soltronic AI-driven EMS for real-time peak shaving and arbitrage.",
+      "LFP battery cell architecture certified for 6,000+ deep discharge cycles at 90% DoD.",
+      "Reduces regional industrial diesel consumption by 14.5 million liters per year."
+    ],
+    image: "/gallery_bess_container_1786337154136.png",
+    featured: false,
+    trending: true,
+    tags: ["BESS", "Battery Storage", "Faisalabad", "Industrial Solar", "LFP Batteries"]
+  },
+  {
+    id: "news-3",
+    slug: "topcon-n-type-efficiency-breakthrough",
+    title: "Understanding N-Type TOPCon & HJT: Why 2026 is the Year of High-Efficiency Solar Panels",
+    category: "Tech & Innovation",
+    date: "July 26, 2026",
+    readTime: "6 min read",
+    author: {
+      name: "Dr. Ayesha Malik",
+      role: "Lead R&D Scientist",
+      avatar: "/NasirRashid.png"
+    },
+    excerpt: "N-Type TOPCon and Heterojunction (HJT) solar panels are replacing traditional P-Type panels. Explore how their superior temperature coefficients yield up to 12% more energy during hot summers.",
+    content: [
+      "As ambient summer temperatures across Pakistan exceed 45°C, conventional solar panels suffer from power degradation. N-Type TOPCon cell architecture mitigates this loss through superior thermal stability.",
+      "Soltronic's latest lineup of 625W to 740W bifacial modules utilizes N-Type TOPCon and HJT cells with temperature coefficients of -0.29%/°C compared to older PERC panels (-0.35%/°C).",
+      "Additionally, the bifaciality factor reaching 85% allows the rear side of the panel to harvest reflected sunlight from concrete roofs or bright ground cover, boosting total daily power generation."
+    ],
+    keyTakeaways: [
+      "N-Type panels experience less than 1% degradation in Year 1 compared to 2% for legacy PERC.",
+      "Bifacial rear-side gain generates 10% - 25% additional power depending on roof surface albedo.",
+      "30-Year linear power warranty guarantees 87.4% output retention after three decades.",
+      "High power density reduces mounting structure and cabling costs by up to 15%."
+    ],
+    image: "/banner-main-2.png",
+    featured: false,
+    trending: false,
+    tags: ["TOPCon", "HJT", "Bifacial Panels", "Solar Tech", "Panel Efficiency"]
+  },
+  {
+    id: "news-4",
+    slug: "green-financing-bank-partnerships-2026",
+    title: "Soltronic Partners with Leading Banks for Low-Interest Solar Financing Programs",
+    category: "Market Analysis",
+    date: "July 18, 2026",
+    readTime: "3 min read",
+    author: {
+      name: "Hamza Farooq",
+      role: "Corporate Finance Director",
+      avatar: "/zaeemmaalik.png"
+    },
+    excerpt: "Transitioning to solar power has never been more accessible. Soltronic's new Green Energy Loan program offers markup rates as low as 6% with up to 5-year repayment tenures.",
+    content: [
+      "To eliminate upfront capital barriers for homeowners and SMEs, Soltronic Energy has partnered with top commercial banks to launch the 2026 Soltronic Green Financing Solution.",
+      "Customers can now apply directly through Soltronic's online portal for pre-approved loans covering up to 80% of total EPC project cost with minimal documentation and expedited processing times.",
+      "By offsetting monthly grid electricity bills against the loan EMI, most commercial clients achieve immediate net-positive cash flow from month one."
+    ],
+    keyTakeaways: [
+      "Up to 80% project financing available for 5kW to 500kW rooftop installations.",
+      "Flexible repayment tenures ranging from 12 months up to 5 years.",
+      "Fast-track verification process with approval response within 5 business days.",
+      "Zero early termination penalties for corporate borrowers."
+    ],
+    image: "/clean_energy_home.png",
+    featured: false,
+    trending: false,
+    tags: ["Financing", "Green Loans", "Solar ROI", "Banking", "Commercial Solar"]
+  },
+  {
+    id: "news-5",
+    slug: "agricultural-solar-pumping-solutions",
+    title: "Solar Water Pumping Drives Irrigation Security Across Regional Farming Belts",
+    category: "ESG & Sustainability",
+    date: "July 05, 2026",
+    readTime: "5 min read",
+    author: {
+      name: "Zubair Hashmi",
+      role: "Head of Agri-Solar Solutions",
+      avatar: "/waseembhatti.png"
+    },
+    excerpt: "Replacing diesel tube wells with high-torque Soltronic VFD solar pump controllers empowers farmers with reliable day-time irrigation while drastically cutting crop production overheads.",
+    content: [
+      "Rising fuel prices have severely impacted agricultural productivity. Soltronic Energy's dedicated Agri-Solar wing has successfully converted over 1,500 diesel tube-wells to solar-powered VFD systems over the past year.",
+      "Our IP65-rated solar pump controllers feature automatic MPPT tracking, dry-run protection, and remote GSM monitoring, allowing farmers to control pump speed and schedule irrigation directly from their smartphones.",
+      "The initiative has secured over 8,000 acres of farmland against fuel scarcity, boosting crop yields and ensuring food security in regional farming belts."
+    ],
+    keyTakeaways: [
+      "100% elimination of daily diesel expenditures for tube-well operation.",
+      "Intelligent MPPT controllers deliver full water flow even during low-light morning hours.",
+      "Heavy-duty galvanized mounting structures withstand high agricultural field wind loads.",
+      "Integrated IoT telemetry enables remote pump diagnostics and water usage metrics."
+    ],
+    image: "/gallery_agri_solar_1786337138449.png",
+    featured: false,
+    trending: false,
+    tags: ["Agri Solar", "Solar Pump", "VFD Controllers", "Irrigation", "Sustainability"]
+  },
+  {
+    id: "news-6",
+    slug: "ev-charging-infrastructure-expansion",
+    title: "Soltronic Deploys Ultra-Fast Commercial EV Chargers Across National Transport Corridors",
+    category: "Tech & Innovation",
+    date: "June 22, 2026",
+    readTime: "4 min read",
+    author: {
+      name: "Sana Chaudhry",
+      role: "Director of Clean Mobility",
+      avatar: "/asadurrehman.png"
+    },
+    excerpt: "Soltronic is accelerating electric vehicle adoption with the rollout of 180kW DC Fast Chargers along major motorways, powered directly by solar-plus-storage canopy stations.",
+    content: [
+      "Electric vehicle adoption in Pakistan is growing rapidly, requiring robust high-speed charging infrastructure. Soltronic Energy has signed an agreement with major motorway station operators to deploy solar-assisted DC Fast Charging Hubs.",
+      "Each charging plaza features 120kW - 180kW dual-gun CCS2 chargers capable of replenishing EV batteries from 10% to 80% in under 25 minutes.",
+      "The charging stations are backed by rooftop solar canopies and integrated battery storage to minimize grid strain during peak highway travel hours."
+    ],
+    keyTakeaways: [
+      "180kW High-power DC Fast Chargers with dual CCS2 connectors.",
+      "Integrated solar canopy generates green power on-site.",
+      "Seamless payment integration via Soltronic Mobile App.",
+      "Reduces interstate EV range anxiety across key transport corridors."
+    ],
+    image: "/gallery_ev_charging_1786337173828.png",
+    featured: false,
+    trending: false,
+    tags: ["EV Charging", "DC Fast Charger", "Clean Mobility", "Solar Canopy", "Infrastructure"]
+  }
+];
 
-  const newsItems = [
-    {
-      date: "August 5, 2026",
-      category: "Industry Update",
-      title: "NEPRA Announces New Net Metering Guidelines",
-      excerpt: "The latest update to net metering policies provides better compensation rates for residential solar exporters across Pakistan.",
-      image: "https://images.unsplash.com/photo-1508514177221-188b1c75b1d5?auto=format&fit=crop&q=80&w=800"
-    },
-    {
-      date: "July 22, 2026",
-      category: "Company News",
-      title: "Soltronic Reaches 10,000 Installations Milestone",
-      excerpt: "We're proud to announce that over 10,000 homes are now powered by clean, renewable Soltronic energy systems.",
-      image: "https://images.unsplash.com/photo-1592833159155-c62df1b65634?auto=format&fit=crop&q=80&w=800"
-    },
-    {
-      date: "July 10, 2026",
-      category: "Technology",
-      title: "Next-Gen Solar Panels: What to Expect",
-      excerpt: "The introduction of N-Type TopCon technology means higher efficiency in extreme summer temperatures.",
-      image: "https://images.unsplash.com/photo-1509391366360-1f9597d81232?auto=format&fit=crop&q=80&w=800"
-    },
-    {
-      date: "June 28, 2026",
-      category: "Community",
-      title: "Soltronic's Rural Electrification Initiative",
-      excerpt: "Bringing off-grid solar solutions to remote villages to ensure 24/7 power availability for schools and clinics.",
-      image: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&q=80&w=800"
-    }
-  ];
+const PRESS_RELEASES = [
+  {
+    title: "Soltronic Energy Q2 2026 Financial & Operational Highlights",
+    date: "July 30, 2026",
+    size: "2.4 MB",
+    type: "PDF Document"
+  },
+  {
+    title: "Whitepaper: Commercial & Industrial Energy Storage ROI Framework",
+    date: "July 15, 2026",
+    size: "4.1 MB",
+    type: "PDF Document"
+  },
+  {
+    title: "Soltronic Tier-1 Inverter & Module Compatibility Matrix 2026",
+    date: "June 10, 2026",
+    size: "1.8 MB",
+    type: "PDF Document"
+  }
+];
+
+const CATEGORIES = ["All", "Industry Policy", "Soltronic Milestones", "Tech & Innovation", "Market Analysis", "ESG & Sustainability"];
+
+// Image Component with Fallback to avoid broken images or blank gaps
+function SafeImage({ src, alt, className }: { src: string; alt: string; className?: string }) {
+  const [error, setError] = useState(false);
+
+  if (error || !src) {
+    return (
+      <div className={`bg-gradient-to-br from-[#107022] to-emerald-800 flex flex-col items-center justify-center p-6 text-white text-center ${className || ''}`}>
+        <span className="material-symbols-outlined text-4xl mb-2 opacity-80">wb_sunny</span>
+        <span className="text-xs font-bold uppercase tracking-wider opacity-90">Soltronic Energy</span>
+      </div>
+    );
+  }
 
   return (
-    <main className="min-h-screen bg-slate-900 pt-8 pb-32 relative overflow-hidden" ref={container}>
+    <img
+      src={src}
+      alt={alt}
+      onError={() => setError(true)}
+      className={className}
+    />
+  );
+}
+
+export default function NewsPage() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
+  const [subscribedEmail, setSubscribedEmail] = useState("");
+  const [isSubscribed, setIsSubscribed] = useState(false);
+
+  // GSAP Entrance Animations (Safe fade-in without hiding cards initially)
+  useGSAP(() => {
+    if (!containerRef.current) return;
+
+    gsap.fromTo(".anim-news-card", 
+      { y: 20, opacity: 0.8 },
+      { y: 0, opacity: 1, duration: 0.5, stagger: 0.08, ease: "power1.out" }
+    );
+  }, { scope: containerRef });
+
+  // Filtered Articles
+  const filteredArticles = useMemo(() => {
+    return ARTICLES.filter((article) => {
+      const matchesCategory = selectedCategory === "All" || article.category === selectedCategory;
+      const matchesSearch = 
+        article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        article.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        article.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+      return matchesCategory && matchesSearch;
+    });
+  }, [selectedCategory, searchQuery]);
+
+  const featuredArticle = ARTICLES.find(a => a.featured) || ARTICLES[0];
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (subscribedEmail) {
+      setIsSubscribed(true);
+      setTimeout(() => {
+        setIsSubscribed(false);
+        setSubscribedEmail("");
+      }, 4000);
+    }
+  };
+
+  return (
+    <main className="min-h-screen bg-slate-50 text-slate-800 relative font-sans pb-24" ref={containerRef}>
       
-
-
-      {/* Deep Space Parallax Backgrounds */}
-      <div className="parallax-bg absolute top-0 left-0 w-full h-[150%] z-0 opacity-20 pointer-events-none"
-           style={{ 
-             backgroundImage: 'radial-gradient(circle at 20% 30%, rgba(26, 77, 46, 0.4) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(249, 115, 22, 0.3) 0%, transparent 50%)' 
-           }}>
+      {/* Top Ticker Bar - Clean Light Green */}
+      <div className="bg-[#107022] text-white py-2.5 px-4 text-xs shadow-sm">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4 overflow-hidden">
+          <div className="flex items-center gap-2 font-bold uppercase tracking-wider flex-shrink-0 bg-emerald-800/80 px-2.5 py-1 rounded">
+            <span className="w-2 h-2 rounded-full bg-emerald-300 animate-ping inline-block" />
+            <span className="material-symbols-outlined text-sm">trending_up</span>
+            Live Updates
+          </div>
+          <div className="flex-1 overflow-hidden whitespace-nowrap">
+            <div className="animate-marquee font-medium flex items-center">
+              <span className="mx-6">☀️ NEPRA Net-Metering Buyback Guaranteed for 7 Years</span>
+              <span className="mx-6">⚡ Soltronic 100MWh BESS Commercial Operation Underway</span>
+              <span className="mx-6">🌱 Over 140,000 Tons CO2 Offset Nationwide</span>
+              <span className="mx-6">🔋 High-Efficiency N-Type TOPCon Panels Now In Stock</span>
+              {/* Duplicate set for seamless continuous infinite scroll loop */}
+              <span className="mx-6">☀️ NEPRA Net-Metering Buyback Guaranteed for 7 Years</span>
+              <span className="mx-6">⚡ Soltronic 100MWh BESS Commercial Operation Underway</span>
+              <span className="mx-6">🌱 Over 140,000 Tons CO2 Offset Nationwide</span>
+              <span className="mx-6">🔋 High-Efficiency N-Type TOPCon Panels Now In Stock</span>
+            </div>
+          </div>
+          <div className="hidden md:flex items-center gap-2 text-emerald-100 text-[11px] flex-shrink-0">
+            <span className="material-symbols-outlined text-xs">schedule</span>
+            Updated Today
+          </div>
+        </div>
       </div>
-      
-      {/* 3D Floating Grid Lines */}
-      <div className="absolute inset-0 z-0 opacity-10 pointer-events-none"
-           style={{
-             backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
-             backgroundSize: '40px 40px',
-             transform: 'perspective(1000px) rotateX(60deg) translateY(-100px) translateZ(-200px)'
-           }}>
-      </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-24">
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight drop-shadow-lg">
-            Latest <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1A4D2E] to-emerald-400">Updates</span>
+      {/* Main Content Area */}
+      <section className="pt-10 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        
+        {/* Header Title */}
+        <div className="text-center max-w-3xl mx-auto mb-10">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/80 border border-emerald-200 text-[#107022] text-xs font-bold uppercase tracking-widest mb-4">
+            <span className="material-symbols-outlined text-sm">newspaper</span>
+            Soltronic Media Center
+          </div>
+          
+          <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
+            Latest News & <span className="text-[#107022]">Energy Insights</span>
           </h1>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            Stay informed with the latest news, policy changes, and technological advancements in the solar sector.
+          
+          <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+            Stay informed with authoritative updates on Pakistan's solar policies, industrial BESS storage, net metering rules, and Soltronic innovations.
           </p>
         </div>
 
-        <div className="news-grid grid grid-cols-1 md:grid-cols-2 gap-12" style={{ perspective: '1200px' }}>
-          {newsItems.map((news, index) => (
-            <article 
-              key={index} 
-              className="news-card bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:bg-white/15 transition-colors group cursor-pointer"
-            >
-              <div className="h-64 w-full relative overflow-hidden">
-                <div className="absolute inset-0 bg-black/20 z-10 group-hover:bg-transparent transition-colors duration-500"></div>
-                <img 
-                  src={news.image} 
-                  alt={news.title}
-                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out"
+        {/* Featured Story Spotlight Card */}
+        {featuredArticle && (
+          <div 
+            onClick={() => setSelectedArticle(featuredArticle)}
+            className="group cursor-pointer bg-white rounded-3xl border border-slate-200 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden mb-12 flex flex-col lg:flex-row items-stretch"
+          >
+            {/* Image side */}
+            <div className="w-full lg:w-3/5 h-64 sm:h-80 lg:h-auto min-h-[280px] sm:min-h-[340px] relative overflow-hidden bg-slate-100 flex-shrink-0">
+              <SafeImage 
+                src={featuredArticle.image} 
+                alt={featuredArticle.title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute top-4 left-4 z-10 flex gap-2">
+                <span className="px-3 py-1 bg-[#107022] text-white font-bold text-xs rounded-lg shadow-sm uppercase tracking-wider">
+                  Featured Story
+                </span>
+                <span className="px-3 py-1 bg-white/95 backdrop-blur-md text-slate-800 font-bold text-xs rounded-lg border border-slate-200 shadow-sm">
+                  {featuredArticle.category}
+                </span>
+              </div>
+            </div>
+
+            {/* Content side */}
+            <div className="w-full lg:w-2/5 p-6 sm:p-8 flex flex-col justify-between bg-white text-slate-800">
+              <div>
+                <div className="flex items-center gap-3 text-xs text-slate-500 mb-3 font-semibold">
+                  <span>{featuredArticle.date}</span>
+                  <span>•</span>
+                  <span className="flex items-center gap-1 text-[#107022] font-bold">
+                    <span className="material-symbols-outlined text-sm">schedule</span>
+                    {featuredArticle.readTime}
+                  </span>
+                </div>
+
+                <h2 className="text-xl sm:text-2xl font-black text-slate-900 leading-snug mb-3 group-hover:text-[#107022] transition-colors">
+                  {featuredArticle.title}
+                </h2>
+
+                <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6 font-normal">
+                  {featuredArticle.excerpt}
+                </p>
+              </div>
+
+              <div className="pt-4 border-t border-slate-100 flex items-center justify-between mt-auto">
+                <div className="flex items-center gap-3">
+                  <SafeImage 
+                    src={featuredArticle.author.avatar} 
+                    alt={featuredArticle.author.name}
+                    className="w-10 h-10 rounded-full object-cover border border-slate-200 shadow-sm"
+                  />
+                  <div>
+                    <h4 className="text-xs font-bold text-slate-900">{featuredArticle.author.name}</h4>
+                    <p className="text-[10px] text-slate-500 font-medium">{featuredArticle.author.role}</p>
+                  </div>
+                </div>
+
+                <span className="w-9 h-9 rounded-full bg-emerald-50 text-[#107022] group-hover:bg-[#107022] group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-sm flex-shrink-0">
+                  <span className="material-symbols-outlined text-base">arrow_forward</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Filters & Search Controls */}
+        <div className="bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 mb-10 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
+          {/* Category Pills */}
+          <div className="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-hide">
+            {CATEGORIES.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                className={`px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${
+                  selectedCategory === cat
+                    ? "bg-[#107022] text-white shadow-sm"
+                    : "bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          {/* Search Box */}
+          <div className="relative w-full md:w-72">
+            <input 
+              type="text"
+              placeholder="Search news or topic..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 pl-9 pr-8 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#107022] focus:ring-1 focus:ring-[#107022] transition-all"
+            />
+            <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-base">
+              search
+            </span>
+            {searchQuery && (
+              <button 
+                onClick={() => setSearchQuery("")}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700 text-xs font-bold"
+              >
+                ✕
+              </button>
+            )}
+          </div>
+        </div>
+
+        {/* Articles Grid */}
+        <div className="news-grid-container">
+          {filteredArticles.length === 0 ? (
+            <div className="text-center py-16 bg-white rounded-3xl border border-slate-200 p-8 shadow-sm">
+              <span className="material-symbols-outlined text-5xl text-slate-400 mb-2">search_off</span>
+              <h3 className="text-base font-bold text-slate-800 mb-1">No articles match your search</h3>
+              <p className="text-xs text-slate-500 mb-6">Try clearing your filters or searching for another solar term.</p>
+              <button 
+                onClick={() => { setSelectedCategory("All"); setSearchQuery(""); }}
+                className="px-4 py-2 bg-[#107022] text-white text-xs font-bold rounded-xl hover:bg-emerald-800 transition-colors"
+              >
+                Reset Filters
+              </button>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              {filteredArticles.map((article) => (
+                <article
+                  key={article.id}
+                  onClick={() => setSelectedArticle(article)}
+                  className="anim-news-card group cursor-pointer bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:border-emerald-300 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="h-48 relative overflow-hidden bg-slate-100">
+                      <SafeImage 
+                        src={article.image} 
+                        alt={article.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-md text-[10px] font-bold text-[#107022] border border-slate-200 shadow-sm uppercase tracking-wider">
+                        {article.category}
+                      </div>
+                    </div>
+
+                    <div className="p-5 sm:p-6">
+                      <div className="flex items-center justify-between text-[11px] text-slate-500 mb-2 font-medium">
+                        <span>{article.date}</span>
+                        <span className="flex items-center gap-1 text-[#107022] font-semibold">
+                          <span className="material-symbols-outlined text-xs">schedule</span>
+                          {article.readTime}
+                        </span>
+                      </div>
+
+                      <h3 className="text-base font-bold text-slate-900 mb-2 group-hover:text-[#107022] transition-colors line-clamp-2 leading-snug">
+                        {article.title}
+                      </h3>
+
+                      <p className="text-xs text-slate-600 line-clamp-3 leading-relaxed mb-4">
+                        {article.excerpt}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="px-5 sm:px-6 pb-5 pt-3 border-t border-slate-100 flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <SafeImage 
+                        src={article.author.avatar} 
+                        alt={article.author.name}
+                        className="w-6 h-6 rounded-full object-cover border border-slate-200"
+                      />
+                      <span className="text-[11px] font-semibold text-slate-700">{article.author.name}</span>
+                    </div>
+
+                    <span className="text-xs font-bold text-[#107022] group-hover:text-orange-600 flex items-center gap-1 transition-colors">
+                      Read Article
+                      <span className="material-symbols-outlined text-xs group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                    </span>
+                  </div>
+                </article>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Press Releases & Whitepapers Downloads */}
+      <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div className="bg-gradient-to-r from-emerald-900 to-[#107022] rounded-3xl p-8 sm:p-10 shadow-lg text-white">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-5">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white/20 text-white text-[11px] font-bold uppercase tracking-wider mb-3">
+                <span className="material-symbols-outlined text-xs">download</span>
+                Downloads
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-extrabold mb-3">
+                Corporate Press & Solar Reports
+              </h2>
+              <p className="text-emerald-100 text-xs sm:text-sm leading-relaxed">
+                Download verified technical whitepapers, compatibility matrices, and market intelligence documents compiled by Soltronic Energy engineering teams.
+              </p>
+            </div>
+
+            <div className="lg:col-span-7 space-y-3">
+              {PRESS_RELEASES.map((doc, idx) => (
+                <div 
+                  key={idx}
+                  className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 bg-white/10 backdrop-blur-md rounded-2xl hover:bg-white/20 transition-all gap-4 border border-white/10"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 rounded-xl bg-white/20 text-white flex items-center justify-center flex-shrink-0">
+                      <span className="material-symbols-outlined">picture_as_pdf</span>
+                    </div>
+                    <div>
+                      <h4 className="text-xs sm:text-sm font-bold text-white">{doc.title}</h4>
+                      <p className="text-[10px] text-emerald-100">{doc.date} • {doc.size} • {doc.type}</p>
+                    </div>
+                  </div>
+
+                  <a 
+                    href="#download" 
+                    onClick={(e) => { e.preventDefault(); alert(`Downloading: ${doc.title}`); }}
+                    className="px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white text-xs font-bold rounded-xl transition-colors flex items-center gap-1.5 whitespace-nowrap shadow-sm"
+                  >
+                    <span className="material-symbols-outlined text-xs">download</span>
+                    Download PDF
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter Signup */}
+      <section className="pt-4 pb-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+        <div className="bg-white border border-slate-200 rounded-3xl p-8 sm:p-10 text-center shadow-md">
+          <div className="w-12 h-12 rounded-2xl bg-emerald-100 text-[#107022] flex items-center justify-center mx-auto mb-4">
+            <span className="material-symbols-outlined text-2xl">mail</span>
+          </div>
+
+          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-2">
+            Subscribe to Soltronic Energy Briefs
+          </h2>
+          <p className="text-slate-600 text-xs sm:text-sm max-w-md mx-auto mb-6">
+            Get weekly executive summaries on net metering tariffs, solar panel price trends, and green energy loans directly in your inbox.
+          </p>
+
+          {isSubscribed ? (
+            <div className="p-3 bg-emerald-50 border border-emerald-300 rounded-xl text-[#107022] text-xs font-bold inline-flex items-center gap-2">
+              <span className="material-symbols-outlined text-base">check_circle</span>
+              Thank you! You are now subscribed to Soltronic Clean Energy Briefings.
+            </div>
+          ) : (
+            <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
+              <input 
+                type="email" 
+                required
+                placeholder="Enter your email address..."
+                value={subscribedEmail}
+                onChange={(e) => setSubscribedEmail(e.target.value)}
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#107022] transition-all"
+              />
+              <button 
+                type="submit"
+                className="w-full sm:w-auto px-5 py-2.5 bg-[#107022] hover:bg-emerald-800 text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow-sm transition-all flex items-center justify-center gap-1.5 whitespace-nowrap"
+              >
+                Subscribe
+                <span className="material-symbols-outlined text-sm">send</span>
+              </button>
+            </form>
+          )}
+        </div>
+      </section>
+
+      {/* Article Detail Modal View */}
+      {selectedArticle && (
+        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+          <div className="bg-white border border-slate-200 rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative text-slate-800">
+            
+            {/* Modal Header */}
+            <div className="sticky top-0 bg-white/95 backdrop-blur-md border-b border-slate-100 px-6 py-4 flex items-center justify-between z-30">
+              <div className="flex items-center gap-2">
+                <span className="px-2.5 py-1 bg-emerald-50 text-[#107022] font-bold text-[10px] rounded uppercase tracking-wider border border-emerald-200">
+                  {selectedArticle.category}
+                </span>
+                <span className="text-xs text-slate-500">• {selectedArticle.readTime}</span>
+              </div>
+
+              <button 
+                onClick={() => setSelectedArticle(null)}
+                className="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center transition-colors text-xs font-bold"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* Modal Body */}
+            <div className="p-6 sm:p-8 space-y-6">
+              <h2 className="text-xl sm:text-3xl font-extrabold text-slate-900 leading-tight">
+                {selectedArticle.title}
+              </h2>
+
+              <div className="flex items-center gap-3 pt-1 pb-4 border-b border-slate-100">
+                <SafeImage 
+                  src={selectedArticle.author.avatar} 
+                  alt={selectedArticle.author.name}
+                  className="w-10 h-10 rounded-full object-cover border border-slate-200"
+                />
+                <div>
+                  <h4 className="text-xs font-bold text-slate-900">{selectedArticle.author.name}</h4>
+                  <p className="text-[10px] text-slate-500">{selectedArticle.author.role} • {selectedArticle.date}</p>
+                </div>
+              </div>
+
+              <div className="rounded-2xl overflow-hidden h-60 sm:h-80 relative shadow-inner bg-slate-100">
+                <SafeImage 
+                  src={selectedArticle.image} 
+                  alt={selectedArticle.title} 
+                  className="w-full h-full object-cover"
                 />
               </div>
-              <div className="p-8">
-                <div className="flex justify-between items-center mb-4">
-                  <span className="text-xs font-bold text-emerald-400 uppercase tracking-wider">{news.category}</span>
-                  <span className="text-sm text-gray-400">{news.date}</span>
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-emerald-300 transition-colors">
-                  {news.title}
-                </h3>
-                <p className="text-gray-400 mb-6 line-clamp-3">
-                  {news.excerpt}
-                </p>
-                <div className="flex items-center gap-2 text-sm font-bold text-white group-hover:text-orange-400 transition-colors">
-                  Read Full Article
-                  <span className="material-symbols-outlined text-sm transform group-hover:translate-x-2 transition-transform">arrow_forward</span>
-                </div>
+
+              {/* Key Takeaways */}
+              <div className="p-5 bg-emerald-50/70 border border-emerald-200 rounded-2xl">
+                <h4 className="text-xs font-bold text-[#107022] uppercase tracking-wider mb-3 flex items-center gap-1.5">
+                  <span className="material-symbols-outlined text-base">verified</span>
+                  Key Takeaways
+                </h4>
+                <ul className="space-y-2">
+                  {selectedArticle.keyTakeaways.map((item, idx) => (
+                    <li key={idx} className="text-xs text-slate-700 flex items-start gap-2">
+                      <span className="text-[#107022] font-bold">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-            </article>
-          ))}
+
+              {/* Paragraphs */}
+              <div className="space-y-4 text-xs sm:text-sm text-slate-700 leading-relaxed">
+                {selectedArticle.content.map((p, idx) => (
+                  <p key={idx}>{p}</p>
+                ))}
+              </div>
+
+              {/* Tags */}
+              <div className="pt-4 border-t border-slate-100 flex flex-wrap gap-2">
+                {selectedArticle.tags.map((tag) => (
+                  <span key={tag} className="px-3 py-1 bg-slate-100 border border-slate-200 rounded-full text-[10px] text-slate-600 font-medium">
+                    #{tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Modal Footer */}
+            <div className="bg-slate-50 border-t border-slate-100 px-6 py-4 flex items-center justify-between">
+              <span className="text-xs text-slate-500">Share this article:</span>
+              <div className="flex gap-2">
+                <button 
+                  onClick={() => alert('Article link copied to clipboard!')}
+                  className="px-3 py-1.5 bg-white border border-slate-200 hover:bg-slate-100 text-slate-700 text-xs font-semibold rounded-lg transition-colors flex items-center gap-1 shadow-sm"
+                >
+                  <span className="material-symbols-outlined text-xs">link</span>
+                  Copy Link
+                </button>
+                <button 
+                  onClick={() => setSelectedArticle(null)}
+                  className="px-4 py-1.5 bg-[#107022] hover:bg-emerald-800 text-white text-xs font-bold rounded-lg transition-colors shadow-sm"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+      )}
+
+      {/* Marquee Keyframe */}
+      <style jsx global>{`
+        @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+          display: flex;
+          width: max-content;
+          animation: marquee 30s linear infinite;
+        }
+        .animate-marquee:hover {
+          animation-play-state: paused;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
     </main>
   );
 }

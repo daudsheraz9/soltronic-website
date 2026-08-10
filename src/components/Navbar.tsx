@@ -2,12 +2,21 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 export default function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [globalSearch, setGlobalSearch] = useState('');
+
+  const handleGlobalSearch = () => {
+    if (globalSearch.trim()) {
+      router.push(`/products?search=${encodeURIComponent(globalSearch.trim())}`);
+      setIsMobileMenuOpen(false);
+    }
+  };
 
   const bottomNavLinks = [
     { name: 'Home', href: '/' },
@@ -41,9 +50,12 @@ export default function Navbar() {
             <input
               type="text"
               placeholder="Search for products (Brand / Name / Description)"
+              value={globalSearch}
+              onChange={(e) => setGlobalSearch(e.target.value)}
+              onKeyDown={(e) => { if (e.key === 'Enter') handleGlobalSearch(); }}
               className="w-full h-full pl-4 pr-10 outline-none bg-transparent text-[14px] placeholder:text-gray-400 font-normal"
             />
-            <button className="absolute right-0 top-0 h-full px-3.5 flex items-center justify-center text-gray-500 hover:text-gray-800 transition-colors">
+            <button onClick={handleGlobalSearch} className="absolute right-0 top-0 h-full px-3.5 flex items-center justify-center text-gray-500 hover:text-gray-800 transition-colors">
               <span className="material-symbols-outlined text-xl">search</span>
             </button>
           </div>

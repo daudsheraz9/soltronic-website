@@ -1,16 +1,26 @@
 "use client";
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 
 import { Product } from '@/data/products';
 
 export default function ProductsClient({ initialProducts }: { initialProducts: Product[] }) {
+  const searchParams = useSearchParams();
   const [searchQuery, setSearchQuery] = useState('');
   const [offering, setOffering] = useState('');
   const [category, setCategory] = useState('');
   const [brand, setBrand] = useState('');
   const [sortBy, setSortBy] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
+
+  // Read URL params on mount and when they change
+  useEffect(() => {
+    const urlSearch = searchParams.get('search') || '';
+    const urlCategory = searchParams.get('category') || '';
+    if (urlSearch) setSearchQuery(urlSearch);
+    if (urlCategory) setCategory(urlCategory);
+  }, [searchParams]);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -27,9 +37,44 @@ export default function ProductsClient({ initialProducts }: { initialProducts: P
   };
 
   const itemsPerPage = 12;
-  const allProducts = initialProducts;
+
+  let filteredProducts = initialProducts.filter(product => {
+    if (searchQuery && !product.title.toLowerCase().includes(searchQuery.toLowerCase()) && !product.description?.toLowerCase().includes(searchQuery.toLowerCase())) {
+      return false;
+    }
+    if (category) {
+      const prodCat = product.category?.toLowerCase() || '';
+      const filterCat = category.toLowerCase();
+      
+      const isMatch = prodCat === filterCat || 
+                      (filterCat === 'batteries' && prodCat === 'storage') || 
+                      (filterCat === 'storage' && prodCat === 'batteries');
+                      
+      if (!isMatch) {
+        return false;
+      }
+    }
+    if (brand && product.vendor?.toLowerCase() !== brand.toLowerCase()) {
+      return false;
+    }
+    // Note: 'offering' filter is not applied as product data doesn't seem to have offering type
+    return true;
+  });
+
+  if (sortBy) {
+    filteredProducts.sort((a, b) => {
+      const priceA = parseFloat(a.price?.toString().replace(/,/g, '') || '0');
+      const priceB = parseFloat(b.price?.toString().replace(/,/g, '') || '0');
+      if (sortBy === 'price-low') return priceA - priceB;
+      if (sortBy === 'price-high') return priceB - priceA;
+      if (sortBy === 'new') return -1; // Assuming newer items are at the top or there's a date field (mocked for now)
+      return 0;
+    });
+  }
+
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const currentProducts = allProducts.slice(startIndex, startIndex + itemsPerPage);
+  const currentProducts = filteredProducts.slice(startIndex, startIndex + itemsPerPage);
 
   return (
     <div className="bg-gray-50 text-slate-700">
@@ -143,60 +188,71 @@ export default function ProductsClient({ initialProducts }: { initialProducts: P
 
               
               {/* BEGIN: Product Grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-                {currentProducts.map((product, index) => (
+              {currentProducts.length === 0 ? (
+                <div className="flex flex-col items-center justify-center py-20 text-center px-4 bg-white rounded-[2rem] border border-gray-100 shadow-sm">
+                  <span className="material-symbols-outlined text-6xl text-gray-300 mb-4" style={{ fontVariationSettings: "'wght' 200" }}>inventory_2</span>
+                  <h3 className="text-xl font-bold text-slate-800 mb-2">No products found</h3>
+                  <p className="text-sm text-gray-500 max-w-md">We couldn't find any products matching your current filters. Try adjusting your search criteria or resetting the filters.</p>
+                  <button onClick={handleResetFilters} className="mt-6 px-6 py-2.5 bg-primary text-white text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-primary/90 transition-colors">
+                    Reset Filters
+                  </button>
+                </div>
+              ) : (
+                <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                  {currentProducts.map((product, index) => (
 
-                  <div key={index} className="bg-white flex flex-col group relative border border-gray-100 shadow-sm rounded-2xl overflow-hidden transition-all duration-300 hover:border-orange-200 hover:shadow-[0_0_25px_rgba(254,215,170,0.5)]">
-                    
-                    {/* Image Section */}
-                    <div className="h-40 sm:h-56 bg-[#f4f7fb] flex justify-center items-center p-4 sm:p-6 overflow-hidden">
-                      <div className="bg-white w-full h-full rounded-xl flex justify-center items-center p-2 shadow-[0_4px_12px_rgba(0,0,0,0.05)]">
-                        <img alt={product.title} className="max-h-full object-contain transition-transform duration-500 group-hover:scale-110 mix-blend-multiply" src={product.image} />
+                    <div key={index} className="bg-white flex flex-col group relative border border-gray-100 shadow-sm rounded-2xl overflow-hidden transition-all duration-300 hover:border-orange-200 hover:shadow-[0_0_25px_rgba(254,215,170,0.5)]">
+                      
+                      {/* Image Section */}
+                      <div className="h-40 sm:h-56 bg-[#f4f7fb] flex justify-center items-center p-4 sm:p-6 overflow-hidden">
+                        <div className="bg-white w-full h-full rounded-xl flex justify-center items-center p-2 shadow-[0_4px_12px_rgba(0,0,0,0.05)]">
+                          <img alt={product.title} className="max-h-full object-contain transition-transform duration-500 group-hover:scale-110 mix-blend-multiply" src={product.image} />
+                        </div>
+                      </div>
+                      
+                      {/* Content Section */}
+                      <div className="flex-1 flex flex-col p-4">
+                        <span className="text-[10px] font-bold text-red-500 tracking-wider uppercase mb-1">{product.category}</span>
+                        
+                        <h3 className="text-[15px] font-bold text-[#0f172a] leading-snug mb-0.5 line-clamp-2">
+                          {product.title}
+                        </h3>
+                        
+                        <p className="text-xs text-gray-400 mb-2 font-medium">{product.vendor}</p>
+                        
+                        <p className="text-xs text-gray-500 line-clamp-2 mb-3 leading-relaxed">
+                          {product.description}
+                        </p>
+                
+                        <div className="flex flex-wrap gap-2 mb-4 mt-auto">
+                          <div className="flex-1 min-w-[30%] bg-[#f8fafc] border border-gray-100 rounded-lg p-1.5 sm:p-2 text-center flex flex-col justify-center">
+                            <span className="text-[11px] sm:text-[13px] font-bold text-[#0f172a] leading-tight">{product.power}</span>
+                            <span className="text-[8px] sm:text-[9px] text-gray-400 uppercase font-semibold mt-1">{product.labels ? product.labels[0] : 'Power'}</span>
+                          </div>
+                          <div className="flex-1 min-w-[30%] bg-[#f8fafc] border border-gray-100 rounded-lg p-1.5 sm:p-2 text-center flex flex-col justify-center">
+                            <span className="text-[11px] sm:text-[13px] font-bold text-[#0f172a] leading-tight">{product.efficiency}</span>
+                            <span className="text-[8px] sm:text-[9px] text-gray-400 uppercase font-semibold mt-1">{product.labels ? product.labels[1] : 'Efficiency'}</span>
+                          </div>
+                          <div className="flex-1 min-w-[30%] bg-[#f8fafc] border border-gray-100 rounded-lg p-1.5 sm:p-2 text-center flex flex-col justify-center">
+                            <span className="text-[11px] sm:text-[13px] font-bold text-[#0f172a] leading-tight">{product.warranty}</span>
+                            <span className="text-[8px] sm:text-[9px] text-gray-400 uppercase font-semibold mt-1">{product.labels ? product.labels[2] : 'Warranty'}</span>
+                          </div>
+                        </div>
+                        
+                        <div>
+                          <Link href={`/products/${(product as any).slug || 'soltronic-mono-550w'}`} className="w-full bg-[#ef4444] hover:bg-[#dc2626] text-white py-3 px-4 rounded-xl text-[14px] transition-all duration-300 text-center font-bold shadow-[0_4px_14px_rgba(239,68,68,0.4)] hover:shadow-[0_6px_20px_rgba(239,68,68,0.6)] flex items-center justify-center gap-2">
+                            Get Quote <span className="text-lg leading-none">&rarr;</span>
+                          </Link>
+                        </div>
                       </div>
                     </div>
-                    
-                    {/* Content Section */}
-                    <div className="flex-1 flex flex-col p-4">
-                      <span className="text-[10px] font-bold text-red-500 tracking-wider uppercase mb-1">{product.category}</span>
-                      
-                      <h3 className="text-[15px] font-bold text-[#0f172a] leading-snug mb-0.5 line-clamp-2">
-                        {product.title}
-                      </h3>
-                      
-                      <p className="text-xs text-gray-400 mb-2 font-medium">{product.vendor}</p>
-                      
-                      <p className="text-xs text-gray-500 line-clamp-2 mb-3 leading-relaxed">
-                        {product.description}
-                      </p>
-              
-                      <div className="flex flex-wrap gap-2 mb-4 mt-auto">
-                        <div className="flex-1 min-w-[30%] bg-[#f8fafc] border border-gray-100 rounded-lg p-1.5 sm:p-2 text-center flex flex-col justify-center">
-                          <span className="text-[11px] sm:text-[13px] font-bold text-[#0f172a] leading-tight">{product.power}</span>
-                          <span className="text-[8px] sm:text-[9px] text-gray-400 uppercase font-semibold mt-1">{product.labels ? product.labels[0] : 'Power'}</span>
-                        </div>
-                        <div className="flex-1 min-w-[30%] bg-[#f8fafc] border border-gray-100 rounded-lg p-1.5 sm:p-2 text-center flex flex-col justify-center">
-                          <span className="text-[11px] sm:text-[13px] font-bold text-[#0f172a] leading-tight">{product.efficiency}</span>
-                          <span className="text-[8px] sm:text-[9px] text-gray-400 uppercase font-semibold mt-1">{product.labels ? product.labels[1] : 'Efficiency'}</span>
-                        </div>
-                        <div className="flex-1 min-w-[30%] bg-[#f8fafc] border border-gray-100 rounded-lg p-1.5 sm:p-2 text-center flex flex-col justify-center">
-                          <span className="text-[11px] sm:text-[13px] font-bold text-[#0f172a] leading-tight">{product.warranty}</span>
-                          <span className="text-[8px] sm:text-[9px] text-gray-400 uppercase font-semibold mt-1">{product.labels ? product.labels[2] : 'Warranty'}</span>
-                        </div>
-                      </div>
-                      
-                      <div>
-                        <Link href={`/products/${(product as any).slug || 'soltronic-mono-550w'}`} className="w-full bg-[#ef4444] hover:bg-[#dc2626] text-white py-3 px-4 rounded-xl text-[14px] transition-all duration-300 text-center font-bold shadow-[0_4px_14px_rgba(239,68,68,0.4)] hover:shadow-[0_6px_20px_rgba(239,68,68,0.6)] flex items-center justify-center gap-2">
-                          Get Quote <span className="text-lg leading-none">&rarr;</span>
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              )}
               {/* END: Product Grid */}
               
               {/* Pagination */}
-              {Math.ceil(allProducts.length / itemsPerPage) > 1 && (
+              {totalPages > 1 && (
                 <div className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 xl:gap-5">
                   <div className="col-span-2 lg:col-span-1 lg:col-start-4">
                     <nav className="flex w-full rounded-md shadow-sm -space-x-px" aria-label="Pagination">
@@ -208,7 +264,7 @@ export default function ProductsClient({ initialProducts }: { initialProducts: P
                         <span className="sr-only">Previous</span>
                         <i className="fa-solid fa-chevron-left text-xs"></i>
                       </button>
-                      {Array.from({ length: Math.ceil(allProducts.length / itemsPerPage) }).map((_, i) => (
+                      {Array.from({ length: totalPages }).map((_, i) => (
                         <button 
                           key={i + 1}
                           onClick={() => handlePageChange(i + 1)}
@@ -222,8 +278,8 @@ export default function ProductsClient({ initialProducts }: { initialProducts: P
                         </button>
                       ))}
                       <button 
-                        onClick={() => handlePageChange(Math.min(Math.ceil(allProducts.length / itemsPerPage), currentPage + 1))}
-                        disabled={currentPage === Math.ceil(allProducts.length / itemsPerPage)}
+                        onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
+                        disabled={currentPage === totalPages}
                         className="flex-1 justify-center relative inline-flex items-center px-3 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         <span className="sr-only">Next</span>
