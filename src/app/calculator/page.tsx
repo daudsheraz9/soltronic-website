@@ -37,7 +37,7 @@ export default function CalculatorPage() {
   }, [bill, roofOrientation, stateLocation, panelType]);
 
   return (
-    <main className="pt-8 pb-20 bg-white text-slate-800">
+    <main className="pt-8 pb-10 bg-white text-slate-800">
 
       <style dangerouslySetInnerHTML={{__html: `
         input[type=range] {
@@ -90,7 +90,7 @@ export default function CalculatorPage() {
       </section>
 
       {/* Calculator Area */}
-      <section className="max-w-7xl mx-auto px-6 mb-20">
+      <section className="max-w-7xl mx-auto px-6 mb-10">
         <div className="bg-white rounded-xl border border-gray-200 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.04)] overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-12">
             
@@ -252,7 +252,7 @@ export default function CalculatorPage() {
       </section>
 
       {/* Footer FAQ */}
-      <section className="max-w-7xl mx-auto px-6 mb-20">
+      <section className="max-w-7xl mx-auto px-6 mb-10">
         <h2 className="text-3xl font-bold text-[#1A4D2E] mb-8 text-center md:text-left">Frequently Asked Questions</h2>
         <div className="space-y-4">
           <details className="group border border-gray-200 rounded-lg bg-white overflow-hidden">

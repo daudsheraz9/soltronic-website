@@ -7,6 +7,37 @@ import ProductBanner from '@/components/ProductBanner';
 import { createClient } from '@/utils/supabase/server';
 import { cookies } from 'next/headers';
 import { Product } from '@/data/products';
+import SchemaMarkup from '@/components/SchemaMarkup';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Soltronic Energy - Premium Solar Solutions & EPC in Pakistan',
+  description: 'Discover top-tier solar solutions for homes and businesses in Pakistan. Explore solar panels, inverters, and full EPC services with Soltronic Energy.',
+  keywords: ['solar panels pakistan', 'best inverters lahore', 'buy solar systems', 'commercial solar installation', 'residential solar pakistan'],
+  alternates: {
+    canonical: 'https://soltronicsenergy.com',
+  },
+};
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Soltronic Energy",
+  "image": "https://soltronicsenergy.com/icon-favicon.png",
+  "@id": "https://soltronicsenergy.com",
+  "url": "https://soltronicsenergy.com",
+  "telephone": "+923000000000",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Office # 123, Tech Tower",
+    "addressLocality": "Lahore",
+    "addressRegion": "Punjab",
+    "postalCode": "54000",
+    "addressCountry": "PK"
+  }
+};
+
+import FavouriteButton from '@/components/FavouriteButton';
 
 export default async function Home() {
   const cookieStore = await cookies();
@@ -18,6 +49,7 @@ export default async function Home() {
     .limit(4);
   return (
     <main className="w-full overflow-x-hidden">
+      <SchemaMarkup schema={localBusinessSchema} />
       {/* Product Banner with Slider and Side Ads */}
       <ProductBanner />
 
@@ -69,7 +101,8 @@ export default async function Home() {
               <div key={index} className="bg-white flex flex-col group relative border border-gray-100 shadow-sm rounded-2xl overflow-hidden transition-all duration-300 hover:border-orange-200 hover:shadow-[0_0_25px_rgba(254,215,170,0.5)]">
 
                 {/* Image Section */}
-                <div className="h-40 sm:h-56 bg-[#f4f7fb] flex justify-center items-center p-4 sm:p-6 overflow-hidden">
+                <div className="h-40 sm:h-56 bg-[#f4f7fb] flex justify-center items-center p-4 sm:p-6 overflow-hidden relative">
+                  <FavouriteButton product={product} className="absolute top-3 right-3 z-10" />
                   <div className="bg-white w-full h-full rounded-xl flex justify-center items-center p-2 shadow-[0_4px_12px_rgba(0,0,0,0.05)]">
                     <img alt={product.title} className="max-h-full object-contain transition-transform duration-500 group-hover:scale-110 mix-blend-multiply" src={product.image} />
                   </div>
@@ -240,8 +273,8 @@ export default async function Home() {
             <SavingsCalculator />
 
             {/* Right: Text Information (Swapped Position) */}
-            <div className="w-full lg:w-1/4 space-y-1.5 text-center lg:text-left">
-              <span className="text-[10px] sm:text-[11px] font-bold text-primary uppercase tracking-widest">Calculate Your Savings</span>
+            <div className="w-full lg:w-1/4 space-y-1.5 text-center">
+              <span className="text-[10px] sm:text-[11px] font-bold text-primary uppercase tracking-widest block">Calculate Your Savings</span>
               <h2 className="text-xl sm:text-2xl font-bold text-on-surface leading-snug">See How Much You Can Save</h2>
               <p className="text-xs sm:text-sm text-on-surface-variant">Use our calculator to estimate your savings with solar solutions.</p>
             </div>

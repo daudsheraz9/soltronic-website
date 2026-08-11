@@ -44,11 +44,11 @@ export default function EventsPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-100 to-gray-200 pt-8 pb-32 overflow-hidden relative" ref={container}>
+    <main className="min-h-screen bg-gradient-to-br from-slate-100 to-gray-200 pt-8 pb-16 overflow-hidden relative" ref={container}>
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
 
-        <div className="text-center mb-24">
+        <div className="text-center mb-12">
           <h1 className="text-5xl md:text-7xl font-bold text-slate-900 mb-6 tracking-tight">
             Upcoming <span className="text-orange-500">Events</span>
           </h1>

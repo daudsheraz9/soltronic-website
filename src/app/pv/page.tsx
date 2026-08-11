@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function PVPage() {
   return (
-    <main className="bg-gray-50 pb-20 pt-8">
+    <main className="bg-gray-50 pb-10 pt-8">
 
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -182,7 +182,7 @@ export default function PVPage() {
         </div>
       </div>
       
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
         <h2 className="text-3xl font-bold text-gray-900 mb-8">Technical Specifications</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Left Column: Electrical Data */}
@@ -285,7 +285,7 @@ export default function PVPage() {
         </div>
       </section>
       
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
         <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Advanced Engineering Features</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Bifacial Technology */}
@@ -323,7 +323,7 @@ export default function PVPage() {
         </div>
       </section>
       
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-bold text-gray-900">Related Projects</h2>
           <div className="flex gap-2">

@@ -5,6 +5,8 @@ import { useSearchParams } from 'next/navigation';
 
 import { Product } from '@/data/products';
 
+import FavouriteButton from '@/components/FavouriteButton';
+
 export default function ProductsClient({ initialProducts }: { initialProducts: Product[] }) {
   const searchParams = useSearchParams();
   const [searchQuery, setSearchQuery] = useState('');
@@ -192,7 +194,7 @@ export default function ProductsClient({ initialProducts }: { initialProducts: P
               
               {/* BEGIN: Product Grid */}
               {currentProducts.length === 0 ? (
-                <div className="flex flex-col items-center justify-center py-20 text-center px-4 bg-white rounded-[2rem] border border-gray-100 shadow-sm">
+                <div className="flex flex-col items-center justify-center py-10 text-center px-4 bg-white rounded-[2rem] border border-gray-100 shadow-sm">
                   <span className="material-symbols-outlined text-6xl text-gray-300 mb-4" style={{ fontVariationSettings: "'wght' 200" }}>inventory_2</span>
                   <h3 className="text-xl font-bold text-slate-800 mb-2">No products found</h3>
                   <p className="text-sm text-gray-500 max-w-md">We couldn't find any products matching your current filters. Try adjusting your search criteria or resetting the filters.</p>
@@ -207,7 +209,8 @@ export default function ProductsClient({ initialProducts }: { initialProducts: P
                     <div key={index} className="bg-white flex flex-col group relative border border-gray-100 shadow-sm rounded-2xl overflow-hidden transition-all duration-300 hover:border-orange-200 hover:shadow-[0_0_25px_rgba(254,215,170,0.5)]">
                       
                       {/* Image Section */}
-                      <div className="h-40 sm:h-56 bg-[#f4f7fb] flex justify-center items-center p-4 sm:p-6 overflow-hidden">
+                      <div className="h-40 sm:h-56 bg-[#f4f7fb] flex justify-center items-center p-4 sm:p-6 overflow-hidden relative">
+                        <FavouriteButton product={product} className="absolute top-3 right-3 z-10" />
                         <div className="bg-white w-full h-full rounded-xl flex justify-center items-center p-2 shadow-[0_4px_12px_rgba(0,0,0,0.05)]">
                           <img alt={product.title} className="max-h-full object-contain transition-transform duration-500 group-hover:scale-110 mix-blend-multiply" src={product.image} />
                         </div>

@@ -4,42 +4,10 @@ export default function Services() {
   return (
     <>
       <main>
-        {/* BEGIN: Hero Section */}
-        <section className="relative bg-gray-900 text-white pt-40 pb-24 md:pt-48 lg:pb-32" data-purpose="hero-section">
-          <div className="absolute inset-0 overflow-hidden">
-            <img alt="Solar Farm" className="w-full h-full object-cover opacity-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5jPJF5tW3diMMhiQxLI5fbl7-W3AmTggJrrtj2uKIu4VB-pR1MrQIqOvNi4YK9SpXTsu_OVD8mVUqq-xsHKdAT_yV4WUyD7dj3TkgYa6YEWI1x8TTfYHfI8-mrWA1JOsJsyF1eASyZuNukjC1XiXYPUidr39bSnyxPQdVfmfsO1dxloSi23EUtY2d7cTXeguucvZHV97gEglaydQae3gbo4hGB6NlaUTMQt0DPlHKOXe0hpbKVpNL" />
-          </div>
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
-            <div className="max-w-2xl">
-
-              <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-white">Our Services</h1>
-              <p className="text-lg text-gray-200 mb-10 max-w-xl">End-to-end solar energy solutions for homes, businesses, industries and agriculture.</p>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-sm font-medium">
-                <div className="flex items-center gap-2 bg-white/10 p-3 rounded-lg backdrop-blur-sm">
-                  <svg className="w-6 h-6 text-[#2e7d32]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg>
-                  <span>Expert<br/>Engineers</span>
-                </div>
-                <div className="flex items-center gap-2 bg-white/10 p-3 rounded-lg backdrop-blur-sm">
-                  <svg className="w-6 h-6 text-[#2e7d32]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg>
-                  <span>Premium<br/>Quality</span>
-                </div>
-                <div className="flex items-center gap-2 bg-white/10 p-3 rounded-lg backdrop-blur-sm">
-                  <svg className="w-6 h-6 text-[#2e7d32]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg>
-                  <span>On-time<br/>Delivery</span>
-                </div>
-                <div className="flex items-center gap-2 bg-white/10 p-3 rounded-lg backdrop-blur-sm">
-                  <svg className="w-6 h-6 text-[#2e7d32]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg>
-                  <span>After Sales<br/>Support</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* BEGIN: What We Offer */}
-        <section className="py-20 bg-gray-50" data-purpose="services-grid">
+        <section className="pt-8 pb-10 bg-gray-50" data-purpose="services-grid">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
+            <div className="text-center mb-8">
               <h3 className="text-[#2e7d32] font-bold tracking-wider text-sm uppercase mb-2">What We Offer</h3>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Complete <span className="text-[#2e7d32]">Solar</span> Solutions</h2>
               <p className="text-gray-600 max-w-2xl mx-auto">From consultation to installation and maintenance, we provide everything you need to switch to clean, renewable and affordable solar energy.</p>
@@ -146,7 +114,7 @@ export default function Services() {
         </section>
 
         {/* BEGIN: Our Process */}
-        <section className="py-20 bg-white" data-purpose="process-section">
+        <section className="py-10 bg-white" data-purpose="process-section">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-[#e8f5e9] rounded-3xl p-12">
             <div className="text-center mb-12">
               <h3 className="text-[#2e7d32] font-bold tracking-wider text-sm uppercase mb-2">Our Process</h3>
@@ -227,63 +195,8 @@ export default function Services() {
           </div>
         </section>
 
-        {/* BEGIN: Why Choose Us */}
-        <section className="py-20 rounded-3xl" data-purpose="why-choose-us" style={{ backgroundColor: "rgb(253, 245, 237)" }}>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Why Choose <span className="text-[#2e7d32]">Soltronic Energy?</span></h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div className="flex items-start gap-4">
-                    <div className="bg-[#e8f5e9] p-3 rounded-lg text-[#2e7d32]">
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg>
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-gray-900">Experienced &amp;<br/>Certified Team</h4>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div className="bg-[#e8f5e9] p-3 rounded-lg text-[#2e7d32]">
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg>
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-gray-900">Quality Products<br/>&amp; Technology</h4>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div className="bg-[#e8f5e9] p-3 rounded-lg text-[#2e7d32]">
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg>
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-gray-900">Customized<br/>Solutions</h4>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div className="bg-[#e8f5e9] p-3 rounded-lg text-[#2e7d32]">
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg>
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-gray-900">Reliable After<br/>Sales Support</h4>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="relative rounded-2xl overflow-hidden h-[400px]">
-                <img alt="Solar Panels" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOjma9--40rkqfgj98MxuyiMkxFrAMY0iDB5Sm8cciAAlcPZaBXpMWUt3t812qJRjndUfg0Sj1bXzWC5GX5MMqgAAFVEm7nDCfNC5RCCGJXm7bOc5Nra9y2PsT4tDCdcvWA5BFGyGY7UjHZ6SGp6QXOtXVe4qlO3CdjLAfaWJJcG6HMw0dqMqWOjbWZGnDtJU-4za57LswX3aMMpz5L-SxoleouNuccT5mePXlS9m4oATBUO8J2sBR" />
-                <div className="absolute bottom-6 right-6 bg-white p-6 rounded-xl shadow-lg max-w-[250px]">
-                  <h4 className="font-bold text-lg mb-2">Clean Energy<br/>Better Future</h4>
-                  <p className="text-sm text-gray-600 mb-4">Join thousands of satisfied customers in building a sustainable tomorrow.</p>
-                  <div className="w-10 h-10 bg-[#e8f5e9] rounded-full flex items-center justify-center text-[#2e7d32]">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* BEGIN: CTA Section */}
-        <section className="py-20" data-purpose="footer-cta">
+        <section className="py-10" data-purpose="footer-cta">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="bg-[#2e7d32] rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between text-white shadow-xl">
               <div className="flex items-center gap-4 mb-6 md:mb-0">

@@ -20,6 +20,27 @@ interface ResourceDoc {
   compatibility: string[];
 }
 
+const PRESS_RELEASES = [
+  {
+    title: "Soltronic Energy Q2 2026 Financial & Operational Highlights",
+    date: "July 30, 2026",
+    size: "2.4 MB",
+    type: "PDF Document"
+  },
+  {
+    title: "Whitepaper: Commercial & Industrial Energy Storage ROI Framework",
+    date: "July 15, 2026",
+    size: "4.1 MB",
+    type: "PDF Document"
+  },
+  {
+    title: "Soltronic Tier-1 Inverter & Module Compatibility Matrix 2026",
+    date: "June 10, 2026",
+    size: "1.8 MB",
+    type: "PDF Document"
+  }
+];
+
 const RESOURCES: ResourceDoc[] = [
   {
     id: 'doc-1',
@@ -218,7 +239,7 @@ export default function DownloadsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f8fafc] text-slate-800 font-sans pb-32">
+    <div className="min-h-screen bg-[#f8fafc] text-slate-800 font-sans pb-8">
       
       {/* Toast Notification */}
       {downloadToast && (
@@ -229,7 +250,7 @@ export default function DownloadsPage() {
       )}
 
       {/* Hero Header Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#0c4a16] via-[#107022] to-[#082a0d] text-white pt-16 pb-24 px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#0c4a16] via-[#107022] to-[#082a0d] text-white pt-16 pb-12 px-4 sm:px-6 lg:px-8">
         
         {/* Subtle Decorative Pattern */}
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none"></div>
@@ -361,7 +382,7 @@ export default function DownloadsPage() {
         </div>
 
         {filteredDocs.length === 0 ? (
-          <div className="text-center py-20 bg-white rounded-3xl border border-gray-200 p-8 shadow-sm">
+          <div className="text-center py-10 bg-white rounded-3xl border border-gray-200 p-8 shadow-sm">
             <span className="material-symbols-outlined text-5xl text-gray-300 mb-3">find_in_page</span>
             <h3 className="text-xl font-bold text-gray-800 mb-1">No Documents Found</h3>
             <p className="text-sm text-gray-500 max-w-md mx-auto mb-6">
@@ -530,29 +551,54 @@ export default function DownloadsPage() {
           </div>
         </div>
       )}
+      {/* Press Releases & Whitepapers Downloads */}
+      <section className="pt-8 pb-4 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div className="bg-gradient-to-r from-emerald-900 to-[#107022] rounded-3xl p-8 sm:p-10 shadow-lg text-white">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-5">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white/20 text-white text-[11px] font-bold uppercase tracking-wider mb-3">
+                <span className="material-symbols-outlined text-xs">download</span>
+                Downloads
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-extrabold mb-3">
+                Corporate Press & Solar Reports
+              </h2>
+              <p className="text-emerald-100 text-xs sm:text-sm leading-relaxed">
+                Download verified technical whitepapers, compatibility matrices, and market intelligence documents compiled by Soltronic Energy engineering teams.
+              </p>
+            </div>
 
-      {/* Technical Support & Custom SLD Engineering Request */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
-        <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white rounded-3xl p-8 sm:p-12 shadow-2xl border border-slate-700 flex flex-col lg:flex-row items-center justify-between gap-8">
-          <div className="max-w-xl space-y-3">
-            <span className="text-xs font-bold uppercase tracking-widest text-emerald-400 bg-emerald-400/10 px-3 py-1 rounded-full border border-emerald-400/20">
-              EPC & Installer Engineering Support
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-black">
-              Need Custom PVSyst Simulations or MW Single Line Diagrams?
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              Our in-house solar electrical design team provides dedicated CAD schematics, protection sizing, net-metering approvals, and PVSyst yield reports for commercial EPC contractors.
-            </p>
+            <div className="lg:col-span-7 space-y-3">
+              {PRESS_RELEASES.map((doc, idx) => (
+                <div 
+                  key={idx}
+                  className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 bg-white/10 backdrop-blur-md rounded-2xl hover:bg-white/20 transition-all gap-4 border border-white/10"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 rounded-xl bg-white/20 text-white flex items-center justify-center flex-shrink-0">
+                      <span className="material-symbols-outlined">picture_as_pdf</span>
+                    </div>
+                    <div>
+                      <h4 className="text-xs sm:text-sm font-bold text-white">{doc.title}</h4>
+                      <p className="text-[10px] text-emerald-100">{doc.date} • {doc.size} • {doc.type}</p>
+                    </div>
+                  </div>
+
+                  <a 
+                    href="#download" 
+                    onClick={(e) => { e.preventDefault(); alert(`Downloading: ${doc.title}`); }}
+                    className="px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white text-xs font-bold rounded-xl transition-colors flex items-center gap-1.5 whitespace-nowrap shadow-sm"
+                  >
+                    <span className="material-symbols-outlined text-xs">download</span>
+                    Download PDF
+                  </a>
+                </div>
+              ))}
+            </div>
           </div>
-          <Link
-            href="/contact"
-            className="w-full sm:w-auto bg-[#107022] hover:bg-orange-500 text-white font-bold px-7 py-3.5 rounded-2xl text-sm transition-all shadow-lg text-center shrink-0"
-          >
-            Contact Engineering Team →
-          </Link>
         </div>
       </section>
+
 
       {/* Quick Document Preview Drawer / Modal */}
       {previewDoc && (

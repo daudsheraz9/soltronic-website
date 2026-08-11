@@ -1,23 +1,62 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+import SchemaMarkup from "@/components/SchemaMarkup";
+import { AuthProvider } from "@/context/AuthContext";
+import { FavouriteProvider } from "@/context/FavouriteContext";
+import FavouriteToast from "@/components/FavouriteToast";
+import FavouriteDrawer from "@/components/FavouriteDrawer";
 
 export const metadata: Metadata = {
-  title: "Soltronic Energy - Powering a Sustainable Future",
+  title: {
+    default: "Soltronic Energy - Powering a Sustainable Future",
+    template: "%s | Soltronic Energy"
+  },
   description: "Innovative Solar Solutions for Homes, Businesses and Industries. Building a Greener, Better Tomorrow.",
   icons: {
     icon: '/icon-favicon.png',
   },
+  openGraph: {
+    title: "Soltronic Energy - Powering a Sustainable Future",
+    description: "Innovative Solar Solutions for Homes, Businesses and Industries. Building a Greener, Better Tomorrow.",
+    url: 'https://soltronicsenergy.com',
+    siteName: 'Soltronic Energy',
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Soltronic Energy - Powering a Sustainable Future",
+    description: "Innovative Solar Solutions for Homes, Businesses and Industries.",
+  },
 };
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Soltronic Energy",
+  "url": "https://soltronicsenergy.com",
+  "logo": "https://soltronicsenergy.com/logo.png",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Lahore",
+    "addressCountry": "PK"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+92-XXX-XXXXXXX",
+    "contactType": "customer service"
+  }
+};
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" className="scroll-smooth" data-scroll-behavior="smooth" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
@@ -35,9 +74,16 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-background text-on-background font-body-md antialiased overflow-x-hidden flex flex-col min-h-screen" suppressHydrationWarning>
-        <Navbar />
-        {children}
-        <Footer />
+        <AuthProvider>
+          <FavouriteProvider>
+            <SchemaMarkup schema={organizationSchema} />
+            <Navbar />
+            {children}
+            <Footer />
+            <FavouriteToast />
+            <FavouriteDrawer />
+          </FavouriteProvider>
+        </AuthProvider>
       </body>
     </html>
   );

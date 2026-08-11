@@ -5,7 +5,7 @@ export default function Team() {
     <main>
 
       {/* BEGIN: Hero Section */}
-      <section className="relative bg-surface pt-40 pb-20 md:pt-48 lg:pb-32 overflow-hidden">
+      <section className="relative bg-surface pt-12 pb-12 md:pt-16 lg:pb-20 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">Meet the Experts<br />
@@ -24,10 +24,10 @@ export default function Team() {
       {/* END: Hero Section */}
       
       {/* BEGIN: Leadership Section */}
-      <section className="py-24 bg-white">
+      <section className="pt-8 pb-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-2">Our Leadership</h2>
-          <p className="text-gray-500 mb-16">Guiding a sustainable tomorrow</p>
+          <p className="text-gray-500 mb-8">Guiding a sustainable tomorrow</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Leader 1 */}
             <div className="bg-surface rounded-2xl p-6 shadow-card text-left transition-transform hover:-translate-y-1">
@@ -59,10 +59,10 @@ export default function Team() {
       {/* END: Leadership Section */}
       
       {/* BEGIN: Departments Section */}
-      <section className="py-24 bg-surface-container-low">
+      <section className="pt-8 pb-12 bg-surface-container-low">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-2">Our Departments</h2>
-          <p className="text-gray-500 mb-16">Dedicated teams building a sustainable future together</p>
+          <p className="text-gray-500 mb-8">Dedicated teams building a sustainable future together</p>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             <div className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col items-center justify-center text-center">
               <div className="w-12 h-12 bg-brand/10 text-brand rounded-full flex items-center justify-center mb-4"><i className="fa-solid fa-gear text-xl"></i></div>
@@ -98,7 +98,7 @@ export default function Team() {
         </div>
       </section>
       
-      <section className="py-24 bg-white">
+      <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="grid grid-cols-2 gap-4">
@@ -164,12 +164,12 @@ export default function Team() {
       {/* BEGIN: CTA Section */}
       <section className="pb-12 pt-4 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-[#2e7d32] rounded-2xl overflow-hidden p-8 md:p-12 lg:p-16 flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="md:w-1/2">
+          <div className="bg-[#2e7d32] rounded-2xl overflow-hidden p-6 md:p-8 lg:p-10 flex flex-col md:flex-row items-center justify-between gap-8 text-center">
+            <div className="md:w-1/2 flex flex-col items-center text-center">
               <span className="text-white/80 text-sm font-semibold uppercase tracking-wider mb-4 block">Join Our Team</span>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">Build a Sustainable Future Together</h2>
-              <p className="text-white/90 text-lg mb-8 max-w-md">Be part of a passionate team driving real change and a cleaner tomorrow.</p>
-              <div className="flex flex-wrap gap-4">
+              <p className="text-white/90 text-lg mb-8 max-w-md mx-auto">Be part of a passionate team driving real change and a cleaner tomorrow.</p>
+              <div className="flex flex-wrap gap-4 justify-center">
                 <a className="bg-[#f57c00] hover:bg-[#ff9800] text-white px-8 py-3 rounded-full font-semibold transition-colors flex items-center gap-2" href="#">
                   View Careers <i className="fa-solid fa-arrow-right"></i>
                 </a>

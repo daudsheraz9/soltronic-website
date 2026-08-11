@@ -35,7 +35,7 @@ export default function PromotionsPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-slate-50 pt-8 md:pt-5 pb-20 font-sans">
+    <main className="min-h-screen bg-slate-50 pt-8 md:pt-5 pb-10 font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Hero Promotion */}

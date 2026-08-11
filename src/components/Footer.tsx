@@ -11,10 +11,10 @@ export default function Footer() {
               <Image src="/logo.png" alt="Soltronic Energy Logo" fill className="object-contain object-left" />
             </Link>
           </div>
-          <p className="text-body-md font-body-md text-surface-variant dark:text-on-surface-variant leading-relaxed text-justify">
+          <p className="text-[14px] font-body-md text-surface-variant dark:text-on-surface-variant leading-relaxed text-justify">
             Delivering innovative and sustainable solar solutions for a greener tomorrow. We specialize in high-efficiency solar EPC, cutting-edge net metering, and reliable battery storage systems. Power your home or business with clean, renewable energy and take control of your future.
           </p>
-          <div className="space-y-1 text-body-md font-body-md text-surface-variant dark:text-on-surface-variant">
+          <div className="space-y-1 text-[14px] font-body-md text-surface-variant dark:text-on-surface-variant">
             <p><strong>Address:</strong> 91K Block J Phase 2 Johar Town, Lahore</p>
             <p><strong>Phone:</strong> +92 327 7770090</p>
             <p><strong>Email:</strong> info@soltronicsenergy.com</p>
@@ -46,19 +46,21 @@ export default function Footer() {
         </div>
 
         <div className="lg:col-span-2 lg:col-start-7 lg:pt-16">
-          <h4 className="text-label-md font-label-md text-on-surface mb-4 font-bold uppercase tracking-wider">Quick Links</h4>
-          <ul className="space-y-2 text-body-md font-body-md">
+          <h4 className="text-[16px] font-label-md text-on-surface mb-4 font-bold uppercase tracking-wider">Quick Links</h4>
+          <ul className="space-y-2 text-[14px] font-body-md">
             <li className=""><Link className="text-surface-variant dark:text-on-surface-variant hover:text-secondary-fixed transition-colors hover:translate-x-1 inline-block transition-transform" href="/">Home</Link></li>
             <li className=""><Link className="text-surface-variant dark:text-on-surface-variant hover:text-secondary-fixed transition-colors hover:translate-x-1 inline-block transition-transform" href="/about">About Us</Link></li>
             <li className=""><Link className="text-surface-variant dark:text-on-surface-variant hover:text-secondary-fixed transition-colors hover:translate-x-1 inline-block transition-transform" href="/services">Services</Link></li>
             <li className=""><Link className="text-surface-variant dark:text-on-surface-variant hover:text-secondary-fixed transition-colors hover:translate-x-1 inline-block transition-transform" href="/products">Products</Link></li>
+            <li className=""><Link className="text-surface-variant dark:text-on-surface-variant hover:text-secondary-fixed transition-colors hover:translate-x-1 inline-block transition-transform" href="/locations">Locations in Pakistan</Link></li>
+            <li className=""><Link className="text-surface-variant dark:text-on-surface-variant hover:text-secondary-fixed transition-colors hover:translate-x-1 inline-block transition-transform" href="/vs">Compare Solar Brands</Link></li>
             <li className=""><Link className="text-surface-variant dark:text-on-surface-variant hover:text-secondary-fixed transition-colors hover:translate-x-1 inline-block transition-transform" href="/contact">Contact Us</Link></li>
           </ul>
         </div>
 
         <div className="lg:col-span-2 lg:pt-16">
-          <h4 className="text-label-md font-label-md text-on-surface mb-4 font-bold uppercase tracking-wider">Services</h4>
-          <ul className="space-y-2 text-body-md font-body-md">
+          <h4 className="text-[16px] font-label-md text-on-surface mb-4 font-bold uppercase tracking-wider">Services</h4>
+          <ul className="space-y-2 text-[14px] font-body-md">
             <li className=""><Link className="text-surface-variant dark:text-on-surface-variant hover:text-secondary-fixed transition-colors hover:translate-x-1 inline-block transition-transform" href="/epc">Solar EPC</Link></li>
             <li className=""><Link className="text-surface-variant dark:text-on-surface-variant hover:text-secondary-fixed transition-colors hover:translate-x-1 inline-block transition-transform" href="/services">Solar Installations</Link></li>
             <li className=""><Link className="text-surface-variant dark:text-on-surface-variant hover:text-secondary-fixed transition-colors hover:translate-x-1 inline-block transition-transform" href="/services">Net Metering</Link></li>
@@ -68,8 +70,8 @@ export default function Footer() {
         </div>
 
         <div className="lg:col-span-2 lg:pt-16">
-          <h4 className="text-label-md font-label-md text-on-surface mb-4 font-bold uppercase tracking-wider">Company</h4>
-          <ul className="space-y-2 text-body-md font-body-md">
+          <h4 className="text-[16px] font-label-md text-on-surface mb-4 font-bold uppercase tracking-wider">Company</h4>
+          <ul className="space-y-2 text-[14px] font-body-md">
             <li className=""><Link className="text-surface-variant dark:text-on-surface-variant hover:text-secondary-fixed transition-colors hover:translate-x-1 inline-block transition-transform" href="/about">Careers</Link></li>
             <li className=""><Link className="text-surface-variant dark:text-on-surface-variant hover:text-secondary-fixed transition-colors hover:translate-x-1 inline-block transition-transform" href="/about">Blog</Link></li>
             <li className=""><Link className="text-surface-variant dark:text-on-surface-variant hover:text-secondary-fixed transition-colors hover:translate-x-1 inline-block transition-transform" href="/about">Privacy Policy</Link></li>
@@ -79,7 +81,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-surface-variant/20">
-        <div className="px-gutter py-4 max-w-container-max mx-auto flex justify-center items-center text-body-md font-body-md text-surface-variant text-center">
+        <div className="px-gutter py-4 max-w-container-max mx-auto flex justify-center items-center text-[14px] font-body-md text-surface-variant text-center">
           <p className="">Copyright © 2021-2026 SOLTRONIC ENERGY DISTRIBUTION (PRIVATE) LIMITED, All Rights Reserved.</p>
         </div>
       </div>

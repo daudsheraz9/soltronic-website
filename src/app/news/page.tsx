@@ -208,26 +208,7 @@ const ARTICLES: Article[] = [
   }
 ];
 
-const PRESS_RELEASES = [
-  {
-    title: "Soltronic Energy Q2 2026 Financial & Operational Highlights",
-    date: "July 30, 2026",
-    size: "2.4 MB",
-    type: "PDF Document"
-  },
-  {
-    title: "Whitepaper: Commercial & Industrial Energy Storage ROI Framework",
-    date: "July 15, 2026",
-    size: "4.1 MB",
-    type: "PDF Document"
-  },
-  {
-    title: "Soltronic Tier-1 Inverter & Module Compatibility Matrix 2026",
-    date: "June 10, 2026",
-    size: "1.8 MB",
-    type: "PDF Document"
-  }
-];
+
 
 const CATEGORIES = ["All", "Industry Policy", "Soltronic Milestones", "Tech & Innovation", "Market Analysis", "ESG & Sustainability"];
 
@@ -298,7 +279,7 @@ export default function NewsPage() {
   };
 
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-800 relative font-sans pb-24" ref={containerRef}>
+    <main className="min-h-screen bg-slate-50 text-slate-800 relative font-sans pb-12" ref={containerRef}>
       
       {/* Top Ticker Bar - Clean Light Green */}
       <div className="bg-[#107022] text-white py-2.5 px-4 text-xs shadow-sm">
@@ -328,86 +309,35 @@ export default function NewsPage() {
         </div>
       </div>
 
+
       {/* Main Content Area */}
-      <section className="pt-10 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <section className="pt-4 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         
-        {/* Header Title */}
-        <div className="text-center max-w-3xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/80 border border-emerald-200 text-[#107022] text-xs font-bold uppercase tracking-widest mb-4">
-            <span className="material-symbols-outlined text-sm">newspaper</span>
-            Soltronic Media Center
-          </div>
-          
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
-            Latest News & <span className="text-[#107022]">Energy Insights</span>
-          </h1>
-          
-          <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-            Stay informed with authoritative updates on Pakistan's solar policies, industrial BESS storage, net metering rules, and Soltronic innovations.
-          </p>
-        </div>
+
 
         {/* Featured Story Spotlight Card */}
         {featuredArticle && (
           <div 
             onClick={() => setSelectedArticle(featuredArticle)}
-            className="group cursor-pointer bg-white rounded-3xl border border-slate-200 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden mb-12 flex flex-col lg:flex-row items-stretch"
+            className="anim-news-card group cursor-pointer bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:border-emerald-300 hover:-translate-y-1 transition-all duration-300 mb-12"
           >
-            {/* Image side */}
-            <div className="w-full lg:w-3/5 h-64 sm:h-80 lg:h-auto min-h-[280px] sm:min-h-[340px] relative overflow-hidden bg-slate-100 flex-shrink-0">
-              <SafeImage 
-                src={featuredArticle.image} 
-                alt={featuredArticle.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute top-4 left-4 z-10 flex gap-2">
-                <span className="px-3 py-1 bg-[#107022] text-white font-bold text-xs rounded-lg shadow-sm uppercase tracking-wider">
-                  Featured Story
-                </span>
-                <span className="px-3 py-1 bg-white/95 backdrop-blur-md text-slate-800 font-bold text-xs rounded-lg border border-slate-200 shadow-sm">
-                  {featuredArticle.category}
-                </span>
+            <div className="h-48 relative overflow-hidden bg-slate-100">
+              <SafeImage src={featuredArticle.image} alt={featuredArticle.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div className="absolute top-3 left-3 flex gap-2">
+                <span className="px-2.5 py-1 bg-[#107022] text-white text-[10px] font-bold rounded uppercase tracking-wider shadow-sm">Featured Story</span>
+                <span className="px-2.5 py-1 bg-white/90 backdrop-blur-md text-[10px] font-bold text-[#107022] rounded uppercase tracking-wider border border-slate-200 shadow-sm">{featuredArticle.category}</span>
               </div>
             </div>
-
-            {/* Content side */}
-            <div className="w-full lg:w-2/5 p-6 sm:p-8 flex flex-col justify-between bg-white text-slate-800">
-              <div>
-                <div className="flex items-center gap-3 text-xs text-slate-500 mb-3 font-semibold">
-                  <span>{featuredArticle.date}</span>
-                  <span>•</span>
-                  <span className="flex items-center gap-1 text-[#107022] font-bold">
-                    <span className="material-symbols-outlined text-sm">schedule</span>
-                    {featuredArticle.readTime}
-                  </span>
-                </div>
-
-                <h2 className="text-xl sm:text-2xl font-black text-slate-900 leading-snug mb-3 group-hover:text-[#107022] transition-colors">
-                  {featuredArticle.title}
-                </h2>
-
-                <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6 font-normal">
-                  {featuredArticle.excerpt}
-                </p>
+            <div className="p-5 sm:p-6">
+              <div className="flex items-center justify-between text-[11px] text-slate-500 mb-2 font-medium">
+                <span>{featuredArticle.date}</span>
+                <span className="flex items-center gap-1 text-[#107022] font-semibold"><span className="material-symbols-outlined text-xs">schedule</span>{featuredArticle.readTime}</span>
               </div>
-
-              <div className="pt-4 border-t border-slate-100 flex items-center justify-between mt-auto">
-                <div className="flex items-center gap-3">
-                  <SafeImage 
-                    src={featuredArticle.author.avatar} 
-                    alt={featuredArticle.author.name}
-                    className="w-10 h-10 rounded-full object-cover border border-slate-200 shadow-sm"
-                  />
-                  <div>
-                    <h4 className="text-xs font-bold text-slate-900">{featuredArticle.author.name}</h4>
-                    <p className="text-[10px] text-slate-500 font-medium">{featuredArticle.author.role}</p>
-                  </div>
-                </div>
-
-                <span className="w-9 h-9 rounded-full bg-emerald-50 text-[#107022] group-hover:bg-[#107022] group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-sm flex-shrink-0">
-                  <span className="material-symbols-outlined text-base">arrow_forward</span>
-                </span>
-              </div>
+              <h3 className="text-base font-bold text-slate-900 mb-2 group-hover:text-[#107022] transition-colors line-clamp-2 leading-snug">{featuredArticle.title}</h3>
+              <p className="text-xs text-slate-600 line-clamp-3 leading-relaxed mb-4">{featuredArticle.excerpt}</p>
+            </div>
+            <div className="px-5 sm:px-6 pb-5 pt-3 border-t border-slate-100 flex items-center justify-end">
+              <span className="text-xs font-bold text-[#107022] group-hover:text-orange-600 flex items-center gap-1 transition-colors">Read Article<span className="material-symbols-outlined text-xs group-hover:translate-x-1 transition-transform">arrow_forward</span></span>
             </div>
           </div>
         )}
@@ -507,16 +437,7 @@ export default function NewsPage() {
                     </div>
                   </div>
 
-                  <div className="px-5 sm:px-6 pb-5 pt-3 border-t border-slate-100 flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <SafeImage 
-                        src={article.author.avatar} 
-                        alt={article.author.name}
-                        className="w-6 h-6 rounded-full object-cover border border-slate-200"
-                      />
-                      <span className="text-[11px] font-semibold text-slate-700">{article.author.name}</span>
-                    </div>
-
+                  <div className="px-5 sm:px-6 pb-5 pt-3 border-t border-slate-100 flex items-center justify-end">
                     <span className="text-xs font-bold text-[#107022] group-hover:text-orange-600 flex items-center gap-1 transition-colors">
                       Read Article
                       <span className="material-symbols-outlined text-xs group-hover:translate-x-1 transition-transform">arrow_forward</span>
@@ -529,53 +450,6 @@ export default function NewsPage() {
         </div>
       </section>
 
-      {/* Press Releases & Whitepapers Downloads */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="bg-gradient-to-r from-emerald-900 to-[#107022] rounded-3xl p-8 sm:p-10 shadow-lg text-white">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-5">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white/20 text-white text-[11px] font-bold uppercase tracking-wider mb-3">
-                <span className="material-symbols-outlined text-xs">download</span>
-                Downloads
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-extrabold mb-3">
-                Corporate Press & Solar Reports
-              </h2>
-              <p className="text-emerald-100 text-xs sm:text-sm leading-relaxed">
-                Download verified technical whitepapers, compatibility matrices, and market intelligence documents compiled by Soltronic Energy engineering teams.
-              </p>
-            </div>
-
-            <div className="lg:col-span-7 space-y-3">
-              {PRESS_RELEASES.map((doc, idx) => (
-                <div 
-                  key={idx}
-                  className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 bg-white/10 backdrop-blur-md rounded-2xl hover:bg-white/20 transition-all gap-4 border border-white/10"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-xl bg-white/20 text-white flex items-center justify-center flex-shrink-0">
-                      <span className="material-symbols-outlined">picture_as_pdf</span>
-                    </div>
-                    <div>
-                      <h4 className="text-xs sm:text-sm font-bold text-white">{doc.title}</h4>
-                      <p className="text-[10px] text-emerald-100">{doc.date} • {doc.size} • {doc.type}</p>
-                    </div>
-                  </div>
-
-                  <a 
-                    href="#download" 
-                    onClick={(e) => { e.preventDefault(); alert(`Downloading: ${doc.title}`); }}
-                    className="px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white text-xs font-bold rounded-xl transition-colors flex items-center gap-1.5 whitespace-nowrap shadow-sm"
-                  >
-                    <span className="material-symbols-outlined text-xs">download</span>
-                    Download PDF
-                  </a>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Newsletter Signup */}
       <section className="pt-4 pb-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
@@ -646,16 +520,8 @@ export default function NewsPage() {
                 {selectedArticle.title}
               </h2>
 
-              <div className="flex items-center gap-3 pt-1 pb-4 border-b border-slate-100">
-                <SafeImage 
-                  src={selectedArticle.author.avatar} 
-                  alt={selectedArticle.author.name}
-                  className="w-10 h-10 rounded-full object-cover border border-slate-200"
-                />
-                <div>
-                  <h4 className="text-xs font-bold text-slate-900">{selectedArticle.author.name}</h4>
-                  <p className="text-[10px] text-slate-500">{selectedArticle.author.role} • {selectedArticle.date}</p>
-                </div>
+              <div className="pt-1 pb-4 border-b border-slate-100">
+                <p className="text-xs text-slate-500">{selectedArticle.date}</p>
               </div>
 
               <div className="rounded-2xl overflow-hidden h-60 sm:h-80 relative shadow-inner bg-slate-100">

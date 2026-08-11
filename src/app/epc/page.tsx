@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function EPCPage() {
   return (
-    <main className="bg-white pb-10 pt-32 md:pt-40">
+    <main className="bg-white pb-10 pt-16 md:pt-40">
 
 
       {/* BEGIN: Hero Section */}
