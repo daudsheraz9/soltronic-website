@@ -7,11 +7,7 @@ export default function Services() {
         {/* BEGIN: What We Offer */}
         <section className="pt-8 pb-10 bg-gray-50" data-purpose="services-grid">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-8">
-              <h3 className="text-[#2e7d32] font-bold tracking-wider text-sm uppercase mb-2">What We Offer</h3>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Complete <span className="text-[#2e7d32]">Solar</span> Solutions</h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">From consultation to installation and maintenance, we provide everything you need to switch to clean, renewable and affordable solar energy.</p>
-            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {/* Service Card 1 */}
               <div className="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-100 hover:shadow-md transition">
@@ -209,10 +205,7 @@ export default function Services() {
                 </div>
               </div>
               <div className="flex gap-4">
-                <a className="bg-white text-[#2e7d32] px-6 py-3 rounded-md font-medium hover:bg-gray-50 transition flex items-center gap-2" href="https://wa.me/923277770090" target="_blank" rel="noopener noreferrer">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg>
-                  Talk to Expert
-                </a>
+
                 <a className="bg-[#f57c00] text-white px-6 py-3 rounded-md font-medium hover:bg-orange-600 transition flex items-center gap-2" href="/contact">
                   Get Free Quote <span aria-hidden="true">&rarr;</span>
                 </a>

@@ -160,19 +160,6 @@ export default function EventsGalleryPage() {
 
       <div className="relative z-10 pt-12 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         
-        {/* Antigravity Header */}
-        <div className="text-center space-y-6 mb-10">
-          <div className="antigravity-header-element inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-emerald-400 text-xs font-black tracking-[0.2em] uppercase shadow-[0_0_30px_rgba(16,112,34,0.3)]">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-            Inside Soltronic
-          </div>
-          <h1 className="antigravity-header-element text-5xl sm:text-6xl lg:text-7xl font-black tracking-tighter leading-tight drop-shadow-2xl">
-            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-emerald-100 to-white">Global Footprint</span> &<br/> Corporate Events
-          </h1>
-          <p className="antigravity-header-element text-lg sm:text-xl text-emerald-100/70 max-w-2xl mx-auto font-light leading-relaxed">
-            From international expos to specialized engineering masterclasses. Witness the momentum behind Pakistan's clean energy transition.
-          </p>
-        </div>
 
         {/* Glassmorphic Filter Bar */}
         <div className="antigravity-header-element flex flex-wrap items-center justify-center gap-3 mb-16">

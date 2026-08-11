@@ -86,7 +86,7 @@ const ARTICLES: Article[] = [
       "Reduces regional industrial diesel consumption by 14.5 million liters per year."
     ],
     image: "/gallery_bess_container_1786337154136.png",
-    featured: false,
+    featured: true,
     trending: true,
     tags: ["BESS", "Battery Storage", "Faisalabad", "Industrial Solar", "LFP Batteries"]
   },
@@ -254,8 +254,17 @@ export default function NewsPage() {
   }, { scope: containerRef });
 
   // Filtered Articles
+  const featuredList = ARTICLES.filter(a => a.featured);
+  const firstFeatured = featuredList[0] || ARTICLES[0];
+  const secondFeatured = featuredList.length > 1 ? featuredList[1] : ARTICLES[1];
+
   const filteredArticles = useMemo(() => {
     return ARTICLES.filter((article) => {
+      // Don't show featured in the main grid if we are on the default view
+      if (selectedCategory === "All" && !searchQuery) {
+        if (article.id === firstFeatured.id || article.id === secondFeatured.id) return false;
+      }
+
       const matchesCategory = selectedCategory === "All" || article.category === selectedCategory;
       const matchesSearch = 
         article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -263,9 +272,7 @@ export default function NewsPage() {
         article.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
       return matchesCategory && matchesSearch;
     });
-  }, [selectedCategory, searchQuery]);
-
-  const featuredArticle = ARTICLES.find(a => a.featured) || ARTICLES[0];
+  }, [selectedCategory, searchQuery, firstFeatured.id, secondFeatured.id]);
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
@@ -315,32 +322,63 @@ export default function NewsPage() {
         
 
 
-        {/* Featured Story Spotlight Card */}
-        {featuredArticle && (
-          <div 
-            onClick={() => setSelectedArticle(featuredArticle)}
-            className="anim-news-card group cursor-pointer bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:border-emerald-300 hover:-translate-y-1 transition-all duration-300 mb-12"
-          >
-            <div className="h-48 relative overflow-hidden bg-slate-100">
-              <SafeImage src={featuredArticle.image} alt={featuredArticle.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-              <div className="absolute top-3 left-3 flex gap-2">
-                <span className="px-2.5 py-1 bg-[#107022] text-white text-[10px] font-bold rounded uppercase tracking-wider shadow-sm">Featured Story</span>
-                <span className="px-2.5 py-1 bg-white/90 backdrop-blur-md text-[10px] font-bold text-[#107022] rounded uppercase tracking-wider border border-slate-200 shadow-sm">{featuredArticle.category}</span>
+        {/* Featured Stories Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 mb-12">
+          {/* Main Featured Story (Large Size) */}
+          {firstFeatured && (
+            <div 
+              onClick={() => setSelectedArticle(firstFeatured)}
+              className="lg:col-span-2 anim-news-card group cursor-pointer bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:border-emerald-300 hover:-translate-y-1 transition-all duration-300 flex flex-col"
+            >
+              <div className="h-64 sm:h-80 relative overflow-hidden bg-slate-100 flex-shrink-0">
+                <SafeImage src={firstFeatured.image} alt={firstFeatured.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <div className="absolute top-3 left-3 flex gap-2">
+                  <span className="px-2.5 py-1 bg-[#107022] text-white text-[10px] font-bold rounded uppercase tracking-wider shadow-sm">Featured Story</span>
+                  <span className="px-2.5 py-1 bg-white/90 backdrop-blur-md text-[10px] font-bold text-[#107022] rounded uppercase tracking-wider border border-slate-200 shadow-sm">{firstFeatured.category}</span>
+                </div>
+              </div>
+              <div className="p-5 sm:p-6 flex-1 flex flex-col">
+                <div className="flex items-center justify-between text-[11px] text-slate-500 mb-2 font-medium">
+                  <span>{firstFeatured.date}</span>
+                  <span className="flex items-center gap-1 text-[#107022] font-semibold"><span className="material-symbols-outlined text-xs">schedule</span>{firstFeatured.readTime}</span>
+                </div>
+                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-3 group-hover:text-[#107022] transition-colors line-clamp-2 leading-snug">{firstFeatured.title}</h3>
+                <p className="text-sm text-slate-600 line-clamp-3 leading-relaxed mb-4 flex-1">{firstFeatured.excerpt}</p>
+                <div className="pt-3 border-t border-slate-100 flex items-center justify-end mt-auto">
+                  <span className="text-sm font-bold text-[#107022] group-hover:text-orange-600 flex items-center gap-1 transition-colors">Read Article<span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span></span>
+                </div>
               </div>
             </div>
-            <div className="p-5 sm:p-6">
-              <div className="flex items-center justify-between text-[11px] text-slate-500 mb-2 font-medium">
-                <span>{featuredArticle.date}</span>
-                <span className="flex items-center gap-1 text-[#107022] font-semibold"><span className="material-symbols-outlined text-xs">schedule</span>{featuredArticle.readTime}</span>
+          )}
+
+          {/* Second Featured Story (Normal Size) */}
+          {secondFeatured && (
+            <div 
+              onClick={() => setSelectedArticle(secondFeatured)}
+              className="lg:col-span-1 anim-news-card group cursor-pointer bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:border-emerald-300 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+            >
+              <div>
+                <div className="h-48 relative overflow-hidden bg-slate-100 flex-shrink-0">
+                  <SafeImage src={secondFeatured.image} alt={secondFeatured.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-md text-[10px] font-bold text-[#107022] border border-slate-200 shadow-sm uppercase tracking-wider">
+                    {secondFeatured.category}
+                  </div>
+                </div>
+                <div className="p-5 sm:p-6">
+                  <div className="flex items-center justify-between text-[11px] text-slate-500 mb-2 font-medium">
+                    <span>{secondFeatured.date}</span>
+                    <span className="flex items-center gap-1 text-[#107022] font-semibold"><span className="material-symbols-outlined text-xs">schedule</span>{secondFeatured.readTime}</span>
+                  </div>
+                  <h3 className="text-base font-bold text-slate-900 mb-2 group-hover:text-[#107022] transition-colors line-clamp-2 leading-snug">{secondFeatured.title}</h3>
+                  <p className="text-xs text-slate-600 line-clamp-3 leading-relaxed mb-4">{secondFeatured.excerpt}</p>
+                </div>
               </div>
-              <h3 className="text-base font-bold text-slate-900 mb-2 group-hover:text-[#107022] transition-colors line-clamp-2 leading-snug">{featuredArticle.title}</h3>
-              <p className="text-xs text-slate-600 line-clamp-3 leading-relaxed mb-4">{featuredArticle.excerpt}</p>
+              <div className="px-5 sm:px-6 pb-5 pt-3 border-t border-slate-100 flex items-center justify-end mt-auto">
+                <span className="text-xs font-bold text-[#107022] group-hover:text-orange-600 flex items-center gap-1 transition-colors">Read Article<span className="material-symbols-outlined text-xs group-hover:translate-x-1 transition-transform">arrow_forward</span></span>
+              </div>
             </div>
-            <div className="px-5 sm:px-6 pb-5 pt-3 border-t border-slate-100 flex items-center justify-end">
-              <span className="text-xs font-bold text-[#107022] group-hover:text-orange-600 flex items-center gap-1 transition-colors">Read Article<span className="material-symbols-outlined text-xs group-hover:translate-x-1 transition-transform">arrow_forward</span></span>
-            </div>
-          </div>
-        )}
+          )}
+        </div>
 
         {/* Filters & Search Controls */}
         <div className="bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 mb-10 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">

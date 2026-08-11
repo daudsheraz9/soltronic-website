@@ -38,10 +38,10 @@ export default function BrandsPage() {
       
 
 
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-10">
         {categorizedBrands.map((category, cIdx) => (
           <section key={cIdx} className="w-full">
-            <h3 className="text-base font-semibold text-slate-800 mb-2 text-left border-b border-gray-200 pb-2">
+            <h3 className="text-base font-semibold text-slate-800 mb-4 text-left border-b border-gray-200 pb-2">
               {category.name}
             </h3>
             

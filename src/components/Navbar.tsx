@@ -92,9 +92,9 @@ export default function Navbar() {
 
           <button 
             onClick={openDrawer}
-            className="relative flex flex-col items-center gap-0.5 hover:text-white/80 transition-colors group p-1"
+            className="relative flex flex-col items-center gap-0.5 hover:text-white/80 transition-colors group"
           >
-            <div className="relative">
+            <div className="relative flex leading-none">
               <span className="material-symbols-outlined text-2xl group-hover:scale-105 transition-transform">favorite_border</span>
               {totalItemsCount > 0 && (
                 <span className="absolute -top-1.5 -right-2 bg-orange-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow">

@@ -275,7 +275,7 @@ export default async function Home() {
             {/* Right: Text Information (Swapped Position) */}
             <div className="w-full lg:w-1/4 space-y-1.5 text-center">
               <span className="text-[10px] sm:text-[11px] font-bold text-primary uppercase tracking-widest block">Calculate Your Savings</span>
-              <h2 className="text-xl sm:text-2xl font-bold text-on-surface leading-snug">See How Much You Can Save</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-on-surface leading-snug">How Much You Can Save</h2>
               <p className="text-xs sm:text-sm text-on-surface-variant">Use our calculator to estimate your savings with solar solutions.</p>
             </div>
           </div>

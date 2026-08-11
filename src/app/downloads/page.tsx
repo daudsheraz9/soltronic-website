@@ -551,53 +551,7 @@ export default function DownloadsPage() {
           </div>
         </div>
       )}
-      {/* Press Releases & Whitepapers Downloads */}
-      <section className="pt-8 pb-4 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="bg-gradient-to-r from-emerald-900 to-[#107022] rounded-3xl p-8 sm:p-10 shadow-lg text-white">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-5">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white/20 text-white text-[11px] font-bold uppercase tracking-wider mb-3">
-                <span className="material-symbols-outlined text-xs">download</span>
-                Downloads
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-extrabold mb-3">
-                Corporate Press & Solar Reports
-              </h2>
-              <p className="text-emerald-100 text-xs sm:text-sm leading-relaxed">
-                Download verified technical whitepapers, compatibility matrices, and market intelligence documents compiled by Soltronic Energy engineering teams.
-              </p>
-            </div>
 
-            <div className="lg:col-span-7 space-y-3">
-              {PRESS_RELEASES.map((doc, idx) => (
-                <div 
-                  key={idx}
-                  className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 bg-white/10 backdrop-blur-md rounded-2xl hover:bg-white/20 transition-all gap-4 border border-white/10"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-xl bg-white/20 text-white flex items-center justify-center flex-shrink-0">
-                      <span className="material-symbols-outlined">picture_as_pdf</span>
-                    </div>
-                    <div>
-                      <h4 className="text-xs sm:text-sm font-bold text-white">{doc.title}</h4>
-                      <p className="text-[10px] text-emerald-100">{doc.date} • {doc.size} • {doc.type}</p>
-                    </div>
-                  </div>
-
-                  <a 
-                    href="#download" 
-                    onClick={(e) => { e.preventDefault(); alert(`Downloading: ${doc.title}`); }}
-                    className="px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white text-xs font-bold rounded-xl transition-colors flex items-center gap-1.5 whitespace-nowrap shadow-sm"
-                  >
-                    <span className="material-symbols-outlined text-xs">download</span>
-                    Download PDF
-                  </a>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
 
       {/* Quick Document Preview Drawer / Modal */}
