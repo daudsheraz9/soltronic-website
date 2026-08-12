@@ -58,8 +58,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossOrigin="" />
         <link
           href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Archivo+Black&display=swap"
           rel="stylesheet"

@@ -2,18 +2,19 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const mainImages = [
-  '/product-main-image-1.png',
-  '/product-main-image-2.png',
-  '/product-main-image-3.png',
-  '/product-main-image-4.png',
-  '/product-main-image-5.png',
-  '/product-main-image-6.png',
-  '/product-main-image-7.png',
-  '/banner-main.png',
-  '/banner-main-2.png',
-  '/banner-main-3.png',
+  '/product-main-image-1.webp',
+  '/product-main-image-2.webp',
+  '/product-main-image-3.webp',
+  '/product-main-image-4.webp',
+  '/product-main-image-5.webp',
+  '/product-main-image-6.webp',
+  '/product-main-image-7.webp',
+  '/banner-main.webp',
+  '/banner-main-2.webp',
+  '/banner-main-3.webp',
 ];
 
 export default function ProductBanner() {
@@ -37,10 +38,14 @@ export default function ProductBanner() {
           >
             {mainImages.map((src, i) => (
               <div key={i} className="w-full h-full flex-shrink-0 relative">
-                <img 
+                <Image 
                   src={src} 
-                  alt={`Solar Offer ${i + 1}`} 
-                  className="w-full h-full object-fill sm:object-cover"
+                  alt={`Solar Offer ${i + 1}`}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 68vw"
+                  priority={i === 0}
+                  loading={i === 0 ? "eager" : "lazy"}
+                  className="object-cover"
                 />
               </div>
             ))}
@@ -80,17 +85,21 @@ export default function ProductBanner() {
         {/* Right Side: Static Side Ads Stack (Hidden on mobile) */}
         <div className="hidden sm:flex w-full lg:w-[30.5%] flex-row lg:flex-col gap-3 sm:gap-4 flex-shrink-0 pr-2 lg:pr-3">
           <Link href="/products" className="flex-1 rounded-xl sm:rounded-2xl overflow-hidden relative shadow-sm border border-gray-100 bg-white group block min-h-[140px] lg:min-h-0">
-            <img 
-              src="/right-side-ad1.png" 
+            <Image 
+              src="/right-side-ad1.webp" 
               alt="Solis Inverter Offer" 
-              className="absolute inset-0 w-full h-full object-fill sm:object-cover transition-transform duration-500 group-hover:scale-105" 
+              fill
+              sizes="(max-width: 1024px) 50vw, 30vw"
+              className="object-cover transition-transform duration-500 group-hover:scale-105" 
             />
           </Link>
           <Link href="/products" className="flex-1 rounded-xl sm:rounded-2xl overflow-hidden relative shadow-sm border border-gray-100 bg-white group block min-h-[140px] lg:min-h-0">
-            <img 
-              src="/right-side-ad2.png" 
+            <Image 
+              src="/right-side-ad2.webp" 
               alt="Pylontech Battery Storage Solution" 
-              className="absolute inset-0 w-full h-full object-fill sm:object-cover transition-transform duration-500 group-hover:scale-105" 
+              fill
+              sizes="(max-width: 1024px) 50vw, 30vw"
+              className="object-cover transition-transform duration-500 group-hover:scale-105" 
             />
           </Link>
         </div>
