@@ -1,20 +1,32 @@
 import { MetadataRoute } from 'next';
 import { createClient } from '@supabase/supabase-js';
+import { productsData } from '@/data/products';
 import { PAKISTAN_CITIES } from '@/data/pakistanCities';
 import { COMPETITORS } from '@/data/competitors';
-
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!;
-const supabase = createClient(supabaseUrl, supabaseKey);
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://soltronicsenergy.com';
 
-  const { data: products } = await supabase.from('products').select('id, updated_at');
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
 
-  const productUrls = (products || []).map((product) => ({
-    url: `${baseUrl}/products/${product.id}`,
-    lastModified: product.updated_at ? new Date(product.updated_at) : new Date(),
+  let productSlugs: string[] = productsData.map((p) => p.slug);
+
+  if (supabaseUrl && supabaseKey) {
+    try {
+      const supabase = createClient(supabaseUrl, supabaseKey);
+      const { data: products } = await supabase.from('products').select('slug');
+      if (products && products.length > 0) {
+        productSlugs = products.map((p) => p.slug).filter(Boolean);
+      }
+    } catch (e) {
+      // Fallback to local productsData if Supabase connection fails
+    }
+  }
+
+  const productUrls = productSlugs.map((slug) => ({
+    url: `${baseUrl}/products/${slug}`,
+    lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: 0.8,
   }));
