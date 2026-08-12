@@ -1,6 +1,6 @@
 "use client";
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 
 import { Product } from '@/data/products';
@@ -24,6 +24,22 @@ export default function ProductsClient({ initialProducts }: { initialProducts: P
     if (urlCategory) setCategory(urlCategory);
   }, [searchParams]);
 
+  // Reset page when filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, category, brand, offering, sortBy]);
+
+  // Extract unique brands dynamically from products data
+  const availableBrands = useMemo(() => {
+    const brandsSet = new Set<string>();
+    initialProducts.forEach(p => {
+      if (p.vendor && p.vendor !== 'Soltronic' && p.vendor !== 'Unknown') {
+        brandsSet.add(p.vendor);
+      }
+    });
+    return Array.from(brandsSet).sort();
+  }, [initialProducts]);
+
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -41,35 +57,53 @@ export default function ProductsClient({ initialProducts }: { initialProducts: P
   const itemsPerPage = 12;
 
   let filteredProducts = initialProducts.filter(product => {
-    if (searchQuery && !product.title.toLowerCase().includes(searchQuery.toLowerCase()) && !product.description?.toLowerCase().includes(searchQuery.toLowerCase())) {
-      return false;
+    // 1. Search Query filter
+    if (searchQuery) {
+      const q = searchQuery.toLowerCase().trim();
+      const titleMatch = product.title?.toLowerCase().includes(q);
+      const descMatch = product.description?.toLowerCase().includes(q);
+      const vendorMatch = product.vendor?.toLowerCase().includes(q);
+      const specsMatch = Object.values(product.specifications || {}).some((v) =>
+        String(v).toLowerCase().includes(q)
+      );
+      if (!titleMatch && !descMatch && !vendorMatch && !specsMatch) return false;
     }
+
+    // 2. Category Filter
     if (category) {
-      const prodCat = product.category?.toLowerCase() || '';
-      const filterCat = category.toLowerCase();
+      const pCat = (product.category || '').toLowerCase();
+      const fCat = category.toLowerCase().replace(/-/g, ' ');
       
-      const isMatch = prodCat === filterCat || 
-                      (filterCat === 'batteries' && prodCat === 'storage') || 
-                      (filterCat === 'storage' && prodCat === 'batteries');
-                      
-      if (!isMatch) {
-        return false;
-      }
+      let isCatMatch = false;
+      if (fCat === 'inverters' && (pCat.includes('inverter') || pCat.includes('hybrid') || pCat.includes('on-grid'))) isCatMatch = true;
+      else if (fCat === 'panels' && (pCat.includes('panel') || pCat.includes('solar') || pCat.includes('module'))) isCatMatch = true;
+      else if (fCat === 'batteries' && (pCat.includes('batter') || pCat.includes('storage') || pCat.includes('lithium'))) isCatMatch = true;
+      else if (fCat === 'pressure washers' && (pCat.includes('washer') || pCat.includes('pressure'))) isCatMatch = true;
+      else if (fCat === 'ev chargers' && (pCat.includes('charger') || pCat.includes('ev'))) isCatMatch = true;
+      else if (fCat === 'mountings' && pCat.includes('mount')) isCatMatch = true;
+      else if (fCat === 'electricals' && (pCat.includes('elec') || pCat.includes('sensor') || pCat.includes('dongle'))) isCatMatch = true;
+      else if (pCat.includes(fCat) || fCat.includes(pCat)) isCatMatch = true;
+
+      if (!isCatMatch) return false;
     }
-    if (brand && product.vendor?.toLowerCase() !== brand.toLowerCase()) {
-      return false;
+
+    // 3. Brand Filter
+    if (brand) {
+      const pVendor = (product.vendor || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+      const fBrand = brand.toLowerCase().replace(/[^a-z0-9]/g, '');
+      if (!pVendor.includes(fBrand) && !fBrand.includes(pVendor)) return false;
     }
-    // Note: 'offering' filter is not applied as product data doesn't seem to have offering type
+
     return true;
   });
 
   if (sortBy) {
     filteredProducts.sort((a, b) => {
-      const priceA = parseFloat(a.price?.toString().replace(/,/g, '') || '0');
-      const priceB = parseFloat(b.price?.toString().replace(/,/g, '') || '0');
+      const priceA = parseFloat(a.price?.toString().replace(/[^0-9.]/g, '') || '0');
+      const priceB = parseFloat(b.price?.toString().replace(/[^0-9.]/g, '') || '0');
       if (sortBy === 'price-low') return priceA - priceB;
       if (sortBy === 'price-high') return priceB - priceA;
-      if (sortBy === 'new') return -1; // Assuming newer items are at the top or there's a date field (mocked for now)
+      if (sortBy === 'new') return parseInt(b.id || '0') - parseInt(a.id || '0');
       return 0;
     });
   }
@@ -80,8 +114,6 @@ export default function ProductsClient({ initialProducts }: { initialProducts: P
 
   return (
     <div className="bg-gray-50 text-slate-700">
-
-
 
       {/* Category Icons */}
       <div className="mt-8 w-full max-w-[80rem] mx-auto overflow-x-auto scrollbar-hide px-4">
@@ -95,14 +127,37 @@ export default function ProductsClient({ initialProducts }: { initialProducts: P
             { name: 'Pressure Washers', icon: '/icons/pressure-washer.png', href: '/products?category=pressure-washers', scale: 'scale-[1.40]' },
             { name: 'Mountings', icon: '/icons/mountings.png', href: '/products?category=mountings' },
             { name: 'Electricals', icon: '/icons/electrincals.png', href: '/products?category=electricals' },
-          ].map((category) => (
-            <Link key={category.name} href={category.href} className="flex flex-col items-center gap-2 group min-w-[75px] md:min-w-[85px]">
-              <div className="h-[54px] md:h-[70px] w-[54px] md:w-[70px] flex items-center justify-center relative overflow-hidden">
-                <img src={category.icon} alt={category.name} className={`max-h-full max-w-full object-contain mix-blend-multiply transition-all duration-300 group-hover:grayscale ${category.scale || ''}`} />
-              </div>
-              <span className="text-[12px] md:text-[14px] text-gray-700 font-medium group-hover:text-[#107022] transition-colors text-center mt-1 whitespace-nowrap">{category.name}</span>
-            </Link>
-          ))}
+          ].map((catItem) => {
+            const isCatActive = catItem.href.includes('category=') && category === catItem.href.split('category=')[1];
+            if (catItem.name === 'Promotions') {
+              return (
+                <Link key={catItem.name} href={catItem.href} className="flex flex-col items-center gap-2 group min-w-[75px] md:min-w-[85px]">
+                  <div className="h-[54px] md:h-[70px] w-[54px] md:w-[70px] flex items-center justify-center relative overflow-hidden">
+                    <img src={catItem.icon} alt={catItem.name} className="max-h-full max-w-full object-contain mix-blend-multiply transition-transform duration-300 group-hover:scale-110" />
+                  </div>
+                  <span className="text-[12px] md:text-[14px] text-gray-700 font-medium group-hover:text-primary transition-colors text-center mt-1 whitespace-nowrap">{catItem.name}</span>
+                </Link>
+              );
+            }
+            return (
+              <button
+                key={catItem.name} 
+                onClick={() => {
+                  if (catItem.href.includes('category=')) {
+                    const catVal = catItem.href.split('category=')[1];
+                    setCategory(catVal === category ? '' : catVal);
+                    setSearchQuery('');
+                  }
+                }}
+                className="flex flex-col items-center gap-2 group min-w-[75px] md:min-w-[85px] cursor-pointer"
+              >
+                <div className="h-[54px] md:h-[70px] w-[54px] md:w-[70px] flex items-center justify-center relative overflow-hidden">
+                  <img src={catItem.icon} alt={catItem.name} className={`max-h-full max-w-full object-contain mix-blend-multiply transition-transform duration-300 group-hover:scale-110 ${catItem.scale || ''}`} />
+                </div>
+                <span className={`text-[12px] md:text-[14px] transition-colors text-center mt-1 whitespace-nowrap ${isCatActive ? 'text-primary font-bold' : 'text-gray-700 font-medium group-hover:text-primary'}`}>{catItem.name}</span>
+              </button>
+            );
+          })}
         </div>
       </div>
 
@@ -117,7 +172,7 @@ export default function ProductsClient({ initialProducts }: { initialProducts: P
                   <h3 className="font-black tracking-[0.2em] text-xs uppercase pt-1 text-dark">Catalog Controls</h3>
                 </div>
                 
-                <button onClick={handleResetFilters} className="flex items-center gap-2 text-[11px] font-bold text-gray-500 uppercase tracking-widest">
+                <button onClick={handleResetFilters} className="flex items-center gap-2 text-[11px] font-bold text-gray-500 uppercase tracking-widest hover:text-primary transition-colors">
                   <span className="material-symbols-outlined text-[16px] font-bold">refresh</span> Reset
                 </button>
               </div>
@@ -128,7 +183,7 @@ export default function ProductsClient({ initialProducts }: { initialProducts: P
                 <div className="relative flex-1">
                   <input 
                     type="text" 
-                    placeholder="Search..." 
+                    placeholder="Search products..." 
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-2xl py-2.5 pl-12 pr-4 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary placeholder-gray-400"
@@ -138,18 +193,8 @@ export default function ProductsClient({ initialProducts }: { initialProducts: P
 
                 {/* Dropdowns */}
                 <div className="relative flex-1">
-                  <select value={offering} onChange={(e) => setOffering(e.target.value)} className="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-2xl py-2.5 pl-5 pr-10 appearance-none focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary font-medium cursor-pointer">
-                    <option value="">Offerings</option>
-                    <option value="residential">Residential</option>
-                    <option value="commercial">Commercial</option>
-                    <option value="industrial">Industrial</option>
-                    <option value="agricultural">Agricultural</option>
-                  </select>
-                  <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" style={{ fontVariationSettings: "'wght' 300" }}>expand_more</span>
-                </div>
-                <div className="relative flex-1">
                   <select value={category} onChange={(e) => setCategory(e.target.value)} className="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-2xl py-2.5 pl-5 pr-10 appearance-none focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary font-medium cursor-pointer">
-                    <option value="">Categories</option>
+                    <option value="">All Categories</option>
                     <option value="inverters">Inverters</option>
                     <option value="batteries">Batteries</option>
                     <option value="panels">Panels</option>
@@ -160,33 +205,27 @@ export default function ProductsClient({ initialProducts }: { initialProducts: P
                   </select>
                   <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" style={{ fontVariationSettings: "'wght' 300" }}>expand_more</span>
                 </div>
+
                 <div className="relative flex-1">
                   <select value={brand} onChange={(e) => setBrand(e.target.value)} className="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-2xl py-2.5 pl-5 pr-10 appearance-none focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary font-medium cursor-pointer">
-                    <option value="">Brands</option>
-                    <option value="inverex">Inverex</option>
-                    <option value="pylontech">Pylontech</option>
-                    <option value="solis">Solis</option>
-                    <option value="jinko">Jinko</option>
-                    <option value="trina">Trina</option>
-                    <option value="canadian-solar">Canadian Solar</option>
+                    <option value="">All Brands</option>
+                    {availableBrands.map(b => (
+                      <option key={b} value={b}>{b}</option>
+                    ))}
                   </select>
                   <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" style={{ fontVariationSettings: "'wght' 300" }}>expand_more</span>
                 </div>
+
                 <div className="relative flex-1">
                   <select value={sortBy} onChange={(e) => setSortBy(e.target.value)} className="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-2xl py-2.5 pl-5 pr-10 appearance-none focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary font-medium cursor-pointer">
                     <option value="">Sort by</option>
-                    <option value="new">New</option>
+                    <option value="new">Newest Arrivals</option>
                     <option value="price-low">Price: Low to High</option>
                     <option value="price-high">Price: High to Low</option>
                   </select>
                   <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" style={{ fontVariationSettings: "'wght' 300" }}>expand_more</span>
                 </div>
               </div>
-              
-              {/* Apply Button */}
-              <button className="w-full bg-primary hover:bg-primary/90 text-white text-[13px] font-bold uppercase tracking-[0.2em] py-2.5 rounded-[1.5rem] shadow-sm transition-colors">
-                Apply
-              </button>
             </div>
             
             <main className="w-full">
@@ -209,6 +248,10 @@ export default function ProductsClient({ initialProducts }: { initialProducts: P
                       
                       {/* Image Section */}
                       <div className="h-40 sm:h-56 bg-[#f4f7fb] flex justify-center items-center p-4 sm:p-6 overflow-hidden relative">
+                        <span className="absolute top-3 left-3 z-10 inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-bold bg-emerald-500 text-white shadow-xs">
+                          <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+                          {product.status || 'In Stock'}
+                        </span>
                         <FavouriteButton product={product} className="absolute top-3 right-3 z-10" />
                         <div className="bg-white w-full h-full rounded-xl flex justify-center items-center p-2 shadow-[0_4px_12px_rgba(0,0,0,0.05)]">
                           <img alt={product.title} className="max-h-full object-contain transition-transform duration-500 group-hover:scale-110 mix-blend-multiply" src={product.image} />

@@ -102,15 +102,19 @@ export default function FavouriteDrawer() {
                 <span className="text-[#107022] text-sm">{totalItemsCount}</span>
               </div>
 
-              <Link
-                href={`/epc?items=${encodeURIComponent(
-                  favourites.map((f) => `${f.quantity}x ${f.product.title}`).join(', ')
+              <a
+                href={`https://wa.me/923277770090?text=${encodeURIComponent(
+                  `Hello Soltronic Energy,\n\nI would like to request a quotation for my saved selection:\n\n` +
+                  favourites.map((f) => `• ${f.quantity}x ${f.product.title} (${f.product.price})`).join('\n') +
+                  `\n\nPlease provide pricing and details. Thank you!`
                 )}`}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={closeDrawer}
                 className="w-full bg-[#ef4444] hover:bg-[#dc2626] text-white py-3 px-4 rounded-xl text-xs font-bold transition shadow-md flex items-center justify-center gap-2"
               >
                 Request Quotation for Favourites &rarr;
-              </Link>
+              </a>
 
               <Link
                 href="/favourite"

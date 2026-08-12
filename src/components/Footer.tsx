@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="sm:col-span-2 lg:col-span-5 lg:pr-16">
           <div className="flex items-center -ml-4 mb-4">
             <Link href="/" className="relative w-64 h-16 md:h-20 block">
-              <Image src="/logo.png" alt="Soltronic Energy Logo" fill className="object-contain object-left" />
+              <Image src="/logo.png" alt="Soltronic Energy Logo" fill sizes="(max-width: 768px) 150px, 200px" className="object-contain object-left" />
             </Link>
           </div>
           <p className="text-[14px] font-body-md text-surface-variant dark:text-on-surface-variant leading-relaxed text-justify mb-10">

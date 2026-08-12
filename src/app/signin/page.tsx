@@ -168,7 +168,7 @@ function SigninContent() {
         {/* Header Logo & Vibe */}
         <div className="text-center">
           <Link href="/" className="inline-block relative w-40 h-14 mb-2">
-            <Image src="/logo.png" alt="Soltronic Energy" fill className="object-contain" priority />
+            <Image src="/logo.png" alt="Soltronic Energy" fill sizes="180px" className="object-contain" priority />
           </Link>
           <h2 className="text-2xl font-bold text-gray-900 tracking-tight">
             {showOtpScreen

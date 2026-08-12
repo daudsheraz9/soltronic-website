@@ -1,0 +1,121 @@
+TOTAL PRODUCTS REVIEWED: 24
+
+• Product #1: Canadian Solar TOPBiHiKu7 625W N-Type Bifacial TOPCon Panel [SOLAR PANELS]
+  Category Schema: solar_panel
+  Existing Specs (13): powerW, cellTechnology, cellType, cellConfiguration, frameThicknessMm, connector, frameColor, cecModel, weightKg, qtyPerPallet, dimensionsMm, productWarrantyYears, performanceWarrantyYears
+  Missing Specs: None (100% Fully Populated)
+
+• Product #2: Solis 10 kW L Plus Hybrid Inverter [HYBRID INVERTERS]
+  Category Schema: solar_inverter
+  Existing Specs (11): ratingKw, inverterType, phase, mpptCount, ipRating, useApplication, cecModel, ieee2030CsipAus, weightKg, dimensionsMm, productWarrantyYears
+  Missing Specs: None (100% Fully Populated)
+
+• Product #3: GoodWe 50 kW On-Grid Inverter [HYBRID INVERTERS]
+  Category Schema: solar_inverter
+  Existing Specs (11): ratingKw, inverterType, phase, mpptCount, ipRating, useApplication, cecModel, ieee2030CsipAus, weightKg, dimensionsMm, productWarrantyYears
+  Missing Specs: None (100% Fully Populated)
+
+• Product #4: Grovolt Ragnar 8.2 kW Hybrid Solar Inverter [HYBRID INVERTERS]
+  Category Schema: solar_inverter
+  Existing Specs (11): ratingKw, inverterType, phase, mpptCount, ipRating, useApplication, cecModel, ieee2030CsipAus, weightKg, dimensionsMm, productWarrantyYears
+  Missing Specs: None (100% Fully Populated)
+
+• Product #5: Huawei SUN2000-115KTL-M2 On-Grid Inverter [HYBRID INVERTERS]
+  Category Schema: solar_inverter
+  Existing Specs (11): ratingKw, inverterType, phase, mpptCount, ipRating, useApplication, cecModel, ieee2030CsipAus, weightKg, dimensionsMm, productWarrantyYears
+  Missing Specs: None (100% Fully Populated)
+
+• Product #6: Huawei SUN2000-12KTL-M5 On-Grid Inverter [HYBRID INVERTERS]
+  Category Schema: solar_inverter
+  Existing Specs (11): ratingKw, inverterType, phase, mpptCount, ipRating, useApplication, cecModel, ieee2030CsipAus, weightKg, dimensionsMm, productWarrantyYears
+  Missing Specs: None (100% Fully Populated)
+
+• Product #7: Huawei Smart Dongle WLAN-FE [ELECTRICALS]
+  Category Schema: solar_accessory
+  Existing Specs (12): accessoryType, model, useApplication, ipRating, interface, communication, protocol, supportedDevices, powerConsumption, weightKg, dimensionsMm, productWarrantyYears
+  Missing Specs (5): gridType, voltageRange, currentRange, ctRatio, measurementAccuracy
+
+• Product #8: Huawei Smart Energy Sensor [ELECTRICALS]
+  Category Schema: solar_accessory
+  Existing Specs (17): accessoryType, model, useApplication, gridType, voltageRange, currentRange, ctRatio, ipRating, interface, communication, protocol, supportedDevices, powerConsumption, measurementAccuracy, weightKg, dimensionsMm, productWarrantyYears
+  Missing Specs: None (100% Fully Populated)
+
+• Product #9: Huawei Smart Energy Sensor - Special [ELECTRICALS]
+  Category Schema: solar_accessory
+  Existing Specs (17): accessoryType, model, useApplication, gridType, voltageRange, currentRange, ctRatio, ipRating, interface, communication, protocol, supportedDevices, powerConsumption, measurementAccuracy, weightKg, dimensionsMm, productWarrantyYears
+  Missing Specs: None (100% Fully Populated)
+
+• Product #10: INGCO High Pressure Washer 1500W [PRESSURE WASHERS]
+  Category Schema: pressure_washer
+  Existing Specs (13): powerW, maxPressureBar, maxPressurePsi, flowRateLpm, voltageV, frequencyHz, hoseLengthM, ipRating, motorType, useApplication, weightKg, dimensionsMm, productWarrantyYears
+  Missing Specs: None (100% Fully Populated)
+
+• Product #11: Pylontech Fidus 5.12 kWh Lithium Battery [BATTERIES]
+  Category Schema: solar_battery
+  Existing Specs (19): batteryCapacityKwh, usableEnergyKwh, ratedVoltageV, capacityAh, batteryType, voltageClass, ipRating, depthOfDischargePercent, cycleLife, maxChargeCurrentA, maxDischargeCurrentA, peakCurrentA, communication, bms, maxParallelUnits, cecModel, weightKg, dimensionsMm, productWarrantyYears
+  Missing Specs: None (100% Fully Populated)
+
+• Product #12: Pylontech Fidus Plus 16 kWh Lithium Battery [BATTERIES]
+  Category Schema: solar_battery
+  Existing Specs (19): batteryCapacityKwh, usableEnergyKwh, ratedVoltageV, capacityAh, batteryType, voltageClass, ipRating, depthOfDischargePercent, cycleLife, maxChargeCurrentA, maxDischargeCurrentA, peakCurrentA, communication, bms, maxParallelUnits, cecModel, weightKg, dimensionsMm, productWarrantyYears
+  Missing Specs: None (100% Fully Populated)
+
+• Product #13: Risen Energy Hyper-ion Pro 740W HJT Bifacial Panel [SOLAR PANELS]
+  Category Schema: solar_panel
+  Existing Specs (13): powerW, cellTechnology, cellType, cellConfiguration, frameThicknessMm, connector, frameColor, cecModel, weightKg, qtyPerPallet, dimensionsMm, productWarrantyYears, performanceWarrantyYears
+  Missing Specs: None (100% Fully Populated)
+
+• Product #14: Solis 10 kW On-Grid Inverter [HYBRID INVERTERS]
+  Category Schema: solar_inverter
+  Existing Specs (11): ratingKw, inverterType, phase, mpptCount, ipRating, useApplication, cecModel, ieee2030CsipAus, weightKg, dimensionsMm, productWarrantyYears
+  Missing Specs: None (100% Fully Populated)
+
+• Product #15: Solis 10 kW Three-Phase HV Hybrid Inverter [HYBRID INVERTERS]
+  Category Schema: solar_inverter
+  Existing Specs (11): ratingKw, inverterType, phase, mpptCount, ipRating, useApplication, cecModel, ieee2030CsipAus, weightKg, dimensionsMm, productWarrantyYears
+  Missing Specs: None (100% Fully Populated)
+
+• Product #16: Solis 125 kW Three-Phase HV Hybrid Inverter [HYBRID INVERTERS]
+  Category Schema: solar_inverter
+  Existing Specs (11): ratingKw, inverterType, phase, mpptCount, ipRating, useApplication, cecModel, ieee2030CsipAus, weightKg, dimensionsMm, productWarrantyYears
+  Missing Specs: None (100% Fully Populated)
+
+• Product #17: Solis 12 kW Three-Phase HV Hybrid Inverter [HYBRID INVERTERS]
+  Category Schema: solar_inverter
+  Existing Specs (11): ratingKw, inverterType, phase, mpptCount, ipRating, useApplication, cecModel, ieee2030CsipAus, weightKg, dimensionsMm, productWarrantyYears
+  Missing Specs: None (100% Fully Populated)
+
+• Product #18: Solis 20 kW Three-Phase HV Hybrid Inverter [HYBRID INVERTERS]
+  Category Schema: solar_inverter
+  Existing Specs (11): ratingKw, inverterType, phase, mpptCount, ipRating, useApplication, cecModel, ieee2030CsipAus, weightKg, dimensionsMm, productWarrantyYears
+  Missing Specs: None (100% Fully Populated)
+
+• Product #19: Solis 30 kW Three-Phase HV Hybrid Inverter [HYBRID INVERTERS]
+  Category Schema: solar_inverter
+  Existing Specs (11): ratingKw, inverterType, phase, mpptCount, ipRating, useApplication, cecModel, ieee2030CsipAus, weightKg, dimensionsMm, productWarrantyYears
+  Missing Specs: None (100% Fully Populated)
+
+• Product #20: Solis 50 kW Three-Phase HV Hybrid Inverter [HYBRID INVERTERS]
+  Category Schema: solar_inverter
+  Existing Specs (11): ratingKw, inverterType, phase, mpptCount, ipRating, useApplication, cecModel, ieee2030CsipAus, weightKg, dimensionsMm, productWarrantyYears
+  Missing Specs: None (100% Fully Populated)
+
+• Product #21: Solis 6 kW L Plus Hybrid Inverter [HYBRID INVERTERS]
+  Category Schema: solar_inverter
+  Existing Specs (11): ratingKw, inverterType, phase, mpptCount, ipRating, useApplication, cecModel, ieee2030CsipAus, weightKg, dimensionsMm, productWarrantyYears
+  Missing Specs: None (100% Fully Populated)
+
+• Product #22: Solis 8 kW L Plus Hybrid Inverter [HYBRID INVERTERS]
+  Category Schema: solar_inverter
+  Existing Specs (11): ratingKw, inverterType, phase, mpptCount, ipRating, useApplication, cecModel, ieee2030CsipAus, weightKg, dimensionsMm, productWarrantyYears
+  Missing Specs: None (100% Fully Populated)
+
+• Product #23: Volnex Armor 5.12 kWh Lithium Battery [BATTERIES]
+  Category Schema: solar_battery
+  Existing Specs (19): batteryCapacityKwh, usableEnergyKwh, ratedVoltageV, capacityAh, batteryType, voltageClass, ipRating, depthOfDischargePercent, cycleLife, maxChargeCurrentA, maxDischargeCurrentA, peakCurrentA, communication, bms, maxParallelUnits, cecModel, weightKg, dimensionsMm, productWarrantyYears
+  Missing Specs: None (100% Fully Populated)
+
+• Product #24: Volnex Alpha 16 Lithium Battery [BATTERIES]
+  Category Schema: solar_battery
+  Existing Specs (19): batteryCapacityKwh, usableEnergyKwh, ratedVoltageV, capacityAh, batteryType, voltageClass, ipRating, depthOfDischargePercent, cycleLife, maxChargeCurrentA, maxDischargeCurrentA, peakCurrentA, communication, bms, maxParallelUnits, cecModel, weightKg, dimensionsMm, productWarrantyYears
+  Missing Specs: None (100% Fully Populated)

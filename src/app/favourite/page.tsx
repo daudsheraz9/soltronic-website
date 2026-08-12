@@ -177,14 +177,18 @@ export default function FavouritePage() {
                 <p className="text-[11px] text-gray-600 mb-4">
                   Send your saved configuration to our engineering team for an exact price quote & layout.
                 </p>
-                <Link
-                  href={`/epc?items=${encodeURIComponent(
-                    favourites.map((f) => `${f.quantity}x ${f.product.title}`).join(', ')
+                <a
+                  href={`https://wa.me/923277770090?text=${encodeURIComponent(
+                    `Hello Soltronic Energy,\n\nI would like to request a quotation for my saved selection:\n\n` +
+                    favourites.map((f) => `• ${f.quantity}x ${f.product.title} (${f.product.price})`).join('\n') +
+                    `\n\nPlease provide pricing and details. Thank you!`
                   )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-full bg-[#ef4444] hover:bg-[#dc2626] text-white py-3 px-4 rounded-xl text-xs font-bold transition shadow-md hover:shadow-lg flex items-center justify-center gap-2"
                 >
                   Request Quote for Selection &rarr;
-                </Link>
+                </a>
               </div>
             </div>
 

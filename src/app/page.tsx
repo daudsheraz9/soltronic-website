@@ -6,7 +6,7 @@ import SavingsCalculator from '@/components/SavingsCalculator';
 import ProductBanner from '@/components/ProductBanner';
 import { createClient } from '@/utils/supabase/server';
 import { cookies } from 'next/headers';
-import { Product } from '@/data/products';
+import { Product, featuredProductsData as staticFeaturedProducts } from '@/data/products';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import type { Metadata } from 'next';
 
@@ -43,10 +43,20 @@ export default async function Home() {
   const cookieStore = await cookies();
   const supabase = createClient(cookieStore);
 
-  const { data: featuredProductsData } = await supabase
+  const targetIds = ['1', '21', '11', '10'];
+  const { data: dbProducts } = await supabase
     .from('products')
     .select('*')
-    .limit(4);
+    .in('id', targetIds);
+
+  let featuredProductsData = staticFeaturedProducts;
+  if (dbProducts && dbProducts.length === 4) {
+    const sorted = targetIds.map(id => dbProducts.find(p => String(p.id) === id)).filter(Boolean);
+    if (sorted.length === 4) {
+      featuredProductsData = sorted;
+    }
+  }
+
   return (
     <main className="w-full overflow-x-hidden">
       <SchemaMarkup schema={localBusinessSchema} />
@@ -66,23 +76,11 @@ export default async function Home() {
             { name: 'Mountings', icon: '/icons/mountings.png', href: '/products?category=mountings' },
             { name: 'Electricals', icon: '/icons/electrincals.png', href: '/products?category=electricals' },
           ].map((category) => (
-            <Link
-              key={category.name}
-              href={category.href}
-              className="flex flex-col items-center gap-2 group min-w-[75px] sm:min-w-0 w-full"
-            >
-              <div className="h-14 w-14 sm:h-16 sm:w-16 md:h-20 md:w-20 flex items-center justify-center relative transition-transform duration-300 group-hover:scale-105 overflow-hidden">
-                <Image
-                  src={category.icon}
-                  alt={category.name}
-                  fill
-                  sizes="(max-width: 640px) 56px, 80px"
-                  className={`object-contain ${category.scale || ''}`}
-                />
+            <Link key={category.name} href={category.href} className="flex flex-col items-center gap-2 group min-w-[75px] md:min-w-[85px]">
+              <div className="h-[54px] md:h-[70px] w-[54px] md:w-[70px] flex items-center justify-center relative overflow-hidden">
+                <img src={category.icon} alt={category.name} className={`max-h-full max-w-full object-contain mix-blend-multiply transition-all duration-300 group-hover:scale-110 ${category.scale || ''}`} />
               </div>
-              <span className="text-[12px] sm:text-[13px] md:text-[14px] text-gray-800 font-semibold group-hover:text-[#107022] transition-colors text-center mt-1 whitespace-nowrap">
-                {category.name}
-              </span>
+              <span className="text-[12px] md:text-[14px] text-gray-700 font-medium group-hover:text-[#107022] transition-colors text-center mt-1 whitespace-nowrap">{category.name}</span>
             </Link>
           ))}
         </div>
@@ -97,11 +95,15 @@ export default async function Home() {
             <Link className="text-primary font-medium text-sm flex items-center hover:underline" href="/products">View All Products <i className="fa-solid fa-arrow-right ml-2 text-xs"></i></Link>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            {(featuredProductsData || []).map((product, index) => (
-              <div key={index} className="bg-white flex flex-col group relative border border-gray-100 shadow-sm rounded-2xl overflow-hidden transition-all duration-300 hover:border-orange-200 hover:shadow-[0_0_25px_rgba(254,215,170,0.5)]">
+            {(featuredProductsData || []).map((product: any, index: number) => (
+              <Link key={index} href={`/products/${product.slug || 'soltronic-mono-550w'}`} className="bg-white flex flex-col group relative border border-gray-100 shadow-sm rounded-2xl overflow-hidden transition-all duration-300 hover:border-orange-200 hover:shadow-[0_0_25px_rgba(254,215,170,0.5)] cursor-pointer">
 
                 {/* Image Section */}
                 <div className="h-40 sm:h-56 bg-[#f4f7fb] flex justify-center items-center p-4 sm:p-6 overflow-hidden relative">
+                  <span className="absolute top-3 left-3 z-10 inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-bold bg-emerald-500 text-white shadow-xs">
+                    <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+                    {product.status || 'In Stock'}
+                  </span>
                   <FavouriteButton product={product} className="absolute top-3 right-3 z-10" />
                   <div className="bg-white w-full h-full rounded-xl flex justify-center items-center p-2 shadow-[0_4px_12px_rgba(0,0,0,0.05)]">
                     <img alt={product.title} className="max-h-full object-contain transition-transform duration-500 group-hover:scale-110 mix-blend-multiply" src={product.image} />
@@ -136,12 +138,12 @@ export default async function Home() {
                   </div>
 
                   <div>
-                    <button className="w-full bg-[#ef4444] hover:bg-[#dc2626] text-white py-3 px-4 rounded-xl text-[14px] transition-all duration-300 text-center font-bold shadow-[0_4px_14px_rgba(239,68,68,0.4)] hover:shadow-[0_6px_20px_rgba(239,68,68,0.6)] flex items-center justify-center gap-2">
+                    <div className="w-full bg-[#ef4444] hover:bg-[#dc2626] text-white py-3 px-4 rounded-xl text-[14px] transition-all duration-300 text-center font-bold shadow-[0_4px_14px_rgba(239,68,68,0.4)] hover:shadow-[0_6px_20px_rgba(239,68,68,0.6)] flex items-center justify-center gap-2">
                       Get Quote <span className="text-lg leading-none">&rarr;</span>
-                    </button>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

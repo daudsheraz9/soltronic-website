@@ -2,47 +2,85 @@ import { createClient } from '@/utils/supabase/server';
 import { cookies } from 'next/headers';
 import ProductDetailClient from './ProductDetailClient';
 import { notFound } from 'next/navigation';
-import { Product } from '@/data/products';
+import { Product, productsData } from '@/data/products';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
-  const cookieStore = await cookies();
-  const supabase = createClient(cookieStore);
+  const localProduct = productsData.find((p) => p.slug === resolvedParams.slug);
 
-  const { data: product } = await supabase
-    .from('products')
-    .select('title, description')
-    .eq('slug', resolvedParams.slug)
-    .single();
+  try {
+    const cookieStore = await cookies();
+    const supabase = createClient(cookieStore);
 
-  if (!product) {
+    const { data: product } = await supabase
+      .from('products')
+      .select('title, description')
+      .eq('slug', resolvedParams.slug)
+      .single();
+
+    if (product) {
+      return {
+        title: `${product.title} | Soltronic`,
+        description: product.description,
+      };
+    }
+  } catch (e) {
+    // Ignore and fallback to local metadata
+  }
+
+  if (localProduct) {
     return {
-      title: 'Product Not Found | Soltronic',
+      title: `${localProduct.title} | Soltronic`,
+      description: localProduct.description,
     };
   }
 
   return {
-    title: `${product.title} | Soltronic`,
-    description: product.description,
+    title: 'Product Not Found | Soltronic',
   };
 }
 
 export default async function ProductDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
-  const cookieStore = await cookies();
-  const supabase = createClient(cookieStore);
+  const localProduct = productsData.find((p) => p.slug === resolvedParams.slug);
 
-  const { data: product, error } = await supabase
-    .from('products')
-    .select('*')
-    .eq('slug', resolvedParams.slug)
-    .single();
+  try {
+    const cookieStore = await cookies();
+    const supabase = createClient(cookieStore);
 
-  if (error || !product) {
+    const { data: dbProduct, error } = await supabase
+      .from('products')
+      .select('*')
+      .eq('slug', resolvedParams.slug)
+      .single();
+
+    if (dbProduct && !error) {
+      const mergedProduct = {
+        ...localProduct,
+        ...dbProduct,
+        specifications: {
+          ...(localProduct?.specifications || {}),
+          ...(dbProduct.specifications || {}),
+        },
+        shipping: {
+          ...(localProduct?.shipping || {}),
+          ...(dbProduct.shipping || {}),
+        },
+        warrantyInfo: {
+          ...(localProduct?.warrantyInfo || {}),
+          ...(dbProduct.warranty_info || dbProduct.warrantyInfo || {}),
+        },
+      };
+
+      return <ProductDetailClient initialProduct={mergedProduct as Product} />;
+    }
+  } catch (err) {
+    console.error('Supabase query error in ProductDetailPage:', err);
+  }
+
+  if (!localProduct) {
     notFound();
   }
 
-  return (
-    <ProductDetailClient initialProduct={product as Product} />
-  );
+  return <ProductDetailClient initialProduct={localProduct} />;
 }
