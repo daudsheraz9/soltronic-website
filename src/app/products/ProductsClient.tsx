@@ -205,8 +205,7 @@ export default function ProductsClient({ initialProducts }: { initialProducts: P
               ) : (
                 <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                   {currentProducts.map((product, index) => (
-
-                    <div key={index} className="bg-white flex flex-col group relative border border-gray-100 shadow-sm rounded-2xl overflow-hidden transition-all duration-300 hover:border-orange-200 hover:shadow-[0_0_25px_rgba(254,215,170,0.5)]">
+                    <Link key={index} href={`/products/${(product as any).slug || 'soltronic-mono-550w'}`} className="bg-white flex flex-col group relative border border-gray-100 shadow-sm rounded-2xl overflow-hidden transition-all duration-300 hover:border-orange-200 hover:shadow-[0_0_25px_rgba(254,215,170,0.5)]">
                       
                       {/* Image Section */}
                       <div className="h-40 sm:h-56 bg-[#f4f7fb] flex justify-center items-center p-4 sm:p-6 overflow-hidden relative">
@@ -246,12 +245,12 @@ export default function ProductsClient({ initialProducts }: { initialProducts: P
                         </div>
                         
                         <div>
-                          <Link href={`/products/${(product as any).slug || 'soltronic-mono-550w'}`} className="w-full bg-[#ef4444] hover:bg-[#dc2626] text-white py-3 px-4 rounded-xl text-[14px] transition-all duration-300 text-center font-bold shadow-[0_4px_14px_rgba(239,68,68,0.4)] hover:shadow-[0_6px_20px_rgba(239,68,68,0.6)] flex items-center justify-center gap-2">
+                          <div className="w-full bg-[#ef4444] hover:bg-[#dc2626] text-white py-3 px-4 rounded-xl text-[14px] transition-all duration-300 text-center font-bold shadow-[0_4px_14px_rgba(239,68,68,0.4)] hover:shadow-[0_6px_20px_rgba(239,68,68,0.6)] flex items-center justify-center gap-2">
                             Get Quote <span className="text-lg leading-none">&rarr;</span>
-                          </Link>
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    </Link>
                   ))}
                 </div>
               )}

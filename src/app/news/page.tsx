@@ -205,6 +205,62 @@ const ARTICLES: Article[] = [
     featured: false,
     trending: false,
     tags: ["EV Charging", "DC Fast Charger", "Clean Mobility", "Solar Canopy", "Infrastructure"]
+  },
+  {
+    id: "news-7",
+    slug: "new-import-tariff-impact",
+    title: "How Recent Import Tariffs Will Impact Solar Panel Prices in Q4 2026",
+    category: "Industry Policy",
+    date: "August 10, 2026",
+    readTime: "3 min read",
+    author: {
+      name: "Engr. Tariq Mehmood",
+      role: "Chief Technical Advisor, Soltronic Energy",
+      avatar: "/CEO-3.png"
+    },
+    excerpt: "A deep dive into the newly announced tariff structure for imported photovoltaic equipment and how it will affect end-user ROI in the coming months.",
+    content: [
+      "The Ministry of Energy recently announced revisions to the import tariff structure for Tier-1 solar modules.",
+      "While local assembly plants receive incentives, fully imported panels might see a slight price adjustment. Soltronic ensures our supply chain remains insulated from sudden shocks.",
+      "We advise commercial clients to lock in their EPC contracts now before the Q4 price hikes take full effect."
+    ],
+    keyTakeaways: [
+      "Import tariffs adjusted to favor local assembly.",
+      "Slight increase expected in Q4 for fully imported panels.",
+      "Locking in EPC contracts early mitigates pricing risks."
+    ],
+    image: "/banner-main-2.png",
+    featured: false,
+    trending: false,
+    tags: ["Tariffs", "Import Policy", "Pricing", "Solar Market"]
+  },
+  {
+    id: "news-8",
+    slug: "soltronic-reaches-1gw-installed-capacity",
+    title: "Soltronic Energy Crosses 1GW of Total Installed Capacity Nationwide",
+    category: "Soltronic Milestones",
+    date: "August 11, 2026",
+    readTime: "2 min read",
+    author: {
+      name: "Syed Ali Raza",
+      role: "Head of Utility Infrastructure",
+      avatar: "/QamarMaqsood.png"
+    },
+    excerpt: "A historic moment for Pakistan's renewable sector as Soltronic successfully surpasses 1 Gigawatt of deployed solar power across residential, commercial, and utility sectors.",
+    content: [
+      "After five years of aggressive expansion and unwavering commitment to quality, Soltronic Energy has officially crossed the 1GW milestone of installed solar capacity.",
+      "This achievement represents millions of tons of CO2 offset and billions of rupees saved in energy costs for our clients.",
+      "We thank our dedicated engineering teams, partners, and customers for trusting Soltronic to lead the clean energy transition."
+    ],
+    keyTakeaways: [
+      "1GW total installed capacity reached.",
+      "Massive reduction in national carbon footprint.",
+      "Reaffirms Soltronic's position as a market leader."
+    ],
+    image: "/gallery_bess_container_1786337154136.png",
+    featured: false,
+    trending: true,
+    tags: ["1GW", "Milestone", "Clean Energy", "Market Leader"]
   }
 ];
 
@@ -358,7 +414,7 @@ export default function NewsPage() {
               className="lg:col-span-1 anim-news-card group cursor-pointer bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:border-emerald-300 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
             >
               <div>
-                <div className="h-48 relative overflow-hidden bg-slate-100 flex-shrink-0">
+                <div className="h-64 sm:h-80 relative overflow-hidden bg-slate-100 flex-shrink-0">
                   <SafeImage src={secondFeatured.image} alt={secondFeatured.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-md text-[10px] font-bold text-[#107022] border border-slate-200 shadow-sm uppercase tracking-wider">
                     {secondFeatured.category}

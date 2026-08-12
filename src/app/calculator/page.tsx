@@ -4,37 +4,94 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 export default function CalculatorPage() {
-  const [bill, setBill] = useState(50000);
+  const [monthlyUnits, setMonthlyUnits] = useState(900);
   const [roofOrientation, setRoofOrientation] = useState('south');
-  const [stateLocation, setStateLocation] = useState('punjab');
-  const [panelType, setPanelType] = useState('standard');
+  const [disco, setDisco] = useState('lesco');
+  const [shading, setShading] = useState('none');
+  const [systemType, setSystemType] = useState('ongrid');
+  const [usagePattern, setUsagePattern] = useState('balanced');
 
   const [savings, setSavings] = useState(0);
   const [payback, setPayback] = useState(0);
   const [co2, setCo2] = useState(0);
+  const [systemKw, setSystemKw] = useState(0);
+  const [systemCost, setSystemCost] = useState(0);
 
   useEffect(() => {
-    let efficiency = 1.0;
-    
-    if(roofOrientation === 'south') efficiency *= 1.1;
-    if(roofOrientation === 'north') efficiency *= 0.7;
-    
-    const isPremium = panelType === 'premium';
-    if(isPremium) efficiency *= 1.25;
+    // 1. Constants
+    const DISCO_YIELDS: Record<string, number> = {
+      lesco: 1650, iesco: 1600, mepco: 1700, fesco: 1650, gepco: 1600,
+      pesco: 1650, hesco: 1800, sepco: 1850, qesco: 1950, ke: 1750,
+    };
+    const ORIENTATION_FACTORS: Record<string, number> = {
+      south: 1.0, se: 0.97, sw: 0.97, east: 0.90, west: 0.90, north: 0.70,
+    };
+    const SHADING_FACTORS: Record<string, number> = {
+      none: 1.0, low: 0.95, medium: 0.85, high: 0.75,
+    };
 
-    const annualSavings = (bill * 12) * efficiency * 0.9; 
-    const twentyYear = annualSavings * 20;
-    
-    const kwRequired = Math.max(3, bill / 7200); // Rough estimate of kW required
-    const baseCost = kwRequired * (isPremium ? 200000 : 150000); // Pakistan system prices per kW
-    const paybackPeriod = baseCost / annualSavings;
-    
-    const co2Offset = (bill / 60) * 12 * efficiency * 0.001 * 0.85; // rough tons per year based on units
+    // Self-consumption estimates based on usage pattern and system type
+    const getSelfConsumption = () => {
+      if (systemType === 'hybrid') {
+        if (usagePattern === 'daytime') return 0.90;
+        if (usagePattern === 'balanced') return 0.80;
+        return 0.70; // nighttime
+      } else {
+        if (usagePattern === 'daytime') return 0.70;
+        if (usagePattern === 'balanced') return 0.50;
+        return 0.30; // nighttime
+      }
+    };
 
-    setSavings(Math.round(twentyYear));
+    const TARIFF_IMPORT = 65; // Estimated PKR/kWh
+    const TARIFF_EXPORT = 27; // Estimated PKR/kWh for exported units
+    const COST_PER_KW_ONGRID = 150000;
+    const COST_PER_KW_HYBRID = 200000;
+    const DEGRADATION_RATE = 0.005; // 0.5% per year
+    
+    // 2. Core Calculations
+    const pvYield = DISCO_YIELDS[disco] || 1650;
+    const adjustedYield = pvYield * (ORIENTATION_FACTORS[roofOrientation] || 1.0) * (SHADING_FACTORS[shading] || 1.0);
+    
+    const annualUnits = monthlyUnits * 12;
+    const targetSolarGen = annualUnits * 0.85; // Target 85% coverage
+    
+    let requiredKw = targetSolarGen / adjustedYield;
+    requiredKw = Math.max(3, Math.round(requiredKw * 10) / 10); // Minimum 3kW, round to 1 decimal
+    
+    const year1Gen = requiredKw * adjustedYield;
+    const selfConsumptionRate = getSelfConsumption();
+    
+    const selfConsumedKwh = year1Gen * selfConsumptionRate;
+    const exportedKwh = year1Gen - selfConsumedKwh;
+    
+    const year1Savings = (selfConsumedKwh * TARIFF_IMPORT) + (exportedKwh * TARIFF_EXPORT);
+    const estCost = requiredKw * (systemType === 'hybrid' ? COST_PER_KW_HYBRID : COST_PER_KW_ONGRID);
+    
+    const paybackPeriod = estCost / year1Savings;
+    
+    // 20 Year calculations with degradation
+    let total20YearSavings = 0;
+    let total20YearCo2 = 0;
+    let currentYearGen = year1Gen;
+    
+    for (let i = 0; i < 20; i++) {
+      const currentSelfConsumed = currentYearGen * selfConsumptionRate;
+      const currentExported = currentYearGen - currentSelfConsumed;
+      const currentSavings = (currentSelfConsumed * TARIFF_IMPORT) + (currentExported * TARIFF_EXPORT);
+      
+      total20YearSavings += currentSavings;
+      total20YearCo2 += (currentYearGen * 0.85 / 1000); // tons of CO2
+      
+      currentYearGen *= (1 - DEGRADATION_RATE);
+    }
+
+    setSystemKw(requiredKw);
+    setSystemCost(Math.round(estCost));
+    setSavings(Math.round(total20YearSavings));
     setPayback(paybackPeriod);
-    setCo2(Math.round(co2Offset * 20)); // CO2 offset over 20 years
-  }, [bill, roofOrientation, stateLocation, panelType]);
+    setCo2(Math.round(total20YearCo2));
+  }, [monthlyUnits, roofOrientation, disco, shading, systemType, usagePattern]);
 
   return (
     <main className="pt-8 pb-10 bg-white text-slate-800">
@@ -102,26 +159,71 @@ export default function CalculatorPage() {
               </h2>
               
               <div className="space-y-8">
-                {/* Monthly Bill Slider */}
+                {/* Monthly Units Slider */}
                 <div>
                   <div className="flex justify-between items-end mb-4">
-                    <label className="text-xs font-bold text-gray-500 uppercase tracking-wider block">Average Monthly Bill</label>
-                    <div className="text-2xl text-[#1A4D2E] font-bold">Rs {bill.toLocaleString()}</div>
+                    <label className="text-xs font-bold text-gray-500 uppercase tracking-wider block">Average Monthly Electricity (kWh)</label>
+                    <div className="text-2xl text-[#1A4D2E] font-bold">{monthlyUnits.toLocaleString()} Units</div>
                   </div>
                   <input 
                     className="w-full" 
                     type="range" 
-                    min="5000" max="200000" step="5000" 
-                    value={bill} 
-                    onChange={(e) => setBill(parseInt(e.target.value))}
+                    min="100" max="3000" step="50" 
+                    value={monthlyUnits} 
+                    onChange={(e) => setMonthlyUnits(parseInt(e.target.value))}
                   />
                   <div className="flex justify-between text-xs text-gray-500 mt-2">
-                    <span>Rs 5,000</span>
-                    <span>Rs 200,000+</span>
+                    <span>100</span>
+                    <span>3,000+</span>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* DISCO / Location */}
+                  <div>
+                    <label className="text-xs font-bold text-gray-500 uppercase tracking-wider block mb-2">Electricity Provider (DISCO)</label>
+                    <div className="relative">
+                      <select 
+                        value={disco}
+                        onChange={(e) => setDisco(e.target.value)}
+                        className="w-full appearance-none bg-gray-50 border border-gray-200 text-slate-900 py-3 px-4 rounded focus:outline-none focus:border-[#1A4D2E] focus:ring-1 focus:ring-[#1A4D2E] transition-colors cursor-pointer"
+                      >
+                        <option value="lesco">LESCO (Lahore)</option>
+                        <option value="iesco">IESCO (Islamabad)</option>
+                        <option value="mepco">MEPCO (Multan)</option>
+                        <option value="fesco">FESCO (Faisalabad)</option>
+                        <option value="gepco">GEPCO (Gujranwala)</option>
+                        <option value="pesco">PESCO (Peshawar)</option>
+                        <option value="hesco">HESCO (Hyderabad)</option>
+                        <option value="sepco">SEPCO (Sukkur)</option>
+                        <option value="qesco">QESCO (Quetta)</option>
+                        <option value="ke">K-Electric (Karachi)</option>
+                      </select>
+                      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
+                        <span className="material-symbols-outlined">electric_bolt</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Usage Pattern */}
+                  <div>
+                    <label className="text-xs font-bold text-gray-500 uppercase tracking-wider block mb-2">Usage Pattern</label>
+                    <div className="relative">
+                      <select 
+                        value={usagePattern}
+                        onChange={(e) => setUsagePattern(e.target.value)}
+                        className="w-full appearance-none bg-gray-50 border border-gray-200 text-slate-900 py-3 px-4 rounded focus:outline-none focus:border-[#1A4D2E] focus:ring-1 focus:ring-[#1A4D2E] transition-colors cursor-pointer"
+                      >
+                        <option value="daytime">Mostly Daytime</option>
+                        <option value="balanced">Balanced Day/Night</option>
+                        <option value="nighttime">Mostly Nighttime</option>
+                      </select>
+                      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
+                        <span className="material-symbols-outlined">schedule</span>
+                      </div>
+                    </div>
+                  </div>
+
                   {/* Roof Orientation */}
                   <div>
                     <label className="text-xs font-bold text-gray-500 uppercase tracking-wider block mb-2">Roof Orientation</label>
@@ -132,69 +234,70 @@ export default function CalculatorPage() {
                         className="w-full appearance-none bg-gray-50 border border-gray-200 text-slate-900 py-3 px-4 rounded focus:outline-none focus:border-[#1A4D2E] focus:ring-1 focus:ring-[#1A4D2E] transition-colors cursor-pointer"
                       >
                         <option value="south">South (Optimal)</option>
-                        <option value="west">West</option>
+                        <option value="se">South-East</option>
+                        <option value="sw">South-West</option>
                         <option value="east">East</option>
+                        <option value="west">West</option>
                         <option value="north">North (Not Ideal)</option>
                       </select>
                       <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
-                        <span className="material-symbols-outlined">expand_more</span>
+                        <span className="material-symbols-outlined">explore</span>
                       </div>
                     </div>
                   </div>
-
-                  {/* Location */}
+                  
+                  {/* Shading */}
                   <div>
-                    <label className="text-xs font-bold text-gray-500 uppercase tracking-wider block mb-2">Province / City</label>
+                    <label className="text-xs font-bold text-gray-500 uppercase tracking-wider block mb-2">Shading</label>
                     <div className="relative">
                       <select 
-                        value={stateLocation}
-                        onChange={(e) => setStateLocation(e.target.value)}
+                        value={shading}
+                        onChange={(e) => setShading(e.target.value)}
                         className="w-full appearance-none bg-gray-50 border border-gray-200 text-slate-900 py-3 px-4 rounded focus:outline-none focus:border-[#1A4D2E] focus:ring-1 focus:ring-[#1A4D2E] transition-colors cursor-pointer"
                       >
-                        <option value="punjab">Punjab / Lahore</option>
-                        <option value="sindh">Sindh / Karachi</option>
-                        <option value="kpk">Khyber Pakhtunkhwa</option>
-                        <option value="balochistan">Balochistan</option>
-                        <option value="islamabad">Islamabad</option>
+                        <option value="none">None (Full Sun)</option>
+                        <option value="low">Low (Minor Shadows)</option>
+                        <option value="medium">Medium (Trees/Buildings)</option>
+                        <option value="high">High (Significant Blockage)</option>
                       </select>
                       <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
-                        <span className="material-symbols-outlined">location_on</span>
+                        <span className="material-symbols-outlined">wb_sunny</span>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Panel Type Toggle */}
+                {/* System Type Toggle */}
                 <div>
-                  <label className="text-xs font-bold text-gray-500 uppercase tracking-wider block mb-3">Solar Panel Tier</label>
+                  <label className="text-xs font-bold text-gray-500 uppercase tracking-wider block mb-3">System Type</label>
                   <div className="grid grid-cols-2 gap-4">
                     <label className="cursor-pointer">
                       <input 
                         type="radio" 
-                        name="panel-type" 
-                        value="standard" 
-                        checked={panelType === 'standard'}
-                        onChange={() => setPanelType('standard')}
+                        name="system-type" 
+                        value="ongrid" 
+                        checked={systemType === 'ongrid'}
+                        onChange={() => setSystemType('ongrid')}
                         className="peer sr-only" 
                       />
                       <div className="border border-gray-200 rounded p-4 text-center peer-checked:border-[#1A4D2E] peer-checked:bg-gray-50 transition-all hover:border-[#1A4D2E]/50">
-                        <div className="text-xl font-bold text-slate-900 mb-1">Standard</div>
-                        <div className="text-sm text-gray-500">High Value</div>
+                        <div className="text-xl font-bold text-slate-900 mb-1">On-Grid</div>
+                        <div className="text-sm text-gray-500">No Battery</div>
                       </div>
                     </label>
                     <label className="cursor-pointer">
                       <input 
                         type="radio" 
-                        name="panel-type" 
-                        value="premium" 
-                        checked={panelType === 'premium'}
-                        onChange={() => setPanelType('premium')}
+                        name="system-type" 
+                        value="hybrid" 
+                        checked={systemType === 'hybrid'}
+                        onChange={() => setSystemType('hybrid')}
                         className="peer sr-only" 
                       />
                       <div className="border border-gray-200 rounded p-4 text-center peer-checked:border-[#1A4D2E] peer-checked:bg-gray-50 transition-all hover:border-[#1A4D2E]/50 relative overflow-hidden">
-                        <div className="absolute top-0 right-0 bg-orange-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-bl">PRO</div>
-                        <div className="text-xl font-bold text-slate-900 mb-1">Premium</div>
-                        <div className="text-sm text-gray-500">Max Efficiency</div>
+                        <div className="absolute top-0 right-0 bg-[#1A4D2E] text-white text-[10px] font-bold px-2 py-0.5 rounded-bl">BATTERY</div>
+                        <div className="text-xl font-bold text-slate-900 mb-1">Hybrid</div>
+                        <div className="text-sm text-gray-500">Storage Backup</div>
                       </div>
                     </label>
                   </div>
@@ -214,23 +317,30 @@ export default function CalculatorPage() {
                   {/* Data Card 1 */}
                   <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm relative overflow-hidden group hover:shadow-md transition-shadow">
                     <div className="absolute left-0 top-0 bottom-0 w-1 bg-orange-500"></div>
-                    <div className="text-xs font-bold text-gray-500 uppercase mb-1">20-Year Savings</div>
-                    <div className="text-4xl font-bold text-slate-900">Rs <span className="text-orange-500">{savings.toLocaleString()}</span></div>
+                    <div className="text-xs font-bold text-gray-500 uppercase mb-1">Recommended System Size</div>
+                    <div className="text-4xl font-bold text-slate-900">{systemKw.toFixed(1)} <span className="text-2xl text-gray-500">kW</span></div>
                   </div>
                   
                   <div className="grid grid-cols-2 gap-4">
                     {/* Data Card 2 */}
                     <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm flex flex-col justify-center items-center text-center">
+                      <span className="material-symbols-outlined text-orange-500 mb-2 text-3xl">payments</span>
+                      <div className="text-xl font-bold text-slate-900">Rs {systemCost.toLocaleString()}</div>
+                      <div className="text-[10px] font-bold text-gray-500 uppercase mt-1">Est. System Cost</div>
+                    </div>
+
+                    {/* Data Card 3 */}
+                    <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm flex flex-col justify-center items-center text-center">
                       <span className="material-symbols-outlined text-[#1A4D2E] mb-2 text-3xl">calendar_clock</span>
-                      <div className="text-2xl font-bold text-slate-900">{payback > 20 ? "20+" : payback.toFixed(1)} <span className="text-sm">yrs</span></div>
+                      <div className="text-xl font-bold text-slate-900">{payback > 20 ? "20+" : payback.toFixed(1)} <span className="text-sm">yrs</span></div>
                       <div className="text-[10px] font-bold text-gray-500 uppercase mt-1">Payback Period</div>
                     </div>
                     
-                    {/* Data Card 3 */}
-                    <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm flex flex-col justify-center items-center text-center">
-                      <span className="material-symbols-outlined text-[#366847] mb-2 text-3xl">co2</span>
-                      <div className="text-2xl font-bold text-slate-900">{co2} <span className="text-sm">tons</span></div>
-                      <div className="text-[10px] font-bold text-gray-500 uppercase mt-1">CO2 Offset</div>
+                    {/* Data Card 4 */}
+                    <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm flex flex-col justify-center items-center text-center col-span-2">
+                      <span className="material-symbols-outlined text-[#366847] mb-2 text-3xl">savings</span>
+                      <div className="text-xl font-bold text-slate-900">Rs {(savings / 100000).toFixed(1)} Lakhs</div>
+                      <div className="text-[10px] font-bold text-gray-500 uppercase mt-1">Est. 20-Year Savings</div>
                     </div>
                   </div>
                 </div>

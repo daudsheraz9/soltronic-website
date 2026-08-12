@@ -145,22 +145,7 @@ export default function ProductDetailClient({ initialProduct }: { initialProduct
                   </div>
                   <i className="fa-solid fa-arrow-down text-gray-400 text-xs group-hover:text-primary transition-colors"></i>
                 </a>
-                
-                <a href="#" className="flex items-center justify-between p-3 rounded-xl border border-gray-100 hover:border-primary hover:bg-gray-50 transition-all group">
-                  <div className="flex items-center gap-3">
-                    <i className="fa-regular fa-file-pdf text-red-500 text-lg"></i>
-                    <span className="font-medium text-sm text-gray-700">Installation Manual</span>
-                  </div>
-                  <i className="fa-solid fa-arrow-down text-gray-400 text-xs group-hover:text-primary transition-colors"></i>
-                </a>
-                
-                <a href="#" className="flex items-center justify-between p-3 rounded-xl border border-gray-100 hover:border-primary hover:bg-gray-50 transition-all group">
-                  <div className="flex items-center gap-3">
-                    <i className="fa-regular fa-file-pdf text-red-500 text-lg"></i>
-                    <span className="font-medium text-sm text-gray-700">Warranty Document</span>
-                  </div>
-                  <i className="fa-solid fa-arrow-down text-gray-400 text-xs group-hover:text-primary transition-colors"></i>
-                </a>
+
               </div>
             </div>
 
