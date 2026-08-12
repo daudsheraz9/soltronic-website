@@ -259,8 +259,20 @@ export default async function Home() {
       <section className="py-2 px-4 md:px-gutter bg-surface-bright">
         <div className="max-w-container-max mx-auto space-y-3 md:space-y-4">
           <div className="bg-surface-container-low rounded-2xl p-4 sm:p-5 border border-outline-variant/20 flex flex-col lg:flex-row items-center gap-4 sm:gap-6 shadow-sm transition-transform duration-500 hover:-translate-y-1">
-            {/* Left: Calculator Image (Set to exactly 160px) */}
-            <div className="w-32 sm:w-36 lg:w-[150px] shrink-0 flex justify-center items-center">
+            {/* Header Text (First on Mobile order-1, Right side on Desktop lg:order-3) */}
+            <div className="w-full lg:w-1/4 space-y-1.5 text-center order-1 lg:order-3">
+              <span className="text-[10px] sm:text-[11px] font-bold text-primary uppercase tracking-widest block">Calculate Your Savings</span>
+              <h2 className="text-xl sm:text-2xl font-bold text-on-surface leading-snug">How Much You Can Save</h2>
+              <p className="text-xs sm:text-sm text-on-surface-variant">Use our calculator to estimate your savings with solar solutions.</p>
+            </div>
+
+            {/* Interactive Calculator Controls (Middle on Mobile order-2 & Desktop lg:order-2) */}
+            <div className="w-full lg:flex-1 order-2 lg:order-2">
+              <SavingsCalculator />
+            </div>
+
+            {/* Calculator Image (Hidden on Mobile, Left side on Desktop lg:order-1) */}
+            <div className="hidden lg:flex w-[150px] shrink-0 justify-center items-center order-3 lg:order-1">
               <Image 
                 width={150} 
                 height={150} 
@@ -269,16 +281,6 @@ export default async function Home() {
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuASuSEZCzZymyyvLfwLQhOYXd6ygxOBl5ndOPLFm-ebqyKrQJkp94KKIH1kfpngXLt2x2PzPeieo0hIZUrFxkF-CLpcvleZKnJd0bopfmvrYdmdyQzYZSZCwJbS0Ph0NWTGbhDQQfc6T2qwsZ3d_warZ9dmWt12YFd_I_GCDgkOx-hDm3QqjWclmB5I4n7a2rWvAdkuhQSxkY1Jb-V9i9hKZBss4_lT8lK7zHKI1UKvhN-fXk5oNWlg" 
                 unoptimized 
               />
-            </div>
-
-            {/* Middle: Interactive Calculator Controls */}
-            <SavingsCalculator />
-
-            {/* Right: Text Information (Swapped Position) */}
-            <div className="w-full lg:w-1/4 space-y-1.5 text-center">
-              <span className="text-[10px] sm:text-[11px] font-bold text-primary uppercase tracking-widest block">Calculate Your Savings</span>
-              <h2 className="text-xl sm:text-2xl font-bold text-on-surface leading-snug">How Much You Can Save</h2>
-              <p className="text-xs sm:text-sm text-on-surface-variant">Use our calculator to estimate your savings with solar solutions.</p>
             </div>
           </div>
           <div className="bg-surface-container-low rounded-xl p-3 sm:p-4 border border-outline-variant/20 flex flex-row items-center gap-4 sm:gap-6 shadow-sm transition-transform duration-500 hover:-translate-y-1">
