@@ -198,8 +198,7 @@ export default function ProductDetailClient({ initialProduct }: { initialProduct
                     <i className="fa-regular fa-envelope"></i> Contact Sales
                   </Link>
                   <a 
-                    href={`/Products%20Datasheets/${encodeURIComponent(product.title)}.pdf`}
-                    download={`${product.title} Datasheet.pdf`}
+                    href={`/view-datasheet?file=${encodeURIComponent(`/Products Datasheets/${product.title}.pdf`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full bg-gray-50 hover:bg-gray-100 text-gray-700 font-semibold py-2.5 px-3 rounded-xl border border-gray-200/60 transition-colors flex items-center justify-center gap-2 text-xs"
