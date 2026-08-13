@@ -31,7 +31,6 @@ export default function Navbar() {
     { name: 'EPC Solutions', href: '/services' },
     { name: 'Promotions', href: '/promotions' },
     { name: 'Brands', href: '/brands' },
-    { name: 'Calculator', href: '/calculator' },
     { name: 'News', href: '/news' },
     { name: 'Downloads', href: '/downloads' },
     { name: 'Gallery', href: '/gallery' },
@@ -42,7 +41,7 @@ export default function Navbar() {
   return (
     <header className="w-full sticky top-0 left-0 z-50 bg-[#107022] text-white font-sans shadow-md">
       {/* Top Row: Logo, Search Bar, Utility Actions */}
-      <div className="max-w-[80rem] mx-auto px-4 p-2 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 p-2 flex items-center justify-between">
 
         {/* Left: Logo */}
         <div className="flex items-center flex-shrink-0">
@@ -158,8 +157,8 @@ export default function Navbar() {
 
       {/* Bottom Navigation Bar */}
       <div className={`lg:block ${isMobileMenuOpen ? 'block bg-[#0e5c1c]' : 'hidden'}`}>
-        <div className="max-w-[80rem] mx-auto px-4">
-          <nav className="flex flex-col lg:flex-row items-start lg:items-center justify-start gap-4 lg:gap-12 w-full overflow-x-auto no-scrollbar py-1">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <nav className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 lg:gap-0 w-full overflow-x-auto no-scrollbar py-1 px-2 lg:px-4">
             {bottomNavLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
