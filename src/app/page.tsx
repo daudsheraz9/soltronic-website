@@ -1,13 +1,15 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import ServicesSlider from '@/components/ServicesSlider';
-import TeamAccordion from '@/components/TeamAccordion';
-import SavingsCalculator from '@/components/SavingsCalculator';
-import ProductBanner from '@/components/ProductBanner';
-import { createClient } from '@/utils/supabase/server';
+import ServicesSlider from '@/components/ui/ServicesSlider';
+import TeamAccordion from '@/components/ui/TeamAccordion';
+import SavingsCalculator from '@/features/calculator/components/SavingsCalculator';
+import ProductBanner from '@/components/product/ProductBanner';
+import { createClient } from '@/lib/supabase/server';
 import { cookies } from 'next/headers';
-import { Product, featuredProductsData as staticFeaturedProducts } from '@/data/products';
-import SchemaMarkup from '@/components/SchemaMarkup';
+import { featuredProductsData as staticFeaturedProducts } from '@/data/products';
+import { Product } from '@/types/product';
+import SchemaMarkup from '@/components/seo/SchemaMarkup';
+import FavouriteButton from '@/features/favourites/components/FavouriteButton';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -36,8 +38,6 @@ const localBusinessSchema = {
     "addressCountry": "PK"
   }
 };
-
-import FavouriteButton from '@/components/FavouriteButton';
 
 export default async function Home() {
   const cookieStore = await cookies();

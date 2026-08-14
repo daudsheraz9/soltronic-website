@@ -1,6 +1,5 @@
 const { createClient } = require('@supabase/supabase-js');
 const fs = require('fs');
-const path = require('path');
 
 let env = {};
 if (fs.existsSync('.env.local')) {
@@ -37,7 +36,6 @@ async function seed() {
   const productsData = JSON.parse(jsonMatch[1]);
   console.log(`Parsed ${productsData.length} products to seed.`);
 
-  // 1. Delete old products from Supabase
   console.log("Deleting old products from Supabase...");
   const { error: delError } = await supabase.from('products').delete().neq('title', '___NON_EXISTENT___');
   if (delError) {
@@ -46,7 +44,6 @@ async function seed() {
     console.log("Old products cleared.");
   }
 
-  // 2. Format for Supabase DB table
   const dbRows = productsData.map(p => ({
     id: p.id,
     title: p.title,
@@ -77,7 +74,7 @@ async function seed() {
         delete copy.warrantyInfo;
         delete copy.shipping;
         delete copy.specifications;
-        delete copy.status; // fallback if status column is not created yet
+        delete copy.status;
         return copy;
       });
       const { error: err2 } = await supabase.from('products').insert(fallbackRows);

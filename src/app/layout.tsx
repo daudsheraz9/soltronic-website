@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
-import SchemaMarkup from "@/components/SchemaMarkup";
-import { AuthProvider } from "@/context/AuthContext";
-import { FavouriteProvider } from "@/context/FavouriteContext";
-import FavouriteToast from "@/components/FavouriteToast";
-import FavouriteDrawer from "@/components/FavouriteDrawer";
+import Footer from "@/components/layout/Footer";
+import Navbar from "@/components/layout/Navbar";
+import SchemaMarkup from "@/components/seo/SchemaMarkup";
+import { AuthProvider } from "@/features/auth/context/AuthContext";
+import { FavouriteProvider } from "@/features/favourites/context/FavouriteContext";
+import FavouriteToast from "@/features/favourites/components/FavouriteToast";
+import FavouriteDrawer from "@/features/favourites/components/FavouriteDrawer";
 
 export const metadata: Metadata = {
   title: {

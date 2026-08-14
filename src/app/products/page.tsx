@@ -1,7 +1,7 @@
-import { createClient } from '@/utils/supabase/server';
+import { createClient } from '@/lib/supabase/server';
 import { cookies } from 'next/headers';
 import ProductsClient from './ProductsClient';
-import { Product } from '@/data/products';
+import { Product } from '@/types/product';
 
 import { Metadata } from 'next';
 

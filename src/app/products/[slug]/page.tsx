@@ -1,8 +1,9 @@
-import { createClient } from '@/utils/supabase/server';
+import { createClient } from '@/lib/supabase/server';
 import { cookies } from 'next/headers';
-import ProductDetailClient from './ProductDetailClient';
+import ProductDetail from '@/features/catalog/components/ProductDetail';
 import { notFound } from 'next/navigation';
-import { Product, productsData } from '@/data/products';
+import { productsData } from '@/data/products';
+import { Product } from '@/types/product';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
@@ -72,7 +73,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
         },
       };
 
-      return <ProductDetailClient initialProduct={mergedProduct as Product} />;
+      return <ProductDetail initialProduct={mergedProduct as Product} />;
     }
   } catch (err) {
     console.error('Supabase query error in ProductDetailPage:', err);
@@ -82,5 +83,5 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
     notFound();
   }
 
-  return <ProductDetailClient initialProduct={localProduct} />;
+  return <ProductDetail initialProduct={localProduct} />;
 }

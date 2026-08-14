@@ -1,8 +1,8 @@
-import { createClient } from '@/utils/supabase/server';
+import { createClient } from '@/lib/supabase/server';
 import { cookies } from 'next/headers';
 import Link from 'next/link';
 import { Metadata } from 'next';
-import SchemaMarkup from '@/components/SchemaMarkup';
+import SchemaMarkup from '@/components/seo/SchemaMarkup';
 
 type Props = {
   params: Promise<{ brand: string }>

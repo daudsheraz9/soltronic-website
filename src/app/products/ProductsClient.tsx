@@ -3,9 +3,9 @@ import Link from 'next/link';
 import { useState, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 
-import { Product } from '@/data/products';
+import { Product } from '@/types/product';
 
-import FavouriteButton from '@/components/FavouriteButton';
+import FavouriteButton from '@/features/favourites/components/FavouriteButton';
 
 export default function ProductsClient({ initialProducts }: { initialProducts: Product[] }) {
   const searchParams = useSearchParams();
